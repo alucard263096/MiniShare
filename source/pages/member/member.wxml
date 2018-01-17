@@ -1,0 +1,27 @@
+<view class="page">
+  <view class="page__bd">
+
+  </view>
+  <view class="page__bd page__bd_spacing">
+    <view class="weui-footer weui-footer_fixed-bottom" style='border-top:1px solid #ccc;padding-left:10vw;padding-right:10vw;'>
+      <view class="weui-flex">
+        <view class="weui-flex__item" bindtap='switchTab' id="index">
+          <view  class='tab'>
+            <image src='{{uploadpath}}icon/home{{activetab==0?"-active":""}}.png' class='tabicon'></image>
+          </view>
+          <view class='placeholder {{activetab==0?"primary":""}}'>我的群空间</view>
+        </view>
+        <view class="weui-flex__item">
+          <view>
+            <image src='{{uploadpath}}icon/add.png' class='tabbutton'></image>
+          </view>
+        </view>
+        <view class="weui-flex__item" >
+          <view  class='tab'>
+            <image src='{{uploadpath}}icon/member{{activetab==1?"-active":""}}.png' class='tabicon'></image>
+          </view><view class='placeholder {{activetab==1?"primary":""}}'>个人中心</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
