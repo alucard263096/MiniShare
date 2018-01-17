@@ -2,22 +2,27 @@
   <view class="page__bd">
     <scroll-view style='height:88vh;'>
       <swiper indicator-dots="true" autoplay='true'>
-        <block wx:for="{{homebanner}}" wx:key="k" >
+        <block wx:for="{{homebanner}}" wx:key="k">
           <swiper-item>
             <image src="{{uploadpath}}banner/{{item.pic}}" class="slide-image" style='width:100vw;' />
           </swiper-item>
         </block>
       </swiper>
-    
-    
-    
-    
+      <view class="page__bd page__bd_spacing" style='padding-left:20vw;padding-right:20vw;margin-top:5vh;'>
+        <button class="weui-btn" type="primary" open-type="share" >创建微信群空间</button>
+      </view>
+      <view class="page__bd page__bd_spacing" style='text-align:center;color:#ccc;font-size:small;margin-top:2vh;'>
+        选择一个微信群
+      </view>
+
+<open-data type="groupName" open-gid="{{'tGb2F65dJ9xZbk5GE8J8BDEqeP1uU'}}" style="width:10px;height:10px;"></open-data>
+
     </scroll-view>
   </view>
   <view class="page__bd page__bd_spacing">
     <view class="weui-footer weui-footer_fixed-bottom" style='border-top:1px solid #ccc;padding-left:10vw;padding-right:10vw;'>
       <view class="weui-flex">
-        <view class="weui-flex__item" >
+        <view class="weui-flex__item">
           <view class='tab'>
             <image src='{{uploadpath}}icon/home{{activetab==0?"-active":""}}.png' class='tabicon'></image>
           </view>
@@ -29,9 +34,10 @@
           </view>
         </view>
         <view class="weui-flex__item" bindtap='switchTab' id="member">
-          <view  class='tab'>
+          <view class='tab'>
             <image src='{{uploadpath}}icon/member{{activetab==1?"-active":""}}.png' class='tabicon'></image>
-          </view><view class='placeholder {{activetab==1?"primary":""}}'>个人中心</view>
+          </view>
+          <view class='placeholder {{activetab==1?"primary":""}}'>个人中心</view>
         </view>
       </view>
     </view>

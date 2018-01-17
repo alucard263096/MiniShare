@@ -15,15 +15,18 @@ class Content extends AppBase {
     bannerApi.home({},data=>{
       console.log(data);
       this.Base.setMyData({ homebanner:data });
-    });
+    }, false);
   }
   onShow() {
     var that = this;
     super.onShow();
   }
+  createGroup(){
+  }
 }
 var page = new Content();
 var body = page.generateBodyJson();
-body.onLoad = page.onLoad;
+body.onLoad = page.onLoad; 
 body.onShow = page.onShow;
+body.createGroup = page.createGroup;
 Page(body)

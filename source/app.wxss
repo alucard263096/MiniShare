@@ -38,3 +38,9 @@ page{
   width: 15vw;
   height: 15vw;
 }
+button[type="primary"]{
+  background-color:#4D9CFB;
+}
+.button-hover[type="primary"]{
+  background-color:#348EFA;
+}

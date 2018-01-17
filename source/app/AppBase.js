@@ -1,6 +1,8 @@
 import { ApiConfig } from "../apis/apiconfig.js";
 import { ApiUtil } from "../apis/apiutil.js";
 import { MemberApi } from "../apis/member.api";
+import { WechatApi } from "../apis/wechat.api";
+import { GroupApi } from "../apis/group.api";
 
 export class AppBase {
 
@@ -71,8 +73,9 @@ export class AppBase {
       openMap: base.openMap,
       backPage: base.backPage,
       backHome: base.backHome,
-      logout: base.logout,
-      switchTab: base.switchTab
+      logout: base.logout, 
+      switchTab: base.switchTab, 
+      closePage: base.closePage
     }
   }
   log() {
@@ -85,6 +88,41 @@ export class AppBase {
     console.log("onload");
     this.Base.setBasicInfo();
     this.Base.setMyData({});
+
+    if (options.scene == 1044) {
+      wx.getShareInfo({
+        shareTicket: options.shareTicket,
+        success: function (res) {
+          wx.login({
+            withCredentials: true,
+            success:function(loginres){
+              //{ code: loginres.code, grant_type: "authorization_code" }
+              
+              var encryptedData = res.encryptedData;
+              var iv = res.iv;
+              var wechatapi = new WechatApi();
+              res.code = loginres.code;
+              res.grant_type = "authorization_code";
+
+              wechatapi.decrypteddata(res, data => {
+                if(data.code==0){
+                  AppBase.UserInfo.openid = data.return.openid;
+                  ApiConfig.SetToken(data.return.openid);
+                  var openGId = data.return.openGId;
+                  console.log(openGId);
+                }
+                
+              });
+
+            }
+          })
+        }
+      })
+    }
+
+    wx.showShareMenu({
+      withShareTicket: true
+    });
   }
   gotoOpenUserInfoSetting(){
     var that=this;
@@ -115,6 +153,7 @@ export class AppBase {
     var that=this;
     if (AppBase.UserInfo.openid == undefined) {
       // 登录
+      console.log("onShow");
       wx.login({
         success: res => {
           // 发送 res.code 到后台换取 openId, sessionKey, unionId
@@ -126,7 +165,9 @@ export class AppBase {
 
               var memberapi = new MemberApi();
               memberapi.getuserinfo({ code: res.code, grant_type: "authorization_code" }, data => {
+                console.log(data); 
                 AppBase.UserInfo.openid = data.openid;
+                AppBase.UserInfo.session_key = data.session_key;
                 console.log(AppBase.UserInfo);
                 ApiConfig.SetToken(data.openid);
                 memberapi.update(AppBase.UserInfo);
@@ -159,7 +200,42 @@ export class AppBase {
     console.log("onReachBottom");
   }
   onShareAppMessage() {
-    console.log("onShareAppMessage");
+    return {
+      title: '创建一个超级微信群空间',
+      path: '/pages/index/index?create_id=' + AppBase.UserInfo.openid,
+      success: function (res) {
+        // 转发成功
+
+        var shareTickets = res.shareTickets;
+        if (shareTickets.length == 0) {
+          return false;
+        }
+        console.log(shareTickets);
+        wx.getShareInfo({
+          shareTicket: shareTickets[0],
+          success: function (res) {
+            console.log(res);
+            var wechatapi = new WechatApi();
+            wechatapi.decrypteddata(res, data => {
+              console.log("aa");
+              console.log(data);
+              if(data.code==0){
+                var groupapi = new GroupApi();
+                groupapi.join({ opengid: data.return.openGId},data=>{
+                  this.Base.onShow();
+                });
+              }
+            });
+            var encryptedData = res.encryptedData;
+            var iv = res.iv;
+          }
+        });
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
+
   }
   setMyData(obj) {
     console.log(obj);
@@ -337,6 +413,11 @@ export class AppBase {
     console.log(url);
     wx.redirectTo({
       url: url,
+    })
+  }
+  closePage(){
+    wx.navigateBack({
+      delta:1
     })
   }
 } 
