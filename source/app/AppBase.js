@@ -14,7 +14,7 @@ export class AppBase {
     copyright: { name: "超级群空间助手", website: "supershare.com" }
   };
   Page = null;
-  util = ApiUtil;
+  static Util = ApiUtil;
   constructor() {
     this.app = getApp();
     this.me = this;
@@ -75,7 +75,8 @@ export class AppBase {
       backHome: base.backHome,
       logout: base.logout, 
       switchTab: base.switchTab, 
-      closePage: base.closePage
+      closePage: base.closePage,
+      gotoPage: base.gotoPage
     }
   }
   log() {
@@ -170,20 +171,25 @@ export class AppBase {
                 AppBase.UserInfo.session_key = data.session_key;
                 console.log(AppBase.UserInfo);
                 ApiConfig.SetToken(data.openid);
+                console.log("goto update info");
                 memberapi.update(AppBase.UserInfo);
                 that.Base.setMyData({ UserInfo: AppBase.UserInfo});
+                that.onShow();
               });
             },
             fail: res => {
-              this.Base.gotoOpenUserInfoSetting();
+              that.Base.gotoOpenUserInfoSetting();
             }
           });
 
         }
       })
     }else{
-
-      that.Base.setMyData({ UserInfo: AppBase.UserInfo });
+      if (that.setMyData!=undefined){
+        that.setMyData({ UserInfo: AppBase.UserInfo });
+      }else{
+        that.Base.setMyData({ UserInfo: AppBase.UserInfo });
+      }
     }
 
   }
@@ -200,6 +206,7 @@ export class AppBase {
     console.log("onReachBottom");
   }
   onShareAppMessage() {
+    var that=this;
     return {
       title: '创建一个超级微信群空间',
       path: '/pages/index/index?create_id=' + AppBase.UserInfo.openid,
@@ -222,7 +229,7 @@ export class AppBase {
               if(data.code==0){
                 var groupapi = new GroupApi();
                 groupapi.join({ opengid: data.return.openGId},data=>{
-                  this.Base.onShow();
+                  that.Base.onShow();
                 });
               }
             });
@@ -404,6 +411,20 @@ export class AppBase {
   logout() {
     wx.redirectTo({
       url: '/pages/signin/signin',
+    })
+  }
+  gotoPage(e){
+    console.log(e);
+    var dataset = e.currentTarget.dataset;
+    var page=dataset.page;
+    var parameter=dataset.param;
+    if(parameter!=""){
+      parameter="?"+parameter;
+    }
+    var url = "../" + page + "/" + page+parameter;
+    console.log(url);
+    wx.redirectTo({
+      url: url,
     })
   }
   switchTab(e){

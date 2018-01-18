@@ -1,6 +1,6 @@
 <view class="page">
   <view class="page__bd">
-    <scroll-view style='height:88vh;'>
+    <scroll-view style='height:88vh;' scroll-y="true">
       <swiper indicator-dots="true" autoplay='true'>
         <block wx:for="{{homebanner}}" wx:key="k">
           <swiper-item>
@@ -9,13 +9,36 @@
         </block>
       </swiper>
       <view class="page__bd page__bd_spacing" style='padding-left:20vw;padding-right:20vw;margin-top:5vh;'>
-        <button class="weui-btn" type="primary" open-type="share" >创建微信群空间</button>
+        <button class="weui-btn" type="primary" open-type="share">创建微信群空间</button>
       </view>
       <view class="page__bd page__bd_spacing" style='text-align:center;color:#ccc;font-size:small;margin-top:2vh;'>
         选择一个微信群
       </view>
 
-<open-data type="groupName" open-gid="{{'tGb2F65dJ9xZbk5GE8J8BDEqeP1uU'}}" style="width:10px;height:10px;"></open-data>
+      <view class="page__bd page__bd_spacing" style='margin-top:2vh;'>
+        <block wx:for="{{list}}" wx:key="k">
+          <navigator url="/pages/group/group?id={{item.id}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+            <view class="weui-media-box__hd weui-media-box__hd_in-appmsg " style='background:#ccc'>
+              <view class="weui-grids">
+                <block wx:for="{{item.members}}" wx:key="m" wx:for-item="mem">
+                  <view class="weui-grid">
+                    <image class="weui-grid__icon" src="{{mem.avatarUrl}}"  />
+                  </view>
+                </block>
+              </view>
+            </view>
+            <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+              <open-data type="groupName" class="weui-media-box__title" open-gid="{{item.opengid}}"></open-data><text class='timespan'>{{item.operationtime_span}}</text>
+              <view class="weui-media-box__desc">{{item.latestoperation}}</view>
+            </view>
+          </navigator>
+        </block>
+
+
+
+
+
+      </view>
 
     </scroll-view>
   </view>

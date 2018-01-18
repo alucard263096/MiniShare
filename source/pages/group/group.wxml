@@ -1,0 +1,76 @@
+<!--pages/group/group.wxml-->
+<view class="page">
+  <view class="page__bd">
+    <scroll-view style='height:88vh;' scroll-y="true">
+      <view class="page__bd" style='background:url("{{uploadpath}}icon/backend.png");padding-top:5vh;padding-bottom:12vh;padding-left:5vw;padding-right:5vw;'>
+        <view style='text-align:center;'>
+          <image class='debug' style='height:12vh;width:12vh;border-radius:1vw' />
+          <view>
+            <open-data type="groupName" class="weui-media-box__title" open-gid="{{info.opengid}}" style='color:white;'></open-data>
+            <view class="weui-media-box__desc" style='color:white;font-size:11px;margin-top:1vh;'>群主：{{info.members[0].nickName}} ({{info.members.length}}人群)</view>
+          </view>
+
+        </view>
+      </view>
+      <view class='page_bd selectopt'>
+        <view class="weui-flex">
+          <view class="weui-flex__item tab" bindtap='gotoPage' data-page="vote" data-param="group_id={{info.id}}" >
+            <view class='tabicon2'>
+              <image class='tabiconimg' src='{{uploadpath}}icon/vote.png'></image>
+            </view>
+            <view class='placeholder '>表决</view>
+          </view>
+          <view class="weui-flex__item tab"  bindtap='gotoPage' data-page="album" data-param="group_id={{info.id}}" >
+            <view class='tabicon2'>
+              <image class='tabiconimg' src='{{uploadpath}}icon/moment.png'></image>
+            </view>
+            <view class='placeholder '>回忆</view>
+          </view>
+          <view class="weui-flex__item tab" >
+            <view class='tabicon2'>
+              <image class='tabiconimg' src='{{uploadpath}}icon/notice.png'></image>
+            </view>
+            <view class='placeholder '>公告</view>
+          </view>
+          <view class="weui-flex__item tab" >
+            <view class='tabicon2'>
+              <image class='tabiconimg' src='{{uploadpath}}icon/daka.png'></image>
+            </view>
+            <view class='placeholder '>签到</view>
+          </view>
+        </view>
+      </view>
+       <view class="page__bd" >
+
+       </view>
+    </scroll-view>
+  </view>
+
+
+
+
+
+  <view class="page__bd page__bd_spacing">
+    <view class="weui-footer weui-footer_fixed-bottom" style='border-top:1px solid #ccc;padding-left:10vw;padding-right:10vw;'>
+      <view class="weui-flex">
+        <view class="weui-flex__item">
+          <view class='tab'>
+            <image src='{{uploadpath}}icon/home{{activetab==0?"-active":""}}.png' class='tabicon'></image>
+          </view>
+          <view class='placeholder {{activetab==0?"primary":""}}'>我的群空间</view>
+        </view>
+        <view class="weui-flex__item">
+          <view>
+            <image src='{{uploadpath}}icon/add.png' class='tabbutton'></image>
+          </view>
+        </view>
+        <view class="weui-flex__item" bindtap='switchTab' id="member">
+          <view class='tab'>
+            <image src='{{uploadpath}}icon/member{{activetab==1?"-active":""}}.png' class='tabicon'></image>
+          </view>
+          <view class='placeholder {{activetab==1?"primary":""}}'>个人中心</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

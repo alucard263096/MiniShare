@@ -1,6 +1,7 @@
 //index.js
 import { AppBase } from "../../app/AppBase";
-import {BannerApi} from "../../apis/banner.api.js";
+import { BannerApi } from "../../apis/banner.api.js";
+import { GroupApi } from "../../apis/group.api.js";
 
 class Content extends AppBase {
   constructor() {
@@ -20,6 +21,18 @@ class Content extends AppBase {
   onShow() {
     var that = this;
     super.onShow();
+    var groupapi=new GroupApi();
+    groupapi.all({},data=>{
+      console.log(data);
+      for(var i=0;i<data.length;i++){
+        data[i]["operationtime_span"] = AppBase.Util.Datetime_str(Number(data[i]["operationtime_span"]));
+      }
+      if (that.setMyData != undefined) {
+        that.setMyData({ list: data  });
+      } else {
+  that.Base.setMyData({ list: data });
+      }
+    });
   }
   createGroup(){
   }

@@ -50,5 +50,26 @@ export class ApiUtil {
   }
   static Storage = null;
 
-
+  
+  static Datetime_str(timespan) {
+    var now = new Date().getTime() / 1000;
+    timespan = now - timespan;
+    if(timespan<0){
+      return "你好，未来人";
+    }
+    if (timespan>365*24*3600){
+      return (timespan / (365 * 24 * 3600)).toFixed(0)+"年前";
+    } else if (timespan > 30 * 24 * 3600) {
+      return (timespan / (30 * 24 * 3600)).toFixed(0) + "月前";
+    } else if (timespan >  24 * 3600) {
+      return (timespan / (24 * 3600)).toFixed(0) + "天前";
+    } else if (timespan >  3600) {
+      return (timespan / 3600).toFixed(0) + "小时前";
+    } else if (timespan > 60) {
+      return (timespan / 60).toFixed(0) + "分钟前";
+    } else if (timespan) {
+      return (timespan).toFixed(0) + "秒前";
+    }
+    return "你好，未来人";
+  } 
 }

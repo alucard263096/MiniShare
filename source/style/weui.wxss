@@ -633,8 +633,6 @@ icon {
   font-size: 12px;
 }
 .weui-grids {
-  border-top: 1rpx solid #D9D9D9;
-  border-left: 1rpx solid #D9D9D9;
   overflow: hidden;
 }
 .weui-grid {
@@ -643,8 +641,6 @@ icon {
   padding: 20px 10px;
   width: 33.33333333%;
   box-sizing: border-box;
-  border-right: 1rpx solid #D9D9D9;
-  border-bottom: 1rpx solid #D9D9D9;
 }
 .weui-grid_active {
   background-color: #ECECEC;
@@ -933,7 +929,7 @@ icon {
   font-size: 0;
 }
 .weui-navbar__item.weui-bar__item_on {
-  color: #1AAD19;
+  color: #4D9CFB;
 }
 .weui-navbar__slider {
   position: absolute;
@@ -942,7 +938,7 @@ icon {
   bottom: 0;
   width: 6em;
   height: 3px;
-  background-color: #1AAD19;
+  background-color: #4D9CFB;
   -webkit-transition: -webkit-transform .3s;
   transition: -webkit-transform .3s;
   transition: transform .3s;

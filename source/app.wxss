@@ -13,7 +13,7 @@
   box-sizing: border-box;
 } 
 page{
-  background-color: #F2F2F2;
+  background-color: #fff;
 }
 .weui-footer{
     margin-top: 10px;
@@ -43,4 +43,28 @@ button[type="primary"]{
 }
 .button-hover[type="primary"]{
   background-color:#348EFA;
+}
+.debug{
+  background: #ccc;
+}
+.flex-row{
+  display: flex;
+}
+.flex-1{
+  flex: 1;
+}
+.flex-2{
+  flex: 2;
+}
+.flex-3{
+  flex: 3;
+}
+.flex-4{
+  flex: 4;
+}
+.flex-5{
+  flex: 5;
+}
+.flex-6{
+  flex: 6;
 }
