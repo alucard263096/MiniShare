@@ -26,3 +26,9 @@ width:50vw;
   font-size: 15px;
   text-align: center;
 }
+.selectoption{
+  position:relative;
+  left:3vw;
+  top:5vh;
+  font-size:20px;
+}
