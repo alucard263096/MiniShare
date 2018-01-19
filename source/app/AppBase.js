@@ -348,34 +348,39 @@ export class AppBase {
         //  photos: that.data.photos.concat(res.tempFilePaths)
         //});
         var tempFilePaths = res.tempFilePaths
-        wx.uploadFile({
-          url: ApiConfig.GetFileUploadAPI(), //仅为示例，非真实的接口地址
-          filePath: tempFilePaths[0],
-          name: 'file',
-          formData: {
-            'module': modul,
-            "field": "file"
-          },
-          success: function (res) {
-            console.log(res);
-            var data = res.data
-            if (data.substr(0, 7) == "success") {
-              data = data.split("|");
-              var photo = data[2];
-              callback(photo);
-            } else {
-              wx.showToast({
-                title: '上传失败，请重试',
-                icon: 'warn',
-                duration: 2000
-              })
+        for (var i = 0; i < tempFilePaths.length;i++){
+
+          wx.uploadFile({
+            url: ApiConfig.GetFileUploadAPI(), //仅为示例，非真实的接口地址
+            filePath: tempFilePaths[i],
+            name: 'file',
+            formData: {
+              'module': modul,
+              "field": "file"
+            },
+            success: function (res) {
+              console.log(res);
+              var data = res.data
+              if (data.substr(0, 7) == "success") {
+                data = data.split("|");
+                var photo = data[2];
+                callback(photo);
+              } else {
+                console.error(res.data);
+                wx.showToast({
+                  title: '上传失败，请重试',
+                  icon: 'warn',
+                  duration: 2000
+                })
+              }
+              //do something
             }
-            //do something
-          }
-        });
+          });
+        }
       }
     })
   }
+  
   info(message) {
     wx.showModal({
       title: '提示',
@@ -437,8 +442,6 @@ export class AppBase {
     })
   }
   closePage(){
-    wx.navigateBack({
-      delta:1
-    })
+
   }
 } 

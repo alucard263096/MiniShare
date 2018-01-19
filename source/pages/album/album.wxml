@@ -23,28 +23,33 @@
 
           <view class='flex-row' style='flex-direction: row;flex-wrap: wrap;margin-top:5vh;'>
             <view class='flexbox'>
+              <text class='selectoption' wx:if="inmanage==false" style='color:transparent'>a</text>
               <view bindtap='createAlbum'>
-                <image class='cover' mode='center'></image>
+                <image class='cover' mode='aspectFill' ></image>
               </view>
               <view class='cover_text'>创建相册</view>
             </view>
             <view class='flexbox'>
+              <text class='selectoption' wx:if="inmanage==false" style='color:transparent'>a</text>
               <view>
-                <image class='cover' mode='center'></image>
+                <image class='cover' mode='aspectFill' src="{{uploadpath}}album/{{group.allphotocover}}"></image>
               </view>
               <view class='cover_text'>全部图片</view>
             </view>
+            <!--
             <view class='flexbox'>
+              <text class='selectoption' wx:if="inmanage==false" style='color:transparent'>a</text>
               <view>
                 <image class='cover' mode='center'></image>
               </view>
               <view class='cover_text'>全部视频</view>
-            </view>
+            </view>-->
             <view class='flexbox' wx:for="{{allalbum}}" wx:key="k" bindtap='selectAlbum' id="{{item.id}}">
               <text class='selectoption fa fa-circle-o primary'  wx:if="{{item.createdmember_id_name==UserInfo.openid&&inmanage==true&&item.selected==false}}"></text>
               <text class='selectoption fa fa-check-circle-o primary' wx:if="{{item.createdmember_id_name==UserInfo.openid&&inmanage==true&&item.selected==true}}"></text>
+              <text class='selectoption' wx:if="inmanage==false" style='color:transparent'>a</text>
               <view>
-                <image class='cover' mode='center'></image>
+                <image class='cover' src="{{uploadpath}}album/{{item.cover}}" mode='aspectFill'></image>
               </view>
               <view class='cover_text' >{{item.name}} <text bindtap='changeAlbumname' data-name="{{item.name}}" data-openid="{{item.createdmember_id_name}}" data-sid="{{item.id}}" class=' fa fa-pencil' wx:if="{{item.createdmember_id_name==UserInfo.openid}}"></text></view>
             </view>
@@ -54,11 +59,23 @@
 
         </view>
         <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
-          <view style='background:#f2f2f2;color:#999;font-size:11px;padding:2vh;'>
+          <view style='background:#f2f2f2;color:#999;font-size:11px;padding:3vw;position:absolute;width:94vw;'>
             <text>转发此页面到任意群，可创建群相册</text>
-            <text class='primary' style='font-size:15px;line-height:15px;position:absolute;right:2vh;'>管理</text>
+            <text class='primary' style='font-size:15px;line-height:15px;position:absolute;right:2vh;' bindtap='startManage' >管理</text>
           </view>
 
+          <view class='flex-row' style='flex-direction: row;flex-wrap: wrap;margin-top:5vh;'>
+            <view class='flexbox' wx:for="{{myalbum}}" wx:key="k" bindtap='selectAlbum' id="{{item.id}}">
+              <text class='selectoption fa fa-circle-o primary'  wx:if="{{item.createdmember_id_name==UserInfo.openid&&inmanage==true&&item.selected==false}}"></text>
+              <text class='selectoption fa fa-check-circle-o primary' wx:if="{{item.createdmember_id_name==UserInfo.openid&&inmanage==true&&item.selected==true}}"></text>
+              <text class='selectoption' wx:if="inmanage==false" style='color:transparent'>a</text>
+              <view>
+                <image class='cover' src="{{uploadpath}}album/{{item.cover}}" mode='aspectFill'></image>
+              </view>
+              <view class='cover_text' >{{item.name}} <text bindtap='changeAlbumname' data-name="{{item.name}}" data-openid="{{item.createdmember_id_name}}" data-sid="{{item.id}}" class=' fa fa-pencil' wx:if="{{item.createdmember_id_name==UserInfo.openid}}"></text></view>
+            </view>
+            
+          </view>
 
         </view>
       </view>
@@ -85,5 +102,5 @@
 </view>
 
 <modal hidden="{{hiddenmodalput}}" title="回忆主题" confirm-text="提交" cancel-text="放弃" bindcancel="cancelCreate" bindconfirm="confirmCreate">  
-    <input type='text' placeholder="请输入主题名称" value="{{albumname}}" bindinput='inputAlbunname' /> 
+    <input type='text' placeholder="请输入主题名称" value="{{albumname}}" bindinput='inputAlbunname' maxlength='20' /> 
 </modal>

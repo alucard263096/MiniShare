@@ -20,7 +20,7 @@
             </view>
             <view class='placeholder '>表决</view>
           </view>
-          <view class="weui-flex__item tab"  bindtap='gotoPage' data-page="album" data-param="group_id={{info.id}}" >
+          <view class="weui-flex__item tab"  bindtap='gotoAlbum' data-page="album" data-param="group_id={{info.id}}" >
             <view class='tabicon2'>
               <image class='tabiconimg' src='{{uploadpath}}icon/moment.png'></image>
             </view>

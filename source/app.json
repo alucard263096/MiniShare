@@ -1,9 +1,11 @@
 {
   "pages": [
+    "pages/index/index",
+    "pages/albumdetail/albumdetail",
+    "pages/upload/upload",
     "pages/album/album",
     "pages/vote/vote",
     "pages/group/group",
-    "pages/index/index",
     "pages/member/member",
     "pages/logs/logs",
     "pages/forcopy/forcopy"

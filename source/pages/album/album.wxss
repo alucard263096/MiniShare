@@ -19,7 +19,7 @@ width:50vw;
   background-position: 5vw;
 }
 .cover{
-  width:30vw;height:30vw;margin-top:4vh;margin-left:6.5vw;
+  width:30vw;height:30vw;margin-top:4vh;margin-left:6.7vw;
 }
 .cover_text{
   padding-top: 8vh;

@@ -1,5 +1,6 @@
 // pages/album/album.js
 import { AppBase } from "../../app/AppBase";
+import { GroupApi } from "../../apis/group.api.js";
 import { AlbumApi } from "../../apis/album.api.js";
 
 class Content extends AppBase {
@@ -7,7 +8,6 @@ class Content extends AppBase {
     super();
   }
   onLoad(options) {
-    options.id=1;
     this.Base.Page = this;
     super.onLoad(options);
     this.Base.setMyData({
@@ -27,10 +27,17 @@ class Content extends AppBase {
     albumapi.list({ group_id: this.Base.options.id }, data => {
       that.Base.setMyData({allalbum:data});
     });
-    albumapi.list({ group_id: this.Base.options.id, createdmember_id: "0" }, data => {
+    albumapi.list({ group_id: this.Base.options.id, createdmember_id: "Y" }, data => {
 
       that.Base.setMyData({ myalbum: data });
     });
+
+    var groupapi = new GroupApi();
+    groupapi.detail({ id: this.Base.options.id },data=>{
+
+      that.Base.setMyData({ group: data });
+    });
+
   }
 
   tabClick(e) {
@@ -74,12 +81,14 @@ class Content extends AppBase {
 
       var postjson = { name: albumname, group_id: this.Base.options.id };
       console.log(postjson);
-      that.Base.info("ca" + album_id);
-      return;
+
       albumapi.create(postjson, data => {
         if (data.code == 0) {
           that.Base.info("创建成功");
           that.onShow();
+          wx.navigateTo({
+            url: '/pages/albumdetail/albumdetail?id=' + data.return.id + "&group_id=" + that.Base.options.id,
+          });
         } else {
           that.Base.error("系统正在维护，请稍后重试");
         }
@@ -114,13 +123,18 @@ class Content extends AppBase {
     var id=e.currentTarget.id;
     
     var data = this.Base.getMyData();
+    if(data.inmanage!=true){
+      wx.navigateTo({
+        url: '/pages/albumdetail/albumdetail?id='+id+"&group_id="+this.Base.options.id,
+      })
+    }
     var allalbum = data.allalbum;
     for (var i = 0; i < allalbum.length; i++) {
       if (allalbum[i].id == id && allalbum[i].createdmember_id_name==AppBase.UserInfo.openid){
         allalbum[i].selected = !allalbum[i].selected;
       }
     }
-    this.Base.setMyData({ inmanage: true, allalbum: allalbum }); 
+    this.Base.setMyData({ inmanage: false, allalbum: allalbum }); 
   }
   deleteAlbum(){
     var that=this;
