@@ -31,6 +31,26 @@
                 </view>
               </view>
             </view>
+            <view wx:if="{{info.operation=='V'}}">
+              <view class="desc" style=''>{{info.description}}</view>
+              <block   wx:for="{{info.voteoptions}}" wx:key="k">
+              <view class="weui-progress" style='margin-top:1vh;' id="{{item.id}}" bindtap='selectedOption'>
+                  <view class="weui-progress__bar"><text style='font-size:15px;'>{{item.optionstr}} ({{info.totalvote>0?item.votemembers.length*100/info.totalvote:0}}%)</text>
+                      <progress percent="{{info.totalvote>0?item.votemembers.length*100/info.totalvote:0}}" stroke-width="5" />
+                  </view>
+                  <view class="weui-progress__opr">
+                      <icon type="success" size="22" color="{{item.checked==0?'#ccc':''}}" ></icon>
+                  </view>
+              </view>
+              <view class="desc" style='margin-top:1vh;'><text wx:for="{{item.votemembers}}" wx:for-item="members" wx:key='c' style='margin-right:5px;'>{{members.nickName}}</text></view>
+              </block>
+              <view class="desc" style='margin-top:3vh;' wx:if="{{info.vote_expired_count>0}}">投票截止时间：{{info.vote_expired}}</view>
+              <view class="desc" style='margin-top:3vh;' wx:if="{{info.vote_expired_count<<0}}">投票已结束</view>
+            </view>
+
+            <view wx:if="{{info.operation=='N'}}">
+              <view class="desc" style=''>{{info.description}}</view>
+            </view>
             <view style='margin-top:5px;'>
               <text class="desc" style=''>阅读数（{{info.readcount}}）</text>
               <text class="desc" style='margin-left:5vw;' bindtap='likePost' id="{{info.id}}">赞（{{info.like}}）</text>

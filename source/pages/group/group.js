@@ -9,7 +9,7 @@ class Content extends AppBase {
   }
 
   onLoad(options) {
-    options.id=1;
+    //options.id=1;
     this.Base.Page = this;
     super.onLoad(options);
     this.Base.setMyData({list:[]});
@@ -144,6 +144,22 @@ class Content extends AppBase {
       }
     });
   }
+
+  gotoVote() {
+    wx.navigateTo({
+      url: '/pages/vote/vote?group_id=' + this.Base.options.id,
+    });
+  }
+  gotoNotify() {
+    wx.navigateTo({
+      url: '/pages/notify/notify?group_id=' + this.Base.options.id,
+    });
+  }
+  gotoMap() {
+    wx.navigateTo({
+      url: '/pages/map/map?group_id=' + this.Base.options.id,
+    });
+  }
 }
 var page = new Content();
 var body = page.generateBodyJson();
@@ -154,4 +170,6 @@ body.deletePost = page.deletePost;
 body.onPullDownRefresh = page.onPullDownRefresh;
 body.onReachBottom = page.onReachBottom;
 body.likePost = page.likePost;
+body.gotoVote = page.gotoVote;
+
 Page(body)

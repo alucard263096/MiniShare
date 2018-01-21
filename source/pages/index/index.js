@@ -36,10 +36,14 @@ class Content extends AppBase {
   }
   createGroup(){
   }
+  showMiddleButton(){
+    this.Base.info("还没实现");
+  }
 }
 var page = new Content();
 var body = page.generateBodyJson();
 body.onLoad = page.onLoad; 
 body.onShow = page.onShow;
 body.createGroup = page.createGroup;
+body.showMiddleButton = page.showMiddleButton;
 Page(body)

@@ -1,0 +1,2 @@
+<!--pages/map/map.wxml-->
+<map id="map" longitude="113.510719" latitude="31.622075" scale="4" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" show-location style="width: 100vw; height: 100vh;"></map>

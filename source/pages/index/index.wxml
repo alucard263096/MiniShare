@@ -53,7 +53,7 @@
         </view>
         <view class="weui-flex__item">
           <view>
-            <image src='{{uploadpath}}icon/add.png' class='tabbutton'></image>
+            <image src='{{uploadpath}}icon/add.png' class='tabbutton' bindtap='showMiddleButton'></image>
           </view>
         </view>
         <view class="weui-flex__item" bindtap='switchTab' id="member">

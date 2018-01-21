@@ -1,16 +1,15 @@
 import { ApiConfig } from "apiconfig.js";
 
-export class NoticeApi {
-  
-  uploadphoto(json, callback, showLoading = true) {
+export class VoteApi{
+  create(json, callback, showLoading = true) {
 
     if (showLoading)
-      ApiConfig.ShowLoading();
-
-    var header = ApiConfig.GetHeader();
+    ApiConfig.ShowLoading();
+    
+    var header=ApiConfig.GetHeader();
     console.log(header);
     wx.request({
-      url: ApiConfig.GetApiUrl() + 'notice/uploadphoto',
+      url: ApiConfig.GetApiUrl() + 'vote/create',
       data: json,
       method: 'POST',
       dataType: 'json',
@@ -28,11 +27,11 @@ export class NoticeApi {
         console.log(res);
 
         if (showLoading)
-          ApiConfig.CloseLoading();
+        ApiConfig.CloseLoading();
       }
     })
   }
-  createvote(json, callback, showLoading = true) {
+  vote(json, callback, showLoading = true) {
 
     if (showLoading)
       ApiConfig.ShowLoading();
@@ -40,7 +39,7 @@ export class NoticeApi {
     var header = ApiConfig.GetHeader();
     console.log(header);
     wx.request({
-      url: ApiConfig.GetApiUrl() + 'notice/createvote',
+      url: ApiConfig.GetApiUrl() + 'vote/vote',
       data: json,
       method: 'POST',
       dataType: 'json',

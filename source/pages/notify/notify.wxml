@@ -1,0 +1,22 @@
+<!--pages/notify/notify.wxml-->
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+          <input class="weui-input" placeholder="通知标题" value='{{title}}' bindinput='titleChange' maxlength='40' />
+        </view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-cell__bd">
+          <textarea class="weui-textarea" placeholder="通知内容" style="height: 3.3em" value='{{description}}' bindinput='descriptionChange' maxlength='200' />
+        </view>
+      </view>
+  </view>
+    <view class="page__bd page__bd_spacing" style='padding-left:20vw;padding-right:20vw;margin-top:3vh;'>
+      <form name='uploadform' report-submit bindsubmit='sendNotice'>
+      <button class="weui-btn" type="primary" form-type="submit" >发起通知</button>
+      </form>
+    </view>
+  </view>
+</view>

@@ -23,9 +23,53 @@ export class ApiUtil {
     toast.present();
   }
 
-  static FormatDateTime(val) {
-    return val.getFullYear() + "-" + (val.getMonth() + 1) + "-" + val.getDate() +
-      " " + val.getHours() + ":" + val.getMinutes() + ":" + val.getSeconds();
+  static FormatDateTimeStr(val) {
+    val=new Date(val);
+
+    var year = val.getFullYear().toString();
+    var month = val.getMonth() + 1;
+    month = month > 9 ? month.toString() : "0" + month.toString();
+
+    var date = val.getDate() ;
+    date = date > 9 ? date.toString() : "0" + date.toString();
+
+    var hour = val.getHours() ;
+    hour = hour > 9 ? hour.toString() : "0" + hour.toString();
+
+    var minute = val.getMinutes() ;
+    minute = minute > 9 ? minute.toString() : "0" + minute.toString();
+    
+    var second = val.getSeconds() ;
+    second = second > 9 ? second.toString() : "0" + second.toString();
+
+    return year + "-" + month + "-" + date +
+      " " + hour + ":" + minute + ":" + second;
+  }
+  static FormatTimeStr(val) {
+    val = new Date(val);
+
+    var hour = val.getHours();
+    hour = hour > 9 ? hour.toString() : "0" + hour.toString();
+
+    var minute = val.getMinutes();
+    minute = minute > 9 ? minute.toString() : "0" + minute.toString();
+
+    var second = val.getSeconds();
+    second = second > 9 ? second.toString() : "0" + second.toString();
+
+    return  hour + ":" + minute ;
+  }
+  static FormatDateStr(val) {
+    val = new Date(val);
+
+    var year = val.getFullYear().toString();
+    var month = val.getMonth() + 1;
+    month = month > 9 ? month.toString() : "0" + month.toString();
+
+    var date = val.getDate();
+    date = date > 9 ? date.toString() : "0" + date.toString();
+
+    return year + "-" + month + "-" + date;
   }
 
   static IsMobileNo(str) {
@@ -70,6 +114,6 @@ export class ApiUtil {
     } else if (timespan) {
       return (timespan).toFixed(0) + "秒前";
     }
-    return "你好，未来人";
+    return "刚刚";
   } 
 }

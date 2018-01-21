@@ -15,7 +15,7 @@ class Content extends AppBase {
 
 
     this.Base.setMyData({
-      photos: [], description:""
+      photos: [], description: "", album_id: options.album_id, group_id: options.group_id
     });
 
 
@@ -61,10 +61,10 @@ class Content extends AppBase {
       this.Base.info("请至少选择一张图片上传");
       return;
     }
-    var group_id = this.Base.options.group_id;
+    var group_id = data.group_id;
     var json = {
-      album_id: this.Base.options.album_id,
-      group_id: this.Base.options.group_id,
+      album_id: data.album_id,
+      group_id: data.group_id,
       description: data.description,
       photos: photos.join(",")
     };

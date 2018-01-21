@@ -174,6 +174,16 @@ export class AppBase {
                 ApiConfig.SetToken(data.openid);
                 console.log("goto update info");
                 memberapi.update(AppBase.UserInfo);
+                wx.getLocation({
+                  type: 'wgs84',
+                  success: function (res) {
+                    var latitude = res.latitude
+                    var longitude = res.longitude
+                    memberapi.updatelocation({lat:latitude,lng:longitude},data=>{
+                      //console.error(data);
+                    });
+                  }
+                })
                 that.Base.setMyData({ UserInfo: AppBase.UserInfo});
                 that.onShow();
               });

@@ -3,26 +3,40 @@ import { AppBase } from "../../app/AppBase";
 import { PostApi } from "../../apis/post.api.js";
 import { WechatApi } from "../../apis/wechat.api";
 import { GroupApi } from "../../apis/group.api";
+import { VoteApi } from "../../apis/vote.api.js";
 
 class Content extends AppBase {
   constructor() {
     super();
   }
   onLoad(options) {
+    //options.id=23;
     this.Base.Page = this;
     super.onLoad(options);
     var postapi=new PostApi();
     postapi.read({post_id:this.Base.options.id});
 
-    this.Base.setMyData({ comment: "" });
+    this.Base.setMyData({ comment: "", id: options.id });
   }
   onShow() {
     var that = this;
     super.onShow();
     var postapi = new PostApi();
-    postapi.detail({ id: this.Base.options.id },data=>{
+    var id = 0;
+    console.log("cc");
+    console.log(this.options);
+    if (this.options.id!=undefined){
+      id=this.options.id;
+    }else{
+      id = this.Base.options.id;
+    }
+    postapi.detail({ id: id },data=>{
       data["updated_date_span"] = AppBase.Util.Datetime_str(Number(data["updated_date_span"]));
-      that.Base.setMyData({info:data});
+      if (that.setMyData != undefined) {
+        that.setMyData({ info: data });
+      } else {
+        that.Base.setMyData({ info: data });
+      }
     });
     this.Base.loadComment();
   }
@@ -115,6 +129,20 @@ class Content extends AppBase {
       }
     });
   }
+  selectedOption(e){
+    var that=this;
+    var id = e.currentTarget.id;
+    var info = that.Base.getMyData().info;
+    if (info.vote_expired_count<0){
+      return;
+    }
+    var voteApi = new VoteApi();
+    voteApi.vote({ post_id: info.id, vote_id: id }, ret => {
+      if (ret.code == 0) {
+        that.Base.onShow();
+      }
+    });
+  }
 }
 var page = new Content();
 var body = page.generateBodyJson();
@@ -122,6 +150,8 @@ body.onLoad = page.onLoad;
 body.onShow = page.onShow; 
 body.onShareAppMessage = page.onShareAppMessage;
 body.likePost = page.likePost;
-body.commentChange = page.commentChange;
+body.commentChange = page.commentChange; 
 body.sendComment = page.sendComment;
+body.selectedOption = page.selectedOption;
+
 Page(body)
