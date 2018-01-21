@@ -22,14 +22,14 @@
           </view>
 
           <view class='flex-row' style='flex-direction: row;flex-wrap: wrap;margin-top:5vh;'>
-            <view class='flexbox'>
+            <view class='flexbox' >
               <text class='selectoption' wx:if="inmanage==false" style='color:transparent'>a</text>
               <view bindtap='createAlbum'>
                 <image class='cover' mode='aspectFill' ></image>
               </view>
               <view class='cover_text'>创建相册</view>
             </view>
-            <view class='flexbox'>
+            <view class='flexbox' bindtap='selectAllPhotos'>
               <text class='selectoption' wx:if="inmanage==false" style='color:transparent'>a</text>
               <view>
                 <image class='cover' mode='aspectFill' src="{{uploadpath}}album/{{group.allphotocover}}"></image>

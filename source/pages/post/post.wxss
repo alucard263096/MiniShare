@@ -1,0 +1,7 @@
+/* pages/post/post.wxss */
+
+.photo{
+  width: 15vw;
+  height:15vw;
+  border-radius: 7.5vw;
+}

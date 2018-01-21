@@ -15,7 +15,7 @@ class Content extends AppBase {
 
 
     this.Base.setMyData({
-      photos: []
+      photos: [], description:""
     });
 
 

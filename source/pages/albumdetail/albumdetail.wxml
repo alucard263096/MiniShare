@@ -12,8 +12,8 @@
             <view class="weui-uploader__bd">
               <view class="weui-uploader__files " id="uploaderFiles">
                 <block wx:for-items="{{photogroup.photos}}" wx:key="{{index}}">
-                  <view class="weui-uploader__file" id="photo_{{item}}">
-                    <image class="weui-uploader__img" src="{{uploadpath}}/album/{{item.photo}}" mode="aspectFill" bindtap='viewPhotos' />
+                  <view class="weui-uploader__file" id="photo_{{item.id}}">
+                    <image class="weui-uploader__img" src="{{uploadpath}}album/{{item.photo}}" mode="aspectFill" bindtap='viewPhotos' id="{{uploadpath}}album/{{item.photo}}" />
                   </view>
                 </block>
               </view>
@@ -29,7 +29,7 @@
   </view>
 
 
-  <view class="page__bd page__bd_spacing"  style='height:unset;'>
+  <view class="page__bd page__bd_spacing"  style='height:unset;' wx:if="{{album_id!='0'}}">
     <view class="weui-footer weui-footer_fixed-bottom" style=' padding-left:10vw;padding-right:10vw;padding-top:1vw;'>
       <view class="weui-flex">
         <view   class="weui-flex__item btnBottom" >

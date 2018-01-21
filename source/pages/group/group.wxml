@@ -1,7 +1,6 @@
 <!--pages/group/group.wxml-->
 <view class="page">
-  <view class="page__bd">
-    <scroll-view style='height:88vh;' scroll-y="true">
+  <view class="page__bd" style='margin-bottom:12vh;'>
       <view class="page__bd" style='background:url("{{uploadpath}}icon/backend.png");padding-top:5vh;padding-bottom:12vh;padding-left:5vw;padding-right:5vw;'>
         <view style='text-align:center;'>
           <image class='debug' style='height:12vh;width:12vh;border-radius:1vw' />
@@ -14,25 +13,25 @@
       </view>
       <view class='page_bd selectopt'>
         <view class="weui-flex">
-          <view class="weui-flex__item tab" bindtap='gotoPage' data-page="vote" data-param="group_id={{info.id}}" >
+          <view class="weui-flex__item tab" bindtap='gotoPage' data-page="vote" data-param="group_id={{info.id}}">
             <view class='tabicon2'>
               <image class='tabiconimg' src='{{uploadpath}}icon/vote.png'></image>
             </view>
             <view class='placeholder '>表决</view>
           </view>
-          <view class="weui-flex__item tab"  bindtap='gotoAlbum' data-page="album" data-param="group_id={{info.id}}" >
+          <view class="weui-flex__item tab" bindtap='gotoAlbum' data-page="album" data-param="group_id={{info.id}}">
             <view class='tabicon2'>
               <image class='tabiconimg' src='{{uploadpath}}icon/moment.png'></image>
             </view>
             <view class='placeholder '>回忆</view>
           </view>
-          <view class="weui-flex__item tab" >
+          <view class="weui-flex__item tab">
             <view class='tabicon2'>
               <image class='tabiconimg' src='{{uploadpath}}icon/notice.png'></image>
             </view>
             <view class='placeholder '>公告</view>
           </view>
-          <view class="weui-flex__item tab" >
+          <view class="weui-flex__item tab">
             <view class='tabicon2'>
               <image class='tabiconimg' src='{{uploadpath}}icon/daka.png'></image>
             </view>
@@ -40,20 +39,63 @@
           </view>
         </view>
       </view>
-       <view class="page__bd" >
+      <view class="page__bd">
 
-       </view>
-    </scroll-view>
+        <view class="weui-panel weui-panel_access" wx:for="{{list}}" wx:key="k">
+          <view class="weui-panel__bd">
+            <view url="" class="weui-media-box weui-media-box_appmsg"  style='padding-bottom:0px;'>
+              <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                <image class="weui-media-box__thumb photo" src="{{item.member_id_photo}}"  />
+              </view>
+              <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                <view class="weui-media-box__title primary" style='font-size:14px;'>{{item.member_id_name}}</view>
+                <view class="weui-media-box__desc" style='font-size:10px;'>{{item.operationstr}}</view>
+                
+              </view>
+            </view>
+            <view  class=" weui-media-box_appmsg"  style='border-top:0px;padding:15px;padding-top:0px;'>
+              <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                <image class="weui-media-box__thumb photo"  />
+              </view>
+              <view class="weui-media-box__bd weui-media-box__bd_in-appmsg" >
+                <navigator class="weui-media-box__title" url='/pages/post/post?id={{item.id}}' >{{item.title}}</navigator>
+                <view wx:if="{{item.operation=='P'}}" style='margin-top:2vh;'>
+                  <view class="weui-uploader__bd">
+                    <view class="weui-uploader__files " id="uploaderFiles">
+                      <block wx:for-items="{{item.photos}}" wx:key="{{index}}" wx:for-item="photo">
+                        <view class="weui-uploader__file" id="photo_{{item}}">
+                          <image class="weui-uploader__img" src="{{uploadpath}}/album/{{photo.photo}}" mode="aspectFill" bindtap='viewPhoto' id="{{uploadpath}}/album/{{photo.photo}}" />
+                        </view>
+                      </block>
+                    </view>
+                  </view>
+                </view>
+                <view style='margin-top:5px;'>
+                <text class="desc">{{item.updated_date_span}}</text>
+                <text class="desc primary" bindtap='deletePost' id="{{item.id}}" style='margin-left:5px;' wx:if="{{item.member_id_openid==UserInfo.openid}}">删除</text>
+                <text class="desc" style='margin-left:10vw;' bindtap='likePost' id="{{item.id}}" >赞（{{item.like}}）</text>
+                <text class="desc" style='margin-left:7vw;;' bindtap='navtoPage' data-page="post" data-param="id={{item.id}}">评论（{{item.comment}}）</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+
+
+
+
+
+      </view>
   </view>
 
 
 
 
 
-  <view class="page__bd page__bd_spacing">
-    <view class="weui-footer weui-footer_fixed-bottom" style='border-top:1px solid #ccc;padding-left:10vw;padding-right:10vw;'>
+  <view class="page__bd page__bd_spacing" style=''>
+    <view class="weui-footer weui-footer_fixed-bottom" style='background-color:white;border-top:1px solid #ccc;padding-left:10vw;padding-right:10vw;'>
       <view class="weui-flex">
-        <view class="weui-flex__item">
+        <view class="weui-flex__item" bindtap='switchTab' id="index">
           <view class='tab'>
             <image src='{{uploadpath}}icon/home{{activetab==0?"-active":""}}.png' class='tabicon'></image>
           </view>

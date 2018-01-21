@@ -8,6 +8,7 @@ class Content extends AppBase {
     super();
   }
   onLoad(options) {
+    options.id=1;
     this.Base.Page = this;
     super.onLoad(options);
     this.Base.setMyData({
@@ -158,6 +159,11 @@ class Content extends AppBase {
     });
     this.Base.setMyData({ inmanage: false }); 
   }
+  selectAllPhotos(){
+    wx.navigateTo({
+      url: '/pages/albumdetail/albumdetail?group_id=' + this.Base.options.id
+    });
+  }
 }
 var page = new Content();
 var body = page.generateBodyJson();
@@ -170,7 +176,8 @@ body.cancelCreate = page.cancelCreate;
 body.confirmCreate = page.confirmCreate; 
 body.changeAlbumname = page.changeAlbumname;
 body.startManage = page.startManage; 
-body.cancelManage = page.cancelManage;
+body.cancelManage = page.cancelManage; 
 body.selectAlbum = page.selectAlbum;
 body.deleteAlbum = page.deleteAlbum;
+body.selectAllPhotos = page.selectAllPhotos;
 Page(body)

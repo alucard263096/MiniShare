@@ -26,3 +26,11 @@
 .tab .placeholder{
   font-size: 13px;
 }
+.photo{
+  width: 15vw;
+  height:15vw;
+  border-radius: 7.5vw;
+}
+.weui-panel::after{
+  border-bottom: 0px;
+}

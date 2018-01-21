@@ -76,7 +76,8 @@ export class AppBase {
       logout: base.logout, 
       switchTab: base.switchTab, 
       closePage: base.closePage,
-      gotoPage: base.gotoPage
+      gotoPage: base.gotoPage,
+      navtoPage: base.navtoPage
     }
   }
   log() {
@@ -258,7 +259,7 @@ export class AppBase {
       urls: [img],
     })
   }
-  viewGallary(modul, photos) {
+  viewGallary(modul, photos,current="") {
     var nphotos = [];
     for (var i = 0; i < photos.length; i++) {
       nphotos.push(ApiConfig.GetUploadPath() + modul + "/" + photos[i]);
@@ -266,6 +267,7 @@ export class AppBase {
     console.log(nphotos);
     wx.previewImage({
       urls: nphotos,
+      current:current
     })
   }
   phoneCall(e) {
@@ -429,6 +431,20 @@ export class AppBase {
     var url = "../" + page + "/" + page+parameter;
     console.log(url);
     wx.redirectTo({
+      url: url,
+    })
+  }
+  navtoPage(e) {
+    console.log(e);
+    var dataset = e.currentTarget.dataset;
+    var page = dataset.page;
+    var parameter = dataset.param;
+    if (parameter != "") {
+      parameter = "?" + parameter;
+    }
+    var url = "../" + page + "/" + page + parameter;
+    console.log(url);
+    wx.navigateTo({
       url: url,
     })
   }

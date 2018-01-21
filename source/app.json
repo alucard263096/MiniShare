@@ -1,11 +1,12 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/album/album",
+    "pages/post/post",
+    "pages/group/group",
     "pages/albumdetail/albumdetail",
     "pages/upload/upload",
-    "pages/album/album",
     "pages/vote/vote",
-    "pages/group/group",
     "pages/member/member",
     "pages/logs/logs",
     "pages/forcopy/forcopy"
