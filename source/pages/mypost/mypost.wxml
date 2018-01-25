@@ -1,64 +1,13 @@
 <!--pages/group/group.wxml-->
 <view class="page">
   <view class="page__bd" >
-    <view class="page__bd" style='background:url("{{uploadpath}}icon/backend.png");padding-top:5vh;padding-bottom:12vh;padding-left:5vw;padding-right:5vw;'>
-      <view style='text-align:center;'>
-        <image class='debug' style='height:12vh;width:12vh;border-radius:1vw' />
-        <view>
-          <open-data type="groupName" class="weui-media-box__title" open-gid="{{info.opengid}}" style='color:white;'></open-data>
-          <view class="weui-media-box__desc" style='color:white;font-size:11px;margin-top:1vh;'>群主：{{info.members[0].nickName}} ({{info.members.length}}人群)</view>
-        </view>
-
-      </view>
-    </view>
-    <view class='page_bd selectopt'>
-      <view class="weui-flex">
-        <view class="weui-flex__item tab" bindtap='gotoVote' data-page="vote" data-param="group_id={{info.id}}">
-          <view class='tabicon2'>
-            <image class='tabiconimg' src='{{uploadpath}}icon/vote.png'></image>
-          </view>
-          <view class='placeholder '>投票</view>
-        </view>
-        <view class="weui-flex__item tab" bindtap='gotoAlbum' data-page="album" data-param="group_id={{info.id}}">
-          <view class='tabicon2'>
-            <image class='tabiconimg' src='{{uploadpath}}icon/moment.png'></image>
-          </view>
-          <view class='placeholder '>回忆</view>
-        </view>
-        <view class="weui-flex__item tab" bindtap='gotoNotify' data-page="album" data-param="group_id={{info.id}}">
-          <view class='tabicon2'>
-            <image class='tabiconimg' src='{{uploadpath}}icon/notice.png'></image>
-          </view>
-          <view class='placeholder '>公告</view>
-        </view>
-        <view class="weui-flex__item tab" bindtap='gotoMap' data-page="album" data-param="group_id={{info.id}}">
-          <view class='tabicon2'>
-            <image class='tabiconimg' src='{{uploadpath}}icon/daka.png'></image>
-          </view>
-          <view class='placeholder '>位置</view>
-        </view>
-      </view>
-    </view>
     <view class="page__bd">
 
       <view class="weui-panel weui-panel_access" wx:for="{{list}}" wx:key="k">
         <view class="weui-panel__bd">
-          <view url="" class="weui-media-box weui-media-box_appmsg" style='padding-bottom:0px;'>
-            <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-              <image class="weui-media-box__thumb photo" src="{{item.member_id_photo}}" />
-            </view>
-            <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-              <view class="weui-media-box__title primary" style='font-size:14px;'>{{item.member_id_name}}</view>
-              <view class="weui-media-box__desc" style='font-size:10px;'>{{item.operationstr}}</view>
-
-            </view>
-          </view>
           <view class=" weui-media-box_appmsg" style='border-top:0px;padding:15px;padding-top:0px;'>
-            <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-              <image class="weui-media-box__thumb photo" />
-            </view>
             <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-              <navigator class="weui-media-box__title" url='/pages/post/post?id={{item.id}}'>{{item.title}}</navigator>
+              <navigator class="weui-media-box__title" url='/pages/post/post?id={{item.id}}' style='margin-top:2vh;'>{{item.title}}</navigator>
               <view wx:if="{{item.operation=='P'}}" style='margin-top:2vh;'>
                 <view class="weui-uploader__bd">
                   <view class="weui-uploader__files " id="uploaderFiles">

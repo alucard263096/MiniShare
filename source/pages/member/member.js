@@ -1,5 +1,6 @@
 // pages/member/member.js
 import { AppBase } from "../../app/AppBase";
+import { PostApi } from "../../apis/post.api.js";
 class Content extends AppBase {
   constructor() {
     super();
