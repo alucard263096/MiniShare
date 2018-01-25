@@ -1,6 +1,9 @@
 {
   "pages": [
+    "pages/member/member",
     "pages/index/index",
+    "pages/mypost/mypost",
+    "pages/content/content",
     "pages/map/map",
     "pages/group/group",
     "pages/notify/notify",
@@ -9,14 +12,33 @@
     "pages/album/album",
     "pages/albumdetail/albumdetail",
     "pages/upload/upload",
-    "pages/member/member",
     "pages/logs/logs",
     "pages/forcopy/forcopy"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#4D9CFB",
     "navigationBarTitleText": "超级群空间助手",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#ccc",
+    "selectedColor": "#4D9CFB",
+    "borderStyle": "white",
+    "backgroundColor": "#f9f9f9",
+    "list": [
+      {
+        "text": "会诊",
+        "pagePath": "pages/index/index",
+        "iconPath": "images/icons/home.png",
+        "selectedIconPath": "images/icons/home-active.png"
+      },
+      {
+        "text": "我的",
+        "pagePath": "pages/member/member",
+        "iconPath": "images/icons/member.png",
+        "selectedIconPath": "images/icons/member-active.png"
+      }
+    ]
   }
 }

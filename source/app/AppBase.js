@@ -183,7 +183,8 @@ export class AppBase {
                       //console.error(data);
                     });
                   }
-                })
+                });
+                console.log(AppBase.UserInfo);
                 that.Base.setMyData({ UserInfo: AppBase.UserInfo});
                 that.onShow();
               });
