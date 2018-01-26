@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/member/member",
     "pages/index/index",
+    "pages/member/member",
     "pages/mypost/mypost",
     "pages/content/content",
     "pages/map/map",
@@ -28,13 +28,13 @@
     "backgroundColor": "#f9f9f9",
     "list": [
       {
-        "text": "会诊",
+        "text": "超级空间",
         "pagePath": "pages/index/index",
         "iconPath": "images/icons/home.png",
         "selectedIconPath": "images/icons/home-active.png"
       },
       {
-        "text": "我的",
+        "text": "个人中心",
         "pagePath": "pages/member/member",
         "iconPath": "images/icons/member.png",
         "selectedIconPath": "images/icons/member-active.png"

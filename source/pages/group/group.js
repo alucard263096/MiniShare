@@ -169,7 +169,10 @@ body.gotoAlbum = page.gotoAlbum;
 body.deletePost = page.deletePost;
 body.onPullDownRefresh = page.onPullDownRefresh;
 body.onReachBottom = page.onReachBottom;
-body.likePost = page.likePost;
+body.likePost = page.likePost; 
+body.gotoVote = page.gotoVote;  
+body.gotoNotify = page.gotoNotify;
 body.gotoVote = page.gotoVote;
+body.gotoMap = page.gotoMap;
 
 Page(body)

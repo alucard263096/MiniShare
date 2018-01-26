@@ -99,7 +99,7 @@ export class ApiUtil {
     var now = new Date().getTime() / 1000;
     timespan = now - timespan;
     if(timespan<0){
-      return "你好，未来人";
+      return "刚刚";
     }
     if (timespan>365*24*3600){
       return (timespan / (365 * 24 * 3600)).toFixed(0)+"年前";
