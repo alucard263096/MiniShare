@@ -160,6 +160,11 @@ class Content extends AppBase {
       url: '/pages/map/map?group_id=' + this.Base.options.id,
     });
   }
+  gotoMgr(){
+    wx.navigateTo({
+      url: '/pages/groupmgr/groupmgr?id=' + this.Base.options.id,
+    });
+  }
 }
 var page = new Content();
 var body = page.generateBodyJson();
@@ -172,7 +177,8 @@ body.onReachBottom = page.onReachBottom;
 body.likePost = page.likePost; 
 body.gotoVote = page.gotoVote;  
 body.gotoNotify = page.gotoNotify;
-body.gotoVote = page.gotoVote;
+body.gotoVote = page.gotoVote; 
 body.gotoMap = page.gotoMap;
+body.gotoMgr = page.gotoMgr;
 
 Page(body)

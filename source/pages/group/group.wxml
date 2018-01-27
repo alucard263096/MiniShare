@@ -3,7 +3,72 @@
   <view class="page__bd" >
     <view class="page__bd" style='background:url("{{uploadpath}}icon/backend.png");padding-top:5vh;padding-bottom:12vh;padding-left:5vw;padding-right:5vw;'>
       <view style='text-align:center;'>
-        <image class='debug' style='height:12vh;width:12vh;border-radius:1vw' />
+        <view class='debug' style='height:20vw;width:20vw;border-radius:1vw;margin-left:35vw;;margin-right:35vw;line-height:0px;' bindtap='gotoMgr' >
+
+              <block wx:if="{{info.members.length==1}}">
+                <image src="{{info.members[0].avatarUrl}}" style='width:50%;height:50%;margin:25%;'></image>
+              </block>
+              <block wx:if="{{info.members.length==2}}">
+                <image  src="{{info.members[0].avatarUrl}}" style='width:38%;height:38%;padding:1%;margin-top:30%;'></image>
+                <image  src="{{info.members[1].avatarUrl}}" style='width:38%;height:38%;padding:1%;margin-top:30%;'></image>
+              </block>
+              <block wx:if="{{info.members.length==3}}">
+                <image  src="{{info.members[0].avatarUrl}}" style='width:38%;height:38%;padding:1%;margin-left:30%;margin-right:30%;margin-top:10%;'></image>
+                <image  src="{{info.members[1].avatarUrl}}" style='width:38%;height:38%;padding:1%;'></image>
+                <image  src="{{info.members[2].avatarUrl}}" style='width:38%;height:38%;padding:1%;'></image>
+              </block>
+              <block wx:if="{{info.members.length==4}}">
+                <image  src="{{info.members[0].avatarUrl}}" style='width:38%;height:38%;padding:1%;margin-top:10%;'></image>
+                <image  src="{{info.members[1].avatarUrl}}" style='width:38%;height:38%;padding:1%;'></image>
+                <image  src="{{info.members[2].avatarUrl}}" style='width:38%;height:38%;padding:1%;'></image>
+                <image  src="{{info.members[3].avatarUrl}}" style='width:38%;height:38%;padding:1%;'></image>
+              </block>
+              <block wx:if="{{info.members.length==5}}">
+                <image  src="{{info.members[0].avatarUrl}}" style='width:31%;height:31%;padding:1%;margin-top:17%;margin-left:17%'></image>
+                <image  src="{{info.members[1].avatarUrl}}" style='width:31%;height:31%;padding:1%;margin-right:17%'></image>
+                <image  src="{{info.members[2].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{info.members[3].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{info.members[4].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+              </block>
+              <block wx:if="{{info.members.length==6}}">
+                <image  src="{{info.members[0].avatarUrl}}" style='width:31%;height:31%;padding:1%;margin-top:17%;'></image>
+                <image  src="{{info.members[1].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{info.members[2].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{info.members[3].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{info.members[4].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{info.members[5].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+              </block>
+              <block wx:if="{{info.members.length==7}}">
+                <image  src="{{info.members[0].avatarUrl}}" style='width:31%;height:31%;padding:1%;margin-right:33%;margin-left:33%'></image>
+                <image  src="{{info.members[1].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{info.members[2].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{info.members[3].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{info.members[4].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{info.members[5].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{info.members[6].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+              </block>
+              <block wx:if="{{info.members.length==8}}">
+                <image  src="{{info.members[0].avatarUrl}}" style='width:31%;height:31%;padding:1%;margin-left:17%;'></image>
+                <image  src="{{info.members[1].avatarUrl}}" style='width:31%;height:31%;padding:1%;margin-right:17%'></image>
+                <image  src="{{info.members[2].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{info.members[3].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{info.members[4].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{info.members[5].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{info.members[6].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{info.members[7].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+              </block>
+              <block wx:if="{{info.members.length>=9}}">
+                <image  src="{{info.members[0].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{info.members[1].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{info.members[2].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{info.members[3].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{info.members[4].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{info.members[5].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{info.members[6].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{info.members[7].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{info.members[8].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+              </block>
+        </view>
         <view>
           <open-data type="groupName" class="weui-media-box__title" open-gid="{{info.opengid}}" style='color:white;'></open-data>
           <view class="weui-media-box__desc" style='color:white;font-size:11px;margin-top:1vh;'>群主：{{info.members[0].nickName}} ({{info.members.length}}人群)</view>
@@ -92,7 +157,7 @@
 
               <view style='margin-top:5px;'>
                 <text class="desc">{{item.updated_date_span}}</text>
-                <text class="desc primary" bindtap='deletePost' id="{{item.id}}" style='margin-left:5px;' wx:if="{{item.member_id_openid==UserInfo.openid}}">删除</text>
+                <text class="desc primary" bindtap='deletePost' id="{{item.id}}" style='margin-left:5px;' wx:if="{{item.member_id_openid==UserInfo.openid||info.adminmember_id_name==UserInfo.openid}}">删除</text>
                 <text class="desc" style='margin-left:10vw;' bindtap='likePost' id="{{item.id}}">赞（{{item.like}}）</text>
                 <text class="desc" style='margin-left:7vw;;' bindtap='navtoPage' data-page="post" data-param="id={{item.id}}">评论（{{item.comment}}）</text>
               </view>

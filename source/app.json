@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/groupmgr/groupmgr",
     "pages/member/member",
     "pages/mypost/mypost",
     "pages/content/content",

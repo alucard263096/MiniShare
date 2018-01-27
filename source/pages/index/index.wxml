@@ -17,14 +17,77 @@
       <view class="page__bd page__bd_spacing" style='margin-top:2vh;'>
         <block wx:for="{{list}}" wx:key="k">
           <navigator url="/pages/group/group?id={{item.id}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
-            <view class="weui-media-box__hd weui-media-box__hd_in-appmsg " style='background:#ccc'>
-              <view class="weui-grids">
+            <view class="weui-media-box__hd weui-media-box__hd_in-appmsg " style='background:#ccc;line-height:0px;'>
+              <!-- <view class="weui-grids">
                 <block wx:for="{{item.members}}" wx:key="m" wx:for-item="mem">
                   <view class="weui-grid">
                     <image class="weui-grid__icon" src="{{mem.avatarUrl}}"  />
                   </view>
                 </block>
-              </view>
+              </view> -->
+              <block wx:if="{{item.members.length==1}}">
+                <image src="{{item.members[0].avatarUrl}}" style='width:50%;height:50%;margin:25%;'></image>
+              </block>
+              <block wx:if="{{item.members.length==2}}">
+                <image  src="{{item.members[0].avatarUrl}}" style='width:38%;height:38%;padding:1%;margin-top:30%;'></image>
+                <image  src="{{item.members[1].avatarUrl}}" style='width:38%;height:38%;padding:1%;margin-top:30%;'></image>
+              </block>
+              <block wx:if="{{item.members.length==3}}">
+                <image  src="{{item.members[0].avatarUrl}}" style='width:38%;height:38%;padding:1%;margin-left:30%;margin-right:30%;margin-top:10%;'></image>
+                <image  src="{{item.members[1].avatarUrl}}" style='width:38%;height:38%;padding:1%;'></image>
+                <image  src="{{item.members[2].avatarUrl}}" style='width:38%;height:38%;padding:1%;'></image>
+              </block>
+              <block wx:if="{{item.members.length==4}}">
+                <image  src="{{item.members[0].avatarUrl}}" style='width:38%;height:38%;padding:1%;margin-top:10%;'></image>
+                <image  src="{{item.members[1].avatarUrl}}" style='width:38%;height:38%;padding:1%;'></image>
+                <image  src="{{item.members[2].avatarUrl}}" style='width:38%;height:38%;padding:1%;'></image>
+                <image  src="{{item.members[3].avatarUrl}}" style='width:38%;height:38%;padding:1%;'></image>
+              </block>
+              <block wx:if="{{item.members.length==5}}">
+                <image  src="{{item.members[0].avatarUrl}}" style='width:31%;height:31%;padding:1%;margin-top:17%;margin-left:17%'></image>
+                <image  src="{{item.members[1].avatarUrl}}" style='width:31%;height:31%;padding:1%;margin-right:17%'></image>
+                <image  src="{{item.members[2].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{item.members[3].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{item.members[4].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+              </block>
+              <block wx:if="{{item.members.length==6}}">
+                <image  src="{{item.members[0].avatarUrl}}" style='width:31%;height:31%;padding:1%;margin-top:17%;'></image>
+                <image  src="{{item.members[1].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{item.members[2].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{item.members[3].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{item.members[4].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{item.members[5].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+              </block>
+              <block wx:if="{{item.members.length==7}}">
+                <image  src="{{item.members[0].avatarUrl}}" style='width:31%;height:31%;padding:1%;margin-right:33%;margin-left:33%'></image>
+                <image  src="{{item.members[1].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{item.members[2].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{item.members[3].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{item.members[4].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{item.members[5].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{item.members[6].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+              </block>
+              <block wx:if="{{item.members.length==8}}">
+                <image  src="{{item.members[0].avatarUrl}}" style='width:31%;height:31%;padding:1%;margin-left:17%;'></image>
+                <image  src="{{item.members[1].avatarUrl}}" style='width:31%;height:31%;padding:1%;margin-right:17%'></image>
+                <image  src="{{item.members[2].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{item.members[3].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{item.members[4].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{item.members[5].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{item.members[6].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{item.members[7].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+              </block>
+              <block wx:if="{{item.members.length>=9}}">
+                <image  src="{{item.members[0].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{item.members[1].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{item.members[2].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{item.members[3].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{item.members[4].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{item.members[5].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{item.members[6].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{item.members[7].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+                <image  src="{{item.members[8].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+              </block>
             </view>
             <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
               <open-data type="groupName" class="weui-media-box__title" open-gid="{{item.opengid}}"></open-data><text class='timespan'>{{item.operationtime_span}}</text>
