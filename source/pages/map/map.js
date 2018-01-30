@@ -14,19 +14,26 @@ class Content extends AppBase {
     groupapi.detail({ id: options.group_id }, data => {
       var members = data.members;
       var markers=[];
-      for(var i=0;i<members.length;i++){
-        console.log(members[i].avatarUrl);
-        markers.push({
-          iconPath: members[i].avatarUrl,
-          id: members[i].id,
-          label: {content:members[i].nickName},
-          callout: members[i].nickName,
-          title: members[i].nickName,
-          latitude: members[i].lat,
-          longitude: members[i].lng,
-          width: 50,
-          height: 50
-        });
+      var count=0;
+      if(members.length>30){
+        members.sort(function () { return 0.5 - Math.random() });
+      }
+      for (var i = 0; i < members.length && count<30;i++){
+        if (members[i].lat != null && members[i].lng != null) {
+          console.log(members[i].lat);
+          markers.push({
+            iconPath: members[i].avatarUrl,
+            id: members[i].id,
+            label: {content:members[i].nickName},
+            callout: members[i].nickName,
+            title: members[i].nickName,
+            latitude: members[i].lat,
+            longitude: members[i].lng,
+            width: 50,
+            height: 50
+          });
+          count++;
+        }
       }
       that.Base.setMyData({ markers: markers });
       return;
