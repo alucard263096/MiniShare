@@ -35,7 +35,7 @@
               <view class="desc" style=''>{{info.description}}</view>
               <block   wx:for="{{info.voteoptions}}" wx:key="k">
               <view class="weui-progress" style='margin-top:1vh;' id="{{item.id}}" bindtap='selectedOption'>
-                  <view class="weui-progress__bar"><text style='font-size:15px;'>{{item.optionstr}} ({{info.totalvote>0?item.votemembers.length*100/info.totalvote:0}}%)</text>
+                  <view class="weui-progress__bar"><text style='font-size:15px;'>{{item.optionstr}} ({{info.totalvote>0?(item.votemembers.length*100/info.totalvote):0}}%)</text>
                       <progress percent="{{info.totalvote>0?item.votemembers.length*100/info.totalvote:0}}" stroke-width="5" />
                   </view>
                   <view class="weui-progress__opr">
@@ -45,7 +45,7 @@
               <view class="desc" style='margin-top:1vh;'><text wx:for="{{item.votemembers}}" wx:for-item="members" wx:key='c' style='margin-right:5px;'>{{members.nickName}}</text></view>
               </block>
               <view class="desc" style='margin-top:3vh;' wx:if="{{info.vote_expired_count>0}}">投票截止时间：{{info.vote_expired}}</view>
-              <view class="desc" style='margin-top:3vh;' wx:if="{{info.vote_expired_count<<0}}">投票已结束</view>
+              <view class="desc" style='margin-top:3vh;' wx:if="{{info.vote_expired_count<0}}">投票已结束</view>
             </view>
 
             <view wx:if="{{info.operation=='N'}}">
