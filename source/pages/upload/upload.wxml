@@ -22,7 +22,7 @@
               <view class="weui-uploader__files " id="uploaderFiles">
                 <block wx:for-items="{{photos}}" wx:key="{{index}}">
                   <view class="weui-uploader__file" bindtap="deleteImage" id="photo_{{item}}">
-                    <image class="weui-uploader__img" src="{{uploadpath}}/album/{{item}}" mode="aspectFill" />
+                    <image class="weui-uploader__img" src="{{uploadpath}}album/{{item}}" mode="aspectFill" />
                   </view>
                 </block>
                 <view class="weui-uploader__input-box">

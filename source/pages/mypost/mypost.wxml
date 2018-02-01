@@ -13,7 +13,7 @@
                   <view class="weui-uploader__files " id="uploaderFiles">
                     <block wx:for-items="{{item.photos}}" wx:key="{{index}}" wx:for-item="photo">
                       <view class="weui-uploader__file" id="photo_{{item}}">
-                        <image class="weui-uploader__img" src="{{uploadpath}}/album/{{photo.photo}}" mode="aspectFill" bindtap='viewPhoto' id="{{uploadpath}}/album/{{photo.photo}}" />
+                        <image class="weui-uploader__img" src="{{uploadpath}}album/{{photo.photo}}" mode="aspectFill" bindtap='viewPhoto' id="{{uploadpath}}album/{{photo.photo}}" />
                       </view>
                     </block>
                   </view>
