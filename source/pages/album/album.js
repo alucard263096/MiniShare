@@ -88,7 +88,7 @@ class Content extends AppBase {
           that.Base.info("创建成功");
           that.onShow();
           wx.navigateTo({
-            url: '/pages/albumdetail/albumdetail?id=' + data.return.id + "&group_id=" + that.Base.options.id,
+            url: '/pages/albumdetail/albumdetail?id=' + data.return + "&group_id=" + that.Base.options.id,
           });
         } else {
           that.Base.error("系统正在维护，请稍后重试");
