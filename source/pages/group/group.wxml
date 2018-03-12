@@ -1,73 +1,189 @@
 <!--pages/group/group.wxml-->
+<text class='fa fa-chevron-left btnback' bindtap='back'></text>
+<view class='top-bg'>
+  <view class='header'>
+    <open-data type="groupName" open-gid="{{info.opengid}}"></open-data>
+  </view>
+  <view class='edit flex-row'>
+    <view class='editblock  flex-row' bindtap='gotoMgr'>
+      <image src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/writting.png"></image>
+      <text>编辑</text>
+    </view>
+  </view>
+</view>
+<view class='bg-white flex-row '>
+  <view class='users' bindtap='gotoMgr'>
+    <block wx:for="{{memberpeoples}}" wx:key="k">
+      <image src="{{item.avatarUrl}}" class='mgruser'></image>
+    </block>
+  </view>
+  <view class='totaluser' bindtap='gotoMgr'>(共{{info.members.length}}人)</view>
+  <view class='gotomgr' bindtap='gotoMgr'>
+    <text class='fa fa-angle-right'></text>
+  </view>
+</view>
+<view class='bg-white '>
+  <view class='icons flex-row'>
+    <view class='icon first' bindtap='gotoVote' data-page="vote" data-param="group_id={{info.id}}">
+      <view class='img'>
+        <image src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/icon-1.png'></image>
+      </view>
+      <view class='txt'>群投票</view>
+    </view>
+    <view class='icon next' bindtap='gotoAlbum' data-page="album" data-param="group_id={{info.id}}">
+      <view class='img'>
+        <image src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/icon-2.png'></image>
+      </view>
+      <view class='txt'>群相册</view>
+    </view>
+    <view class='icon next' bindtap='gotoMap' data-page="map" data-param="group_id={{info.id}}">
+      <view class='img'>
+        <image src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/icon-3.png'></image>
+      </view>
+      <view class='txt'>群位置</view>
+    </view>
+    <view class='icon next' bindtap='gotoNotify' data-page="notify" data-param="group_id={{info.id}}">
+      <view class='img'>
+        <image src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/icon-4.png'></image>
+      </view>
+      <view class='txt'>群公告</view>
+    </view>
+  </view>
+</view>
+<view class='bg-white ' wx:if="{{notice.id!='0'}}">
+  <view class='flex-row latestnotice'>
+    <view class='notice-horn'>
+      <image src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/notice.png'></image>
+    </view>
+    <navigator url='/pages/post/post?id={{item.id}}' class='notice-txt'>
+      {{notice.description}}
+    </navigator>
+  </view>
+</view>
+<view class='bg-white quweicenter' style='margin-top:5px;'>
+  <view class='flex-row'>
+    <view class='title-shot'></view>
+    <view class='title-view'>趣味中心</view>
+  </view>
+  <view class='flex-row'>
+    <view class='block-1'>
+      <view class='block-content'>
+        <view class='tit'>群红包</view>
+        <view class='des'>最有温度的红包</view>
+      </view>
+    </view>
+    <view class='block-2'>
+      <view class='block-content'>
+        <view class='tit'>群暗恋</view>
+        <view class='des'>最容易成功的暗恋</view>
+      </view>
+    </view>
+  </view>
+  <view class='flex-row'>
+    <view class='block-3'>
+      <view class='block-content'>
+        <view class='tit'>群游戏</view>
+        <view class='des'>最好玩的游戏</view>
+      </view>
+    </view>
+    <view class='block-4'>
+      <view class='block-content'>
+        <view class='tit'>群名片</view>
+        <view class='des'>最有逼格的名片</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='bg-white posts' style='margin-top:5px;'>
+  <view class="post" wx:for="{{list}}" wx:key="k">
+    <view class='flex-row'>
+      <view class='date'>{{item.updated_date_split.date}}</view>
+      <view class='month'>{{item.updated_date_split.month}}月</view>
+      <view>
+      <image class='photo' src="{{item.member_id_photo}}"></image></view>
+      <view class='name'>{{item.member_id_name}}</view>
+      <view class='flex-1 delete' wx:if="{{item.member_id_openid==UserInfo.openid||info.adminmember_id_name==UserInfo.openid}}" >
+      <text bindtap='deletePost' id="{{item.id}}" >删除</text>
+      </view>
+    </view>
+    <view class='flex-row'>
+      <view class='sctop'>
+        <view class='ball'></view>
+      </view>
+      <view>aaaaa</view>
+    </view>
+  </view>
+</view>
+
 <view class="page">
-  <view class="page__bd" >
+  <view class="page__bd">
     <view class="page__bd" style='background:url("{{uploadpath}}icon/backend.png");padding-top:5vh;padding-bottom:12vh;padding-left:5vw;padding-right:5vw;'>
       <view style='text-align:center;'>
-        <view class='debug' style='height:20vw;width:20vw;border-radius:1vw;margin-left:35vw;;margin-right:35vw;line-height:0px;' bindtap='gotoMgr' >
+        <view class='debug' style='height:20vw;width:20vw;border-radius:1vw;margin-left:35vw;;margin-right:35vw;line-height:0px;'>
 
-              <block wx:if="{{info.members.length==1}}">
-                <image src="{{info.members[0].avatarUrl}}" style='width:50%;height:50%;margin:25%;'></image>
-              </block>
-              <block wx:if="{{info.members.length==2}}">
-                <image  src="{{info.members[0].avatarUrl}}" style='width:38%;height:38%;padding:1%;margin-top:30%;'></image>
-                <image  src="{{info.members[1].avatarUrl}}" style='width:38%;height:38%;padding:1%;margin-top:30%;'></image>
-              </block>
-              <block wx:if="{{info.members.length==3}}">
-                <image  src="{{info.members[0].avatarUrl}}" style='width:38%;height:38%;padding:1%;margin-left:30%;margin-right:30%;margin-top:10%;'></image>
-                <image  src="{{info.members[1].avatarUrl}}" style='width:38%;height:38%;padding:1%;'></image>
-                <image  src="{{info.members[2].avatarUrl}}" style='width:38%;height:38%;padding:1%;'></image>
-              </block>
-              <block wx:if="{{info.members.length==4}}">
-                <image  src="{{info.members[0].avatarUrl}}" style='width:38%;height:38%;padding:1%;margin-top:10%;'></image>
-                <image  src="{{info.members[1].avatarUrl}}" style='width:38%;height:38%;padding:1%;'></image>
-                <image  src="{{info.members[2].avatarUrl}}" style='width:38%;height:38%;padding:1%;'></image>
-                <image  src="{{info.members[3].avatarUrl}}" style='width:38%;height:38%;padding:1%;'></image>
-              </block>
-              <block wx:if="{{info.members.length==5}}">
-                <image  src="{{info.members[0].avatarUrl}}" style='width:31%;height:31%;padding:1%;margin-top:17%;margin-left:17%'></image>
-                <image  src="{{info.members[1].avatarUrl}}" style='width:31%;height:31%;padding:1%;margin-right:17%'></image>
-                <image  src="{{info.members[2].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-                <image  src="{{info.members[3].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-                <image  src="{{info.members[4].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-              </block>
-              <block wx:if="{{info.members.length==6}}">
-                <image  src="{{info.members[0].avatarUrl}}" style='width:31%;height:31%;padding:1%;margin-top:17%;'></image>
-                <image  src="{{info.members[1].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-                <image  src="{{info.members[2].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-                <image  src="{{info.members[3].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-                <image  src="{{info.members[4].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-                <image  src="{{info.members[5].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-              </block>
-              <block wx:if="{{info.members.length==7}}">
-                <image  src="{{info.members[0].avatarUrl}}" style='width:31%;height:31%;padding:1%;margin-right:33%;margin-left:33%'></image>
-                <image  src="{{info.members[1].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-                <image  src="{{info.members[2].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-                <image  src="{{info.members[3].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-                <image  src="{{info.members[4].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-                <image  src="{{info.members[5].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-                <image  src="{{info.members[6].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-              </block>
-              <block wx:if="{{info.members.length==8}}">
-                <image  src="{{info.members[0].avatarUrl}}" style='width:31%;height:31%;padding:1%;margin-left:17%;'></image>
-                <image  src="{{info.members[1].avatarUrl}}" style='width:31%;height:31%;padding:1%;margin-right:17%'></image>
-                <image  src="{{info.members[2].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-                <image  src="{{info.members[3].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-                <image  src="{{info.members[4].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-                <image  src="{{info.members[5].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-                <image  src="{{info.members[6].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-                <image  src="{{info.members[7].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-              </block>
-              <block wx:if="{{info.members.length>=9}}">
-                <image  src="{{info.members[0].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-                <image  src="{{info.members[1].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-                <image  src="{{info.members[2].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-                <image  src="{{info.members[3].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-                <image  src="{{info.members[4].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-                <image  src="{{info.members[5].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-                <image  src="{{info.members[6].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-                <image  src="{{info.members[7].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-                <image  src="{{info.members[8].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-              </block>
+          <block wx:if="{{info.members.length==1}}">
+            <image src="{{info.members[0].avatarUrl}}" style='width:50%;height:50%;margin:25%;'></image>
+          </block>
+          <block wx:if="{{info.members.length==2}}">
+            <image src="{{info.members[0].avatarUrl}}" style='width:38%;height:38%;padding:1%;margin-top:30%;'></image>
+            <image src="{{info.members[1].avatarUrl}}" style='width:38%;height:38%;padding:1%;margin-top:30%;'></image>
+          </block>
+          <block wx:if="{{info.members.length==3}}">
+            <image src="{{info.members[0].avatarUrl}}" style='width:38%;height:38%;padding:1%;margin-left:30%;margin-right:30%;margin-top:10%;'></image>
+            <image src="{{info.members[1].avatarUrl}}" style='width:38%;height:38%;padding:1%;'></image>
+            <image src="{{info.members[2].avatarUrl}}" style='width:38%;height:38%;padding:1%;'></image>
+          </block>
+          <block wx:if="{{info.members.length==4}}">
+            <image src="{{info.members[0].avatarUrl}}" style='width:38%;height:38%;padding:1%;margin-top:10%;'></image>
+            <image src="{{info.members[1].avatarUrl}}" style='width:38%;height:38%;padding:1%;'></image>
+            <image src="{{info.members[2].avatarUrl}}" style='width:38%;height:38%;padding:1%;'></image>
+            <image src="{{info.members[3].avatarUrl}}" style='width:38%;height:38%;padding:1%;'></image>
+          </block>
+          <block wx:if="{{info.members.length==5}}">
+            <image src="{{info.members[0].avatarUrl}}" style='width:31%;height:31%;padding:1%;margin-top:17%;margin-left:17%'></image>
+            <image src="{{info.members[1].avatarUrl}}" style='width:31%;height:31%;padding:1%;margin-right:17%'></image>
+            <image src="{{info.members[2].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+            <image src="{{info.members[3].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+            <image src="{{info.members[4].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+          </block>
+          <block wx:if="{{info.members.length==6}}">
+            <image src="{{info.members[0].avatarUrl}}" style='width:31%;height:31%;padding:1%;margin-top:17%;'></image>
+            <image src="{{info.members[1].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+            <image src="{{info.members[2].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+            <image src="{{info.members[3].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+            <image src="{{info.members[4].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+            <image src="{{info.members[5].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+          </block>
+          <block wx:if="{{info.members.length==7}}">
+            <image src="{{info.members[0].avatarUrl}}" style='width:31%;height:31%;padding:1%;margin-right:33%;margin-left:33%'></image>
+            <image src="{{info.members[1].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+            <image src="{{info.members[2].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+            <image src="{{info.members[3].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+            <image src="{{info.members[4].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+            <image src="{{info.members[5].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+            <image src="{{info.members[6].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+          </block>
+          <block wx:if="{{info.members.length==8}}">
+            <image src="{{info.members[0].avatarUrl}}" style='width:31%;height:31%;padding:1%;margin-left:17%;'></image>
+            <image src="{{info.members[1].avatarUrl}}" style='width:31%;height:31%;padding:1%;margin-right:17%'></image>
+            <image src="{{info.members[2].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+            <image src="{{info.members[3].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+            <image src="{{info.members[4].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+            <image src="{{info.members[5].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+            <image src="{{info.members[6].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+            <image src="{{info.members[7].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+          </block>
+          <block wx:if="{{info.members.length>=9}}">
+            <image src="{{info.members[0].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+            <image src="{{info.members[1].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+            <image src="{{info.members[2].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+            <image src="{{info.members[3].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+            <image src="{{info.members[4].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+            <image src="{{info.members[5].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+            <image src="{{info.members[6].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+            <image src="{{info.members[7].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+            <image src="{{info.members[8].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
+          </block>
         </view>
         <view>
           <open-data type="groupName" class="weui-media-box__title" open-gid="{{info.opengid}}" style='color:white;'></open-data>
@@ -90,13 +206,13 @@
           </view>
           <view class='placeholder '>回忆</view>
         </view>
-        <view class="weui-flex__item tab" bindtap='gotoNotify' data-page="album" data-param="group_id={{info.id}}">
+        <view class="weui-flex__item tab" bindtap='gotoNotify' data-page="notify" data-param="group_id={{info.id}}">
           <view class='tabicon2'>
             <image class='tabiconimg' src='{{uploadpath}}icon/notice.png'></image>
           </view>
           <view class='placeholder '>公告</view>
         </view>
-        <view class="weui-flex__item tab" bindtap='gotoMap' data-page="album" data-param="group_id={{info.id}}">
+        <view class="weui-flex__item tab" bindtap='gotoMap' data-page="map" data-param="group_id={{info.id}}">
           <view class='tabicon2'>
             <image class='tabiconimg' src='{{uploadpath}}icon/daka.png'></image>
           </view>
@@ -139,7 +255,7 @@
               <view wx:if="{{item.operation=='V'}}">
                 <view class="desc" style=''>{{item.description}}</view>
                 <block wx:for="{{item.voteoptions}}" wx:key="k" wx:for-item="opt">
-                  <view class="weui-progress" style='margin-top:1vh;' id="{{opt.id}}" >
+                  <view class="weui-progress" style='margin-top:1vh;' id="{{opt.id}}">
                     <view class="weui-progress__bar">
                       <text style='font-size:15px;'>{{opt.optionstr}} ({{item.totalvote>0?opt.votemembers.length*100/item.totalvote:0}}%)</text>
                       <progress percent="{{item.totalvote>0?opt.votemembers.length*100/item.totalvote:0}}" stroke-width="5" />

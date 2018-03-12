@@ -9,10 +9,10 @@ class Content extends AppBase {
   }
 
   onLoad(options) {
-    //options.id=1;
+    options.id = 1;
     this.Base.Page = this;
     super.onLoad(options);
-    this.Base.setMyData({list:[]});
+    this.Base.setMyData({list:[],notice:{id:"0"}});
   }
 
   onShow() {
@@ -20,7 +20,11 @@ class Content extends AppBase {
     super.onShow();
     var groupapi=new GroupApi();
     groupapi.detail({id:this.Base.options.id},data=>{
-      that.Base.setMyData({info:data});
+      var memberpeoples=[];
+      for(var i=0;i<data.members.length&&i<9;i++){
+        memberpeoples.push(data.members[i]);
+      }
+      that.Base.setMyData({ info: data, memberpeoples: memberpeoples});
     });
     var postApi = new PostApi();
     var data=this.Base.getMyData();
@@ -37,15 +41,21 @@ class Content extends AppBase {
     
     postApi.list(json,
       data => {
+        var notice = { id: "0",description:"" };
         for (var i = 0; i < data.length; i++) {
+          data[i]["updated_date_split"] = AppBase.Util.Datetime2(Number(data[i]["updated_date_span"]));
+          
           data[i]["updated_date_span"] = AppBase.Util.Datetime_str(Number(data[i]["updated_date_span"]));
+          if (data[i]["operation"] == "N" && notice.id != "0") {
+            notice = data[i];
+          }
         }
         var list = that.Base.getMyData().list;
         for(var i=0;i<list.length;i++){
           data.push(list[i]);
         }
         if(data.length>0){
-          that.Base.setMyData({ list: data, newgettime: data[0].updated_date,lastgettime:data[data.length-1].updated_date });
+          that.Base.setMyData({ list: data, notice: notice, newgettime: data[0].updated_date,lastgettime:data[data.length-1].updated_date });
         }
       });
   }
@@ -86,6 +96,7 @@ class Content extends AppBase {
     postApi.list(json,
       data => {
         for (var i = 0; i < data.length; i++) {
+          data[i]["updated_date_split"] = AppBase.Util.Datetime2(Number(data[i]["updated_date_span"]));
           data[i]["updated_date_span"] = AppBase.Util.Datetime_str(Number(data[i]["updated_date_span"]));
         }
         var list = that.Base.getMyData().list;

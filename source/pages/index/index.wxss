@@ -1,6 +1,8 @@
 /**index.wxss**/
-swiper{
-  height:30vh;
+.top-bg{
+  background: url(http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/indexbg.png);
+  background-size:  100% 100%;
+  height: 144px;
 }
 .timespan{
   color:#999999;
@@ -8,4 +10,143 @@ swiper{
   position:absolute;
   right:5vw;
 
+}
+.user-info{
+  margin-top:71px;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+.userphoto{
+  height: 54px;
+  width: 54px;
+  border-radius: 27px;
+}
+.username{
+  font-size: 16px;
+  color:white;
+  margin-left: 19px;
+  margin-top:18px;
+  width:200px;
+  height:22px;
+  overflow-x: hidden;
+}
+.go-right{
+  font-size: 18px;
+  color:white;
+  margin-top:16px;
+  margin-left: 10px;
+}
+.user-center{
+  margin-top: 6px;
+  background: #ffffff;
+}
+.user-center .title-shot{
+  width:3px;
+  height:9px;
+  margin-left:11px;
+  margin-top:14px;
+  background:#5391E1;
+}
+.user-center .title{
+  color:#666666;
+  font-size: 12px;
+  line-height: 12px;
+  margin-left: 7px;
+  margin-top:12px;
+}
+.user-center .icons{
+  margin-top: 33px;
+  margin-bottom: 22px;
+  margin-left: 33px;
+}
+.user-center .icons .icon .img{
+  text-align: center;
+}
+.user-center .icons .next{
+  margin-left: 52px;
+}
+.user-center .icons .icon .img image{
+  height: 22px;
+  width: 22px;
+}
+.user-center .icons .icon .txt{
+  font-size: 13px;
+  color:#333;
+  line-height: 13px;
+  margin-top: 5px;
+}
+.user-share{
+  margin-top: 6px;
+  background: #ffffff;
+}
+.user-share .title-shot{
+  width:3px;
+  height:9px;
+  margin-left:11px;
+  margin-top:14px;
+  background:#5391E1;
+}
+.user-share .title{
+  color:#666666;
+  font-size: 12px;
+  line-height: 12px;
+  margin-left: 7px;
+  margin-top:12px;
+}
+.group-items{
+  margin-left: 10px;
+  margin-right:22px;
+}
+.item{
+  margin-top: 28px;
+}
+
+.pics{
+  height: 50px;
+  width:50px;
+  line-height: 0px;
+  background:#F1F0F1;
+}
+.pics image{
+  border:none;padding:0;margin:0;
+  line-height: 0px;
+}
+.content{
+  margin-left: 16px;
+  width:200px;
+  overflow: hidden;
+  line-height:0px;
+  margin-top: 5px;
+}
+.content .gtitle{
+  font-size: 14px;
+  line-height: 14px;
+  width:200px;
+  overflow: hidden;
+}
+.content .gdesc{
+  font-size: 12px;
+  line-height: 12px;
+  height:13px;
+  overflow: hidden;
+  margin-top:16px;
+  color:#999;
+}
+.timespan{
+  color:#999999;
+  font-size: 11px;
+  text-align: right;
+  margin-top: 2px;
+}
+.open-share button{
+  margin-top: 31px;
+  margin-left: 15px;
+  margin-bottom: 74px;
+  width: 345px;
+  font-size: 16px;
+  border-radius: 22px;
+  background: -webkit-linear-gradient(left, #50BAFF , #008BE5); 
+  background: -o-linear-gradient(right, #50BAFF , #008BE5);
+  background: -moz-linear-gradient(right, #50BAFF , #008BE5); 
+  background: linear-gradient(to right, #50BAFF , #008BE5); 
 }

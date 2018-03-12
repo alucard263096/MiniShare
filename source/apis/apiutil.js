@@ -115,5 +115,12 @@ export class ApiUtil {
       return (timespan).toFixed(0) + "秒前";
     }
     return "刚刚";
+  }
+  static Datetime2(timespan) {
+    var now = new Date(parseInt(timespan) * 1000)
+    var year=now.getFullYear();
+    var month=now.getMonth()+1;
+    var date=now.getDate();
+    return {year:year,month:month,date:date};
   } 
 }

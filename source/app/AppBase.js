@@ -11,7 +11,8 @@ export class AppBase {
   options = null;
   data = {
     uploadpath: ApiConfig.GetUploadPath(),
-    copyright: { name: "超级群空间助手", website: "supershare.com" }
+    copyright: { name: "超级群空间助手", website: "supershare.com" },
+    thisyear:(new Date).getFullYear()
   };
   Page = null;
   static Util = ApiUtil;
@@ -77,7 +78,8 @@ export class AppBase {
       switchTab: base.switchTab, 
       closePage: base.closePage,
       gotoPage: base.gotoPage,
-      navtoPage: base.navtoPage
+      navtoPage: base.navtoPage,
+      back: base.back
     }
   }
   log() {
@@ -467,8 +469,13 @@ export class AppBase {
     wx.redirectTo({
       url: url,
     })
-  }
+  } 
   closePage(){
 
+  }
+  back() {
+      wx.navigateBack({
+        
+      })
   }
 } 

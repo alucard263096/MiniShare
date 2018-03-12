@@ -1,6 +1,5 @@
 /**app.wxss**/
 @import "/style/fontawesome.wxss";
-@import "/style/weui.wxss";
 @import "/wxParse/wxParse.wxss";
 
 .container {
@@ -13,7 +12,7 @@
   box-sizing: border-box;
 } 
 page{
-  background-color: #ffffff;
+  background: #F1F1F1;
 }
 .weui-footer{
     margin-top: 10px;
@@ -42,7 +41,7 @@ button[type="primary"]{
   background-color:#348EFA;
 }
 .debug{
-  background: #ccc;
+  background: #cab;
 }
 .flex-row{
   display: flex;
@@ -76,4 +75,28 @@ button[type="primary"]{
 }
 .primary{
   color:#4D9CFB;
+}
+.btnback{
+  position: absolute;
+  top:35px;
+  left:20px;
+  color:white;
+}
+.bg-white{
+  background: #fff;
+}
+
+.title-shot{
+  width:3px;
+  height:9px;
+  margin-left:11px;
+  margin-top:14px;
+  background:#5391E1;
+}
+.title-view{
+  color:#666666;
+  font-size: 12px;
+  line-height: 12px;
+  margin-left: 7px;
+  margin-top:12px;
 }
