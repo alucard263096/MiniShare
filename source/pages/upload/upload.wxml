@@ -1,4 +1,6 @@
 <!--pages/upload/upload.wxml-->
+<view class='superheader'></view>
+<text class='fa fa-chevron-left btnback' bindtap='back'></text>
 <view class="page">
   <view class="page__bd">
     <view class="weui-cells weui-cells_after-title">

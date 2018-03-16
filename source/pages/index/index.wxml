@@ -16,30 +16,30 @@
   </view>
   <view class='icons'>
     <view class='flex-row'>
-      <view class='icon'>
+      <navigator url="/pages/mypost/mypost?operation=V" class='icon'>
         <view class='img'>
           <image src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/icon-1.png'></image>
         </view>
         <view class='txt'>群投票</view>
-      </view>
-      <view class='icon next'>
+      </navigator>
+      <navigator url="/pages/mypost/mypost?operation=P"  class='icon next'>
         <view class='img'>
           <image src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/icon-2.png'></image>
         </view>
         <view class='txt'>群相册</view>
-      </view>
+      </navigator>
       <view class='icon next'>
         <view class='img'>
           <image src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/icon-3.png'></image>
         </view>
         <view class='txt'>群位置</view>
       </view>
-      <view class='icon next'>
+      <navigator url="/pages/mypost/mypost?operation=N"  class='icon next'>
         <view class='img'>
           <image src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/icon-4.png'></image>
         </view>
         <view class='txt'>群公告</view>
-      </view>
+      </navigator>
     </view>
 
 

@@ -202,15 +202,177 @@
 }
 .sctop{
   width: 1px;
-  background-color:#66A6D7;
+  background-color:rgba(102, 166, 215, 0.5);
   overflow:visible;
-  margin-left: 10px;
+  margin-left: 33px;
 }
 .ball{
-  width:6px;
-  height: 6px;
-  border:1px ridge #66A6D7;
-  border-radius: 9px;
-  margin-left: -4px;
+  width:7px;
+  height: 7px;
+  border-radius: 3.5px;
+  margin-left: -3px;
+  margin-top: 6px;
   background-color: #66A6D7;
+   filter: blur(1px);
+}
+.sctop-o{
+  width: 1px;
+  background-color:rgba(243,156,100, 0.5);
+  overflow:visible;
+  margin-left: 33px;
+}
+.ball-o{
+  width:7px;
+  height: 7px;
+  border-radius: 3.5px;
+  margin-left: -3px;
+  margin-top: 6px;
+  background-color: #F39C64;
+   filter: blur(1px);
+}
+.sctop-r{
+  width: 1px;
+  background-color:rgba(237,103,100, 0.5);
+  overflow:visible;
+  margin-left: 33px;
+}
+.ball-r{
+  width:7px;
+  height: 7px;
+  border-radius: 3.5px;
+  margin-left: -3px;
+  margin-top: 6px;
+  background-color: #ED6764;
+   filter: blur(1px);
+}
+.postbody{
+  margin-left: 19px;
+}
+.operationstr{
+  font-size: 12px;
+  line-height: 12px;
+  color:#999999;
+}
+.postcontent{
+  font-size: 14px;
+  line-height: 14px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+.postphotos{
+
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+.postphotos .photoview{
+  padding-right:10px;
+  
+}
+.postphotos .photoview image{
+  width: 100%;
+}
+.post .viewpeople{
+  font-size: 12px;
+  color:#999999;
+  margin-left: 3px;
+  margin-top: 3px;
+}
+.likecomment{
+  text-align: right;
+  width: 100%;
+  margin-top: 5px;
+  line-height: 14px;
+}
+.likeicon{
+  width: 14px;
+  height: 14px;
+  margin-left: 14px;
+}
+.likestr{
+  font-size: 12px;
+  margin-left: 6px;
+  color:#999999;
+}
+.commenticon{
+  width: 14px;
+  height: 13px;
+  margin-left: 14px;
+}
+.btnhome{
+  position: fixed;
+  left: 322px;
+  bottom:100px;
+  width: 47px;
+  height: 47px;
+  border-radius: 24px;
+  background:#5C5C5C;
+}
+.btnhome image{
+  width: 19px;
+  height: 20px;
+  margin-top: 14px;
+  margin-left: 14px;
+}
+.btnadd{
+  position: fixed;
+  left: 322px;
+  bottom:48px;
+  width: 47px;
+  height: 47px;
+  border-radius: 24px;
+  background:#5C5C5C;
+}
+.btnadd image{
+  width: 19px;
+  height: 20px;
+  margin-top: 14px;
+  margin-left: 14px;
+}
+.selectbg{
+  position: fixed;
+  left: 0;
+  top:0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+
+
+
+
+
+.iconsb {
+  padding-top: 448px;
+  text-align: center;
+}
+
+
+.iconsb .first {
+  margin-left: 31px;
+}
+
+.iconsb .next {
+  margin-left: 26px;
+}
+
+.iconsb .icon .img image {
+  height: 59px;
+  width: 59px;
+}
+
+.iconsb .icon .txt {
+  font-size: 12px;
+  color: #666;
+  margin-top: 14px;
+  text-align: center;
+}
+.close{
+  margin-top: 75px;
+  text-align: center;
+}
+.close image{
+  width: 15px;
+  height: 15px;
+
 }

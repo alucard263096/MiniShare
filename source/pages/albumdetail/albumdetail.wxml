@@ -1,4 +1,9 @@
 <!--pages/albumdetail/albumdetail.wxml-->
+<view class='superheader'></view>
+<text class='fa fa-chevron-left btnback' bindtap='back'></text>
+
+
+
 <view class="page">
   <view class="page__bd">
   <scroll-view  style='height:{{album_id==0?"100":"88"}}vh;' scroll-y="true">

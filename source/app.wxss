@@ -1,5 +1,6 @@
 /**app.wxss**/
 @import "/style/fontawesome.wxss";
+@import "/style/weui.wxss";
 @import "/wxParse/wxParse.wxss";
 
 .container {
@@ -99,4 +100,8 @@ button[type="primary"]{
   line-height: 12px;
   margin-left: 7px;
   margin-top:12px;
+}
+.superheader{
+  background: #4D9CFB;
+  height: 70px;
 }

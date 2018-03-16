@@ -9,7 +9,6 @@ class Content extends AppBase {
   }
 
   onLoad(options) {
-    options.id = 1;
     this.Base.Page = this;
     super.onLoad(options);
     this.Base.setMyData({list:[],notice:{id:"0"}});
@@ -41,12 +40,12 @@ class Content extends AppBase {
     
     postApi.list(json,
       data => {
-        var notice = { id: "0",description:"" };
+        var notice = that.Base.getMyData().notice;
         for (var i = 0; i < data.length; i++) {
           data[i]["updated_date_split"] = AppBase.Util.Datetime2(Number(data[i]["updated_date_span"]));
-          
+
           data[i]["updated_date_span"] = AppBase.Util.Datetime_str(Number(data[i]["updated_date_span"]));
-          if (data[i]["operation"] == "N" && notice.id != "0") {
+          if (data[i]["operation"] == "N" && notice.id == "0") {
             notice = data[i];
           }
         }
@@ -95,16 +94,20 @@ class Content extends AppBase {
 
     postApi.list(json,
       data => {
+        var notice = that.Base.getMyData().notice;
         for (var i = 0; i < data.length; i++) {
           data[i]["updated_date_split"] = AppBase.Util.Datetime2(Number(data[i]["updated_date_span"]));
           data[i]["updated_date_span"] = AppBase.Util.Datetime_str(Number(data[i]["updated_date_span"]));
+          if (data[i]["operation"] == "N" && notice.id == "0") {
+            notice = data[i];
+          }
         }
         var list = that.Base.getMyData().list;
         for (var i = 0; i < list.length; i++) {
           data.push(list[i]);
         }
         if (data.length > 0) {
-          that.Base.setMyData({ list: data, newgettime: data[0].updated_date, lastgettime: data[data.length - 1].updated_date });
+          that.Base.setMyData({ list: data, notice: notice, newgettime: data[0].updated_date, lastgettime: data[data.length - 1].updated_date });
         }
       });
   }
@@ -130,6 +133,7 @@ class Content extends AppBase {
         }
         var list = that.Base.getMyData().list;
         for (var i = 0; i < data.length; i++) {
+          data[i]["updated_date_split"] = AppBase.Util.Datetime2(Number(data[i]["updated_date_span"]));
           data[i]["updated_date_span"] = AppBase.Util.Datetime_str(Number(data[i]["updated_date_span"]));
           list.push(data[i]);
         }
@@ -176,6 +180,12 @@ class Content extends AppBase {
       url: '/pages/groupmgr/groupmgr?id=' + this.Base.options.id,
     });
   }
+  openbgselect(){
+    this.Base.setMyData({ bgselect:true});
+  }
+  closebgselect() {
+    this.Base.setMyData({ bgselect: false });
+  }
 }
 var page = new Content();
 var body = page.generateBodyJson();
@@ -189,7 +199,9 @@ body.likePost = page.likePost;
 body.gotoVote = page.gotoVote;  
 body.gotoNotify = page.gotoNotify;
 body.gotoVote = page.gotoVote; 
-body.gotoMap = page.gotoMap;
+body.gotoMap = page.gotoMap; 
 body.gotoMgr = page.gotoMgr;
+body.openbgselect = page.openbgselect;
+body.closebgselect = page.closebgselect;
 
 Page(body)

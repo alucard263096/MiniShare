@@ -14,7 +14,8 @@ class Content extends AppBase {
     this.Base.Page = this;
     super.onLoad(options);
     var postapi=new PostApi();
-    postapi.read({post_id:this.Base.options.id});
+    postapi.read({ post_id: this.Base.options.id });
+    postapi.view({ post_id: this.Base.options.id });
 
     this.Base.setMyData({ comment: "", id: options.id });
   }

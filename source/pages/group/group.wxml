@@ -55,7 +55,7 @@
     <view class='notice-horn'>
       <image src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/notice.png'></image>
     </view>
-    <navigator url='/pages/post/post?id={{item.id}}' class='notice-txt'>
+    <navigator url='/pages/post/post?id={{notice.id}}' class='notice-txt'>
       {{notice.description}}
     </navigator>
   </view>
@@ -94,203 +94,108 @@
     </view>
   </view>
 </view>
-<view class='bg-white posts' style='margin-top:5px;'>
+<view class='bg-white posts' style='margin-top:5px;padding-bottom:25px;'>
   <view class="post" wx:for="{{list}}" wx:key="k">
     <view class='flex-row'>
       <view class='date'>{{item.updated_date_split.date}}</view>
       <view class='month'>{{item.updated_date_split.month}}月</view>
       <view>
-      <image class='photo' src="{{item.member_id_photo}}"></image></view>
+        <image class='photo' src="{{item.member_id_photo}}"></image>
+      </view>
       <view class='name'>{{item.member_id_name}}</view>
-      <view class='flex-1 delete' wx:if="{{item.member_id_openid==UserInfo.openid||info.adminmember_id_name==UserInfo.openid}}" >
-      <text bindtap='deletePost' id="{{item.id}}" >删除</text>
+      <view class='flex-1 delete' wx:if="{{item.member_id_openid==UserInfo.openid||info.adminmember_id_name==UserInfo.openid}}">
+        <text bindtap='deletePost' id="{{item.id}}">删除</text>
       </view>
     </view>
     <view class='flex-row'>
-      <view class='sctop'>
+      <view class='sctop' wx:if="{{item.operation=='N'}}">
         <view class='ball'></view>
       </view>
-      <view>aaaaa</view>
+      <view class='sctop-o' wx:if="{{item.operation=='P'}}">
+        <view class='ball-o'></view>
+      </view>
+      <view class='sctop-r' wx:if="{{item.operation=='V'}}">
+        <view class='ball-r'></view>
+      </view>
+      <view class='postbody flex-1'>
+        <view class='operationstr'>{{item.operationstr}}</view>
+        <navigator url='/pages/post/post?id={{item.id}}' class='postcontent' wx:if="{{item.operation=='N'}}">{{item.description}}</navigator>
+        <navigator url='/pages/post/post?id={{item.id}}' class='postphotos flex-row' wx:if="{{item.operation=='P'}}">
+          <block wx:for-items="{{item.photos}}" wx:key="{{index}}" wx:for-item="photo">
+            <view class='photoview  flex-1'>
+              <image src="{{uploadpath}}album/{{photo.photo}}" mode="widthFix" />
+            </view>
+          </block>
+
+        </navigator>
+        <navigator url='/pages/post/post?id={{item.id}}' class='postcontent' wx:if="{{item.operation=='V'}}">
+          <view>{{item.description}}</view>
+          <block wx:for="{{item.voteoptions}}" wx:key="k" wx:for-item="opt">
+            <view style='margin-top:1.5vh;' id="{{opt.id}}">
+              <view class="weui-progress__bar">
+                <text style='font-size:12px;color:#999;'>{{opt.optionstr}} ({{item.totalvote>0?opt.votemembers.length*100/item.totalvote:0}}%)</text>
+                <progress style='margin-top:6px;' percent="{{item.totalvote>0?opt.votemembers.length*100/item.totalvote:0}}" stroke-width="5" />
+              </view>
+            </view>
+          </block>
+          <view class="desc" style='margin-top:3vh;' wx:if="{{item.vote_expired_count>0}}">投票截止时间：{{info.vote_expired}}</view>
+          <view class="desc" style='margin-top:3vh;' wx:if="{{item.vote_expired_count<<0}}">投票已结束</view>
+        </navigator>
+        <view class='flex-row'>
+          <view wx:for="{{item.memberview}}" wx:key="kf" style='margin-right:6px;'>
+            <image class='photo' src="{{item.avatarUrl}}"></image>
+          </view>
+          <view class='viewpeople'>{{item.memberviewcount}}人浏览过</view>
+          <view class='flex-1 likecomment '>
+
+            <image class='likeicon' bindtap='likePost' id="{{item.id}}" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/like.png"></image>
+            <text class='likestr'>{{item.like}}</text>
+            <image class='commenticon' bindtap='navtoPage' data-page="post" data-param="id={{item.id}}" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/comment.png"></image>
+            <text class='likestr'>{{item.comment}}</text>
+          </view>
+        </view>
+      </view>
     </view>
   </view>
 </view>
 
-<view class="page">
-  <view class="page__bd">
-    <view class="page__bd" style='background:url("{{uploadpath}}icon/backend.png");padding-top:5vh;padding-bottom:12vh;padding-left:5vw;padding-right:5vw;'>
-      <view style='text-align:center;'>
-        <view class='debug' style='height:20vw;width:20vw;border-radius:1vw;margin-left:35vw;;margin-right:35vw;line-height:0px;'>
+<view class='btnhome' bindtap='gohome' >
+<image src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/btnhome.png"></image>
+</view>
+<view class='btnadd'>
+<image bindtap='openbgselect' src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/btnadd.png"></image>
+</view>
 
-          <block wx:if="{{info.members.length==1}}">
-            <image src="{{info.members[0].avatarUrl}}" style='width:50%;height:50%;margin:25%;'></image>
-          </block>
-          <block wx:if="{{info.members.length==2}}">
-            <image src="{{info.members[0].avatarUrl}}" style='width:38%;height:38%;padding:1%;margin-top:30%;'></image>
-            <image src="{{info.members[1].avatarUrl}}" style='width:38%;height:38%;padding:1%;margin-top:30%;'></image>
-          </block>
-          <block wx:if="{{info.members.length==3}}">
-            <image src="{{info.members[0].avatarUrl}}" style='width:38%;height:38%;padding:1%;margin-left:30%;margin-right:30%;margin-top:10%;'></image>
-            <image src="{{info.members[1].avatarUrl}}" style='width:38%;height:38%;padding:1%;'></image>
-            <image src="{{info.members[2].avatarUrl}}" style='width:38%;height:38%;padding:1%;'></image>
-          </block>
-          <block wx:if="{{info.members.length==4}}">
-            <image src="{{info.members[0].avatarUrl}}" style='width:38%;height:38%;padding:1%;margin-top:10%;'></image>
-            <image src="{{info.members[1].avatarUrl}}" style='width:38%;height:38%;padding:1%;'></image>
-            <image src="{{info.members[2].avatarUrl}}" style='width:38%;height:38%;padding:1%;'></image>
-            <image src="{{info.members[3].avatarUrl}}" style='width:38%;height:38%;padding:1%;'></image>
-          </block>
-          <block wx:if="{{info.members.length==5}}">
-            <image src="{{info.members[0].avatarUrl}}" style='width:31%;height:31%;padding:1%;margin-top:17%;margin-left:17%'></image>
-            <image src="{{info.members[1].avatarUrl}}" style='width:31%;height:31%;padding:1%;margin-right:17%'></image>
-            <image src="{{info.members[2].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-            <image src="{{info.members[3].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-            <image src="{{info.members[4].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-          </block>
-          <block wx:if="{{info.members.length==6}}">
-            <image src="{{info.members[0].avatarUrl}}" style='width:31%;height:31%;padding:1%;margin-top:17%;'></image>
-            <image src="{{info.members[1].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-            <image src="{{info.members[2].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-            <image src="{{info.members[3].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-            <image src="{{info.members[4].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-            <image src="{{info.members[5].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-          </block>
-          <block wx:if="{{info.members.length==7}}">
-            <image src="{{info.members[0].avatarUrl}}" style='width:31%;height:31%;padding:1%;margin-right:33%;margin-left:33%'></image>
-            <image src="{{info.members[1].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-            <image src="{{info.members[2].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-            <image src="{{info.members[3].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-            <image src="{{info.members[4].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-            <image src="{{info.members[5].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-            <image src="{{info.members[6].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-          </block>
-          <block wx:if="{{info.members.length==8}}">
-            <image src="{{info.members[0].avatarUrl}}" style='width:31%;height:31%;padding:1%;margin-left:17%;'></image>
-            <image src="{{info.members[1].avatarUrl}}" style='width:31%;height:31%;padding:1%;margin-right:17%'></image>
-            <image src="{{info.members[2].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-            <image src="{{info.members[3].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-            <image src="{{info.members[4].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-            <image src="{{info.members[5].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-            <image src="{{info.members[6].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-            <image src="{{info.members[7].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-          </block>
-          <block wx:if="{{info.members.length>=9}}">
-            <image src="{{info.members[0].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-            <image src="{{info.members[1].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-            <image src="{{info.members[2].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-            <image src="{{info.members[3].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-            <image src="{{info.members[4].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-            <image src="{{info.members[5].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-            <image src="{{info.members[6].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-            <image src="{{info.members[7].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-            <image src="{{info.members[8].avatarUrl}}" style='width:31%;height:31%;padding:1%;'></image>
-          </block>
-        </view>
-        <view>
-          <open-data type="groupName" class="weui-media-box__title" open-gid="{{info.opengid}}" style='color:white;'></open-data>
-          <view class="weui-media-box__desc" style='color:white;font-size:11px;margin-top:1vh;'>群主：{{info.members[0].nickName}} ({{info.members.length}}人群)</view>
-        </view>
-
+<view class='selectbg' wx:if="{{bgselect==true}}" >
+  <view >
+  <view class='iconsb flex-row'>
+    <view class='icon first' bindtap='gotoVote' data-page="vote" data-param="group_id={{info.id}}">
+      <view class='img'>
+        <image src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/icon-1-1.png'></image>
       </view>
+      <view class='txt'>投票</view>
     </view>
-    <view class='page_bd selectopt'>
-      <view class="weui-flex">
-        <view class="weui-flex__item tab" bindtap='gotoVote' data-page="vote" data-param="group_id={{info.id}}">
-          <view class='tabicon2'>
-            <image class='tabiconimg' src='{{uploadpath}}icon/vote.png'></image>
-          </view>
-          <view class='placeholder '>投票</view>
-        </view>
-        <view class="weui-flex__item tab" bindtap='gotoAlbum' data-page="album" data-param="group_id={{info.id}}">
-          <view class='tabicon2'>
-            <image class='tabiconimg' src='{{uploadpath}}icon/moment.png'></image>
-          </view>
-          <view class='placeholder '>回忆</view>
-        </view>
-        <view class="weui-flex__item tab" bindtap='gotoNotify' data-page="notify" data-param="group_id={{info.id}}">
-          <view class='tabicon2'>
-            <image class='tabiconimg' src='{{uploadpath}}icon/notice.png'></image>
-          </view>
-          <view class='placeholder '>公告</view>
-        </view>
-        <view class="weui-flex__item tab" bindtap='gotoMap' data-page="map" data-param="group_id={{info.id}}">
-          <view class='tabicon2'>
-            <image class='tabiconimg' src='{{uploadpath}}icon/daka.png'></image>
-          </view>
-          <view class='placeholder '>位置</view>
-        </view>
+    <view class='icon next' bindtap='gotoAlbum' data-page="album" data-param="group_id={{info.id}}">
+      <view class='img'>
+        <image src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/icon-2-1.png'></image>
       </view>
+      <view class='txt'>相册</view>
     </view>
-    <view class="page__bd">
-
-      <view class="weui-panel weui-panel_access" wx:for="{{list}}" wx:key="k">
-        <view class="weui-panel__bd">
-          <view url="" class="weui-media-box weui-media-box_appmsg" style='padding-bottom:0px;'>
-            <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-              <image class="weui-media-box__thumb photo" src="{{item.member_id_photo}}" />
-            </view>
-            <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-              <view class="weui-media-box__title primary" style='font-size:14px;'>{{item.member_id_name}}</view>
-              <view class="weui-media-box__desc" style='font-size:10px;'>{{item.operationstr}}</view>
-
-            </view>
-          </view>
-          <view class=" weui-media-box_appmsg" style='border-top:0px;padding:15px;padding-top:0px;'>
-            <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-              <image class="weui-media-box__thumb photo" />
-            </view>
-            <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-              <navigator class="weui-media-box__title" url='/pages/post/post?id={{item.id}}'>{{item.title}}</navigator>
-              <view wx:if="{{item.operation=='P'}}" style='margin-top:2vh;'>
-                <view class="weui-uploader__bd">
-                  <view class="weui-uploader__files " id="uploaderFiles">
-                    <block wx:for-items="{{item.photos}}" wx:key="{{index}}" wx:for-item="photo">
-                      <view class="weui-uploader__file" id="photo_{{item}}">
-                        <image class="weui-uploader__img" src="{{uploadpath}}album/{{photo.photo}}" mode="aspectFill" bindtap='viewPhoto' id="{{uploadpath}}album/{{photo.photo}}" />
-                      </view>
-                    </block>
-                  </view>
-                </view>
-              </view>
-
-              <view wx:if="{{item.operation=='V'}}">
-                <view class="desc" style=''>{{item.description}}</view>
-                <block wx:for="{{item.voteoptions}}" wx:key="k" wx:for-item="opt">
-                  <view class="weui-progress" style='margin-top:1vh;' id="{{opt.id}}">
-                    <view class="weui-progress__bar">
-                      <text style='font-size:15px;'>{{opt.optionstr}} ({{item.totalvote>0?opt.votemembers.length*100/item.totalvote:0}}%)</text>
-                      <progress percent="{{item.totalvote>0?opt.votemembers.length*100/item.totalvote:0}}" stroke-width="5" />
-                    </view>
-                  </view>
-                </block>
-                <view class="desc" style='margin-top:3vh;' wx:if="{{item.vote_expired_count>0}}">投票截止时间：{{info.vote_expired}}</view>
-                <view class="desc" style='margin-top:3vh;' wx:if="{{item.vote_expired_count<<0}}">投票已结束</view>
-              </view>
-
-              <view wx:if="{{item.operation=='N'}}">
-                <view class="desc" style=''>{{item.description}}</view>
-              </view>
-
-
-              <view style='margin-top:5px;'>
-                <text class="desc">{{item.updated_date_span}}</text>
-                <text class="desc primary" bindtap='deletePost' id="{{item.id}}" style='margin-left:5px;' wx:if="{{item.member_id_openid==UserInfo.openid||info.adminmember_id_name==UserInfo.openid}}">删除</text>
-                <text class="desc" style='margin-left:10vw;' bindtap='likePost' id="{{item.id}}">赞（{{item.like}}）</text>
-                <text class="desc" style='margin-left:7vw;;' bindtap='navtoPage' data-page="post" data-param="id={{item.id}}">评论（{{item.comment}}）</text>
-              </view>
-            </view>
-          </view>
-        </view>
+    <view class='icon next' bindtap='gotoMap' data-page="map" data-param="group_id={{info.id}}">
+      <view class='img'>
+        <image src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/icon-3-1.png'></image>
       </view>
-
-
-
-
-
+      <view class='txt'>位置</view>
+    </view>
+    <view class='icon next' bindtap='gotoNotify' data-page="notify" data-param="group_id={{info.id}}">
+      <view class='img'>
+        <image src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/icon-4-1.png'></image>
+      </view>
+      <view class='txt'>公告</view>
     </view>
   </view>
-
-
-
-
-
+</view>
+<view class='close'  bindtap='closebgselect' >
+<image src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/close.png'></image>
+</view>
 </view>

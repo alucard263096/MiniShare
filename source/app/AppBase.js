@@ -78,8 +78,9 @@ export class AppBase {
       switchTab: base.switchTab, 
       closePage: base.closePage,
       gotoPage: base.gotoPage,
-      navtoPage: base.navtoPage,
-      back: base.back
+      navtoPage: base.navtoPage, 
+      back: base.back,
+      gohome: base.gohome
     }
   }
   log() {
@@ -477,5 +478,10 @@ export class AppBase {
       wx.navigateBack({
         
       })
+  }
+  gohome() {
+    wx.navigateTo({
+      url: '../index/index',
+    })
   }
 } 

@@ -1,14 +1,14 @@
 {
   "pages": [
-    "pages/group/group",
     "pages/index/index",
+    "pages/post/post",
     "pages/groupmgr/groupmgr",
+    "pages/group/group",
     "pages/member/member",
     "pages/mypost/mypost",
     "pages/content/content",
     "pages/map/map",
     "pages/notify/notify",
-    "pages/post/post",
     "pages/vote/vote",
     "pages/album/album",
     "pages/albumdetail/albumdetail",

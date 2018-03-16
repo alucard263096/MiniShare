@@ -96,6 +96,7 @@
 .group-items{
   margin-left: 10px;
   margin-right:22px;
+  margin-bottom: 35px;
 }
 .item{
   margin-top: 28px;
@@ -141,7 +142,7 @@
 .open-share button{
   margin-top: 31px;
   margin-left: 15px;
-  margin-bottom: 74px;
+  margin-bottom: 20px;
   width: 345px;
   font-size: 16px;
   border-radius: 22px;
