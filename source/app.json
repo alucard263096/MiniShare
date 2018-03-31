@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/group/group",
     "pages/index/index",
     "pages/post/post",
     "pages/groupmgr/groupmgr",
-    "pages/group/group",
     "pages/member/member",
     "pages/mypost/mypost",
     "pages/content/content",

@@ -9,9 +9,9 @@
   padding-right:8vw;
   padding-top: 1vh;
   padding-bottom: 2vh;
-  -webkit-box-shadow: #ccc 0px 0px 3px;
-  -moz-box-shadow: #ccc 0px 0px 3px;
-  box-shadow: #ccc 0px 0px 3px;
+  -webkit-box-shadow: #ccc 0rpx 0rpx 6rpx;
+  -moz-box-shadow: #ccc 0rpx 0rpx 6rpx;
+  box-shadow: #ccc 0rpx 0rpx 6rpx;
 }
 .tab{
   text-align: center;
@@ -24,7 +24,7 @@
   width:5vh;
 }
 .tab .placeholder{
-  font-size: 13px;
+  font-size: 26rpx;
 }
 .photo{
   width: 15vw;
@@ -32,5 +32,5 @@
   border-radius: 7.5vw;
 }
 .weui-panel::after{
-  border-bottom: 0px;
+  border-bottom: 0rpx;
 }

@@ -54,6 +54,15 @@ class Content extends AppBase {
         })
       }
     });
+    wx.getLocation({
+      type: 'gcj02',
+      success: function (res) {
+        console.log(res);
+        var latitude = res.latitude;
+        var longitude = res.longitude;
+        that.Base.setMyData({ lng: longitude,lat:latitude });
+      }
+    });
   }
   onShow() {
     var that = this;

@@ -2,150 +2,150 @@
 .top-bg{
   background: url(http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/indexbg.png);
   background-size:  100% 100%;
-  height: 144px;
+  height: 288rpx;
 }
 .timespan{
   color:#999999;
-  font-size:11px;
+  font-size:22rpx;
   position:absolute;
   right:5vw;
 
 }
 .user-info{
-  margin-top:71px;
-  margin-left: 40px;
-  margin-right: 40px;
+  margin-top:142rpx;
+  margin-left: 80rpx;
+  margin-right: 80rpx;
 }
 .userphoto{
-  height: 54px;
-  width: 54px;
-  border-radius: 27px;
+  height: 108rpx;
+  width: 108rpx;
+  border-radius: 54rpx;
 }
 .username{
-  font-size: 16px;
+  font-size: 32rpx;
   color:white;
-  margin-left: 19px;
-  margin-top:18px;
-  width:200px;
-  height:22px;
+  margin-left: 38rpx;
+  margin-top:36rpx;
+  width:400rpx;
+  height:44rpx;
   overflow-x: hidden;
 }
 .go-right{
-  font-size: 18px;
+  font-size: 36rpx;
   color:white;
-  margin-top:16px;
-  margin-left: 10px;
+  margin-top:32rpx;
+  margin-left: 20rpx;
 }
 .user-center{
-  margin-top: 6px;
+  margin-top: 12rpx;
   background: #ffffff;
 }
 .user-center .title-shot{
-  width:3px;
-  height:9px;
-  margin-left:11px;
-  margin-top:14px;
+  width:6rpx;
+  height:18rpx;
+  margin-left:22rpx;
+  margin-top:28rpx;
   background:#5391E1;
 }
 .user-center .title{
   color:#666666;
-  font-size: 12px;
-  line-height: 12px;
-  margin-left: 7px;
-  margin-top:12px;
+  font-size: 24rpx;
+  line-height: 24rpx;
+  margin-left: 14rpx;
+  margin-top:24rpx;
 }
 .user-center .icons{
-  margin-top: 33px;
-  margin-bottom: 22px;
-  margin-left: 33px;
+  margin-top: 66rpx;
+  margin-bottom: 44rpx;
+  margin-left: 66rpx;
 }
 .user-center .icons .icon .img{
   text-align: center;
 }
 .user-center .icons .next{
-  margin-left: 52px;
+  margin-left: 104rpx;
 }
 .user-center .icons .icon .img image{
-  height: 22px;
-  width: 22px;
+  height: 44rpx;
+  width: 44rpx;
 }
 .user-center .icons .icon .txt{
-  font-size: 13px;
+  font-size: 26rpx;
   color:#333;
-  line-height: 13px;
-  margin-top: 5px;
+  line-height: 26rpx;
+  margin-top: 10rpx;
 }
 .user-share{
-  margin-top: 6px;
+  margin-top: 12rpx;
   background: #ffffff;
 }
 .user-share .title-shot{
-  width:3px;
-  height:9px;
-  margin-left:11px;
-  margin-top:14px;
+  width:6rpx;
+  height:18rpx;
+  margin-left:22rpx;
+  margin-top:28rpx;
   background:#5391E1;
 }
 .user-share .title{
   color:#666666;
-  font-size: 12px;
-  line-height: 12px;
-  margin-left: 7px;
-  margin-top:12px;
+  font-size: 24rpx;
+  line-height: 24rpx;
+  margin-left: 14rpx;
+  margin-top:24rpx;
 }
 .group-items{
-  margin-left: 10px;
-  margin-right:22px;
-  margin-bottom: 35px;
+  margin-left: 20rpx;
+  margin-right:44rpx;
+  margin-bottom: 70rpx;
 }
 .item{
-  margin-top: 28px;
+  margin-top: 56rpx;
 }
 
 .pics{
-  height: 50px;
-  width:50px;
-  line-height: 0px;
+  height: 100rpx;
+  width:100rpx;
+  line-height: 0rpx;
   background:#F1F0F1;
 }
 .pics image{
   border:none;padding:0;margin:0;
-  line-height: 0px;
+  line-height: 0rpx;
 }
 .content{
-  margin-left: 16px;
-  width:200px;
+  margin-left: 32rpx;
+  width:400rpx;
   overflow: hidden;
-  line-height:0px;
-  margin-top: 5px;
+  line-height:0rpx;
+  margin-top: 10rpx;
 }
 .content .gtitle{
-  font-size: 14px;
-  line-height: 14px;
-  width:200px;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  width:400rpx;
   overflow: hidden;
 }
 .content .gdesc{
-  font-size: 12px;
-  line-height: 12px;
-  height:13px;
+  font-size: 24rpx;
+  line-height: 24rpx;
+  height:26rpx;
   overflow: hidden;
-  margin-top:16px;
+  margin-top:32rpx;
   color:#999;
 }
 .timespan{
   color:#999999;
-  font-size: 11px;
+  font-size: 22rpx;
   text-align: right;
-  margin-top: 2px;
+  margin-top: 4rpx;
 }
 .open-share button{
-  margin-top: 31px;
-  margin-left: 15px;
-  margin-bottom: 20px;
-  width: 345px;
-  font-size: 16px;
-  border-radius: 22px;
+  margin-top: 62rpx;
+  margin-left: 30rpx;
+  margin-bottom: 40rpx;
+  width: 690rpx;
+  font-size: 32rpx;
+  border-radius: 44rpx;
   background: -webkit-linear-gradient(left, #50BAFF , #008BE5); 
   background: -o-linear-gradient(right, #50BAFF , #008BE5);
   background: -moz-linear-gradient(right, #50BAFF , #008BE5); 

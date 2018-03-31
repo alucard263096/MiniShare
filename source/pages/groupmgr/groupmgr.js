@@ -10,7 +10,7 @@ class Content extends AppBase {
 
   onLoad(options) {
     this.Base.Page = this;
-    options.id=1;
+    //options.id=1;
     super.onLoad(options);
     this.Base.setMyData({ list: [] });
   }

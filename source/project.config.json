@@ -10,7 +10,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "1.7.2",
 	"appid": "wx9a665ddb5319a107",
-	"projectname": "source",
+	"projectname": "minishare",
 	"condition": {
 		"search": {
 			"current": -1,

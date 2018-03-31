@@ -23,12 +23,12 @@ width:50vw;
 }
 .cover_text{
   padding-top: 8vh;
-  font-size: 15px;
+  font-size: 30rpx;
   text-align: center;
 }
 .selectoption{
   position:relative;
   left:3vw;
   top:5vh;
-  font-size:20px;
+  font-size:40rpx;
 }

@@ -178,10 +178,13 @@ export class AppBase {
                 console.log("goto update info");
                 memberapi.update(AppBase.UserInfo);
                 wx.getLocation({
-                  type: 'wgs84',
+                  type: 'gcj02',
                   success: function (res) {
-                    var latitude = res.latitude
-                    var longitude = res.longitude
+                    console.log(res);
+                    var latitude = res.latitude;
+                    var longitude = res.longitude;
+                    var loc = { lat: latitude,lng:longitude};
+                    that.Base.setMyData({ UserLocation: loc });
                     memberapi.updatelocation({lat:latitude,lng:longitude},data=>{
                       //console.error(data);
                     });

@@ -10,7 +10,7 @@
 
       <view class="weui-panel weui-panel_access" wx:for="{{list}}" wx:key="k">
         <view class="weui-panel__bd">
-          <view class=" weui-media-box_appmsg" style='border-top:0px;padding:15px;padding-top:0px;'>
+          <view class=" weui-media-box_appmsg" style='border-top:0rpx;padding:30rpx;padding-top:0rpx;'>
             <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
               <navigator class="weui-media-box__title" url='/pages/post/post?id={{item.id}}' style='margin-top:2vh;'>{{item.title}}</navigator>
               <view wx:if="{{item.operation=='P'}}" style='margin-top:2vh;'>
@@ -30,7 +30,7 @@
                 <block wx:for="{{item.voteoptions}}" wx:key="k" wx:for-item="opt">
                   <view class="weui-progress" style='margin-top:1vh;' id="{{opt.id}}" >
                     <view class="weui-progress__bar">
-                      <text style='font-size:15px;'>{{opt.optionstr}} ({{item.totalvote>0?opt.votemembers.length*100/item.totalvote:0}}%)</text>
+                      <text style='font-size:30rpx;'>{{opt.optionstr}} ({{item.totalvote>0?opt.votemembers.length*100/item.totalvote:0}}%)</text>
                       <progress percent="{{item.totalvote>0?opt.votemembers.length*100/item.totalvote:0}}" stroke-width="5" />
                     </view>
                   </view>
@@ -44,9 +44,9 @@
               </view>
 
 
-              <view style='margin-top:5px;'>
+              <view style='margin-top:10rpx;'>
                 <text class="desc">{{item.updated_date_span}}</text>
-                <text class="desc primary" bindtap='deletePost' id="{{item.id}}" style='margin-left:5px;' wx:if="{{item.member_id_openid==UserInfo.openid}}">删除</text>
+                <text class="desc primary" bindtap='deletePost' id="{{item.id}}" style='margin-left:10rpx;' wx:if="{{item.member_id_openid==UserInfo.openid}}">删除</text>
                 <text class="desc" style='margin-left:10vw;' bindtap='likePost' id="{{item.id}}">赞（{{item.like}}）</text>
                 <text class="desc" style='margin-left:7vw;;' bindtap='navtoPage' data-page="post" data-param="id={{item.id}}">评论（{{item.comment}}）</text>
               </view>

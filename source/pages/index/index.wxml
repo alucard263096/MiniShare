@@ -43,7 +43,7 @@
     </view>
 
 
-    <view class='flex-row' style='margin-top:20px;'>
+    <view class='flex-row' style='margin-top:40rpx;'>
       <view class='icon'>
         <view class='img'>
           <image src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/icon-5.png'></image>

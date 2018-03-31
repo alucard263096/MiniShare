@@ -11,16 +11,16 @@
             <image class="weui-media-box__thumb photo" src="{{info.member_id_photo}}" />
           </view>
           <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-            <view class="weui-media-box__title primary" style='font-size:14px;'>{{info.member_id_name}}</view>
-            <view class="weui-media-box__desc" style='font-size:10px;margin-top:1vh;'>{{info.updated_date_span}}
-              <text class="desc primary" bindtap='deletePost' id="{{info.id}}" style='margin-left:5px;font-size:10px;' wx:if="{{info.member_id_openid==UserInfo.openid}}">删除</text>
+            <view class="weui-media-box__title primary" style='font-size:28rpx;'>{{info.member_id_name}}</view>
+            <view class="weui-media-box__desc" style='font-size:20rpx;margin-top:1vh;'>{{info.updated_date_span}}
+              <text class="desc primary" bindtap='deletePost' id="{{info.id}}" style='margin-left:10rpx;font-size:20rpx;' wx:if="{{info.member_id_openid==UserInfo.openid}}">删除</text>
             </view>
 
           </view>
         </view>
       </view>
       <view class="weui-panel__bd">
-        <view url="" class=" weui-media-box_appmsg" style='border-top:0px;padding:15px;padding-top:0px;'>
+        <view url="" class=" weui-media-box_appmsg" style='border-top:0rpx;padding:30rpx;padding-top:0rpx;'>
           <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
             <view class="weui-media-box__title">{{info.title}}</view>
             <view wx:if="{{info.operation=='P'}}">
@@ -38,14 +38,14 @@
               <view class="desc" style=''>{{info.description}}</view>
               <block   wx:for="{{info.voteoptions}}" wx:key="k">
               <view class="weui-progress" style='margin-top:1vh;' id="{{item.id}}" bindtap='selectedOption'>
-                  <view class="weui-progress__bar"><text style='font-size:15px;'>{{item.optionstr}} ({{info.totalvote>0?(item.votemembers.length*100/info.totalvote):0}}%)</text>
+                  <view class="weui-progress__bar"><text style='font-size:30rpx;'>{{item.optionstr}} ({{info.totalvote>0?(item.votemembers.length*100/info.totalvote):0}}%)</text>
                       <progress percent="{{info.totalvote>0?item.votemembers.length*100/info.totalvote:0}}" stroke-width="5" />
                   </view>
                   <view class="weui-progress__opr">
                       <icon type="success" size="22" color="{{item.checked==0?'#ccc':''}}" ></icon>
                   </view>
               </view>
-              <view class="desc" style='margin-top:1vh;'><text wx:for="{{item.votemembers}}" wx:for-item="members" wx:key='c' style='margin-right:5px;'>{{members.nickName}}</text></view>
+              <view class="desc" style='margin-top:1vh;'><text wx:for="{{item.votemembers}}" wx:for-item="members" wx:key='c' style='margin-right:10rpx;'>{{members.nickName}}</text></view>
               </block>
               <view class="desc" style='margin-top:3vh;' wx:if="{{info.vote_expired_count>0}}">投票截止时间：{{info.vote_expired}}</view>
               <view class="desc" style='margin-top:3vh;' wx:if="{{info.vote_expired_count<0}}">投票已结束</view>
@@ -54,10 +54,10 @@
             <view wx:if="{{info.operation=='N'}}">
               <view class="desc" style=''>{{info.description}}</view>
             </view>
-            <view style='margin-top:5px;'>
+            <view style='margin-top:10rpx;'>
               <text class="desc" style=''>阅读数（{{info.readcount}}）</text>
               <text class="desc" style='margin-left:5vw;' bindtap='likePost' id="{{info.id}}">赞（{{info.like}}）</text>
-              <text class="desc" style='margin-left:5px;'>评论（{{info.comment}}）</text>
+              <text class="desc" style='margin-left:10rpx;'>评论（{{info.comment}}）</text>
             </view>
           </view>
         </view>
@@ -66,10 +66,10 @@
     <view class="page__bd page__bd_spacing" style='padding-left:20vw;padding-right:20vw;margin-top:3vh;'>
       <button class="weui-btn" type="primary" open-type="share">发布到微信群</button>
     </view>
-    <view class="page__bd primary page__bd_spacing" style='margin-top:5vh;text-align:center;font-size:14px;' bindtap='switchTab' id="index">
+    <view class="page__bd primary page__bd_spacing" style='margin-top:5vh;text-align:center;font-size:28rpx;' bindtap='switchTab' id="index">
       返回首页
     </view>
-    <view class="page__bd  page__bd_spacing" style='background:#f2f2f2;margin-left:10vw;margin-right:10vw;margin-top:5vh;font-size:12px;padding:1vh;' wx:if="{{commentlist.length>0}}" >
+    <view class="page__bd  page__bd_spacing" style='background:#f2f2f2;margin-left:10vw;margin-right:10vw;margin-top:5vh;font-size:24rpx;padding:1vh;' wx:if="{{commentlist.length>0}}" >
       <view wx:for="{{commentlist}}" wx:key="k"><text class='primary'>{{item.member_id_name}}</text><text>：{{item.comment}}</text></view>
     </view>
   </view>

@@ -50,17 +50,17 @@
     </view>
   </view>
 </view>
-<view class='bg-white ' wx:if="{{notice.id!='0'}}">
+<view class='bg-white ' wx:if="{{latestnotice.id!='0'}}">
   <view class='flex-row latestnotice'>
     <view class='notice-horn'>
-      <image src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/notice.png'></image>
+      <image src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/latestnotice.png'></image>
     </view>
-    <navigator url='/pages/post/post?id={{notice.id}}' class='notice-txt'>
-      {{notice.description}}
+    <navigator url='/pages/post/post?id={{latestnotice.id}}' class='notice-txt'>
+      {{latestnotice.description}}
     </navigator>
   </view>
 </view>
-<view class='bg-white quweicenter' style='margin-top:5px;'>
+<view class='bg-white quweicenter' style='margin-top:10rpx;'>
   <view class='flex-row'>
     <view class='title-shot'></view>
     <view class='title-view'>趣味中心</view>
@@ -94,7 +94,7 @@
     </view>
   </view>
 </view>
-<view class='bg-white posts' style='margin-top:5px;padding-bottom:25px;'>
+<view class='bg-white posts' style='margin-top:10rpx;padding-bottom:50rpx;'>
   <view class="post" wx:for="{{list}}" wx:key="k">
     <view class='flex-row'>
       <view class='date'>{{item.updated_date_split.date}}</view>
@@ -109,13 +109,13 @@
     </view>
     <view class='flex-row'>
       <view class='sctop' wx:if="{{item.operation=='N'}}">
-        <view class='ball'></view>
+          <image  class='ball' src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/n.png'></image>
       </view>
       <view class='sctop-o' wx:if="{{item.operation=='P'}}">
-        <view class='ball-o'></view>
+          <image class='ball-o'  src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/p.png'></image>
       </view>
       <view class='sctop-r' wx:if="{{item.operation=='V'}}">
-        <view class='ball-r'></view>
+          <image  class='ball-r' src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/v.png'></image>
       </view>
       <view class='postbody flex-1'>
         <view class='operationstr'>{{item.operationstr}}</view>
@@ -133,8 +133,8 @@
           <block wx:for="{{item.voteoptions}}" wx:key="k" wx:for-item="opt">
             <view style='margin-top:1.5vh;' id="{{opt.id}}">
               <view class="weui-progress__bar">
-                <text style='font-size:12px;color:#999;'>{{opt.optionstr}} ({{item.totalvote>0?opt.votemembers.length*100/item.totalvote:0}}%)</text>
-                <progress style='margin-top:6px;' percent="{{item.totalvote>0?opt.votemembers.length*100/item.totalvote:0}}" stroke-width="5" />
+                <text style='font-size:24rpx;color:#999;'>{{opt.optionstr}} ({{item.totalvote>0?opt.votemembers.length*100/item.totalvote:0}}%)</text>
+                <progress style='margin-top:12rpx;' percent="{{item.totalvote>0?opt.votemembers.length*100/item.totalvote:0}}" stroke-width="5" />
               </view>
             </view>
           </block>
@@ -142,7 +142,7 @@
           <view class="desc" style='margin-top:3vh;' wx:if="{{item.vote_expired_count<<0}}">投票已结束</view>
         </navigator>
         <view class='flex-row'>
-          <view wx:for="{{item.memberview}}" wx:key="kf" style='margin-right:6px;'>
+          <view wx:for="{{item.memberview}}" wx:key="kf" style='margin-right:12rpx;'>
             <image class='photo' src="{{item.avatarUrl}}"></image>
           </view>
           <view class='viewpeople'>{{item.memberviewcount}}人浏览过</view>

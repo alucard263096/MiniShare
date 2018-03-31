@@ -2,6 +2,7 @@
 import { AppBase } from "../../app/AppBase";
 import { GroupApi } from "../../apis/group.api.js";
 import { PostApi } from "../../apis/post.api.js";
+import { NoticeApi } from "../../apis/notice.api.js";
 
 class Content extends AppBase {
   constructor() {
@@ -10,8 +11,17 @@ class Content extends AppBase {
 
   onLoad(options) {
     this.Base.Page = this;
+    options.id=1;
     super.onLoad(options);
-    this.Base.setMyData({list:[],notice:{id:"0"}});
+    this.Base.setMyData({list:[],latestnotice:{id:"0"}});
+    var that=this;
+    var noticeapi=new NoticeApi();
+    noticeapi.latestnotice({ group_id: this.Base.options.id},function(data){
+      if(data.id==undefined){
+        data.id=0;
+      }
+      that.Base.setMyData({ latestnotice: data });
+    });
   }
 
   onShow() {
@@ -40,21 +50,17 @@ class Content extends AppBase {
     
     postApi.list(json,
       data => {
-        var notice = that.Base.getMyData().notice;
         for (var i = 0; i < data.length; i++) {
           data[i]["updated_date_split"] = AppBase.Util.Datetime2(Number(data[i]["updated_date_span"]));
 
           data[i]["updated_date_span"] = AppBase.Util.Datetime_str(Number(data[i]["updated_date_span"]));
-          if (data[i]["operation"] == "N" && notice.id == "0") {
-            notice = data[i];
-          }
         }
         var list = that.Base.getMyData().list;
         for(var i=0;i<list.length;i++){
           data.push(list[i]);
         }
         if(data.length>0){
-          that.Base.setMyData({ list: data, notice: notice, newgettime: data[0].updated_date,lastgettime:data[data.length-1].updated_date });
+          that.Base.setMyData({ list: data,  newgettime: data[0].updated_date,lastgettime:data[data.length-1].updated_date });
         }
       });
   }
@@ -94,20 +100,16 @@ class Content extends AppBase {
 
     postApi.list(json,
       data => {
-        var notice = that.Base.getMyData().notice;
         for (var i = 0; i < data.length; i++) {
           data[i]["updated_date_split"] = AppBase.Util.Datetime2(Number(data[i]["updated_date_span"]));
           data[i]["updated_date_span"] = AppBase.Util.Datetime_str(Number(data[i]["updated_date_span"]));
-          if (data[i]["operation"] == "N" && notice.id == "0") {
-            notice = data[i];
-          }
         }
         var list = that.Base.getMyData().list;
         for (var i = 0; i < list.length; i++) {
           data.push(list[i]);
         }
         if (data.length > 0) {
-          that.Base.setMyData({ list: data, notice: notice, newgettime: data[0].updated_date, lastgettime: data[data.length - 1].updated_date });
+          that.Base.setMyData({ list: data,  newgettime: data[0].updated_date, lastgettime: data[data.length - 1].updated_date });
         }
       });
   }
