@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/group/group",
+    "pages/notify/notify",
+    "pages/notifylist/notifylist",
     "pages/index/index",
     "pages/post/post",
     "pages/groupmgr/groupmgr",
@@ -8,7 +10,6 @@
     "pages/mypost/mypost",
     "pages/content/content",
     "pages/map/map",
-    "pages/notify/notify",
     "pages/vote/vote",
     "pages/album/album",
     "pages/albumdetail/albumdetail",

@@ -172,6 +172,11 @@ class Content extends AppBase {
       url: '/pages/notify/notify?group_id=' + this.Base.options.id,
     });
   }
+  gotoNotifyList() {
+    wx.navigateTo({
+      url: '/pages/notifylist/notifylist?group_id=' + this.Base.options.id,
+    });
+  }
   gotoMap() {
     wx.navigateTo({
       url: '/pages/map/map?group_id=' + this.Base.options.id,
@@ -198,7 +203,8 @@ body.deletePost = page.deletePost;
 body.onPullDownRefresh = page.onPullDownRefresh;
 body.onReachBottom = page.onReachBottom;
 body.likePost = page.likePost; 
-body.gotoVote = page.gotoVote;  
+body.gotoVote = page.gotoVote; 
+body.gotoNotifyList = page.gotoNotifyList;
 body.gotoNotify = page.gotoNotify;
 body.gotoVote = page.gotoVote; 
 body.gotoMap = page.gotoMap; 

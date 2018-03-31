@@ -102,6 +102,15 @@ button[type="primary"]{
   margin-top:24rpx;
 }
 .superheader{
-  background: #4D9CFB;
+  background: #29A5EE;
   height: 140rpx;
+}
+.superheader .title{
+  color:white;
+  font-size: 40rpx;
+  text-align: center;
+  margin-top: 50rpx;
+}
+.text-right{
+  text-align: right;
 }

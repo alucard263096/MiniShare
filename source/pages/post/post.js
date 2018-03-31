@@ -144,6 +144,11 @@ class Content extends AppBase {
       }
     });
   }
+  gotoGroup(){
+    wx.redirectTo({
+      url: '/pages/group/group?id=' + this.Base.options.group_id,
+    })
+  }
 }
 var page = new Content();
 var body = page.generateBodyJson();
@@ -152,7 +157,8 @@ body.onShow = page.onShow;
 body.onShareAppMessage = page.onShareAppMessage;
 body.likePost = page.likePost;
 body.commentChange = page.commentChange; 
-body.sendComment = page.sendComment;
+body.sendComment = page.sendComment; 
 body.selectedOption = page.selectedOption;
+body.gotoGroup = page.gotoGroup;
 
 Page(body)
