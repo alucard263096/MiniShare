@@ -1,5 +1,5 @@
 <!--pages/group/group.wxml-->
-<text class='fa fa-chevron-left btnback' bindtap='back'></text>
+<text class='fa fa-chevron-left btnback' bindtap='gohome'></text>
 <view class='top-bg'>
   <view class='header'>
     <open-data type="groupName" open-gid="{{info.opengid}}"></open-data>
@@ -24,7 +24,7 @@
 </view>
 <view class='bg-white '>
   <view class='icons flex-row'>
-    <view class='icon first' bindtap='gotoVote' data-page="vote" data-param="group_id={{info.id}}">
+    <view class='icon first' bindtap='gotoVoteList' data-page="vote" data-param="group_id={{info.id}}">
       <view class='img'>
         <image src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/icon-1.png'></image>
       </view>
@@ -135,14 +135,16 @@
 
         </navigator>
         <navigator url='/pages/post/post?id={{item.id}}' class='postcontent' wx:if="{{item.operation=='V'}}">
-          <view>{{item.description}}</view>
-          <block wx:for="{{item.voteoptions}}" wx:key="k" wx:for-item="opt">
-            <view style='margin-top:1.5vh;' id="{{opt.id}}">
-              <view class="weui-progress__bar">
-                <text style='font-size:24rpx;color:#999;'>{{opt.optionstr}} ({{item.totalvote>0?opt.votemembers.length*100/item.totalvote:0}}%)</text>
-                <progress style='margin-top:12rpx;' percent="{{item.totalvote>0?opt.votemembers.length*100/item.totalvote:0}}" stroke-width="5" />
-              </view>
-            </view>
+          <view>{{item.title}}</view>
+          <block wx:for="{{item.voteoptions}}" wx:key="k">
+          <view class='options flex-row'  bindtap='selectedOption'  id="{{item.id}}" >
+          <view class='flex-4'>
+          {{item.optionstr}}
+          </view>
+          <view class='flex-1 text-right'>
+          ({{item.votemembers.length}}票)
+          </view>
+          </view>
           </block>
           <view class="desc" style='margin-top:3vh;' wx:if="{{item.vote_expired_count>0}}">投票截止时间：{{info.vote_expired}}</view>
           <view class="desc" style='margin-top:3vh;' wx:if="{{item.vote_expired_count<<0}}">投票已结束</view>

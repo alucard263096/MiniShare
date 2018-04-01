@@ -13,7 +13,6 @@ class Content extends AppBase {
     this.Base.setMyData({ group_id: options.group_id });
 
     var that=this;
-
   }
 
   onShow() {
@@ -24,7 +23,7 @@ class Content extends AppBase {
     var data = this.Base.getMyData();
     var json = {
       group_id: this.Base.options.group_id,
-      operation: "N"
+      operation: "V"
     };
     postApi.list(json, (list) => {
       that.Base.setMyData({ list: list });
@@ -32,10 +31,9 @@ class Content extends AppBase {
   }
 
   sendNotice(e) {
-
-    wx.navigateTo({
-      url: '/pages/notice/notice?group_id=' + this.Base.options.group_id,
-    })
+   wx.navigateTo({
+     url: '/pages/vote/vote?group_id='+this.Base.options.group_id,
+   })
   }
 
   deletePost(e) {
@@ -57,7 +55,7 @@ class Content extends AppBase {
 
   gotoNotify() {
     wx.navigateTo({
-      url: '/pages/notify/notify?group_id=' + this.Base.options.group_id,
+      url: '/pages/vote/vote?group_id=' + this.Base.options.group_id,
     });
   }
 }

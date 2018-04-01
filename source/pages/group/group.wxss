@@ -380,3 +380,16 @@
   font-size: 28rpx;
   color:#666666;
 }
+
+page{
+  margin-top: 0rpx;
+}
+
+
+.options{
+  background: #F1F1F1;
+  font-size: 24rpx;
+  color:#666666;
+  padding: 17rpx;
+  margin-top:28rpx;
+}

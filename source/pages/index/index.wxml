@@ -16,7 +16,7 @@
   </view>
   <view class='icons'>
     <view class='flex-row'>
-      <navigator url="/pages/mypost/mypost?operation=V" class='icon'>
+      <navigator url="/pages/votelist/votelist" class='icon'>
         <view class='img'>
           <image src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/icon-1.png'></image>
         </view>
@@ -34,7 +34,7 @@
         </view>
         <view class='txt'>群位置</view>
       </view>
-      <navigator url="/pages/mypost/mypost?operation=N"  class='icon next'>
+      <navigator url="/pages/notifylist/notifylist"  class='icon next'>
         <view class='img'>
           <image src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/icon-4.png'></image>
         </view>

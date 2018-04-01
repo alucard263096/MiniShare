@@ -78,7 +78,7 @@ button[type="primary"]{
   color:#4D9CFB;
 }
 .btnback{
-  position: absolute;
+  position: fixed;
   top:70rpx;
   left:40rpx;
   color:white;
@@ -104,12 +104,22 @@ button[type="primary"]{
 .superheader{
   background: #29A5EE;
   height: 140rpx;
+  width: 750rpx;
+  position: fixed;
+  top: 0px;
+  left: 0px;
 }
 .superheader .title{
   color:white;
   font-size: 40rpx;
   text-align: center;
   margin-top: 50rpx;
+}
+.text-right{
+    text-align: right;
+}
+page{
+  margin-top: 140rpx;
 }
 .text-right{
   text-align: right;

@@ -70,7 +70,7 @@ class Content extends AppBase {
       } else {
         
         wx.navigateTo({
-          url: '/pages/post/post?id=' + data.return,
+          url: '/pages/post/post?group_id='+this.Base.options.group_id+'&id=' + data.return,
         })
       }
     });

@@ -4,13 +4,14 @@ import { PostApi } from "../../apis/post.api.js";
 import { WechatApi } from "../../apis/wechat.api";
 import { GroupApi } from "../../apis/group.api";
 import { VoteApi } from "../../apis/vote.api.js";
+import { ApiUtil } from "../../apis/apiutil.js";
 
 class Content extends AppBase {
   constructor() {
     super();
   }
   onLoad(options) {
-    //options.id=23;
+   // options.id = 223;
     this.Base.Page = this;
     super.onLoad(options);
     var postapi=new PostApi();
@@ -45,6 +46,9 @@ class Content extends AppBase {
     var that = this;
     var postApi = new PostApi();
     postApi.commentlist({ post_id: this.options.id }, data => {
+      for(var i=0;i<data.length;i++){
+        data[i].update_span = ApiUtil.Datetime_str(ApiUtil.StrToDate(data[i].updated_date).getTime()/1000 );
+      }
       that.setMyData({ commentlist: data });
     
     });
@@ -109,7 +113,8 @@ class Content extends AppBase {
     });
   }
   commentChange(e){
-    this.Base.setMyData({comment:e.detail.value});
+    var str=e.detail.value;
+    this.Base.setMyData({ comment: str});
   }
   sendComment(){
     var that = this;
@@ -149,6 +154,18 @@ class Content extends AppBase {
       url: '/pages/group/group?id=' + this.Base.options.group_id,
     })
   }
+  myback(){
+    var group_id=this.Base.options.group_id;
+    if(group_id!=undefined){
+      wx.navigateTo({
+        url: '/pages/group/group?id='+group_id,
+      });
+    }else{
+      wx.navigateBack({
+        
+      })
+    }
+  }
 }
 var page = new Content();
 var body = page.generateBodyJson();
@@ -158,7 +175,8 @@ body.onShareAppMessage = page.onShareAppMessage;
 body.likePost = page.likePost;
 body.commentChange = page.commentChange; 
 body.sendComment = page.sendComment; 
-body.selectedOption = page.selectedOption;
+body.selectedOption = page.selectedOption; 
 body.gotoGroup = page.gotoGroup;
+body.myback = page.myback;
 
 Page(body)

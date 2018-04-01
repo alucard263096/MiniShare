@@ -11,7 +11,7 @@ class Content extends AppBase {
 
   onLoad(options) {
     this.Base.Page = this;
-    options.id=1;
+    //options.id=1;
     super.onLoad(options);
     this.Base.setMyData({list:[],latestnotice:{id:"0"}});
     var that=this;
@@ -167,6 +167,11 @@ class Content extends AppBase {
       url: '/pages/vote/vote?group_id=' + this.Base.options.id,
     });
   }
+  gotoVoteList() {
+    wx.navigateTo({
+      url: '/pages/votelist/votelist?group_id=' + this.Base.options.id,
+    });
+  }
   gotoNotify() {
     wx.navigateTo({
       url: '/pages/notify/notify?group_id=' + this.Base.options.id,
@@ -205,8 +210,9 @@ body.onReachBottom = page.onReachBottom;
 body.likePost = page.likePost; 
 body.gotoVote = page.gotoVote; 
 body.gotoNotifyList = page.gotoNotifyList;
-body.gotoNotify = page.gotoNotify;
-body.gotoVote = page.gotoVote; 
+body.gotoNotify = page.gotoNotify; 
+body.gotoVote = page.gotoVote;
+body.gotoVoteList = page.gotoVoteList; 
 body.gotoMap = page.gotoMap; 
 body.gotoMgr = page.gotoMgr;
 body.openbgselect = page.openbgselect;

@@ -1,17 +1,19 @@
 <!--pages/notify/notify.wxml-->
 <view class='superheader'>
-  <view class='title'>群公告</view>
+  <view class='title'>群投票</view>
 </view>
 <text class='fa fa-chevron-left btnback' bindtap='back'></text>
 <view>
   <navigator url='/pages/post/post?id={{item.id}}' id="{{item.id}}" class='noticeitem debug' wx:for="{{list}}" wx:key="k">
+    <view class='flex-row'>
     <view class='title'>{{item.title}}</view>
+    <view class='flex-1' style='text-align:right;position:absolute;right:28rpx;' wx:if="{{item.vote_expired_count<0}}">
+      <view class='votedone'>投票结束</view>
+    </view>
+    </view>
     <view class='description'>{{item.description}}</view>
     <view class='flex-row'>
-      <view>
-        <image class='photo' src="{{item.member_id_photo}}"></image>
-      </view>
-      <view class='membername'>{{item.member_id_name}}</view>
+      <view class='membername'>{{item.totalvote}}人参与</view>
       <view class='delete' wx:if="{{item.member_id_openid==UserInfo.openid||info.adminmember_id_name==UserInfo.openid}}" bindtap='deletePost' id="{{item.id}}">删除</view>
       <view class='flex-1 updatetime text-right'>{{item.updated_date_str}}</view>
     </view>
@@ -19,7 +21,7 @@
   <view>
     <view class="page__bd page__bd_spacing" >
       <form name='uploadform' report-submit bindsubmit='gotoNotify'>
-        <button class="btnNotice" type="primary" form-type="submit">发起公告</button>
+        <button class="btnNotice" type="primary" form-type="submit">发起投票</button>
       </form>
     </view>
   </view>

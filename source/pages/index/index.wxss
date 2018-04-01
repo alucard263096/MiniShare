@@ -151,3 +151,7 @@
   background: -moz-linear-gradient(right, #50BAFF , #008BE5); 
   background: linear-gradient(to right, #50BAFF , #008BE5); 
 }
+
+page{
+  margin-top: 0rpx;
+}
