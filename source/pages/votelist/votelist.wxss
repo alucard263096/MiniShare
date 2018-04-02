@@ -28,7 +28,6 @@
 }
 .noticeitem .membername{
   margin-top: 10rpx;
-  margin-left: 11rpx;
   font-size: 24rpx;
   color:#999999;
 }
