@@ -53,9 +53,14 @@
         </view>
       </view>
     </view>
-    <view class="page__bd page__bd_spacing" style='padding-left:20vw;padding-right:20vw;margin-top:3vh;'>
+  </view>
+
+
+
+  <view>
+    <view class="page__bd page__bd_spacing" >
       <form name='uploadform' report-submit bindsubmit='sendVote'>
-        <button class="weui-btn" type="primary" form-type="submit">发起投票</button>
+        <button class="btnNotice" type="primary" form-type="submit">发起投票</button>
       </form>
     </view>
   </view>
