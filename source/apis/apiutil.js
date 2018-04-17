@@ -97,6 +97,7 @@ export class ApiUtil {
   
   static Datetime_str(timespan) {
     var now = new Date().getTime() / 1000;
+    console.log(now.toString() +"now:");
     timespan = now - timespan;
     if(timespan<0){
       return "刚刚";
@@ -122,5 +123,20 @@ export class ApiUtil {
     var month=now.getMonth()+1;
     var date=now.getDate();
     return {year:year,month:month,date:date};
-  } 
+  }
+  static StrToDate(timestr){
+    var s=timestr.split(" ");
+    var date=s[0].split("-");
+    var time = s[1].split(":");
+
+    var year = Number(date[0]);
+    var month = Number(date[1])-1;
+    var day = Number(date[2]);
+
+    var hour = Number(time[0]);
+    var minute = Number(time[1]);
+    var second = Number(time[2]);
+
+    return new Date(year,month,day,hour,minute,second);
+  }
 }

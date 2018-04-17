@@ -1,5 +1,7 @@
 <!--pages/vote/vote.wxml-->
-<view class='superheader'></view>
+<view class='superheader'>
+  <view class='title'>群投票</view>
+</view>
 <text class='fa fa-chevron-left btnback' bindtap='back'></text>
 
 
@@ -27,33 +29,38 @@
       </view>
       <view class="weui-cell weui-cell_input weui-cell_warn" bindtap='addOption'>
         <view class="weui-cell__hd">
-          <text class='fa fa-plus-circle primary' ></text>
+          <text class='fa fa-plus-circle primary'></text>
         </view>
         <view class="weui-cell__bd">
           <text class='weui-input primary' style='padding-left:20rpx;'>添加选项</text>
         </view>
       </view>
-            <view class="weui-cell weui-cell_input">
-                <view class="weui-cell__hd">
-                    <view class="weui-label">截至时间</view>
-                </view>
-                <view class="weui-cell__bd">
-                    <view class='flex-row'>
-                      
-                    <picker mode="date" value="{{date}}" start="{{startdate}}"  bindchange="bindDateChange">
-                        <view class="weui-input">{{date}}</view>
-                    </picker>
-                    
-                    <picker mode="time" value="{{time}}" bindchange="bindTimeChange" style='margin-left:20rpx;'>
-                        <view class="weui-input">{{time}}</view>
-                    </picker>
-                    </view>
-                </view>
-            </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">截至时间</view>
+        </view>
+        <view class="weui-cell__bd">
+          <view class='flex-row'>
+
+            <picker mode="date" value="{{date}}" start="{{startdate}}" bindchange="bindDateChange">
+              <view class="weui-input">{{date}}</view>
+            </picker>
+
+            <picker mode="time" value="{{time}}" bindchange="bindTimeChange" style='margin-left:20rpx;'>
+              <view class="weui-input">{{time}}</view>
+            </picker>
+          </view>
+        </view>
+      </view>
     </view>
-    <view class="page__bd page__bd_spacing" style='padding-left:20vw;padding-right:20vw;margin-top:3vh;'>
+  </view>
+
+
+
+  <view>
+    <view class="page__bd page__bd_spacing" >
       <form name='uploadform' report-submit bindsubmit='sendVote'>
-      <button class="weui-btn" type="primary" form-type="submit" >发起投票</button>
+        <button class="btnNotice" type="primary" form-type="submit">发起投票</button>
       </form>
     </view>
   </view>
