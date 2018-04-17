@@ -1,0 +1,28 @@
+<!--pages/albumcreate/albumcreate.wxml-->
+<view class='superheader'>
+  <view class='title'>创建群相册</view>
+</view>
+<text class='fa fa-chevron-left btnback' bindtap='back'></text>
+
+<view class='bg-white' style='padding:50rpx;padding-right:0rpx;padding-bottom:33rpx;'>
+  <view style='margin-top:5rpx;margin-left:15rpx;color:#999999;font-size:28rpx;'>选择相册分类</view>
+  <view class='flex-row' style='flex-wrap:wrap;width:700rpx;margin-top:32rpx;'>
+    <label wx:for="{{cats}}" wx:key="k" class='label {{item.active==true?"active":""}}' id="{{item.id}}" bindtap='changeLabel' >{{item.name}}</label>
+  </view>
+  <view style='margin-top:21rpx;margin-left:15rpx;color:#999999;font-size:28rpx;'>相册名称</view>
+  <view style='margin-right:50rpx;'>
+    <input style='background:#f1f1f1;font-size:28rpx;padding:15rpx;font-size:#333333;margin-top:33rpx;' value='{{name}}' placeholder='请输入相册名称' bindinput='changeName'></input>
+  </view>
+  <view style='margin-top:59rpx;margin-left:15rpx;color:#999999;font-size:28rpx;'>相册名称</view>
+  <view style='margin-top:35rpx;width:650rpx;height:200rpx;background:#f1f1f1;color:#999999;text-align:center;padding-top:100rpx;' bindtap='changeCover' wx:if="{{cover==''}}" >点击选择封面</view>
+  <image style='margin-top:35rpx;width:650rpx;height:300rpx;background:#f1f1f1;color:#999999;text-align:center;' src="{{uploadpath}}album/{{cover}}" bindtap='changeCover'  wx:if="{{cover!=''}}" mode="aspectFill" ></image>
+</view>
+
+
+  <view>
+    <view class="page__bd page__bd_spacing" >
+      <form name='uploadform' report-submit bindsubmit='createAlbum'>
+        <button class="btnImportment" type="primary" form-type="submit">创建我的相册</button>
+      </form>
+    </view>
+  </view>

@@ -103,7 +103,7 @@ button[type="primary"]{
 }
 .superheader{
   background: #29A5EE;
-  height: 140rpx;
+  height: 148rpx;
   width: 750rpx;
   position: fixed;
   top: 0px;
@@ -113,7 +113,7 @@ button[type="primary"]{
   color:white;
   font-size: 40rpx;
   text-align: center;
-  margin-top: 50rpx;
+  margin-top: 60rpx;
 }
 .text-right{
     text-align: right;
@@ -123,4 +123,20 @@ page{
 }
 .text-right{
   text-align: right;
+}
+
+
+
+.btnImportment{
+  padding-top: 4rpx;
+  padding-bottom: 4rpx;
+  font-size: 32rpx;
+  margin-top: 33rpx;
+  width: 689rpx;
+  border-radius: 44rpx;
+  background: -webkit-linear-gradient(left, #50BAFF , #008BE5); 
+  background: -o-linear-gradient(right, #50BAFF , #008BE5);
+  background: -moz-linear-gradient(right, #50BAFF , #008BE5); 
+  background: linear-gradient(to right, #50BAFF , #008BE5); 
+  margin-bottom: 43rpx;
 }

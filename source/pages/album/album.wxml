@@ -1,9 +1,7 @@
 <!--pages/album/album.wxml-->
 <!--pages/meeting/meeting.wxml-->
-<view class='superheader'></view>
-<text class='fa fa-chevron-left btnback' bindtap='back'></text>
-
-
+<view class='superheader'><view class='title'>云相册</view></view>
+<text class='fa fa-angle-left btnback' bindtap='back'></text>
 
 <view class="page">
   <view class="page__bd">

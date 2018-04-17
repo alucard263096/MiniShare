@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/album/album",
+    "pages/albumcreate/albumcreate",
     "pages/index/index",
     "pages/group/group",
     "pages/post/post",
