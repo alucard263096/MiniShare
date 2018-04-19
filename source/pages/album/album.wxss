@@ -1,34 +1,20 @@
 /* pages/album/album.wxss */
-page,
-.page,
-.page__bd{
-    height: 100%;
-}
-.page__bd{
-    padding-bottom: 0;
-}
-.weui-navbar__slider{
-width:50vw;
-}
+
 .flexbox{
-  width: 50vw;
-  min-height: 50vw;
-  background-image: url("https://cmsdev.app-link.org/Users/alucard263096/minishare/upload/icon/cover.png");
-  background-size: 40vw 40vw;
-  background-repeat: no-repeat;
-  background-position: 5vw;
+margin-left: 22rpx;
+margin-right: 20rpx;
+width: 708rpx;
+margin-bottom: 20rpx;
 }
-.cover{
-  width:30vw;height:30vw;margin-top:4vh;margin-left:6.7vw;
+.flexbox image{
+
+width: 708rpx;
+height: 330rpx;
 }
-.cover_text{
-  padding-top: 8vh;
-  font-size: 30rpx;
-  text-align: center;
-}
-.selectoption{
-  position:relative;
-  left:3vw;
-  top:5vh;
-  font-size:40rpx;
+
+.btnImportment{
+  position: fixed;
+  bottom: 22rpx;
+  left: 226rpx;
+  width: 289rpx;
 }

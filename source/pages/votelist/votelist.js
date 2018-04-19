@@ -10,7 +10,7 @@ class Content extends AppBase {
     //options.group_id=1;
     this.Base.Page = this;
     super.onLoad(options);
-    this.Base.setMyData({ group_id: options.group_id });
+    this.Base.setMyData({ group_id: options.group_id, hiddenmodalput: true });
 
     var that=this;
   }
@@ -54,9 +54,34 @@ class Content extends AppBase {
   }
 
   gotoNotify() {
+    //wx.navigateTo({
+     // url: '/pages/vote/vote?group_id=' + this.Base.options.group_id,
+    //});
+    this.Base.setMyData({ hiddenmodalput: false, votetitle:""});
+  }
+
+  cancelCreate() {
+    this.Base.setMyData({ hiddenmodalput: true });
+  }
+  confirmCreate() {
+    var title = this.Base.getMyData().votetitle;
+    if(title.trim()==""){
+      wx.showToast({
+        title: '标题不能为空',
+      })
+      return;
+    }
+    this.Base.setMyData({ hiddenmodalput: true });
     wx.navigateTo({
-      url: '/pages/vote/vote?group_id=' + this.Base.options.group_id,
-    });
+      url: '/pages/vote/vote?title=' + JSON.stringify(title) + "&group_id=" +this.Base.options.group_id,
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+  }
+  inputVotetitle(e) {
+    var name = e.detail.value;
+    this.Base.setMyData({ votetitle: name });
   }
 }
 var page = new Content();
@@ -66,4 +91,7 @@ body.onShow = page.onShow;
 body.sendNotice = page.sendNotice;
 body.deletePost = page.deletePost; 
 body.gotoNotify = page.gotoNotify;
+body.cancelCreate = page.cancelCreate;
+body.confirmCreate = page.confirmCreate;
+body.inputVotetitle = page.inputVotetitle;
 Page(body)

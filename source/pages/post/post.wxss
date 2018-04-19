@@ -178,3 +178,26 @@
   padding: 17rpx;
   margin-top:28rpx;
 }
+
+
+.pdelete{
+  position: absolute;
+  right:36rpx;
+  margin-top: -50rpx;
+  color:#2D72B6;
+  font-size: 24rpx;
+}
+.photo_1 image{
+  width: 684rpx;
+  height: 471rpx;
+}
+.photo_2 image{
+  width: 322rpx;
+  height: 235rpx;
+  margin-right: 10rpx;
+}
+.photo_3 image{
+  width: 216rpx;
+  height: 212rpx;
+  margin-right: 15rpx;
+}

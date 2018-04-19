@@ -18,8 +18,8 @@
   </navigator>
   <view>
     <view class="page__bd page__bd_spacing" >
-      <form name='uploadform' report-submit bindsubmit='gotoNotify'>
-        <button class="btnNotice" type="primary" form-type="submit">发起公告</button>
+      <form name='uploadform' report-submit >
+        <button class="btnNotice" type="primary" bindtap='gotoNotify' >发起公告</button>
       </form>
     </view>
   </view>

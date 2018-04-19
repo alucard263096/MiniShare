@@ -11,7 +11,7 @@ class Content extends AppBase {
     super();
   }
   onLoad(options) {
-   // options.id = 223;
+    //options.id = 268;
     this.Base.Page = this;
     super.onLoad(options);
     var postapi=new PostApi();
@@ -166,6 +166,16 @@ class Content extends AppBase {
       })
     }
   }
+  deletePost(e) {
+    var that = this;
+    var postApi = new PostApi();
+    postApi.adelete({ idlist: this.Base.options.id },
+      data => {
+        wx.navigateBack({
+          
+        })
+      });
+  }
 }
 var page = new Content();
 var body = page.generateBodyJson();
@@ -178,5 +188,6 @@ body.sendComment = page.sendComment;
 body.selectedOption = page.selectedOption; 
 body.gotoGroup = page.gotoGroup;
 body.myback = page.myback;
+body.deletePost = page.deletePost;
 
 Page(body)

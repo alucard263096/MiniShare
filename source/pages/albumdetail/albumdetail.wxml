@@ -1,9 +1,80 @@
 <!--pages/albumdetail/albumdetail.wxml-->
-<view class='superheader'>群相册</view>
+<view class='superheader'>
+  <view class='title'>云相册</view>
+</view>
 <text class='fa fa-chevron-left btnback' bindtap='back'></text>
+<view class='cover' style='background-image:url({{uploadpath}}album/{{info.cover}})'  bindtap='changeAlbumName'>
+  <view class='albumname'>{{info.name}}</view>
+</view>
+
+<view wx:if="{{list.length>0}}" class='bg-white flex-row text-center' style='padding-top:37rpx;padding-bottom:41rpx;'>
+  <view class='flex-1' style='color:#666;font-size:28rpx;border-right:2rpx solid #808080;'>
+    时间轴
+  </view>
+  <view class='flex-1' style='color:#666;font-size:28rpx;' bindtap='gotoPhotos'>
+    照片墙
+  </view>
+</view>
+
+<block wx:if="{{list.length>0}}">
+  <view class='bg-white' style='padding:29rpx;margin-top:10rpx;' wx:for="{{list}}" wx:key="k" wx:if="{{item.deleted!=true}}">
+    <view class='flex-row'>
+      <view>
+        <image class='memberphoto' src="{{item.member_id_photo}}" ></image>
+      </view>
+      <view style='color:#999;font-size:24rpx;padding:10rpx;margin-left:11rpx;'>{{item.member_id_name}}</view>
+    </view>
+    <view style='color:#666;font-size:40rpx;'>
+    {{item.title}}
+    <view class='delete' wx:if="{{item.member_id_openid==UserInfo.openid}}"  bindtap='deletePost' id="{{item.id}}">删除</view>
+    </view>
+    <navigator url='/pages/post/post?id={{item.id}}' class='{{item.photos.length==1?"photo_1":""}} {{item.photos.length==2?"photo_2":""}} {{item.photos.length>2?"photo_3":""}}' >
+      <block wx:for="{{item.photos}}" wx:key="k">
+      <image src='{{uploadpath}}album/{{item.photo}}'></image>
+      </block>
+    </navigator>
+    <view class='flex-row'>
+      <view class='flex-1' style='font-size:24rpx;color:#999;'>{{item.updated_date_span}}</view>
+      
+          <view class='likecomment flex-row' style='position:absolute;right:42rpx;'>
+            <view>
+              <image class='likeicon' bindtap='likePost' id="{{item.id}}" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/like.png"></image>
+            </view>
+            <view  class='likestr'>
+              {{item.like}}
+            </view>
+
+            <view>
+              <image class='commenticon' bindtap='navtoPage' data-page="post" data-param="id={{item.id}}" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/comment.png"></image>
+            </view>
+            <view class='likestr'>
+              {{item.comment}}
+            </view>
+          </view>
+    </view>
+
+        <view class='postcomment' wx:for="{{item.membercomment}}"   wx:key="k" wx:for-item="comment">
+          {{comment.nickName}}：{{comment.comment}}
+        </view>
+  </view>
+</block>
+<view wx:if="{{list.length==0}}" class='text-center'>
+  <image class='egg' src='https://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/egg.png'></image>
+</view>
+<view wx:if="{{list.length==0}}"  class='text-center' style='color:#999;margin-top:36rpx;font-size:28rpx;'>
+一张照片都没有~
+</view>
 
 
+<view>
+  <view class="page__bd page__bd_spacing">
+    <form name='uploadform' report-submit bindsubmit='uploadPhotos'>
+      <button class="btnImportment fixbottom" type="primary" form-type="submit">开始上传</button>
+    </form>
+  </view>
+</view>
 
+<!--
 <view class="page">
   <view class="page__bd">
   <scroll-view  style='height:{{album_id==0?"100":"88"}}vh;' scroll-y="true">
@@ -43,9 +114,10 @@
         <!--
         <view   class="weui-flex__item btnBottom">
           <button type='primary' bindtap='cancelManage'>上传视频</button>
-        </view>-->
+        </view>
       </view>
     </view>
   </view>
 
 </view>
+-->

@@ -1,0 +1,34 @@
+<!--pages/albumupload/albumupload.wxml-->
+<view class='superheader'>
+  <view class='title'>云相册</view>
+</view>
+<text class='fa fa-chevron-left btnback' bindtap='back'></text>
+
+<view class='bg-white' style='height:378rpx;padding:28rpx;padding-top:55rpx;'>
+<input value='{{description}}' bindinput='changeDescription' placeholder='请添加照片描述'></input>
+</view>
+<view class='flex-row bg-white' style='padding-top:10rpx;margin-top:10rpx;color:#333;font-size:28rpx;'>
+  <view style='padding-top:10rpx;padding-left:28rpx;'>上传照片至</view>
+  <view class='flex-1 text-right' style='padding-top:4rpx;padding-bottom:14rpx;' >
+  <image src='{{uploadpath}}album/{{info.cover}}' style='width:60rpx;height:60rpx;'></image>
+  </view>
+  <view style='padding-top:10rpx;margin-left:18rpx;margin-right:46rpx;'>{{info.name}}</view>
+</view>
+
+<view style='padding:30rpx;padding-right:15rpx'>
+
+<image style='width:60rpx;height:60rpx;padding:50rpx;background:white;margin-right:15rpx;' src="https://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/add2.png" bindtap='chooseImage'  ></image>
+<image wx:for="{{photos}}" wx:key="k" style='width:160rpx;height:160rpx;margin-right:15rpx;' src="{{uploadpath}}album/{{item}}">
+
+</image>
+
+</view>
+
+
+<view>
+  <view class="page__bd page__bd_spacing">
+    <form name='uploadform' report-submit bindsubmit='uploadToAlbum'>
+      <button class="btnImportment fixbottom" type="primary" form-type="submit">确定</button>
+    </form>
+  </view>
+</view>

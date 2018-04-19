@@ -8,7 +8,7 @@ class Content extends AppBase {
     super();
   }
   onLoad(options) {
-    options.id=1;
+    options.group_id=1;
     this.Base.Page = this;
     super.onLoad(options);
     this.Base.setMyData({
@@ -20,21 +20,22 @@ class Content extends AppBase {
       t2: 0,
       hiddenmodalput:true
     });
+    this.Base.setMyData({group_id:options.group_id});
   }
   onShow() {
     var that = this;
     super.onShow();
     var albumapi = new AlbumApi();
-    albumapi.list({ group_id: this.Base.options.id }, data => {
+    albumapi.list({ group_id: this.Base.options.group_id }, data => {
       that.Base.setMyData({allalbum:data});
     });
-    albumapi.list({ group_id: this.Base.options.id, createdmember_id: "Y" }, data => {
+    albumapi.list({ group_id: this.Base.options.group_id, createdmember_id: "Y" }, data => {
 
       that.Base.setMyData({ myalbum: data });
     });
 
     var groupapi = new GroupApi();
-    groupapi.detail({ id: this.Base.options.id },data=>{
+    groupapi.detail({ id: this.Base.options.group_id },data=>{
 
       that.Base.setMyData({ group: data });
     });
@@ -51,7 +52,10 @@ class Content extends AppBase {
     this.Base.setMyData({ albumname: e.detail.value});
   }
   createAlbum(){
-    this.Base.setMyData({ albumname: "", hiddenmodalput: false, album_id: "" });
+    //this.Base.setMyData({ albumname: "", hiddenmodalput: false, album_id: "" });
+    wx.navigateTo({
+      url: '/pages/albumcreate/albumcreate?group_id='+this.Base.options.group_id,
+    })
   }
   cancelCreate(){
     this.Base.setMyData({  hiddenmodalput: true });
@@ -80,7 +84,7 @@ class Content extends AppBase {
       })
     }else{
 
-      var postjson = { name: albumname, group_id: this.Base.options.id };
+      var postjson = { name: albumname, group_id: this.Base.options.group_id };
       console.log(postjson);
 
       albumapi.create(postjson, data => {
@@ -88,7 +92,7 @@ class Content extends AppBase {
           that.Base.info("创建成功");
           that.onShow();
           wx.navigateTo({
-            url: '/pages/albumdetail/albumdetail?id=' + data.return + "&group_id=" + that.Base.options.id,
+            url: '/pages/albumdetail/albumdetail?id=' + data.return + "&group_id=" + that.Base.options.group_id,
           });
         } else {
           that.Base.error("系统正在维护，请稍后重试");
@@ -126,7 +130,7 @@ class Content extends AppBase {
     var data = this.Base.getMyData();
     if(data.inmanage!=true){
       wx.navigateTo({
-        url: '/pages/albumdetail/albumdetail?id='+id+"&group_id="+this.Base.options.id,
+        url: '/pages/albumdetail/albumdetail?id=' + id + "&group_id=" + this.Base.options.group_id,
       })
     }
     var allalbum = data.allalbum;
@@ -161,7 +165,7 @@ class Content extends AppBase {
   }
   selectAllPhotos(){
     wx.navigateTo({
-      url: '/pages/albumdetail/albumdetail?group_id=' + this.Base.options.id
+      url: '/pages/albumdetail/albumdetail?group_id=' + this.Base.options.group_id
     });
   }
 }

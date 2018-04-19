@@ -1,0 +1,44 @@
+<!--pages/albumphoto/albumphoto.wxml-->
+<view class='superheader'>
+  <view class='title'>照片墙</view>
+</view>
+<text class='fa fa-chevron-left btnback' bindtap='back'></text>
+
+<view class='bg-white'>
+  <view class='text-right' style='margin-top:31rpx;margin-right:30rpx;margin-bottom:29rpx;font-size:28rpx;color:#29A5EE' wx:if="{{inmgr==false}}" bindtap='changeToMgr'>
+    管理
+  </view>
+  <view class='text-right' style='margin-top:31rpx;margin-right:30rpx;margin-bottom:29rpx;font-size:28rpx;color:#29A5EE' wx:if="{{inmgr==true}}" bindtap='cancelMgr'>
+    完成
+  </view>
+  <view style='padding-left:30rpx;padding-right:0rpx;'>
+    <view wx:for="{{list.photos}}" wx:key="k">
+      <view style='font-size:34rpx;color:#333;margin-top:30rpx'>
+        {{item.date}}
+      </view>
+      <view class='flex-row' style='width:720rpx;flex-wrap:wrap'>
+        <view  wx:for="{{item.photos}}" wx:key="ka" style='margin-top:20rpx;margin-right:20rpx;' bindtap='selectImage' id="{{item.id}}">
+        <view wx:if="{{inmgr==true}}" class='{{item.selected==true?"selected":"unselected"}}'></view>
+        <image style='width:216rpx;height:216rpx;' src="{{uploadpath}}album/{{item.photo}}"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<view wx:if="{{inmgr==false}}">
+  <view class="page__bd page__bd_spacing">
+    <form name='uploadform' report-submit bindsubmit='uploadPhotos'>
+      <button class="btnImportment fixbottom" type="primary" form-type="submit">上传</button>
+    </form>
+  </view>
+</view>
+
+<view class='flex-row'  wx:if="{{inmgr==true}}" style='position:fixed;padding:25rpx;font-size:32rpx;bottom:0rpx;width:700rpx;color:white;background:{{selectids.length==0?"#DDDDDD":"#29A5EE"}}'>
+<view >已选中{{selectids.length}}张照片</view>
+<view class='flex-1 flex-row'>
+<view class='flex-1 text-right'><text bindtap='download'>下载</text></view>
+<view style='margin-left:69rpx;'><text bindtap='deletePhoto'>删除</text></view>
+</view>
+</view>

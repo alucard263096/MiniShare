@@ -152,7 +152,7 @@
         <view class='flex-row'>
           <view wx:for="{{item.memberview}}" wx:key="kf" style='margin-right:12rpx;'>
             <image class='photo' src="{{item.avatarUrl}}"></image>
-          </view>
+          </view> 
           <view class='viewpeople'>{{item.memberviewcount}}人浏览过</view>
           <view class='likecomment flex-row' style='position:absolute;right:42rpx;'>
             <view>

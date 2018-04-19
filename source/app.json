@@ -1,12 +1,15 @@
 {
   "pages": [
-    "pages/album/album",
-    "pages/albumcreate/albumcreate",
+    "pages/vote/vote",
+    "pages/votelist/votelist",
     "pages/index/index",
     "pages/group/group",
     "pages/post/post",
-    "pages/vote/vote",
-    "pages/votelist/votelist",
+    "pages/albumdetail/albumdetail",
+    "pages/albumphoto/albumphoto",
+    "pages/album/album",
+    "pages/albumupload/albumupload",
+    "pages/albumcreate/albumcreate",
     "pages/notify/notify",
     "pages/notifylist/notifylist",
     "pages/groupmgr/groupmgr",
@@ -14,7 +17,6 @@
     "pages/mypost/mypost",
     "pages/content/content",
     "pages/map/map",
-    "pages/albumdetail/albumdetail",
     "pages/upload/upload",
     "pages/logs/logs",
     "pages/forcopy/forcopy"

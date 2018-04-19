@@ -3,7 +3,7 @@ export class ApiConfig{
     return "https://cmsdev.app-link.org/alucard263096/minishare/api/";
   }
   static GetUploadPath() {
-    return "http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/";
+    return "https://alioss.app-link.org/alucard263096/minishare/";
   } 
   static GetFileUploadAPI() {
     return "https://cmsdev.app-link.org/alucard263096/minishare/fileupload";

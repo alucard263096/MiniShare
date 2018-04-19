@@ -55,6 +55,9 @@
   background: -o-linear-gradient(right, #50BAFF , #008BE5);
   background: -moz-linear-gradient(right, #50BAFF , #008BE5); 
   background: linear-gradient(to right, #50BAFF , #008BE5); 
+  position: fixed;
+  bottom: 20rpx;
+  left:33rpx;
 }
 .votedone{
   width: 145rpx;

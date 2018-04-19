@@ -1,0 +1,5 @@
+/* pages/albumupload/albumupload.wxss */
+.img{
+  width: 160rpx;
+  height: 160rpx;
+}

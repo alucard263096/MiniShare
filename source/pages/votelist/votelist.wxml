@@ -26,3 +26,8 @@
     </view>
   </view>
 </view>
+
+
+<modal hidden="{{hiddenmodalput}}" title="请设置标题" confirm-text="提交" cancel-text="放弃" bindcancel="cancelCreate" bindconfirm="confirmCreate">  
+    <input type='text' placeholder="标题" value="{{votetitle}}" bindinput='inputVotetitle' maxlength='20' /> 
+</modal>

@@ -139,4 +139,12 @@ export class ApiUtil {
 
     return new Date(year,month,day,hour,minute,second);
   }
+  static getNowDateFormat(){
+    var date = new Date();
+    return ApiUtil.FormatDateStr(date.getTime());
+  }
+  static getNextDateFormat() {
+    var date = new Date();
+    return ApiUtil.FormatDateStr(date.getTime()+24*3600*1000);
+  }
 }

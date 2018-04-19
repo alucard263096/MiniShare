@@ -115,8 +115,8 @@ button[type="primary"]{
   text-align: center;
   margin-top: 60rpx;
 }
-.text-right{
-    text-align: right;
+.text-center{
+    text-align: center;
 }
 page{
   margin-top: 140rpx;
@@ -139,4 +139,10 @@ page{
   background: -moz-linear-gradient(right, #50BAFF , #008BE5); 
   background: linear-gradient(to right, #50BAFF , #008BE5); 
   margin-bottom: 43rpx;
+}
+
+.fixbottom{
+  position: fixed;
+  bottom: 20rpx;
+  left:30rpx;
 }

@@ -7,7 +7,7 @@
 <view class='bg-white' style='padding:50rpx;padding-right:0rpx;padding-bottom:33rpx;'>
   <view style='margin-top:5rpx;margin-left:15rpx;color:#999999;font-size:28rpx;'>选择相册分类</view>
   <view class='flex-row' style='flex-wrap:wrap;width:700rpx;margin-top:32rpx;'>
-    <label wx:for="{{cats}}" wx:key="k" class='label {{item.active==true?"active":""}}' id="{{item.id}}" bindtap='changeLabel' >{{item.name}}</label>
+    <label wx:for="{{cats}}" wx:key="k" class='label {{item.id==cat_id?"active":""}}' id="{{item.id}}" bindtap='changeLabel' >{{item.name}}</label>
   </view>
   <view style='margin-top:21rpx;margin-left:15rpx;color:#999999;font-size:28rpx;'>相册名称</view>
   <view style='margin-right:50rpx;'>

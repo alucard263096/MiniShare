@@ -7,20 +7,26 @@ class Content extends AppBase {
   }
   onLoad(options) {
     //options.groud_id=5;
-    if(options.id==undefined){
-      options.id=0;
-    }
+    //if (options.id==undefined){
+    //  options.id=0;
+    //}
     this.Base.Page = this;
     super.onLoad(options);
-    var api = new AlbumApi();
-    api.catlist({},(cats)=>{
-      this.Base.setMyData({cats:cats});
-    });
-    this.Base.setMyData({ cover: "", name:""});
+    this.Base.setMyData({ cover: "", name: "", cat_id:0});
   }
   onShow() {
     var that = this;
     super.onShow();
+    var api = new AlbumApi();
+    api.catlist({}, (cats) => {
+      this.Base.setMyData({ cats: cats });
+    });
+    if (this.Base.options.id > 0) {
+      var albumapi = new AlbumApi();
+      albumapi.detail({ group_id: this.Base.options.group_id, id: this.Base.options.id }, data => {
+        that.Base.setMyData({ cover:data.cover,name:data.name,cat_id:data.cat_id });
+      });
+    }
   }
   changeName(e){
     console.log(e);
@@ -28,16 +34,16 @@ class Content extends AppBase {
     this.Base.setMyData({ name: val });
   }
   changeLabel(e){
-    var id=e.currentTarget.id;
-    var cats = this.Base.getMyData().cats;
-    for(var i=0;i<cats.length;i++){
-      if(cats[i].id==id){
-        cats[i].active=true;
-      }else{
-        cats[i].active=false;
-      }
-    }
-    this.Base.setMyData({ cats: cats });
+    var cat_id=e.currentTarget.id;
+    //var cats = this.Base.getMyData().cats;
+    //for(var i=0;i<cats.length;i++){
+    //  if(cats[i].id==id){
+    //    cats[i].active=true;
+    //  }else{
+    //    cats[i].active=false;
+    //  }
+    //}
+    this.Base.setMyData({ cat_id: cat_id });
   }
   changeCover(){
     this.Base.uploadImage("album",(ret)=>{
@@ -46,24 +52,24 @@ class Content extends AppBase {
     },1);
   }
   createAlbum(){
-    var cat_id=0;
-    var cats = this.Base.getMyData().cats;
-    for (var i = 0; i < cats.length; i++) {
-      if (cats[i].active == true) {
-        cat_id = cats[i].id;
-      }
-    }
+    
     var name = this.Base.getMyData().name.trim();
     var cover = this.Base.getMyData().cover;
+    var cat_id = this.Base.getMyData().cat_id;
     if(name==""){
       this.Base.info("请输入相册名称");
       return;
     }
-    var json={cat_id:cat_id,name:name,cover:cover,group_id:this.Base.options.group_id,primary_id:this.Base.options.id};
+    var json = { cat_id: cat_id, name: name, cover: cover, group_id: this.Base.options.group_id};
+    if(this.Base.options.id!=undefined){
+      json.primary_id=this.Base.options.id
+    }
     var api = new AlbumApi();
     api.create(json,(ret)=>{
       if(ret.code==0){
-        
+        wx.navigateBack({
+          
+        })
       }
     });
   }
@@ -74,6 +80,6 @@ body.onLoad = page.onLoad;
 body.onShow = page.onShow;
 body.changeName = page.changeName; 
 body.changeLabel = page.changeLabel; 
-body.changeCover = page.changeCover;
+body.changeCover = page.changeCover; 
 body.createAlbum = page.createAlbum;
 Page(body)

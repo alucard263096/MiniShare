@@ -59,4 +59,7 @@
   background: -moz-linear-gradient(right, #50BAFF , #008BE5); 
   background: linear-gradient(to right, #50BAFF , #008BE5); 
   margin-bottom: 33rpx;
+  position: fixed;
+  bottom: 20rpx;
+  left:33rpx;
 }

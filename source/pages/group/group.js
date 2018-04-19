@@ -17,8 +17,8 @@ class Content extends AppBase {
     var that=this;
     var noticeapi=new NoticeApi();
     noticeapi.latestnotice({ group_id: this.Base.options.id},function(data){
-      if(data.id==undefined){
-        data.id=0;
+      if(data==undefined){
+        data={id:0};
       }
       that.Base.setMyData({ latestnotice: data });
     });
@@ -67,7 +67,7 @@ class Content extends AppBase {
 
   gotoAlbum(){
     wx.navigateTo({
-      url: '/pages/album/album?id='+this.Base.options.id,
+      url: '/pages/album/album?group_id='+this.Base.options.id,
     })
   }
   deletePost(e){

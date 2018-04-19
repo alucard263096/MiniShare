@@ -60,6 +60,11 @@ class Content extends AppBase {
       url: '/pages/notify/notify?group_id=' + this.Base.options.group_id,
     });
   }
+
+
+
+
+  
 }
 var page = new Content();
 var body = page.generateBodyJson();

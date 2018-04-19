@@ -8,137 +8,161 @@ class Content extends AppBase {
     super();
   }
   onLoad(options) {
-    //options.group_id=8;
+    options.group_id = 2;
+    options.title = "咫尺之星投票";
     this.Base.Page = this;
     super.onLoad(options);
 
-    var opts=[];
-    opts.push({seq:0, text: "" });
-    opts.push({seq:1, text: "" });
-    var now=new Date();
-    var date = AppBase.Util.FormatDateStr(now.getTime());
-    var time = AppBase.Util.FormatTimeStr(now.getTime()+3600*1000);
-
-    this.Base.setMyData({ options: opts, title: "", description: "", date: date, time: time, startdate: date, group_id: options.group_id});
+    this.Base.setMyData({ title: options.title, startdate: AppBase.Util.getNowDateFormat(), starttime: "00:00:00", enddate: AppBase.Util.getNextDateFormat(), endtime: "00:00:00", questions: [{ question: "", options: [{ str: "", photo: "" }, { str: "", photo: "" }]}]});
     
   }
   onShow() {
     var that = this;
     super.onShow();
   }
-  titleChange(e){
-    this.Base.setMyData({title:e.detail.value});
+  changeQuestion(e){
+    var question=e.detail.value;
+    var id=e.currentTarget.id;
+    var questions = this.Base.getMyData().questions;
+    questions[id].question=question;
+    this.Base.setMyData({questions:questions});
   }
-  descriptionChange(e) {
-    this.Base.setMyData({ description: e.detail.value });
-  }
-  bindDateChange(e) {
-    this.Base.setMyData({ date: e.detail.value });
-  }
-  bindTimeChange(e) {
-    this.Base.setMyData({ time: e.detail.value });
-  }
-  cutOption(e){
-    var ops=[];
+  changeOption(e){
+    var str = e.detail.value;
+    var id = e.currentTarget.id;
+    id=id.split("_");
+    var i = Number(id[0]);
+    var j = Number(id[1]);
 
-    var options = this.Base.getMyData().options;
+    var questions = this.Base.getMyData().questions;
+    questions[i].options[j].str = str;
+    this.Base.setMyData({ questions: questions });
+  }
+  minusOpt(e){
+    var id = e.currentTarget.id;
+    id = id.split("_");
+    var i = Number(id[0]);
+    var j = Number(id[1]);
+    var questions = this.Base.getMyData().questions;
 
-    for (var i = 0; i < options.length; i++) {
-      if (e.currentTarget.id != options[i].seq){
-        ops.push(options[i]);
+    var c=[];
+    for (var jj = 0; jj < questions[i].options.length;jj++){
+      if(jj!=j){
+        c.push(questions[i].options[jj]);
       }
     }
-    options=ops;
-    for (var i = 0; i < options.length; i++) {
-      options[i].seq = i;
-    }
-    this.Base.setMyData({ options: options });
+    questions[i].options = c;
+    this.Base.setMyData({ questions: questions });
   }
-  addOption() {
-    var options=this.Base.getMyData().options;
-    for(var i=0;i<options.length;i++){
-      options[i].seq=i;
-    }
-    options.push({ seq: options.length, text: "" });
-    this.Base.setMyData({ options: options });
+  addOpt(e){
+    var id = e.currentTarget.id;
+    var questions = this.Base.getMyData().questions;
+    questions[id].options.push({ str: "", photo: "" });
+
+    this.Base.setMyData({ questions: questions });
   }
-  optionsChange(e){
-    var val=e.detail.value;
-    var seq = e.currentTarget.id;
-    var options = this.Base.getMyData().options;
-    for (var i = 0; i < options.length; i++) {
-      if (seq == options[i].seq) {
-        options[i].text = val;
+  addPhoto(e){
+    var id = e.currentTarget.id;
+    id = id.split("_");
+    var i = Number(id[0]);
+    var j = Number(id[1]);
+    var questions = this.Base.getMyData().questions;
+
+    this.Base.uploadImage("vote",(ret)=>{
+      questions[i].options[j].photo = ret;
+      this.Base.setMyData({ questions: questions });
+    },1);
+  }
+
+  cutQuestion(e){
+
+    var id = e.currentTarget.id;
+    var questions = this.Base.getMyData().questions;
+    //questions[id].options.push({ str: "", photo: "" });
+    var c=[];
+    for(var i=0;i<questions.length;i++){
+      if(i!=id){
+        c.push(questions[i]);
       }
     }
-    this.Base.setMyData({ options: options });
+    this.Base.setMyData({ questions: c });
+    
+  }
+  addQuestion(){
+    var questions = this.Base.getMyData().questions;
+    questions.push({ question: "", options: [{ str: "", photo: "" }, { str: "", photo: "" }] });
+
+    this.Base.setMyData({ questions: questions });
+  }
+  bindStartDateChange(e){
+
+    this.Base.setMyData({ startdate: e.detail.value });
+  }
+  bindStartTimeChange(e) {
+
+    this.Base.setMyData({ starttime: e.detail.value });
+  }
+  bindEndDateChange(e) {
+
+    this.Base.setMyData({ enddate: e.detail.value });
+  }
+  bindEndTimeChange(e) {
+    this.Base.setMyData({ endtime: e.detail.value });
   }
   sendVote(e){
-    var formId = e.detail.formId;
 
-    //this.Base.info(formId);
-    //return;
+    var startdate = this.Base.getMyData().startdate + " " + this.Base.getMyData().starttime;
+    var enddate = this.Base.getMyData().enddate + " " + this.Base.getMyData().endtime;
+    if (AppBase.Util.StrToDate(startdate).getTime() >= AppBase.Util.StrToDate(enddate).getTime()) {
 
-    var data = this.Base.getMyData();
-    console.log(data);
-    var title=data.title;
-    if(title.trim()==""){
-      wx.showToast({
-        icon:"none",
-        title: '请输入投票标题',
-      });
+      this.Base.info("开始时间不能大于结束时间");
       return;
-    } 
-    var options = data.options;
-    var opts=[];
-    var count=0;
-    for (var i = 0; i < options.length; i++) {
-      if (options[i].text.trim()!="") {
-        opts.push(options[i]);
+    }
+
+    var questions = this.Base.getMyData().questions;
+    if(questions.length==0){
+      this.Base.info("请至少设置一个题目");
+      return;
+    }
+    for(var i=0;i<questions.length;i++){
+      if(questions[i].question.trim()==""){
+        this.Base.info("第"+(i+1)+"题的题目不能为空");
+        return;
+      }
+      var actopt = 0;
+      for (var j = 0; j < questions[i].options.length; j++) {
+        if (questions[i].options[j].str.trim() != "" || questions[i].options[j].photo.trim() != "") {
+          actopt++;
+        }
+      }
+      if (actopt    <=1){
+        this.Base.info("第" + (i + 1) +"题至少设置两个选项");
+        return;
       }
     }
-
-    if (opts.length <2) {
-      wx.showToast({
-        icon: "none",
-        title: '请至少有两项可以选择',
-      });
-      return;
-    }
-    var group_id = data.group_id;
-    var voteApi = new VoteApi();
-    var json={
-      group_id: group_id,
-      options: JSON.stringify(opts),
-      title:title,
-      description:data.description,
-      vote_expired:data.date+" "+data.time
-    };
-    var that=this;
-    voteApi.create(json,data=>{
-        if(data.code!="0"){
-          that.Base.error(data.return);   
-        } else {
-          var noticeApi = new NoticeApi();
-          noticeApi.createvote({ group_id: group_id, post_id: data.return, formid: formId });
-          wx.navigateTo({
-            url: '/pages/post/post?id='+data.return,
-          })
-        }
+    var voteapi = new VoteApi();
+    voteapi.create({startdate:startdate,enddate:enddate,questions:JSON.stringify(),group_id:this.Base.options.group_id},(ret)=>{
+      if(ret.code=="0"){
+        
+      }
     });
   }
 }
 var page = new Content();
 var body = page.generateBodyJson();
 body.onLoad = page.onLoad; 
-body.onShow = page.onShow;
-body.titleChange = page.titleChange;
-body.descriptionChange = page.descriptionChange; 
-body.cutOption = page.cutOption; 
-body.addOption = page.addOption;
-body.optionsChange = page.optionsChange;
-body.bindDateChange = page.bindDateChange;
-body.bindTimeChange = page.bindTimeChange;
+body.onShow = page.onShow; 
+body.changeQuestion = page.changeQuestion; 
+body.changeOption = page.changeOption;
+body.minusOpt = page.minusOpt; 
+body.addOpt = page.addOpt; 
+body.addPhoto = page.addPhoto; 
+body.cutQuestion = page.cutQuestion;
+body.addQuestion = page.addQuestion;
+body.bindStartDateChange = page.bindStartDateChange;
+body.bindStartTimeChange = page.bindStartTimeChange; 
+body.bindEndDateChange = page.bindEndDateChange;
+body.bindEndTimeChange = page.bindEndTimeChange;
 body.sendVote = page.sendVote;
 
 
