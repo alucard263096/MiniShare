@@ -8,6 +8,9 @@ class Content extends AppBase {
   }
   onLoad(options) {
     //options.group_id=1;
+    if(options.group_id==undefined){
+      options.group_id=0;
+    }
     this.Base.Page = this;
     super.onLoad(options);
     this.Base.setMyData({ group_id: options.group_id, hiddenmodalput: true });

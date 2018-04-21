@@ -8,8 +8,9 @@ class Content extends AppBase {
     super();
   }
   onLoad(options) {
-    options.group_id = 2;
-    options.title = "咫尺之星投票";
+    //options.group_id = 2;
+    //options.title = "咫尺之星投票";
+    options.title = JSON.parse(options.title);
     this.Base.Page = this;
     super.onLoad(options);
 
@@ -141,9 +142,13 @@ class Content extends AppBase {
       }
     }
     var voteapi = new VoteApi();
-    voteapi.create({startdate:startdate,enddate:enddate,questions:JSON.stringify(),group_id:this.Base.options.group_id},(ret)=>{
+    voteapi.create({ startdate: startdate, enddate: enddate, questions: JSON.stringify(questions),group_id:this.Base.options.group_id,title:this.Base.options.title},(ret)=>{
       if(ret.code=="0"){
-        
+        wx.redirectTo({
+          url: '/pages/votesuccess/votesuccess?post_id='+ret.return,
+        })
+      }else{
+        this.Base.info("发起失败，请联系管理员");
       }
     });
   }

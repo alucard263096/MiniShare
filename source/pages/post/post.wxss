@@ -201,3 +201,21 @@
   height: 212rpx;
   margin-right: 15rpx;
 }
+
+.unselected{
+  width: 28rpx;
+  height: 28rpx;
+  background-color: white;
+  border:4rpx #C9C9C9 solid;
+  border-radius: 50rpx;
+  margin-top: 5rpx;
+}
+.selected{
+  width: 36rpx;
+  height: 36rpx;
+  background-color: white;
+  background-image: url(https://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/check.png);
+  background-size: 110% 110%;
+  border-radius: 50rpx;
+  margin-top: 5rpx;
+}

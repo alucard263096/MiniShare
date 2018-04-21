@@ -1,10 +1,11 @@
 {
   "pages": [
+    "pages/index/index",
+    "pages/post/post",
+    "pages/votesuccess/votesuccess",
     "pages/vote/vote",
     "pages/votelist/votelist",
-    "pages/index/index",
     "pages/group/group",
-    "pages/post/post",
     "pages/albumdetail/albumdetail",
     "pages/albumphoto/albumphoto",
     "pages/album/album",

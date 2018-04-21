@@ -11,10 +11,10 @@ class Content extends AppBase {
     super();
   }
   onLoad(options) {
-    //options.id = 268;
+    //options.id = 6;
     this.Base.Page = this;
     super.onLoad(options);
-    var postapi=new PostApi();
+    var postapi = new PostApi();
     postapi.read({ post_id: this.Base.options.id });
     postapi.view({ post_id: this.Base.options.id });
 
@@ -27,12 +27,12 @@ class Content extends AppBase {
     var id = 0;
     console.log("cc");
     console.log(this.options);
-    if (this.options.id!=undefined){
-      id=this.options.id;
-    }else{
+    if (this.options.id != undefined) {
+      id = this.options.id;
+    } else {
       id = this.Base.options.id;
     }
-    postapi.detail({ id: id },data=>{
+    postapi.detail({ id: id }, data => {
       data["updated_date_span"] = AppBase.Util.Datetime_str(Number(data["updated_date_span"]));
       if (that.setMyData != undefined) {
         that.setMyData({ info: data });
@@ -42,22 +42,22 @@ class Content extends AppBase {
     });
     this.Base.loadComment();
   }
-  loadComment(){
+  loadComment() {
     var that = this;
     var postApi = new PostApi();
     postApi.commentlist({ post_id: this.options.id }, data => {
-      for(var i=0;i<data.length;i++){
-        data[i].update_span = ApiUtil.Datetime_str(ApiUtil.StrToDate(data[i].updated_date).getTime()/1000 );
+      for (var i = 0; i < data.length; i++) {
+        data[i].update_span = ApiUtil.Datetime_str(ApiUtil.StrToDate(data[i].updated_date).getTime() / 1000);
       }
       that.setMyData({ commentlist: data });
-    
+
     });
   }
 
 
   onShareAppMessage() {
     var that = this;
-    var info=that.Base.getMyData().info;
+    var info = that.Base.getMyData().info;
     return {
       title: info.title,
       path: '/pages/post/post?id=' + info.id,
@@ -80,7 +80,7 @@ class Content extends AppBase {
               if (data.code == 0) {
                 var groupapi = new GroupApi();
                 groupapi.join({ opengid: data.return.openGId }, data => {
-                  groupapi.addpost({ group_id: data.return, post_id:info.id},c=>{
+                  groupapi.addpost({ group_id: data.return, post_id: info.id }, c => {
                     wx.redirectTo({
                       url: '/pages/group/group?id=' + data.return,
                     })
@@ -106,23 +106,23 @@ class Content extends AppBase {
     var postApi = new PostApi();
     postApi.like({ post_id: id }, ret => {
       if (ret.code == 0) {
-        var info = that.Base.getMyData().info; 
+        var info = that.Base.getMyData().info;
         info.like = ret.return;
         that.Base.setMyData({ info: info });
       }
     });
   }
-  commentChange(e){
-    var str=e.detail.value;
-    this.Base.setMyData({ comment: str});
+  commentChange(e) {
+    var str = e.detail.value;
+    this.Base.setMyData({ comment: str });
   }
-  sendComment(){
+  sendComment() {
     var that = this;
     var info = that.Base.getMyData().info;
     var comment = that.Base.getMyData().comment;
-    if(comment.trim()==""){
+    if (comment.trim() == "") {
       wx.showToast({
-        icon:"none",
+        icon: "none",
         title: '请输入你的评论',
       })
       return;
@@ -130,16 +130,16 @@ class Content extends AppBase {
     var postApi = new PostApi();
     postApi.comment({ post_id: info.id, comment: comment }, ret => {
       if (ret.code == 0) {
-        that.Base.setMyData({ comment: ""});
+        that.Base.setMyData({ comment: "" });
         that.Base.loadComment();
       }
     });
   }
-  selectedOption(e){
-    var that=this;
+  selectedOption(e) {
+    var that = this;
     var id = e.currentTarget.id;
     var info = that.Base.getMyData().info;
-    if (info.vote_expired_count<0){
+    if (info.vote_expired_count < 0) {
       return;
     }
     var voteApi = new VoteApi();
@@ -149,20 +149,20 @@ class Content extends AppBase {
       }
     });
   }
-  gotoGroup(){
+  gotoGroup() {
     wx.redirectTo({
       url: '/pages/group/group?id=' + this.Base.options.group_id,
     })
   }
-  myback(){
-    var group_id=this.Base.options.group_id;
-    if(group_id!=undefined){
+  myback() {
+    var group_id = this.Base.options.group_id;
+    if (group_id != undefined) {
       wx.navigateTo({
-        url: '/pages/group/group?id='+group_id,
+        url: '/pages/group/group?id=' + group_id,
       });
-    }else{
+    } else {
       wx.navigateBack({
-        
+
       })
     }
   }
@@ -172,22 +172,79 @@ class Content extends AppBase {
     postApi.adelete({ idlist: this.Base.options.id },
       data => {
         wx.navigateBack({
-          
+
         })
       });
+  }
+  selectOpt(e) {
+    var id = e.currentTarget.id;
+    id = id.split("_");
+    var x = Number(id[0]);
+    var y = Number(id[1]);
+    var that = this;
+    var info = this.Base.getMyData().info;
+    var questions = info.questions;
+    for (var i = 0; i < questions.length; i++) {
+      if (questions[i].id == x) {
+        for (var j = 0; j < questions[i].voteoptions.length; j++) {
+          if (questions[i].voteoptions[j].id == y) {
+            questions[i].voteoptions[j].selected = true;
+          } else {
+            questions[i].voteoptions[j].selected = false;
+          }
+        }
+      }
+    }
+    info.questions = questions;
+    this.Base.setMyData({ info: info });
+  }
+  sendVote() {
+    var that=this;
+    var info = this.Base.getMyData().info;
+    var questions = info.questions;
+    var vids=[];
+    for (var i = 0; i < questions.length; i++) {
+      for (var j = 0; j < questions[i].voteoptions.length; j++) {
+        if (questions[i].voteoptions[j].selected==true) {
+          vids.push(questions[i].voteoptions[j].id);
+          questions[i].voteoptions[j].checked = 1;
+        } else {
+          questions[i].voteoptions[j].checked=0;
+        }
+      }
+    }
+    if(questions.length!=vids.length){
+      this.Base.info("你还有题未选择");
+      return;
+    }
+    info.questions=questions;
+    var voteapi = new VoteApi();
+    voteapi.vote({vids:vids.join(","),post_id:this.Base.options.id},(ret)=>{
+      if(ret.code==0){
+        var postapi = new PostApi();
+        postapi.detail({ id: that.Base.options.id }, data => {
+          data["updated_date_span"] = AppBase.Util.Datetime_str(Number(data["updated_date_span"]));
+          that.Base.setMyData({ info: data });
+        });
+      }
+    });
+    
   }
 }
 var page = new Content();
 var body = page.generateBodyJson();
-body.onLoad = page.onLoad; 
-body.onShow = page.onShow; 
+body.onLoad = page.onLoad;
+body.onShow = page.onShow;
 body.onShareAppMessage = page.onShareAppMessage;
 body.likePost = page.likePost;
-body.commentChange = page.commentChange; 
-body.sendComment = page.sendComment; 
-body.selectedOption = page.selectedOption; 
+body.commentChange = page.commentChange;
+body.sendComment = page.sendComment;
+body.selectedOption = page.selectedOption;
 body.gotoGroup = page.gotoGroup;
 body.myback = page.myback;
 body.deletePost = page.deletePost;
+body.selectOpt = page.selectOpt;
+body.sendVote = page.sendVote;
+
 
 Page(body)

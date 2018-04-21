@@ -2,6 +2,78 @@
 <view class='superheader'></view>
 <text class='fa fa-chevron-left btnback' bindtap='myback'></text>
 
+
+<view class='noticepost' wx:if="{{info.operation=='V'}}">
+  <view class='description'>
+    <view style='padding-top:34rpx;padding-left:28rpx;padding-bottom:23rpx;font-size:34rpx;color:#333;'>{{info.title}}</view>
+    <view style='padding-top:10rpx;padding-left:30rpx;padding-bottom:30rpx;color:#333;'>
+      <text style='font-size:28rpx;'>投票截止：</text>
+      <text style='font-size:26rpx;'>{{info.vote_enddate}}</text>
+    </view>
+    <view class='member flex-row'>
+      <view style='font-size:28rpx;color:#333;margin-left:29rpx;'>
+        投票发起人：
+      </view>
+      <view>
+        <image class="memberphoto" src="{{info.member_id_photo}}" />
+      </view>
+      <view class='membername' style='width:400rpx;'>
+        {{info.member_id_name}}
+      </view>
+    </view>
+  </view>
+  <view style='margin-top:10rpx;color:#666;font-size:28rpx;'  wx:if="{{info.vote_expired_count>0&&info.questionsvoted==false}}">
+    <view class='bg-white' style='padding:30rpx;'>
+      <view wx:for="{{info.questions}}" wx:key="k">
+        <view  >
+          {{item.seq}}、{{item.question}}
+        </view>
+        <block wx:for="{{item.voteoptions}}" wx:for-item="opt" wx:key="kt">
+          <view style='margin-top:30rpx;' bindtap='selectOpt' id="{{item.id}}_{{opt.id}}">
+            <view class='flex-row'>
+              <view class='{{opt.selected==true?"selected":"unselected"}}'></view>
+              <view style='margin-left:12rpx'>{{opt.str}}</view>
+            </view>
+            <view wx:if="{{opt.photo!=''}}">
+              <image src="{{uploadpath}}vote/{{opt.photo}}" style='width:200rpx;' mode="widthFix"></image>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+  
+  <view style='margin-top:10rpx;color:#666;font-size:28rpx;'  wx:if="{{info.vote_expired_count<0||info.questionsvoted==true}}">
+    <view class='bg-white' style='padding:30rpx;'>
+      <view wx:for="{{info.questions}}" wx:key="k">
+        <view  >
+          {{item.seq}}、{{item.question}}
+        </view>
+        <block wx:for="{{item.voteoptions}}" wx:for-item="opt" wx:key="kt">
+          <view style='margin-top:30rpx;' bindtap='selectOpt' id="{{item.id}}_{{opt.id}}">
+            <view class='flex-row'  style='overflow:visible;'>
+            <view wx:if="{{opt.photo!=''}}" >
+              <image src="{{uploadpath}}vote/{{opt.photo}}" style='width:70rpx;height:70rpx;'></image>
+            </view>
+              <view  class='flex-1 flex-row' style='overflow:visible;'>
+                <view  style='background-color:#F1F1F1;padding-top:10rpx;padding-left:15rpx;padding-right:15rpx;height:60rpx;white-space:nowrap;overflow:visible; width:{{opt.votemembers.length*100.0/item.totalvote}}%;'>{{opt.str}}
+  <text>({{opt.votemembers.length}}票)</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+  <view class="sendshare" wx:if="{{info.questionsvoted==false}}">
+    <button class="btnShare" type="primary" bindtap='sendVote'>提交</button>
+  </view>
+</view>
+
+
+
+
 <view class='noticepost' wx:if="{{info.operation=='P'}}">
   <view class='description'>
 
@@ -13,19 +85,19 @@
         {{info.member_id_name}}
       </view>
     </view>
-  <view class='title' wx:if="{{info.title!=null}}" style='font-size:28rpx;color:#666;text-align:left;'>
-    {{info.title}}
-    <view class='pdelete' wx:if="{{info.member_id_openid==UserInfo.openid}}"  bindtap='deletePost' id="{{info.id}}">删除</view>
-  </view>
+    <view class='title' wx:if="{{info.title!=null}}" style='font-size:28rpx;color:#666;text-align:left;'>
+      {{info.title}}
+      <view class='pdelete' wx:if="{{info.member_id_openid==UserInfo.openid}}" bindtap='deletePost' id="{{info.id}}">删除</view>
+    </view>
 
-    <view url='/pages/post/post?id={{info.id}}' class='{{info.photos.length==1?"photo_1":""}} {{info.photos.length==2?"photo_2":""}} {{info.photos.length>2?"photo_3":""}}' >
+    <view url='/pages/post/post?id={{info.id}}' class='{{info.photos.length==1?"photo_1":""}} {{info.photos.length==2?"photo_2":""}} {{info.photos.length>2?"photo_3":""}}'>
       <block wx:for="{{info.photos}}" wx:key="k">
-      <image src='{{uploadpath}}album/{{item.photo}}'  bindtap='viewPhoto' id="{{uploadpath}}album/{{photo.photo}}"></image>
+        <image src='{{uploadpath}}album/{{item.photo}}' bindtap='viewPhoto' id="{{uploadpath}}album/{{photo.photo}}"></image>
       </block>
     </view>
 
     <view class='flex-row'>
-      <view class='flex-1' style='font-size:24rpx;color:#999;'>{{info.updated_date_span}}</view>   
+      <view class='flex-1' style='font-size:24rpx;color:#999;'>{{info.updated_date_span}}</view>
     </view>
 
 
