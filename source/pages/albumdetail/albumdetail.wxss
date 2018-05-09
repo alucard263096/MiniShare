@@ -11,11 +11,6 @@
   font-size: 34rpx;
   color:white;
 }
-.egg{
-  width: 257rpx;
-  height: 307rpx;
-  margin-top: 146rpx;
-}
 
 .memberphoto{
   width: 36rpx;

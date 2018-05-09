@@ -56,7 +56,7 @@
               <image src="{{uploadpath}}vote/{{opt.photo}}" style='width:70rpx;height:70rpx;'></image>
             </view>
               <view  class='flex-1 flex-row' style='overflow:visible;'>
-                <view  style='background-color:#F1F1F1;padding-top:10rpx;padding-left:15rpx;padding-right:15rpx;height:60rpx;white-space:nowrap;overflow:visible; width:{{opt.votemembers.length*100.0/item.totalvote}}%;'>{{opt.str}}
+                <view  style='background-color:#F1F1F1;padding-top:10rpx;padding-right:15rpx;height:60rpx;white-space:nowrap;overflow:visible; width:{{(opt.votemembers.length>100?100:opt.votemembers.length)*100.0/100}}%;'> {{opt.str}}
   <text>({{opt.votemembers.length}}票)</text>
                 </view>
               </view>

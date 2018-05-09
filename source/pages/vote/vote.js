@@ -10,11 +10,26 @@ class Content extends AppBase {
   onLoad(options) {
     //options.group_id = 2;
     //options.title = "咫尺之星投票";
-    options.title = JSON.parse(options.title);
+    //options.title = JSON.parse(options.title);
     this.Base.Page = this;
     super.onLoad(options);
 
-    this.Base.setMyData({ title: options.title, startdate: AppBase.Util.getNowDateFormat(), starttime: "00:00:00", enddate: AppBase.Util.getNextDateFormat(), endtime: "00:00:00", questions: [{ question: "", options: [{ str: "", photo: "" }, { str: "", photo: "" }]}]});
+    var d=new Date();
+    var h=d.getHours();
+    h = h > 9 ? h.toString() : "0" + h.toString();
+    var m = d.getMinutes();
+    m = m > 9 ? m.toString() : "0" + m.toString();
+
+    this.Base.setMyData({
+      votetitle:"",
+      hiddenmodalput:options.title!=undefined,
+      title: options.title, nowformat: AppBase.Util.getNowDateFormat(), startdate: AppBase.Util.getNowDateFormat(), starttime: h + " ：" + m, enddate: AppBase.Util.getNextDateFormat(), endtime: h + " ：" + m, 
+      noname: "N", remarkinfo: "N", onlygroup: "N", 
+      remarkinfoname: "Y",
+      remarkinfomobile: "Y",
+      remarkinfoemail: "N",
+      remarkinfoaddress: "N",
+    questions: [{ question: "", options: [{ str: "", photo: "" }, { str: "", photo: "" }]}]});
     
   }
   onShow() {
@@ -96,24 +111,50 @@ class Content extends AppBase {
     this.Base.setMyData({ questions: questions });
   }
   bindStartDateChange(e){
-
     this.Base.setMyData({ startdate: e.detail.value });
+    this.refixDateTime();
   }
   bindStartTimeChange(e) {
 
-    this.Base.setMyData({ starttime: e.detail.value });
+    this.Base.setMyData({ starttime: e.detail.value.replace(":", " ：") });
+    this.refixDateTime();
+  }
+  refixDateTime(){
+    var d = new Date();
+    var h = d.getHours();
+    h = h > 9 ? h.toString() : "0" + h.toString();
+    var m = d.getMinutes();
+    m = m > 9 ? m.toString() : "0" + m.toString();
+
+
+    var sd = this.Base.getMyData().startdate + " " + this.Base.getMyData().starttime.replace(" ：", ":");
+    var ed = this.Base.getMyData().enddate + " " + this.Base.getMyData().endtime.replace(" ：", ":");
+    
+    sd = AppBase.Util.StrToDate(sd+":00");
+    ed = AppBase.Util.StrToDate(ed + ":00");
+    var now=new Date();
+    console.log(sd.getTime());
+    console.log(now.getTime());
+    if(sd.getTime()<now.getTime()){
+      this.Base.setMyData({ startdate: AppBase.Util.getNowDateFormat(), starttime: h + " ：" + m});
+    }
+    if (ed.getTime() < sd.getTime()) {
+      this.Base.setMyData({ enddate: this.Base.getMyData().startdate, endtime: this.Base.getMyData().starttime });
+    }
   }
   bindEndDateChange(e) {
 
     this.Base.setMyData({ enddate: e.detail.value });
+    this.refixDateTime();
   }
   bindEndTimeChange(e) {
-    this.Base.setMyData({ endtime: e.detail.value });
+    this.Base.setMyData({ endtime: e.detail.value.replace(":", " ：") });
+    this.refixDateTime();
   }
   sendVote(e){
 
-    var startdate = this.Base.getMyData().startdate + " " + this.Base.getMyData().starttime;
-    var enddate = this.Base.getMyData().enddate + " " + this.Base.getMyData().endtime;
+    var startdate = this.Base.getMyData().startdate + " " + this.Base.getMyData().starttime.replace(" ：", ":");
+    var enddate = this.Base.getMyData().enddate + " " + this.Base.getMyData().endtime.replace(" ：", ":");
     if (AppBase.Util.StrToDate(startdate).getTime() >= AppBase.Util.StrToDate(enddate).getTime()) {
 
       this.Base.info("开始时间不能大于结束时间");
@@ -142,15 +183,73 @@ class Content extends AppBase {
       }
     }
     var voteapi = new VoteApi();
-    voteapi.create({ startdate: startdate, enddate: enddate, questions: JSON.stringify(questions),group_id:this.Base.options.group_id,title:this.Base.options.title},(ret)=>{
+    voteapi.create({
+      startdate: startdate, enddate: enddate, questions: JSON.stringify(questions), group_id: this.Base.options.group_id,
+      noname: this.Base.getMyData().noname, remarkinfo: this.Base.getMyData().remarkinfo, onlygroup: this.Base.getMyData().onlygroup,
+      remarkinfoname: this.Base.getMyData().remarkinfoname,
+      remarkinfomobile: this.Base.getMyData().remarkinfomobile,
+      remarkinfoemail: this.Base.getMyData().remarkinfoemail,
+      remarkinfoaddress: this.Base.getMyData().remarkinfoaddress  ,
+      title:this.Base.options.title},(ret)=>{
       if(ret.code=="0"){
         wx.redirectTo({
-          url: '/pages/votesuccess/votesuccess?post_id='+ret.return,
+          url: '/pages/post/post?id='+ret.return,
         })
       }else{
         this.Base.info("发起失败，请联系管理员");
       }
     });
+  }
+  onlygroupChange(e){
+    console.log(e);
+    this.Base.setMyData({ onlygroup: this.Base.getMyData().onlygroup=="Y"?"N":"Y"});
+  }
+  nonameChange(e) {
+    console.log(e);
+    this.Base.setMyData({ noname: this.Base.getMyData().noname == "Y" ? "N" : "Y" });
+  }
+  remarkinfoChange(e) {
+    console.log(e);
+    this.Base.setMyData({ remarkinfo: this.Base.getMyData().remarkinfo == "Y" ? "N" : "Y" });
+  }
+  remarkinfonameChange(e) {
+    console.log(e);
+    this.Base.setMyData({ remarkinfoname: this.Base.getMyData().remarkinfoname == "Y" ? "N" : "Y" });
+  }
+  remarkinfomobileChange(e) {
+    console.log(e);
+    this.Base.setMyData({ remarkinfomobile: this.Base.getMyData().remarkinfomobile == "Y" ? "N" : "Y" });
+  }
+  remarkinfoemailChange(e) {
+    console.log(e);
+    this.Base.setMyData({ remarkinfoemail: this.Base.getMyData().remarkinfoemail == "Y" ? "N" : "Y" });
+  }
+  remarkinfoaddressChange(e) {
+    console.log(e);
+    this.Base.setMyData({ remarkinfoaddress: this.Base.getMyData().remarkinfoaddress == "Y" ? "N" : "Y" });
+  }
+
+
+  cancelCreate() {
+    this.Base.setMyData({ hiddenmodalput: true });
+    wx.navigateBack({
+      
+    })
+  }
+  confirmCreate() {
+    var title = this.Base.getMyData().votetitle;
+    if (title.trim() == "") {
+      wx.showToast({
+        title: '标题不能为空',
+      })
+      return;
+    }
+    this.Base.setMyData({ hiddenmodalput: true,title:title });
+    
+  }
+  inputVotetitle(e) {
+    var name = e.detail.value;
+    this.Base.setMyData({ votetitle: name });
   }
 }
 var page = new Content();
@@ -169,6 +268,18 @@ body.bindStartTimeChange = page.bindStartTimeChange;
 body.bindEndDateChange = page.bindEndDateChange;
 body.bindEndTimeChange = page.bindEndTimeChange;
 body.sendVote = page.sendVote;
+body.onlygroupChange = page.onlygroupChange;
+body.nonameChange = page.nonameChange; 
+body.remarkinfoChange = page.remarkinfoChange;
 
+body.remarkinfonameChange = page.remarkinfonameChange;
+body.remarkinfomobileChange = page.remarkinfomobileChange; 
+body.remarkinfoemailChange = page.remarkinfoemailChange;
+body.remarkinfoaddressChange = page.remarkinfoaddressChange;
+body.refixDateTime = page.refixDateTime;
+
+body.cancelCreate = page.cancelCreate;
+body.confirmCreate = page.confirmCreate;
+body.inputVotetitle = page.inputVotetitle;
 
 Page(body)

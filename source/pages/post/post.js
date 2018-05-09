@@ -221,11 +221,14 @@ class Content extends AppBase {
     var voteapi = new VoteApi();
     voteapi.vote({vids:vids.join(","),post_id:this.Base.options.id},(ret)=>{
       if(ret.code==0){
-        var postapi = new PostApi();
-        postapi.detail({ id: that.Base.options.id }, data => {
-          data["updated_date_span"] = AppBase.Util.Datetime_str(Number(data["updated_date_span"]));
-          that.Base.setMyData({ info: data });
-        });
+        wx.navigateTo({
+          url: '/pages/votesuccess/votesuccess?post_id=' + that.Base.options.id,
+        })
+        //var postapi = new PostApi();
+        //postapi.detail({ id: that.Base.options.id }, data => {
+        //  data["updated_date_span"] = AppBase.Util.Datetime_str(Number(data["updated_date_span"]));
+        //  that.Base.setMyData({ info: data });
+        //});
       }
     });
     

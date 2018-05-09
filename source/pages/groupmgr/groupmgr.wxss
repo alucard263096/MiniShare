@@ -1,1 +1,24 @@
 /* pages/groupmgr/groupmgr.wxss */
+.firsttab{
+  margin-top: 36rpx;
+  margin-left: 24rpx;
+  margin-right: 55rpx;
+  margin-bottom: 37rpx;
+  font-size: 28rpx;
+  color:#333;
+}
+.secondtab{
+  margin-right: 24rpx;
+  font-size: 28rpx;
+  color:#999;
+  margin-top: 36rpx;
+}
+.groupname{
+  position: absolute;
+}
+.secondtab image{
+  width: 58rpx;
+  height: 58rpx;
+  border-radius: 29rpx;
+  margin-right: 7rpx;
+}

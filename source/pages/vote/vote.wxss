@@ -27,3 +27,29 @@
 .changeQuestion{
   
 }
+
+.vitem{
+  padding:30rpx;
+  padding-left: 0rpx;
+  margin-left: 30rpx;
+  border-bottom:2rpx #ddd solid
+}
+.remarkinfo{
+  width: 85rpx;
+  height:36rpx;
+  background: #F1F1F1;
+  font-size: 24rpx;
+  color:#888;
+  text-align: center;
+  margin-right: 45rpx;
+  padding:10rpx;
+  border-radius: 4rpx;
+}
+.remarkinfo.active{
+  background: #29A5EE;
+  color:white;
+}
+
+.phcolor{
+  color:red;
+}

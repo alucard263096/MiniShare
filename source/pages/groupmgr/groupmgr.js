@@ -10,7 +10,7 @@ class Content extends AppBase {
 
   onLoad(options) {
     this.Base.Page = this;
-    //options.id=1;
+    //options.id = 483;
     super.onLoad(options);
     this.Base.setMyData({ list: [] });
   }
@@ -45,11 +45,68 @@ class Content extends AppBase {
 
 
   }
+  groupnameFocus(e){
+    console.log(e);
+    this.Base.setMyData({ group_nameonfocus:true});
+  }
+  groupnameBlur(e) {
+    console.log(e);
+    this.Base.setMyData({ group_nameonfocus: false });
+  }
+  groupnameChange(e){
+    var info=this.Base.getMyData().info;
+    info.group_name=e.detail.value;
+    var groupapi = new GroupApi();
+
+    groupapi.changename({ id: info.id, name: info.group_name }, data => {
+      if (data.code == 0) {
+      }
+    },false);
+
+    this.Base.setMyData({ info: info });
+  }
+  membernameChange(e) {
+    var info = this.Base.getMyData().info;
+    info.member_name = e.detail.value;
+    var groupapi = new GroupApi();
+
+    groupapi.changemembername({ id: info.id, name: info.member_name }, data => {
+      if (data.code == 0) {
+      }
+    }, false);
+
+    this.Base.setMyData({ info: info });
+  }
+  exitGroup(){
+    var that=this;
+    wx.showModal({
+      title: '提示',
+      content: '是否确定退出群空间？',
+      success(e){
+        if(e.confirm){
+          var groupapi = new GroupApi();
+
+          groupapi.quit({ id: that.Base.options.id }, data => {
+            if (data.code == 0) {
+              wx.redirectTo({
+                url: '/pages/index/index',
+              })
+            }
+          }, false);
+        }
+      }
+    })
+  }
 }
 var page = new Content();
 var body = page.generateBodyJson();
 body.onLoad = page.onLoad;
-body.onShow = page.onShow;
-body.transManage = page.transManage;
+body.onShow = page.onShow; 
+body.transManage = page.transManage; 
+body.groupnameFocus = page.groupnameFocus; 
+body.groupnameBlur = page.groupnameBlur;
+body.groupnameChange = page.groupnameChange;
+body.membernameChange = page.membernameChange;
+body.exitGroup = page.exitGroup;
 
 Page(body)

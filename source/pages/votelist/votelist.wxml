@@ -3,7 +3,16 @@
   <view class='title'>群投票</view>
 </view>
 <text class='fa fa-chevron-left btnback' bindtap='back'></text>
-<view>
+
+<view wx:if="{{list.length==0}}" class='text-center'>
+  <image class='egg' src='https://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/egg.png'></image>
+</view>
+<view wx:if="{{list.length==0}}"  class='text-center' style='color:#999;margin-top:36rpx;font-size:28rpx;'>
+还没有创建投票~
+</view>
+
+
+<view wx:if="{{list.length>0}}">
   <navigator url='/pages/post/post?id={{item.id}}' id="{{item.id}}" class='noticeitem debug' wx:for="{{list}}" wx:key="k">
     <view class='flex-row'>
     <view class='title'>{{item.title}}</view>

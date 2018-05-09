@@ -15,7 +15,7 @@
         {{i+1}}、
       </view>
       <view>
-        <input value="{{item.question}}" bindinput='changeQuestion' id="{{i}}" placeholder='选择题标题' style='font-size:28rpx;'></input>
+        <input value="{{item.question}}" bindinput='changeQuestion' id="{{i}}" placeholder='选择题标题' style='font-size:28rpx;' placeholder-style="color:#ddd"></input>
       </view>
       <view class='flex-1 text-right' style='font-size:28rpx;color:#29A5EE'>单选 ></view>
     </view>
@@ -23,12 +23,12 @@
 
   <view style='padding-top:30rpx;' wx:for="{{item.options}}" wx:key="knb" wx:for-index="j" wx:for-item="opt">
     <view class='flex-row'>
-      <view style='margin-left:10rpx;margin-right:10rpx;'>
-        <image bindtap='minusOpt' id="{{i}}_{{j}}" src='https://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/minus.png' style='width:32rpx;height:32rpx;'></image>
+      <view style='padding-left:10rpx;padding-right:10rpx;'  bindtap='minusOpt' id="{{i}}_{{j}}">
+        <image src='https://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/minus.png' style='width:32rpx;height:32rpx;'></image>
       </view>
-      <view class='flex-1 flex-row' style='border-bottom:2rpx solid #DDDDDD;padding-bottom:30rpx;'>
+      <view class='flex-1 flex-row' style='border-bottom:2rpx solid #DDDDDD;padding-bottom:30rpx;margin-left:24rpx;'>
         <view>
-          <input value="{{opt.str}}" bindinput='changeOption' id="{{i}}_{{j}}" placeholder='选项' style='font-size:28rpx;'></input>
+          <input value="{{opt.str}}" bindinput='changeOption' id="{{i}}_{{j}}" placeholder='选项' style='font-size:28rpx;'  placeholder-style="color:#ddd"></input>
         </view>
         <view class='flex-1'></view>
         <view class='flex-row' wx:if="{{opt.photo==''}}" style='background:#F1F1F1;padding:13rpx;color:#888;font-size:24rpx;' bindtap='addPhoto' id="{{i}}_{{j}}">
@@ -49,9 +49,9 @@
       <view style='margin-left:10rpx;margin-right:10rpx;'>
         <image src='https://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/add.png' style='width:32rpx;height:32rpx;'></image>
       </view>
-      <view class='flex-1 flex-row' style='border-bottom:2rpx solid #DDDDDD;padding-bottom:30rpx;'>
+      <view class='flex-1 flex-row' style='border-bottom:2rpx solid #DDDDDD;padding-bottom:30rpx;margin-left:24rpx;'>
         <view>
-          <input disabled='disabled' placeholder='添加选项' style='font-size:28rpx;'></input>
+          <input disabled='disabled' placeholder='添加选项' style='font-size:28rpx;'  placeholder-style="color:#ddd"></input>
         </view>
 
       </view>
@@ -78,24 +78,54 @@
 
 
 <view class='bg-white' style='color:#666;font-size:28rpx;'>
-  <view class='flex-row' style='padding:30rpx;border-bottom:2rpx #ddd solid'>
+  <view class='flex-row vitem' >
     <view class='flex-1'>开始时间</view>
     <view class='text-right flex-row'>
-      <picker mode="date" value="{{startdate}}" bindchange="bindStartDateChange">{{startdate}}
+      <picker mode="date" start="{{nowformat}}" end="{{enddate}}" value="{{startdate}}" bindchange="bindStartDateChange">{{startdate}}
       </picker>
       <text style='color:white;'>a</text>
       <picker mode="time" value="{{starttime}}" bindchange="bindStartTimeChange">{{starttime}}
       </picker>
     </view>
   </view>
-  <view class='flex-row' style='padding:30rpx;border-bottom:2rpx #ddd solid'>
+  <view class='flex-row vitem'>
     <view class='flex-1'>结束时间</view>
     <view class='text-right flex-row'>
-      <picker mode="date" value="{{enddate}}" bindchange="bindEndDateChange">{{enddate}}
+      <picker mode="date" start="{{startdate}}" value="{{enddate}}" bindchange="bindEndDateChange">{{enddate}}
       </picker>
       <text style='color:white;'>a</text>
       <picker mode="time" value="{{endtime}}" bindchange="bindEndTimeChange">{{endtime}}
       </picker>
+    </view>
+  </view>
+  <view class='flex-row vitem' >
+    <view class='flex-1'>匿名投票</view>
+    <view class='text-right flex-row'>
+      
+    <view class='text-right flex-row'>
+      <switch checked='{{noname=="Y"}}' color="#29A5EE" bindchange="nonameChange"/>
+    </view>
+    </view>
+  </view>
+  <view class='flex-row vitem'  style='{{remarkinfo=="Y"?"border:0rpx;":""}}'>
+    <view class='flex-1'>备注信息</view>
+    <view class='text-right flex-row'>
+      
+    <view class='text-right flex-row'>
+      <switch checked='{{remarkinfo=="Y"}}' color="#29A5EE" bindchange="remarkinfoChange"/>
+    </view>
+    </view>
+  </view>
+  <view class='flex-row vitem' wx:if='{{remarkinfo=="Y"}}' style='padding-top:8rpx;' >
+    <view class='remarkinfo {{remarkinfoname=="Y"?"active":""}}' bindtap='remarkinfonameChange'>姓名</view>
+    <view class='remarkinfo {{remarkinfomobile=="Y"?"active":""}}' bindtap='remarkinfomobileChange'>手机</view>
+    <view class='remarkinfo {{remarkinfoemail=="Y"?"active":""}}' bindtap='remarkinfoemailChange'>邮箱</view>
+    <view class='remarkinfo {{remarkinfoaddress=="Y"?"active":""}}' bindtap='remarkinfoaddressChange'>地址</view>
+  </view>
+  <view class='flex-row vitem' style='border:0rpx;' >
+    <view class='flex-1'>仅限本群</view>
+    <view class='text-right flex-row'>
+      <switch checked='{{onlygroup=="Y"}}' color="#29A5EE" bindchange="onlygroupChange"/>
     </view>
   </view>
 </view>
@@ -107,6 +137,15 @@
       </form>
     </view>
   </view>
+
+
+
+
+
+
+<modal hidden="{{hiddenmodalput}}" title="请设置标题" confirm-text="提交" cancel-text="放弃" bindcancel="cancelCreate" bindconfirm="confirmCreate">  
+    <input type='text' placeholder="标题" value="{{votetitle}}" bindinput='inputVotetitle' maxlength='20' /> 
+</modal>
 <!--
 <view class="page" >
   <view class="page__bd">

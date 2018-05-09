@@ -136,7 +136,7 @@ export class ApiUtil {
     var hour = Number(time[0]);
     var minute = Number(time[1]);
     var second = Number(time[2]);
-
+    console.log(second);
     return new Date(year,month,day,hour,minute,second);
   }
   static getNowDateFormat(){
