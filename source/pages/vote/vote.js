@@ -190,7 +190,7 @@ class Content extends AppBase {
       remarkinfomobile: this.Base.getMyData().remarkinfomobile,
       remarkinfoemail: this.Base.getMyData().remarkinfoemail,
       remarkinfoaddress: this.Base.getMyData().remarkinfoaddress  ,
-      title:this.Base.options.title},(ret)=>{
+      title: this.Base.getMyData().title},(ret)=>{
       if(ret.code=="0"){
         wx.redirectTo({
           url: '/pages/post/post?id='+ret.return,
