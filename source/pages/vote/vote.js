@@ -8,8 +8,8 @@ class Content extends AppBase {
     super();
   }
   onLoad(options) {
-    //options.group_id = 2;
-    //options.title = "咫尺之星投票";
+    options.group_id = 2;
+    options.title = "咫尺之星投票";
     //options.title = JSON.parse(options.title);
     this.Base.Page = this;
     super.onLoad(options);
@@ -29,7 +29,8 @@ class Content extends AppBase {
       remarkinfomobile: "Y",
       remarkinfoemail: "N",
       remarkinfoaddress: "N",
-    questions: [{ question: "", options: [{ str: "", photo: "" }, { str: "", photo: "" }]}]});
+      votetypearray: ["单选","多选"],
+    questions: [{ question: "",votetype:0, options: [{ str: "", photo: "" }, { str: "", photo: "" }]}]});
     
   }
   onShow() {
@@ -43,6 +44,13 @@ class Content extends AppBase {
     questions[id].question=question;
     this.Base.setMyData({questions:questions});
   }
+  votetypeChange(e) {
+    var gtg = e.detail.value;
+    var id = e.currentTarget.id;
+    var questions = this.Base.getMyData().questions;
+    questions[id].votetype = gtg;
+    this.Base.setMyData({ questions: questions });
+  } 
   changeOption(e){
     var str = e.detail.value;
     var id = e.currentTarget.id;
@@ -106,7 +114,7 @@ class Content extends AppBase {
   }
   addQuestion(){
     var questions = this.Base.getMyData().questions;
-    questions.push({ question: "", options: [{ str: "", photo: "" }, { str: "", photo: "" }] });
+    questions.push({ question: "",votetype:"0", options: [{ str: "", photo: "" }, { str: "", photo: "" }] });
 
     this.Base.setMyData({ questions: questions });
   }
@@ -268,9 +276,10 @@ body.bindStartTimeChange = page.bindStartTimeChange;
 body.bindEndDateChange = page.bindEndDateChange;
 body.bindEndTimeChange = page.bindEndTimeChange;
 body.sendVote = page.sendVote;
-body.onlygroupChange = page.onlygroupChange;
+body.onlygroupChange = page.onlygroupChange; 
 body.nonameChange = page.nonameChange; 
 body.remarkinfoChange = page.remarkinfoChange;
+body.votetypeChange = page.votetypeChange;
 
 body.remarkinfonameChange = page.remarkinfonameChange;
 body.remarkinfomobileChange = page.remarkinfomobileChange; 

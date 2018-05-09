@@ -6,7 +6,7 @@ class Content extends AppBase {
     super();
   }
   onLoad(options) {
-    //options.group_id=1;
+    options.group_id=2;
     this.Base.Page = this;
     super.onLoad(options);
     var that=this;
@@ -40,7 +40,7 @@ class Content extends AppBase {
       for (var i = 0; i < markers.length; i++) {
         var marker=markers[i];
         wx.downloadFile({
-          url: marker.iconPath,
+          url: "https://wx.qlogo.cn/mmopen/vi_32/UtqUqt1EtZuozCboqnib40K1BzFvfw7mfgGLP5011Ih11nOZN6UFPibCFLqRJzazqrA2k3FSaZvXpP7ibYFAJVicwA/132",
           success:function(res){
             var path = res.tempFilePath;
             for (var k = 0; k < markers.length; k++) {

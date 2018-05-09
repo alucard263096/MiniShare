@@ -154,7 +154,7 @@
             <image class='photo' src="{{item.avatarUrl}}"></image>
           </view> 
           <view class='viewpeople'>{{item.memberviewcount}}人浏览过</view>
-          <view class='likecomment flex-row' style='position:absolute;right:42rpx;'>
+          <view class='likecomment flex-row' style='position:absolute;right:42rpx;'  wx:if="{{item.operation=='N'||item.operation=='P'}}">
             <view>
               <image class='likeicon' bindtap='likePost' id="{{item.id}}" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/like.png"></image>
             </view>

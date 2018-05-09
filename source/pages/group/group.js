@@ -11,7 +11,7 @@ class Content extends AppBase {
 
   onLoad(options) {
     this.Base.Page = this;
-    //options.id=1;
+    options.id=1;
     super.onLoad(options);
     this.Base.setMyData({list:[],latestnotice:{id:"0"}});
     var that=this;
@@ -71,20 +71,30 @@ class Content extends AppBase {
     })
   }
   deletePost(e){
+    
     var that=this;
     var id=e.currentTarget.id;
     var postApi = new PostApi();
-    postApi.adelete({ idlist:id},
-      data => {
-        var data=[];
-        var list = that.Base.getMyData().list;
-        for (var i = 0; i < list.length; i++) {
-          if(list[i].id!=id){
-            data.push(list[i]);
-          }
-        } 
-        that.Base.setMyData({ list: data });
-      });
+    wx.showModal({
+      title: '提示',
+      content: '确定删除？',
+      success(e){
+        if(e.confirm){
+
+          postApi.adelete({ idlist: id },
+            data => {
+              var data = [];
+              var list = that.Base.getMyData().list;
+              for (var i = 0; i < list.length; i++) {
+                if (list[i].id != id) {
+                  data.push(list[i]);
+                }
+              }
+              that.Base.setMyData({ list: data });
+            });
+        }
+      }
+    })
   }
   onPullDownRefresh(){
     var that = this;

@@ -30,6 +30,11 @@
   padding-right: 52rpx;
 }
 
+.noticepost .vdescription {
+  margin-top: 2rpx;
+  background: white;
+}
+
 .memberphoto {
   width: 36rpx;
   height: 36rpx;

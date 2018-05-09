@@ -1,10 +1,13 @@
 <!--pages/group/group.wxml-->
-<view class='superheader'></view>
+<view class='superheader'>
+  <view class='title'  wx:if="{{info.operation=='V'}}">群投票</view>
+  <view class='title'  wx:if="{{info.operation=='N'}}">群通知</view>
+  <view class='title'  wx:if="{{info.operation=='P'}}">群相册</view></view>
 <text class='fa fa-chevron-left btnback' bindtap='myback'></text>
 
 
 <view class='noticepost' wx:if="{{info.operation=='V'}}">
-  <view class='description'>
+  <view class='vdescription'>
     <view style='padding-top:34rpx;padding-left:28rpx;padding-bottom:23rpx;font-size:34rpx;color:#333;'>{{info.title}}</view>
     <view style='padding-top:10rpx;padding-left:30rpx;padding-bottom:30rpx;color:#333;'>
       <text style='font-size:28rpx;'>投票截止：</text>
@@ -17,16 +20,17 @@
       <view>
         <image class="memberphoto" src="{{info.member_id_photo}}" />
       </view>
+      <!--
       <view class='membername' style='width:400rpx;'>
         {{info.member_id_name}}
-      </view>
+      </view>-->
     </view>
   </view>
-  <view style='margin-top:10rpx;color:#666;font-size:28rpx;'  wx:if="{{info.vote_expired_count>0&&info.questionsvoted==false}}">
+  <view style='margin-top:10rpx;color:#666;font-size:28rpx;' wx:if="{{info.vote_expired_count>0&&info.questionsvoted==false}}">
     <view class='bg-white' style='padding:30rpx;'>
       <view wx:for="{{info.questions}}" wx:key="k">
-        <view  >
-          {{item.seq}}、{{item.question}}
+        <view>
+          {{item.seq}}. {{item.question}}
         </view>
         <block wx:for="{{item.voteoptions}}" wx:for-item="opt" wx:key="kt">
           <view style='margin-top:30rpx;' bindtap='selectOpt' id="{{item.id}}_{{opt.id}}">
@@ -42,22 +46,22 @@
       </view>
     </view>
   </view>
-  
-  <view style='margin-top:10rpx;color:#666;font-size:28rpx;'  wx:if="{{info.vote_expired_count<0||info.questionsvoted==true}}">
+
+  <view style='margin-top:10rpx;color:#666;font-size:28rpx;' wx:if="{{info.vote_expired_count<0||info.questionsvoted==true}}">
     <view class='bg-white' style='padding:30rpx;'>
       <view wx:for="{{info.questions}}" wx:key="k">
-        <view  >
-          {{item.seq}}、{{item.question}}
+        <view>
+          {{item.seq}}. {{item.question}}
         </view>
         <block wx:for="{{item.voteoptions}}" wx:for-item="opt" wx:key="kt">
           <view style='margin-top:30rpx;' bindtap='selectOpt' id="{{item.id}}_{{opt.id}}">
-            <view class='flex-row'  style='overflow:visible;'>
-            <view wx:if="{{opt.photo!=''}}" >
-              <image src="{{uploadpath}}vote/{{opt.photo}}" style='width:70rpx;height:70rpx;'></image>
-            </view>
-              <view  class='flex-1 flex-row' style='overflow:visible;'>
-                <view  style='background-color:#F1F1F1;padding-top:10rpx;padding-right:15rpx;height:60rpx;white-space:nowrap;overflow:visible; width:{{(opt.votemembers.length>100?100:opt.votemembers.length)*100.0/100}}%;'> {{opt.str}}
-  <text>({{opt.votemembers.length}}票)</text>
+            <view class='flex-row' style='overflow:visible;'>
+              <view wx:if="{{opt.photo!=''}}">
+                <image src="{{uploadpath}}vote/{{opt.photo}}" style='width:70rpx;height:70rpx;'></image>
+              </view>
+              <view class='flex-1 flex-row' style='overflow:visible;'>
+                <view style='background-color:#F1F1F1;padding-top:10rpx;padding-right:15rpx;height:60rpx;white-space:nowrap;overflow:visible; width:{{(opt.votemembers.length>100?100:opt.votemembers.length)*100.0/100}}%;'> {{opt.str}}
+                  <text>({{opt.votemembers.length}}票)</text>
                 </view>
               </view>
             </view>
@@ -159,10 +163,10 @@
     <button class="btnShare" type="primary" open-type="share">分享</button>
   </view>
 </view>
-<view class='allcomments'>
+<view class='allcomments' wx:if="{{info.operation=='N'||info.operation=='P'}}">
   全部评论
 </view>
-<view class='comment' wx:for="{{commentlist}}" wx:key="k">
+<view class='comment' wx:for="{{commentlist}}" wx:key="k" wx:if="{{info.operation=='N'||info.operation=='P'}}">
   <view class='member flex-row'>
     <view>
       <image class="memberphoto" src="{{item.member_id_avatarUrl}}" />
@@ -178,14 +182,14 @@
     {{item.comment}}
   </view>
 </view>
-<view style='height:88rpx;'>
+<view style='height:88rpx;' wx:if="{{info.operation=='N'||info.operation=='P'}}">
 
 </view>
-<view class='commentbox'>
+<view class='commentbox' wx:if="{{info.operation=='N'||info.operation=='P'}}">
   <input placeholder='我来发表评论' class='inputcomment' maxlength='144' bindinput='commentChange' bindconfirm="sendComment" value='{{comment}}'></input>
 </view>
 
-<view class='likecomment flex-row' style='right:42rpx;'>
+<view class='likecomment flex-row' style='right:42rpx;'  wx:if="{{info.operation=='N'||info.operation=='P'}}">
   <view class='incon'>
     <image class='likeicon' bindtap='likePost' id="{{info.id}}" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/like.png"></image>
   </view>

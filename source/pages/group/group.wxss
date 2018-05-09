@@ -178,12 +178,15 @@
   color:#999999;
   width:44rpx;
   text-align: right;
+  line-height: 34rpx;
+  margin-top: 4rpx;
 }
 .post .month{
   width:60rpx;
   font-size: 22rpx;
   margin-top: 10rpx;
   color:#999999;
+  margin-left: 4rpx;
 }
 .post .photo{
   width: 44rpx;
