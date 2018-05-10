@@ -150,7 +150,7 @@
             <view class='gdesc'>{{item.latestoperation}}</view>
           </view>
       
-          <view class='flex-1 timespan'>{{item.operationtime_span}}</view>
+          <view class='flex-1 timespan'>{{item.operationtime}}</view>
 
         </view>
       </navigator>

@@ -11,17 +11,11 @@ class Content extends AppBase {
 
   onLoad(options) {
     this.Base.Page = this;
-    options.id=1;
+    //options.id=2;
     super.onLoad(options);
     this.Base.setMyData({list:[],latestnotice:{id:"0"}});
     var that=this;
-    var noticeapi=new NoticeApi();
-    noticeapi.latestnotice({ group_id: this.Base.options.id},function(data){
-      if(data==undefined){
-        data={id:0};
-      }
-      that.Base.setMyData({ latestnotice: data });
-    });
+    
   }
 
   onShow() {
@@ -35,6 +29,15 @@ class Content extends AppBase {
       }
       that.Base.setMyData({ info: data, memberpeoples: memberpeoples});
     });
+
+    var noticeapi = new NoticeApi();
+    noticeapi.latestnotice({ group_id: this.Base.options.id }, function (data) {
+      if (data == undefined) {
+        data = { id: 0 };
+      }
+      that.Base.setMyData({ latestnotice: data });
+    });
+
     var postApi = new PostApi();
     var data=this.Base.getMyData();
     var json={

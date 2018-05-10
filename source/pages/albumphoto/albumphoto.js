@@ -61,11 +61,19 @@ class Content extends AppBase {
     }
     var str=selectids.join(",");
     var that=this;
-
+    
     var api = new AlbumApi();
-    api.deletephoto({ ids: str }, data => {
-      that.onShow();
-    });
+    wx.showModal({
+      title: '提示',
+      content: '确定删除选中的照片？',
+      success(e){
+        if(e.confirm){
+          api.deletephoto({ ids: str }, data => {
+            that.onShow();
+          });
+        }
+      }
+    })
   }
   download(){
     var list = this.Base.getMyData().list;

@@ -1,13 +1,15 @@
 <!--pages/notify/notify.wxml-->
 
 
-<view class='superheader'></view>
+<view class='superheader'>
+  <view class='title'>群公告</view></view>
 <text class='fa fa-chevron-left btnback' bindtap='back'></text>
 <view style='line-height:48rpx;'>
-  <image class='selectcover' src='{{uploadpath}}banner/{{selectcover.pic}}' />
+  <image class='selectcover' src='{{uploadpath}}banner/{{selectcover}}' mode='aspectFit' />
 </view>
 <scroll-view class='covers' scroll-x  style='line-height:0rpx;'>
   <image class='coveritem'  wx:for="{{covers}}" wx:key="k" src='{{uploadpath}}banner/{{item.pic}}' bindtap='changeCover' id="{{item.id}}"></image>
+  <image class='coveritem' bindtap='selectMyCover'  src='https://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/addblank.png'></image>
 </scroll-view>
 <view style='background:#f2f2f2;height:10rpx;'></view>
 <view class='inputBody'>

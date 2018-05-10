@@ -10,7 +10,7 @@ class Content extends AppBase {
     super();
   }
   onLoad(options) {
-    //options.id = 70;
+    //options.id = 10;
     //options.group_id = 1;
     this.Base.Page = this;
 
@@ -18,7 +18,7 @@ class Content extends AppBase {
       this.Base.setMyData({ "album_id": options.id });
     } else {
       this.Base.setMyData({ "album_id": "0" });
-      options.id=0;
+      options.id = 0;
     }
     if (options.group_id != undefined) {
       this.Base.setMyData({ "group_id": options.group_id });
@@ -34,57 +34,57 @@ class Content extends AppBase {
     var that = this;
     super.onShow();
 
-      var albumapi = new AlbumApi();
-      albumapi.detail({ group_id: this.Base.options.group_id, id: this.Base.options.id }, data => {
-        that.Base.setMyData({ info: data });
-        wx.setNavigationBarTitle({
-          title: data.name,
-        })
-      });
+    var albumapi = new AlbumApi();
+    albumapi.detail({ group_id: this.Base.options.group_id, id: this.Base.options.id }, data => {
+      that.Base.setMyData({ info: data });
+      wx.setNavigationBarTitle({
+        title: data.name,
+      })
+    });
 
-      var postApi = new PostApi();
-      var data = this.Base.getMyData();
-      var json = {
-        album_id: this.Base.options.id,
-        operation: "P"
-      };
-      postApi.list(json, (data) => {
-        for (var i = 0; i < data.length; i++) {
-          data[i]["updated_date_split"] = AppBase.Util.Datetime2(Number(data[i]["updated_date_span"]));
+    var postApi = new PostApi();
+    var data = this.Base.getMyData();
+    var json = {
+      album_id: this.Base.options.id,
+      operation: "P"
+    };
+    postApi.list(json, (data) => {
+      for (var i = 0; i < data.length; i++) {
+        data[i]["updated_date_split"] = AppBase.Util.Datetime2(Number(data[i]["updated_date_span"]));
 
-          data[i]["updated_date_span"] = AppBase.Util.Datetime_str(Number(data[i]["updated_date_span"]));
-        }
-        var list = that.Base.getMyData().list;
-        for (var i = 0; i < list.length; i++) {
-          data.push(list[i]);
-        }
-        if (data.length > 0) {
-          that.Base.setMyData({ list: data, newgettime: data[0].updated_date, lastgettime: data[data.length - 1].updated_date });
-        }
-      });
+        data[i]["updated_date_span"] = AppBase.Util.Datetime_str(Number(data[i]["updated_date_span"]));
+      }
+      var list = that.Base.getMyData().list;
+      for (var i = 0; i < list.length; i++) {
+        data.push(list[i]);
+      }
+      if (data.length > 0) {
+        that.Base.setMyData({ list: data, newgettime: data[0].updated_date, lastgettime: data[data.length - 1].updated_date });
+      }
+    });
   }
-  uploadPhoto(){
+  uploadPhoto() {
     wx.navigateTo({
       url: '/pages/upload/upload?choosetype=photo&album_id=' + this.Base.options.id + "&group_id=" + this.Base.options.group_id,
     })
   }
-  viewPhotos(e){
-    var photos=this.Base.getMyData().info.photos;
-    var current=e.currentTarget.id;
-    var nphotos=[];
-    for (let i in photos){
-      for (var j = 0; j < photos[i]["photos"].length;j++){
+  viewPhotos(e) {
+    var photos = this.Base.getMyData().info.photos;
+    var current = e.currentTarget.id;
+    var nphotos = [];
+    for (let i in photos) {
+      for (var j = 0; j < photos[i]["photos"].length; j++) {
         nphotos.push(photos[i]["photos"][j]["photo"]);
       }
     }
-    this.Base.viewGallary("album", nphotos,current);
+    this.Base.viewGallary("album", nphotos, current);
   }
-  changeAlbumName(){
+  changeAlbumName() {
     wx.navigateTo({
-      url: '/pages/albumcreate/albumcreate?id='+this.Base.options.id+"&group_id="+this.Base.options.group_id,
+      url: '/pages/albumcreate/albumcreate?id=' + this.Base.options.id + "&group_id=" + this.Base.options.group_id,
     })
   }
-  uploadPhotos(){
+  uploadPhotos() {
     wx.navigateTo({
       url: '/pages/albumupload/albumupload?album_id=' + this.Base.options.id + "&group_id=" + this.Base.options.group_id,
     })
@@ -98,17 +98,28 @@ class Content extends AppBase {
     var that = this;
     var id = e.currentTarget.id;
     var postApi = new PostApi();
-    postApi.adelete({ idlist: id },
-      data => {
-        var data = [];
-        var list = that.Base.getMyData().list;
-        for (var i = 0; i < list.length; i++) {
-          if (list[i].id != id) {
-            data.push(list[i]);
-          }
+
+    wx.showModal({
+      title: '提示',
+      content: '确定删除相片？',
+      success(e) {
+        if (e.confirm) {
+
+          postApi.adelete({ idlist: id },
+            data => {
+              var data = [];
+              var list = that.Base.getMyData().list;
+              for (var i = 0; i < list.length; i++) {
+                if (list[i].id != id) {
+                  data.push(list[i]);
+                }
+              }
+              that.Base.setMyData({ list: data });
+            });
         }
-        that.Base.setMyData({ list: data });
-      });
+      }
+    })
+
   }
 
   likePost(e) {
@@ -130,13 +141,13 @@ class Content extends AppBase {
   }
 }
 var page = new Content();
-var body = page.generateBodyJson(); 
+var body = page.generateBodyJson();
 body.onLoad = page.onLoad;
-body.onShow = page.onShow; 
-body.uploadPhoto = page.uploadPhoto; 
-body.viewPhotos = page.viewPhotos; 
+body.onShow = page.onShow;
+body.uploadPhoto = page.uploadPhoto;
+body.viewPhotos = page.viewPhotos;
 body.changeAlbumName = page.changeAlbumName;
-body.uploadPhotos = page.uploadPhotos; 
+body.uploadPhotos = page.uploadPhotos;
 body.gotoPhotos = page.gotoPhotos;
 body.deletePost = page.deletePost;
 body.likePost = page.likePost;

@@ -1,8 +1,4 @@
 <!--pages/albumphoto/albumphoto.wxml-->
-<view class='superheader'>
-  <view class='title'>照片墙</view>
-</view>
-<text class='fa fa-chevron-left btnback' bindtap='back'></text>
 
 <view class='bg-white'>
   <view class='text-right' style='margin-top:31rpx;margin-right:30rpx;margin-bottom:29rpx;font-size:28rpx;color:#29A5EE' wx:if="{{inmgr==false}}" bindtap='changeToMgr'>
@@ -42,3 +38,9 @@
 <view style='margin-left:69rpx;'><text bindtap='deletePhoto'>删除</text></view>
 </view>
 </view>
+
+
+<view class='superheader'>
+  <view class='title'>照片墙</view>
+</view>
+<text class='fa fa-chevron-left btnback' bindtap='back'></text>

@@ -12,7 +12,7 @@ class Content extends AppBase {
     //}
     this.Base.Page = this;
     super.onLoad(options);
-    this.Base.setMyData({ cover: "", name: "", cat_id:0});
+    this.Base.setMyData({ cover: "", name: "", cat_id: 0,cats:[]});
   }
   onShow() {
     var that = this;
@@ -35,15 +35,13 @@ class Content extends AppBase {
   }
   changeLabel(e){
     var cat_id=e.currentTarget.id;
-    //var cats = this.Base.getMyData().cats;
-    //for(var i=0;i<cats.length;i++){
-    //  if(cats[i].id==id){
-    //    cats[i].active=true;
-    //  }else{
-    //    cats[i].active=false;
-    //  }
-    //}
-    this.Base.setMyData({ cat_id: cat_id });
+    var cats = this.Base.getMyData().cats;
+    for(var i=0;i<cats.length;i++){
+      if (cats[i].id == cat_id) {
+        this.Base.setMyData({ cat_id: cat_id,name:cats[i].name,cover:cats[i].cover });
+        break;
+      }
+    }
   }
   changeCover(){
     this.Base.uploadImage("album",(ret)=>{

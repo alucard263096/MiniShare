@@ -8,7 +8,7 @@ class Content extends AppBase {
     super();
   }
   onLoad(options) {
-    options.group_id=1;
+    //options.group_id=1;
     this.Base.Page = this;
     super.onLoad(options);
     this.Base.setMyData({

@@ -1,7 +1,7 @@
 /* pages/group/group.wxss */
 
 .top-bg {
-  background: #fff url(http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/groupbg.png);
+  background: #fff url(http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/groupbg2.png);
   background-size: 100% 100%;
   height: 410rpx;
 }
@@ -111,7 +111,7 @@
   margin-top: 4rpx;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
+  height: 50rpx;
 }
 .quweicenter .block-1{
   margin-top: 44rpx;
@@ -179,7 +179,7 @@
   width:44rpx;
   text-align: right;
   line-height: 34rpx;
-  margin-top: 4rpx;
+  margin-top: 6rpx;
 }
 .post .month{
   width:60rpx;
@@ -255,6 +255,7 @@
   font-size: 24rpx;
   line-height: 24rpx;
   color:#999999;
+  margin-top: 6rpx;
 }
 .postcontent{
   font-size: 28rpx;

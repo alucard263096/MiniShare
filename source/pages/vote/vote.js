@@ -8,9 +8,11 @@ class Content extends AppBase {
     super();
   }
   onLoad(options) {
-    options.group_id = 2;
-    options.title = "咫尺之星投票";
-    //options.title = JSON.parse(options.title);
+    //options.group_id = 2;
+    //options.title = "咫尺之星投票";
+    if(options.title!=undefined){
+      options.title = JSON.parse(options.title);
+    }
     this.Base.Page = this;
     super.onLoad(options);
 

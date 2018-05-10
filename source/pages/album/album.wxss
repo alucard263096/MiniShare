@@ -17,4 +17,5 @@ height: 330rpx;
   bottom: 22rpx;
   left: 226rpx;
   width: 289rpx;
+  margin-bottom: 0rpx;
 }

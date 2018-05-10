@@ -24,9 +24,9 @@ class Content extends AppBase {
     var groupapi=new GroupApi();
     groupapi.all({},data=>{
       console.log(data);
-      for(var i=0;i<data.length;i++){
-        data[i]["operationtime_span"] = AppBase.Util.Datetime_str(Number(data[i]["operationtime_span"]));
-      }
+      //for(var i=0;i<data.length;i++){
+        //data[i]["operationtime_span"] = data[i]["operationtime"];
+      //}
       if (that.setMyData != undefined) {
         that.setMyData({ list: data  });
       } else {

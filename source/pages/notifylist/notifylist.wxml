@@ -14,9 +14,9 @@
 
 
 <view wx:if="{{list.length>0}}">
-  <navigator url='/pages/post/post?id={{item.id}}' id="{{item.id}}" class='noticeitem debug' wx:for="{{list}}" wx:key="k">
-    <view class='title'>{{item.title}}</view>
-    <view class='description'>{{item.description}}</view>
+  <view  class='noticeitem debug' wx:for="{{list}}" wx:key="k">
+    <navigator url='/pages/post/post?id={{item.id}}' id="{{item.id}}" class='title'>{{item.title}}</navigator>
+    <navigator url='/pages/post/post?id={{item.id}}' id="{{item.id}}" class='description'>{{item.description}}</navigator>
     <view class='flex-row'>
       <view>
         <image class='photo' src="{{item.member_id_photo}}"></image>
@@ -25,11 +25,11 @@
       <view class='delete' wx:if="{{item.member_id_openid==UserInfo.openid||info.adminmember_id_name==UserInfo.openid}}" bindtap='deletePost' id="{{item.id}}">删除</view>
       <view class='flex-1 updatetime text-right'>{{item.updated_date_str}}</view>
     </view>
-  </navigator>
+  </view>
   <view>
     <view class="page__bd page__bd_spacing" >
       <form name='uploadform' report-submit >
-        <button class="btnNotice" type="primary" bindtap='gotoNotify' >发起公告</button>
+        <button class="btnNotice" type="primary" bindtap='gotoNotify' >发布公告</button>
       </form>
     </view>
   </view>

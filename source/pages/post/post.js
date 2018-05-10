@@ -11,12 +11,15 @@ class Content extends AppBase {
     super();
   }
   onLoad(options) {
-    options.id = 6;
+    //options.id = 53;
     this.Base.Page = this;
     super.onLoad(options);
     var postapi = new PostApi();
     postapi.read({ post_id: this.Base.options.id });
-    postapi.view({ post_id: this.Base.options.id });
+    postapi.view({ post_id: this.Base.options.id }, (ret) => {
+      console.log("list");
+      console.log(ret);
+    });
 
     this.Base.setMyData({ comment: "", id: options.id });
   }

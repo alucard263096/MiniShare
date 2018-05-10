@@ -49,7 +49,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: 250rpx;
+  max-width: 250rpx;
 }
 
 .posttime {
@@ -86,6 +86,7 @@
 }
 .noticepost .viewcounts{
   margin-left: 26rpx;
+  margin-top: 8rpx;
   color:#999999;
   font-size: 24rpx;
   display: inline-flex;
@@ -129,6 +130,11 @@
   font-size: 28rpx;
   color:#666666;
 }
+.commenttextno{
+  margin-bottom: 30rpx;
+  font-size: 28rpx;
+  color:#666666;
+}
 .commentbox{
   border-top:2rpx #f2f2f2 solid;
   position: fixed;
@@ -164,6 +170,7 @@
 .likestr{
   font-size: 24rpx;
   margin-left: 12rpx;
+  margin-top: 4rpx;
   color:#999999;
 }
 .commenticon{

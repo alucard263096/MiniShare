@@ -11,9 +11,11 @@
   flex: right;
 }
 .coveritem{
-  width: 238rpx;
+  width: 234rpx;
   height: 116rpx;
   margin-right: 4px;
+  border:2rpx solid #ddd;
+  margin-top: 4rpx;
 }
 .inputBody{
   background: white;

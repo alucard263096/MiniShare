@@ -120,8 +120,8 @@
       <view class='postbody flex-1'>
         <view class='operationstr'>{{item.operationstr}}</view>
         <navigator url='/pages/post/post?id={{item.id}}' class='postcontent' wx:if="{{item.operation=='N'}}">
-        <view wx:if="{{item.noticecover_id_name!=null}}">
-          <image src='{{uploadpath}}banner/{{item.noticecover_id_name}}' style='width:100%;' mode="widthFix"></image>
+        <view wx:if="{{item.noticecover!=null}}">
+          <image src='{{uploadpath}}banner/{{item.noticecover}}' style='width:100%;' mode="aspectFit"></image>
         </view>
         <view  style='color:#333333;margin-top:16rpx;'>{{item.title}}</view>
         <view style='margin-top:14rpx;' style='color:#666666'>{{item.description}}</view>
@@ -134,8 +134,15 @@
           </block>
 
         </navigator>
-        <navigator url='/pages/post/post?id={{item.id}}' class='postcontent' wx:if="{{item.operation=='V'}}">
-          <view>{{item.title}}</view>
+        <navigator url='/pages/post/post?id={{item.id}}' class='postcontent' wx:if="{{item.operation=='V'}}"> 
+          <view style='padding:26rpx;border:1rpx solid #f1f1f1;border-radius:8rpx;'>
+            <view class='flex-row'>
+              <view><image style='width:30rpx;height:30rpx' src='https://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/tp.png'></image></view>
+              <view style='color:#999;font-size:24rpx;margin-left:10rpx;margin-top:4rpx;'>投票</view>
+            </view>
+            <view style='font-size:28rpx;color:#333;margin-top:15rpx;'>{{item.title}}</view>
+          </view>
+          <!--
           <block wx:for="{{item.voteoptions}}" wx:key="k">
           <view class='options flex-row'  bindtap='selectedOption'  id="{{item.id}}" >
           <view class='flex-4'>
@@ -147,7 +154,7 @@
           </view>
           </block>
           <view class="desc" style='margin-top:3vh;' wx:if="{{item.vote_expired_count>0}}">投票截止时间：{{info.vote_expired}}</view>
-          <view class="desc" style='margin-top:3vh;' wx:if="{{item.vote_expired_count<<0}}">投票已结束</view>
+          <view class="desc" style='margin-top:3vh;' wx:if="{{item.vote_expired_count<<0}}">投票已结束</view>-->
         </navigator>
         <view class='flex-row'>
           <view wx:for="{{item.memberview}}" wx:key="kf" style='margin-right:12rpx;'>
@@ -158,14 +165,14 @@
             <view>
               <image class='likeicon' bindtap='likePost' id="{{item.id}}" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/like.png"></image>
             </view>
-            <view  class='likestr'>
+            <view  class='likestr' bindtap='likePost' id="{{item.id}}" >
               {{item.like}}
             </view>
 
             <view>
               <image class='commenticon' bindtap='navtoPage' data-page="post" data-param="id={{item.id}}" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/comment.png"></image>
             </view>
-            <view class='likestr'>
+            <view class='likestr' bindtap='navtoPage' data-page="post" data-param="id={{item.id}}">
               {{item.comment}}
             </view>
           </view>

@@ -79,8 +79,12 @@ button[type="primary"]{
 }
 .btnback{
   position: fixed;
-  top:70rpx;
-  left:40rpx;
+  top:0rpx;
+  left:0rpx;
+  padding-top:70rpx;
+  padding-left:40rpx;
+  padding-bottom:40rpx;
+  padding-right:40rpx;
   color:white;
 }
 .bg-white{
@@ -153,4 +157,8 @@ page{
   width: 257rpx;
   height: 307rpx;
   margin-top: 146rpx;
+}
+
+.navigator-hover{
+  background: transparent;
 }

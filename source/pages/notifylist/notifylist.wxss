@@ -33,7 +33,7 @@
   overflow: hidden;
   text-overflow:ellipsis;
   white-space: nowrap;
-  width: 250rpx;
+  max-width: 250rpx;
 }
 .noticeitem .delete{
   color:#2D72B6;

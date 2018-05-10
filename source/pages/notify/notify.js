@@ -8,6 +8,7 @@ class Content extends AppBase {
     super();
   }
   onLoad(options) {
+    //options.group_id=2;
     this.Base.Page = this;
     super.onLoad(options);
     this.Base.setMyData({  title: "", description: "", group_id: options.group_id });
@@ -15,7 +16,7 @@ class Content extends AppBase {
     var that=this;
     var noticeApi = new NoticeApi();
     noticeApi.allcover({},(covers)=>{
-      that.Base.setMyData({ selectcover: covers[0], covers: covers });
+      that.Base.setMyData({ selectcover: covers[0].pic, covers: covers });
     });
   }
   onShow() {
@@ -60,7 +61,7 @@ class Content extends AppBase {
     var json = {
       group_id: group_id,
       title: title,
-      noticecover_id: data.selectcover.id,
+      noticecover: data.selectcover,
       description: data.description
     };
     var that = this;
@@ -81,9 +82,14 @@ class Content extends AppBase {
     var covers=data.covers;
     for(var i=0;i<covers.length;i++){
       if (covers[i].id == id) {
-        this.Base.setMyData({ selectcover: covers[i]});
+        this.Base.setMyData({ selectcover: covers[i].pic});
       }
     }
+  }
+  selectMyCover(){
+    this.Base.uploadImage("banner", (ret)=>{
+      this.Base.setMyData({ selectcover:ret});
+    },1);
   }
 }
 var page = new Content();
@@ -92,6 +98,7 @@ body.onLoad = page.onLoad;
 body.onShow = page.onShow;
 body.titleChange = page.titleChange;
 body.descriptionChange = page.descriptionChange; 
-body.sendNotice = page.sendNotice;
-body.changeCover = page.changeCover; 
+body.sendNotice = page.sendNotice; 
+body.changeCover = page.changeCover;
+body.selectMyCover = page.selectMyCover; 
 Page(body)

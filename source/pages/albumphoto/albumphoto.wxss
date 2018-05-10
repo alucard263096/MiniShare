@@ -10,11 +10,9 @@
   margin-left: 175rpx;
 }
 .selected{
-  width: 30rpx;
-  height: 30rpx;
+  width: 34rpx;
+  height: 34rpx;
   border-radius: 50%;
-  border:2rpx solid white;
-  background-color:white;
   background-image: url(https://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/check.png);
   background-size: 100% 100%;
   position: absolute;

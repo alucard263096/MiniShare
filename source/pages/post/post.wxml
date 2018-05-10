@@ -112,7 +112,7 @@
 </view>
 
 <view class='noticepost' wx:if="{{info.operation=='N'}}">
-  <view class='cover' wx:if="{{info.noticecover_id_name!=null}}" style='background-image:url({{uploadpath}}banner/{{info.noticecover_id_name}})'>
+  <view class='cover' wx:if="{{info.noticecover!=null}}" style='background-image:url({{uploadpath}}banner/{{info.noticecover}})'>
   </view>
   <view class='title' wx:if="{{info.title!=null}}">
     {{info.title}}
@@ -133,29 +133,14 @@
     <view class='desctext'>
       {{info.description}}
     </view>
-    <view class='voteoptions'>
-      <block wx:for="{{info.voteoptions}}" wx:key="k">
-        <view class='options flex-row' bindtap='selectedOption' id="{{item.id}}">
-          <view class='flex-1'>
-            <icon type="success" size="22" color="{{item.checked==0?'#ccc':''}}"></icon>
-          </view>
-          <view class='flex-6'>
-            {{item.optionstr}}
-          </view>
-          <view class='flex-2 text-right'>
-            ({{item.votemembers.length}}票)
-          </view>
-        </view>
-      </block>
-
-      <view class="desc" style='margin-top:3vh;' wx:if="{{info.vote_expired_count>0}}">投票截止时间：{{info.vote_expired}}</view>
-      <view class="desc" style='margin-top:3vh;' wx:if="{{info.vote_expired_count<0}}">投票已结束</view>
-    </view>
+    
     <view class='photolist' wx:if="{{info.operation=='P'}}">
       <image wx:for="{{info.photos}}" wx:key="{{index}}" wx:for-item="photo" class="pphoto" src="{{uploadpath}}album/{{photo.photo}}" mode="aspectFill" bindtap='viewPhoto' id="{{uploadpath}}album/{{photo.photo}}" />
     </view>
-    <view class='other'>
+    <view class='other flex-row'>
+      <view>
       <image wx:for="{{info.memberview}}" wx:key="kf" class='viewphoto' src="{{item.avatarUrl}}"></image>
+      </view>
       <view class='viewcounts'>{{info.memberviewcount}}人浏览过</view>
     </view>
   </view>
@@ -163,10 +148,15 @@
     <button class="btnShare" type="primary" open-type="share">分享</button>
   </view>
 </view>
-<view class='allcomments' wx:if="{{info.operation=='N'||info.operation=='P'}}">
+<view class='allcomments' wx:if="{{info.operation=='N'}}">
   全部评论
 </view>
-<view class='comment' wx:for="{{commentlist}}" wx:key="k" wx:if="{{info.operation=='N'||info.operation=='P'}}">
+<block wx:if="{{commentlist.length==0}}">
+<view class='comment' wx:if="{{info.operation=='N'}}">
+  <view class='commenttextno'>暂无评论</view>
+</view>
+</block>
+<view class='comment' wx:for="{{commentlist}}" wx:key="k" wx:if="{{info.operation=='N'}}">
   <view class='member flex-row'>
     <view>
       <image class="memberphoto" src="{{item.member_id_avatarUrl}}" />
@@ -182,26 +172,26 @@
     {{item.comment}}
   </view>
 </view>
-<view style='height:88rpx;' wx:if="{{info.operation=='N'||info.operation=='P'}}">
+<view style='height:88rpx;' wx:if="{{info.operation=='N'}}">
 
 </view>
-<view class='commentbox' wx:if="{{info.operation=='N'||info.operation=='P'}}">
-  <input placeholder='我来发表评论' class='inputcomment' maxlength='144' bindinput='commentChange' bindconfirm="sendComment" value='{{comment}}'></input>
+<view class='commentbox' wx:if="{{info.operation=='N'}}">
+  <input placeholder='我来发表评论' class='inputcomment' maxlength='144' bindinput='commentChange' bindconfirm="sendComment" value='{{comment}}' confirm-type="发表"></input>
 </view>
 
-<view class='likecomment flex-row' style='right:42rpx;'  wx:if="{{info.operation=='N'||info.operation=='P'}}">
-  <view class='incon'>
-    <image class='likeicon' bindtap='likePost' id="{{info.id}}" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/like.png"></image>
-  </view>
-  <view class='likestr'>
-    {{info.like}}
-  </view>
+<view class='likecomment flex-row' style='right:42rpx;'  wx:if="{{info.operation=='N'}}">
 
   <view class='incon'>
-    <image class='commenticon' bindtap='navtoPage' data-page="post" data-param="id={{info.id}}" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/comment.png"></image>
+    <image class='commenticon'  src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/comment.png"></image>
   </view>
   <view class='likestr'>
     {{info.comment}}
+  </view>
+  <view class='incon'>
+    <image class='likeicon' bindtap='likePost' id="{{info.id}}" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/like.png"></image>
+  </view>
+  <view class='likestr' bindtap='likePost' id="{{info.id}}">
+    {{info.like}}
   </view>
 </view>
 

@@ -1,8 +1,4 @@
 <!--pages/albumdetail/albumdetail.wxml-->
-<view class='superheader'>
-  <view class='title'>云相册</view>
-</view>
-<text class='fa fa-chevron-left btnback' bindtap='back'></text>
 <view class='cover' style='background-image:url({{uploadpath}}album/{{info.cover}})'  bindtap='changeAlbumName'>
   <view class='albumname'>{{info.name}}</view>
 </view>
@@ -40,14 +36,14 @@
             <view>
               <image class='likeicon' bindtap='likePost' id="{{item.id}}" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/like.png"></image>
             </view>
-            <view  class='likestr'>
+            <view  class='likestr' bindtap='likePost' id="{{item.id}}">
               {{item.like}}
             </view>
 
             <view>
               <image class='commenticon' bindtap='navtoPage' data-page="post" data-param="id={{item.id}}" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/comment.png"></image>
             </view>
-            <view class='likestr'>
+            <view class='likestr'  bindtap='navtoPage' data-page="post" data-param="id={{item.id}}">
               {{item.comment}}
             </view>
           </view>
@@ -73,6 +69,12 @@
     </form>
   </view>
 </view>
+
+
+<view class='superheader'>
+  <view class='title'>云相册</view>
+</view>
+<text class='fa fa-chevron-left btnback' bindtap='back'></text>
 
 <!--
 <view class="page">

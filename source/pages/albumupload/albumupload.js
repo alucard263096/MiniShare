@@ -15,7 +15,7 @@ class Content extends AppBase {
     //options.group_id = 1;
     this.Base.Page = this;
     super.onLoad(options);
-    this.Base.setMyData({photos:[]});
+    this.Base.setMyData({ photos: [], description:""});
   }
   onShow() {
     var that = this;
