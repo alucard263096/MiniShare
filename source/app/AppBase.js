@@ -96,44 +96,7 @@ export class AppBase {
     console.log("onloadf"); 
     console.log(options.scene);
     console.log(options.shareTicket);
-    if (options.scene == 1044) {
-      console.log("openin1033");
-      wx.getShareInfo({
-        shareTicket: options.shareTicket,
-        success: function () {
-          console.log("res");
-          console.log(res);
-          wx.login({
-            withCredentials: true,
-            success:function(loginres){
-              //{ code: loginres.code, grant_type: "authorization_code" }
-              
-              var encryptedData = res.encryptedData;
-              var iv = res.iv;
-              var wechatapi = new WechatApi();
-              res.code = loginres.code;
-              res.grant_type = "authorization_code";
-
-              wechatapi.decrypteddata(res, data => {
-                if(data.code==0){
-                  AppBase.UserInfo.openid = data.return.openid;
-                  ApiConfig.SetToken(data.return.openid);
-                  var openGId = data.return.openGId;
-                  console.log("openg");
-                  console.log(openGId);
-                  var groupapi = new GroupApi();
-                  groupapi.join({ opengid: openGId }, data => {
-                      
-                  });
-                }
-                
-              });
-
-            }
-          })
-        }
-      })
-    }
+    
 
     wx.showShareMenu({
       withShareTicket: true
