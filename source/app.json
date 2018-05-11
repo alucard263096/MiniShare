@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/albumdetail/albumdetail",
     "pages/album/album",
     "pages/albumcreate/albumcreate",
@@ -8,7 +9,6 @@
     "pages/group/group",
     "pages/notify/notify",
     "pages/notifylist/notifylist",
-    "pages/index/index",
     "pages/map/map",
     "pages/vote/vote",
     "pages/votelist/votelist",

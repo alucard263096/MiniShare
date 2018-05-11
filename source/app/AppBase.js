@@ -92,12 +92,17 @@ export class AppBase {
     console.log(options);
     console.log("onload");
     this.Base.setBasicInfo();
-    this.Base.setMyData({});
-
+    this.Base.setMyData({ options});
+    console.log("onloadf"); 
+    console.log(options.scene);
+    console.log(options.shareTicket);
     if (options.scene == 1044) {
+      console.log("openin1033");
       wx.getShareInfo({
         shareTicket: options.shareTicket,
-        success: function (res) {
+        success: function () {
+          console.log("res");
+          console.log(res);
           wx.login({
             withCredentials: true,
             success:function(loginres){
@@ -114,7 +119,12 @@ export class AppBase {
                   AppBase.UserInfo.openid = data.return.openid;
                   ApiConfig.SetToken(data.return.openid);
                   var openGId = data.return.openGId;
+                  console.log("openg");
                   console.log(openGId);
+                  var groupapi = new GroupApi();
+                  groupapi.join({ opengid: openGId }, data => {
+                      
+                  });
                 }
                 
               });
@@ -234,7 +244,7 @@ export class AppBase {
         var shareTickets = res.shareTickets;
         if (shareTickets.length == 0) {
           return false;
-        }
+        } 
         console.log(shareTickets);
         wx.getShareInfo({
           shareTicket: shareTickets[0],

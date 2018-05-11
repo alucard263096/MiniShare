@@ -72,7 +72,7 @@
 
 
 <view class='superheader'>
-  <view class='title'>云相册</view>
+  <view class='title'>群相册</view>
 </view>
 <text class='fa fa-chevron-left btnback' bindtap='back'></text>
 
