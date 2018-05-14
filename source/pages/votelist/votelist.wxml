@@ -37,6 +37,21 @@
 </view>
 
 
-<modal hidden="{{hiddenmodalput}}" title="请设置标题" confirm-text="提交" cancel-text="放弃" bindcancel="cancelCreate" bindconfirm="confirmCreate">  
+<view hidden="{{hiddenmodalput}}" bindtap='cancelCreate' class='modalformback'>
+</view>
+<view  class='modalform'>
+
+  <view  hidden="{{hiddenmodalput}}" class='modal' >
+    <view class='modaltitle'>请设置标题</view>
+    <view>
+      <input class='modalinput' type='text' maxlength='20' value="{{votetitle}}" bindinput='inputVotetitle' ></input>
+    </view>
+    <view class='modalbtn' bindtap='confirmCreate'>
+      好的
+    </view>
+  </view>
+</view>
+
+<modal hidden="false" title="请设置标题" confirm-text="好的" cancel-text="放弃"  bindcancel="cancelCreate" bindconfirm="confirmCreate">  
     <input type='text' placeholder="标题" value="{{votetitle}}" bindinput='inputVotetitle' maxlength='20' /> 
 </modal>

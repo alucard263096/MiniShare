@@ -251,6 +251,7 @@ class Content extends AppBase {
     if (title.trim() == "") {
       wx.showToast({
         title: '标题不能为空',
+						icon: 'none'
       })
       return;
     }

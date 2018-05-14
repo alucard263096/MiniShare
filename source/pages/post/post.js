@@ -11,7 +11,7 @@ class Content extends AppBase {
     super();
   }
   onLoad(options) {
-    //options.id = 53;
+    options.id = 53;
     this.Base.Page = this;
     super.onLoad(options);
     var postapi = new PostApi();
@@ -133,7 +133,7 @@ class Content extends AppBase {
     var postApi = new PostApi();
     postApi.comment({ post_id: info.id, comment: comment }, ret => {
       if (ret.code == 0) {
-        that.Base.setMyData({ comment: "" });
+        that.Base.setMyData({ comment: "", showcomment:false });
         that.Base.loadComment();
       }
     });
@@ -236,6 +236,12 @@ class Content extends AppBase {
     });
     
   }
+  showCommentbox(){
+    this.Base.setMyData({ showcomment:true});
+  }
+  hideCommentbox(){
+    this.Base.setMyData({ showcomment: false });
+  }
 }
 var page = new Content();
 var body = page.generateBodyJson();
@@ -248,9 +254,11 @@ body.sendComment = page.sendComment;
 body.selectedOption = page.selectedOption;
 body.gotoGroup = page.gotoGroup;
 body.myback = page.myback;
-body.deletePost = page.deletePost;
+body.deletePost = page.deletePost; 
 body.selectOpt = page.selectOpt;
 body.sendVote = page.sendVote;
+body.showCommentbox = page.showCommentbox;
+body.hideCommentbox = page.hideCommentbox;
 
 
 Page(body)

@@ -321,7 +321,7 @@ export class AppBase {
         } else {
           wx.showToast({
             title: '上传失败，请重试',
-            icon: 'warn',
+            icon: 'none',
             duration: 2000
           })
         }

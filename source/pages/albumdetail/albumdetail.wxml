@@ -1,6 +1,30 @@
 <!--pages/albumdetail/albumdetail.wxml-->
-<view class='cover' style='background-image:url({{uploadpath}}album/{{info.cover}})'  bindtap='changeAlbumName'>
-  <view class='albumname'>{{info.name}}</view>
+<view class='cover' style='background-image:url({{uploadpath}}album/{{info.cover}})' bindtap='changeAlbumName'>
+  <view class='creator flex-row'>
+    <view>
+      <image class='createoroimg' src="{{info.member_avatarUrl}}"></image>
+    </view>
+    <view class='txt'>
+
+      <image class='iconccc' src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/right-a.png"></image>
+    </view>
+  </view>
+  <view class='albumname flex-row'>
+    <view>{{info.name}}</view>
+    <view>
+      <image style="width:24rpx;height:24rpx;margin-left:19rpx;" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/edit.png"></image>
+    </view>
+  </view>
+  <view class='albumuser flex-row'>
+    <view>
+      <image src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/users.png"></image>
+    </view>
+    <view style='margin-right:47rpx;'>0</view>
+    <view>
+      <image  src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/comment.png"></image>
+    </view>
+    <view style='margin-right:47rpx;'>0</view>
+  </view>
 </view>
 
 <view wx:if="{{list.length>0}}" class='bg-white flex-row text-center' style='padding-top:37rpx;padding-bottom:41rpx;'>
@@ -16,49 +40,49 @@
   <view class='bg-white' style='padding:29rpx;margin-top:10rpx;' wx:for="{{list}}" wx:key="k" wx:if="{{item.deleted!=true}}">
     <view class='flex-row'>
       <view>
-        <image class='memberphoto' src="{{item.member_id_photo}}" ></image>
+        <image class='memberphoto' src="{{item.member_id_photo}}"></image>
       </view>
       <view style='color:#999;font-size:24rpx;padding:10rpx;margin-left:11rpx;'>{{item.member_id_name}}</view>
     </view>
     <view style='color:#666;font-size:40rpx;'>
-    {{item.title}}
-    <view class='delete' wx:if="{{item.member_id_openid==UserInfo.openid}}"  bindtap='deletePost' id="{{item.id}}">删除</view>
+      {{item.title}}
+      <view class='delete' wx:if="{{item.member_id_openid==UserInfo.openid}}" bindtap='deletePost' id="{{item.id}}">删除</view>
     </view>
-    <navigator url='/pages/post/post?id={{item.id}}' class='{{item.photos.length==1?"photo_1":""}} {{item.photos.length==2?"photo_2":""}} {{item.photos.length>2?"photo_3":""}}' >
+    <navigator url='/pages/post/post?id={{item.id}}' class='{{item.photos.length==1?"photo_1":""}} {{item.photos.length==2?"photo_2":""}} {{item.photos.length>2?"photo_3":""}}'>
       <block wx:for="{{item.photos}}" wx:key="k">
-      <image src='{{uploadpath}}album/{{item.photo}}'></image>
+        <image src='{{uploadpath}}album/{{item.photo}}'></image>
       </block>
     </navigator>
     <view class='flex-row'>
       <view class='flex-1' style='font-size:24rpx;color:#999;'>{{item.updated_date_span}}</view>
-      
-          <view class='likecomment flex-row' style='position:absolute;right:42rpx;'>
-            <view>
-              <image class='likeicon' bindtap='likePost' id="{{item.id}}" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/like.png"></image>
-            </view>
-            <view  class='likestr' bindtap='likePost' id="{{item.id}}">
-              {{item.like}}
-            </view>
 
-            <view>
-              <image class='commenticon' bindtap='navtoPage' data-page="post" data-param="id={{item.id}}" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/comment.png"></image>
-            </view>
-            <view class='likestr'  bindtap='navtoPage' data-page="post" data-param="id={{item.id}}">
-              {{item.comment}}
-            </view>
-          </view>
+      <view class='likecomment flex-row' style='position:absolute;right:42rpx;'>
+        <view>
+          <image class='likeicon' bindtap='likePost' id="{{item.id}}" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/like.png"></image>
+        </view>
+        <view class='likestr' bindtap='likePost' id="{{item.id}}">
+          {{item.like}}
+        </view>
+
+        <view>
+          <image class='commenticon' bindtap='navtoPage' data-page="post" data-param="id={{item.id}}" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/comment.png"></image>
+        </view>
+        <view class='likestr' bindtap='navtoPage' data-page="post" data-param="id={{item.id}}">
+          {{item.comment}}
+        </view>
+      </view>
     </view>
 
-        <view class='postcomment' wx:for="{{item.membercomment}}"   wx:key="k" wx:for-item="comment">
-          {{comment.nickName}}：{{comment.comment}}
-        </view>
+    <view class='postcomment' wx:for="{{item.membercomment}}" wx:key="k" wx:for-item="comment">
+      {{comment.nickName}}：{{comment.comment}}
+    </view>
   </view>
 </block>
 <view wx:if="{{list.length==0}}" class='text-center'>
   <image class='egg' src='https://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/egg.png'></image>
 </view>
-<view wx:if="{{list.length==0}}"  class='text-center' style='color:#999;margin-top:36rpx;font-size:28rpx;'>
-一张照片都没有~
+<view wx:if="{{list.length==0}}" class='text-center' style='color:#999;margin-top:36rpx;font-size:28rpx;'>
+  一张照片都没有~
 </view>
 
 

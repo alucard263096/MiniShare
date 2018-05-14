@@ -93,11 +93,13 @@ class Content extends AppBase {
                     success() {
                       wx.showToast({
                         title: '已保存到本地',
+						icon: 'none'
                       })
                     },
                     fail(resd) {
                       wx.showToast({
                         title: '保存失败，可能是微信版本导致，请升级后测试',
+						icon: 'none'
                       })
                     }
                   });

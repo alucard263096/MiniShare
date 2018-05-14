@@ -11,6 +11,18 @@
   font-size: 34rpx;
   color:white;
 }
+.albumuser{
+  position: absolute;
+  margin-top: 249rpx;
+  right: 0rpx;
+  font-size: 22rpx;
+  color:white;
+}
+.albumuser image{
+  width:28rpx;
+  height:28rpx;
+  margin-right: 19rpx;
+}
 
 .memberphoto{
   width: 36rpx;
@@ -64,4 +76,29 @@
 .postcomment{
   font-size: 28rpx;
   color:#666666;
+}
+
+.creator{
+  position: fixed;
+  right: 0rpx;
+  margin-top: 39rpx;
+  background: white;
+  height: 88rpx;
+  border-top-left-radius: 44rpx;
+  border-bottom-left-radius: 44rpx;
+}
+.creator .createoroimg{
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 32rpx;
+  margin-top: 12rpx;
+  margin-left: 12rpx;
+  margin-right: 12rpx;
+  margin-bottom: 12rpx;
+  line-height: 0rpx;
+}
+.iconccc{
+  width: 30rpx;
+  height: 30rpx;
+  margin-top: 30rpx;
 }

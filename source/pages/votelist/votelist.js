@@ -13,7 +13,7 @@ class Content extends AppBase {
     }
     this.Base.Page = this;
     super.onLoad(options);
-    this.Base.setMyData({ group_id: options.group_id, hiddenmodalput: true });
+    this.Base.setMyData({ group_id: options.group_id, hiddenmodalput: true, votetitle:"" });
 
     var that=this;
   }
@@ -70,7 +70,9 @@ class Content extends AppBase {
     var title = this.Base.getMyData().votetitle;
     if(title.trim()==""){
       wx.showToast({
+        icon:"none",
         title: '标题不能为空',
+						icon: 'none'
       })
       return;
     }

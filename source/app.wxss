@@ -162,3 +162,65 @@ page{
 .navigator-hover{
   background: transparent;
 }
+
+.modalformback{
+  position: fixed;
+  top: 148rpx;
+  left: 0rpx;
+  background: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100%;
+}
+.modalform .modal{
+  position: fixed;
+  top: 451rpx;
+  left: 95rpx;
+  width:560rpx;
+  background: white;
+  border-radius: 8rpx;
+}
+.modalform .modaltitle{
+  margin-top: 47rpx;
+  text-align: center;
+  font-size: 34rpx;
+  color:#333;
+}
+.modalform .modalinput{
+  border:2rpx #DDDDDD solid;
+  margin-left: 72rpx;
+  margin-top: 56rpx;
+  width: 417rpx;
+  border-radius: 4rpx;
+  font-size: 30rpx;
+  padding:2rpx;
+}
+.modalform .modalbtn{
+  margin-top: 56rpx;
+  border-top: 2rpx #D2D3D5 solid;
+  text-align: center;
+  color:#29A5EE;
+  font-size: 34rpx;
+  padding-top: 35rpx;
+  padding-bottom: 33rpx;
+}
+
+
+.commentboxarea{
+  position: fixed;
+  bottom: 0rpx;
+  width:702rpx;
+  padding:24rpx;
+  font-size: 28rpx;
+  background: white;
+}
+.commentboxarea .publishcomment{
+  color: #ddd;
+}
+.commentboxarea .publishcommentact{
+  color: #29A5EE;
+}
+.commentboxarea input{
+  width: 100%;
+  min-height: 200rpx;
+  margin-top: 14rpx;
+}

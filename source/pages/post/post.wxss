@@ -164,13 +164,13 @@
 .likeicon{
   width: 28rpx;
   height: 28rpx;
-  margin-left: 28rpx;
-  margin-bottom: 10rpx;
+  padding-left: 28rpx;
+  padding-bottom: 10rpx;
 }
 .likestr{
   font-size: 24rpx;
-  margin-left: 12rpx;
-  margin-top: 4rpx;
+  padding-left: 12rpx;
+  padding-top: 4rpx;
   color:#999999;
 }
 .commenticon{
@@ -230,4 +230,13 @@
   background-size: 110% 110%;
   border-radius: 50rpx;
   margin-top: 5rpx;
+}
+
+.fakeinput{
+  border:#ddd 2rpx solid;
+  width: 412rpx;
+  height:60rpx;
+  margin-left: 38rpx;
+  margin-top: 14rpx;
+  border-radius: 4rpx;
 }

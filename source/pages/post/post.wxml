@@ -96,7 +96,7 @@
 
     <view url='/pages/post/post?id={{info.id}}' class='{{info.photos.length==1?"photo_1":""}} {{info.photos.length==2?"photo_2":""}} {{info.photos.length>2?"photo_3":""}}'>
       <block wx:for="{{info.photos}}" wx:key="k">
-        <image src='{{uploadpath}}album/{{item.photo}}' bindtap='viewPhoto' id="{{uploadpath}}album/{{photo.photo}}"></image>
+        <image src='{{uploadpath}}album/{{item.photo}}' bindtap='viewPhoto' id="{{uploadpath}}album/{{item.photo}}"></image>
       </block>
     </view>
 
@@ -106,7 +106,7 @@
 
 
   </view>
-  <view class="sendshare">
+  <view class="sendshare"  wx:if="{{info.operation=='N'}}">
     <button class="btnShare" type="primary" open-type="share">分享</button>
   </view>
 </view>
@@ -144,7 +144,7 @@
       <view class='viewcounts'>{{info.memberviewcount}}人浏览过</view>
     </view>
   </view>
-  <view class="sendshare">
+  <view class="sendshare"  wx:if="{{info.operation=='N'}}">
     <button class="btnShare" type="primary" open-type="share">分享</button>
   </view>
 </view>
@@ -176,8 +176,12 @@
 
 </view>
 <view class='commentbox' wx:if="{{info.operation=='N'}}">
-  <input placeholder='我来发表评论' class='inputcomment' maxlength='144' bindinput='commentChange' bindconfirm="sendComment" value='{{comment}}' confirm-type="发表"></input>
+  <input wx:if="{{false}}" placeholder='我来发表评论' class='inputcomment' maxlength='144' bindinput='commentChange' bindconfirm="sendComment" value='{{comment}}' confirm-type="发表"></input>
+
+  <view class='fakeinput' bindtap='showCommentbox'>
+  </view>
 </view>
+
 
 <view class='likecomment flex-row' style='right:42rpx;'  wx:if="{{info.operation=='N'}}">
 
@@ -196,6 +200,18 @@
 </view>
 
 
+<view wx:if="{{showcomment==true}}" class='modalformback'  bindtap='hideCommentbox'>
+  
+</view>
+<view wx:if="{{showcomment==true}}" class='commentboxarea'>
+<view class='flex-row'>
+<view class='flex-1' bindtap='hideCommentbox'>取消</view>
+<view class='flex-1 text-right {{comment.length>0?"publishcommentact":"publishcomment"}}' bindtap='sendComment' >发表</view>
+</view>
+<input bindinput='commentChange' value='{{comment}}' auto-focus='showcomment==true'  maxlength='144' placeholder='@我来说两句'  >
+
+</input>
+</view>
 
 
 

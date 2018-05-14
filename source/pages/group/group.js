@@ -144,6 +144,7 @@ class Content extends AppBase {
         if(data.length==0){
           wx.showToast({
             title: '已经是最后了',
+						icon: 'none'
           })
         }
         var list = that.Base.getMyData().list;
