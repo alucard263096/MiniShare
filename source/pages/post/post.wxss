@@ -214,7 +214,7 @@
   margin-right: 15rpx;
 }
 
-.unselected{
+.unselected_0{
   width: 28rpx;
   height: 28rpx;
   background-color: white;
@@ -222,13 +222,31 @@
   border-radius: 50rpx;
   margin-top: 5rpx;
 }
-.selected{
+.selected_0{
   width: 36rpx;
   height: 36rpx;
   background-color: white;
   background-image: url(https://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/check.png);
   background-size: 110% 110%;
   border-radius: 50rpx;
+  margin-top: 5rpx;
+}
+
+.unselected_1{
+  width: 28rpx;
+  height: 28rpx;
+  background-color: white;
+  border:4rpx #C9C9C9 solid;
+  border-radius: 4rpx;
+  margin-top: 5rpx;
+}
+.selected_1{
+  width: 36rpx;
+  height: 36rpx;
+  background-color: white;
+  background-image: url(https://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/check_2.png);
+  background-size: 100% 100%;
+  border-radius: 4rpx;
   margin-top: 5rpx;
 }
 

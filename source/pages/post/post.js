@@ -11,7 +11,7 @@ class Content extends AppBase {
     super();
   }
   onLoad(options) {
-    options.id = 53;
+    //options.id = 86;
     this.Base.Page = this;
     super.onLoad(options);
     var postapi = new PostApi();
@@ -133,7 +133,7 @@ class Content extends AppBase {
     var postApi = new PostApi();
     postApi.comment({ post_id: info.id, comment: comment }, ret => {
       if (ret.code == 0) {
-        that.Base.setMyData({ comment: "", showcomment:false });
+        that.Base.setMyData({ comment: "", showcomment: false });
         that.Base.loadComment();
       }
     });
@@ -190,10 +190,16 @@ class Content extends AppBase {
     for (var i = 0; i < questions.length; i++) {
       if (questions[i].id == x) {
         for (var j = 0; j < questions[i].voteoptions.length; j++) {
-          if (questions[i].voteoptions[j].id == y) {
-            questions[i].voteoptions[j].selected = true;
+          if (questions[i].votetype == 0) {
+            if (questions[i].voteoptions[j].id == y) {
+              questions[i].voteoptions[j].selected = true;
+            } else {
+              questions[i].voteoptions[j].selected = false;
+            }
           } else {
-            questions[i].voteoptions[j].selected = false;
+            if (questions[i].voteoptions[j].id == y) {
+              questions[i].voteoptions[j].selected = !questions[i].voteoptions[j].selected == true;
+            }
           }
         }
       }
@@ -202,28 +208,28 @@ class Content extends AppBase {
     this.Base.setMyData({ info: info });
   }
   sendVote() {
-    var that=this;
+    var that = this;
     var info = this.Base.getMyData().info;
     var questions = info.questions;
-    var vids=[];
+    var vids = [];
     for (var i = 0; i < questions.length; i++) {
       for (var j = 0; j < questions[i].voteoptions.length; j++) {
-        if (questions[i].voteoptions[j].selected==true) {
+        if (questions[i].voteoptions[j].selected == true) {
           vids.push(questions[i].voteoptions[j].id);
           questions[i].voteoptions[j].checked = 1;
         } else {
-          questions[i].voteoptions[j].checked=0;
+          questions[i].voteoptions[j].checked = 0;
         }
       }
     }
-    if(questions.length!=vids.length){
+    if (questions.length != vids.length) {
       this.Base.info("你还有题未选择");
       return;
     }
-    info.questions=questions;
+    info.questions = questions;
     var voteapi = new VoteApi();
-    voteapi.vote({vids:vids.join(","),post_id:this.Base.options.id},(ret)=>{
-      if(ret.code==0){
+    voteapi.vote({ vids: vids.join(","), post_id: this.Base.options.id }, (ret) => {
+      if (ret.code == 0) {
         wx.navigateTo({
           url: '/pages/votesuccess/votesuccess?post_id=' + that.Base.options.id,
         })
@@ -234,12 +240,12 @@ class Content extends AppBase {
         //});
       }
     });
-    
+
   }
-  showCommentbox(){
-    this.Base.setMyData({ showcomment:true});
+  showCommentbox() {
+    this.Base.setMyData({ showcomment: true });
   }
-  hideCommentbox(){
+  hideCommentbox() {
     this.Base.setMyData({ showcomment: false });
   }
 }
@@ -254,7 +260,7 @@ body.sendComment = page.sendComment;
 body.selectedOption = page.selectedOption;
 body.gotoGroup = page.gotoGroup;
 body.myback = page.myback;
-body.deletePost = page.deletePost; 
+body.deletePost = page.deletePost;
 body.selectOpt = page.selectOpt;
 body.sendVote = page.sendVote;
 body.showCommentbox = page.showCommentbox;

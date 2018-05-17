@@ -13,7 +13,7 @@
 
 
 <view wx:if="{{list.length>0}}">
-  <navigator url='/pages/post/post?id={{item.id}}' id="{{item.id}}" class='noticeitem debug' wx:for="{{list}}" wx:key="k">
+  <view url='/pages/post/post?id={{item.id}}' id="{{item.id}}" class='noticeitem debug' wx:for="{{list}}" wx:key="k" bindtap='startvote' data-vote_start_count="{{item.vote_start_count}}">
     <view class='flex-row'>
     <view class='title'>{{item.title}}</view>
     <view class='flex-1' style='text-align:right;position:absolute;right:28rpx;' wx:if="{{item.vote_expired_count<0}}">
@@ -24,9 +24,11 @@
     <view class='flex-row'>
       <view class='membername'>{{item.questionstotalvote}}人参与</view>
       <view class='delete' wx:if="{{item.member_id_openid==UserInfo.openid||info.adminmember_id_name==UserInfo.openid}}" bindtap='deletePost' id="{{item.id}}">删除</view>
-      <view class='flex-1 updatetime text-right'>{{item.updated_date_str}}</view>
+      <view class='flex-1 updatetime text-right'>{{item.vote_startdate}}</view>
     </view>
-  </navigator>
+  </view>
+</view>
+
   <view>
     <view class="page__bd page__bd_spacing" wx:if="{{group_id>0}}" >
       <form name='uploadform' report-submit bindsubmit='gotoNotify'>
@@ -34,8 +36,6 @@
       </form>
     </view>
   </view>
-</view>
-
 
 <view hidden="{{hiddenmodalput}}" bindtap='cancelCreate' class='modalformback'>
 </view>

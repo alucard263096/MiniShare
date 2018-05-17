@@ -25,7 +25,7 @@ class Content extends AppBase {
     this.Base.setMyData({
       votetitle:"",
       hiddenmodalput:options.title!=undefined,
-      title: options.title, nowformat: AppBase.Util.getNowDateFormat(), startdate: AppBase.Util.getNowDateFormat(), starttime: h + " ：" + m, enddate: AppBase.Util.getNextDateFormat(), endtime: h + " ：" + m, 
+      title: options.title, nowformat: AppBase.Util.getNowDateFormat(), startdate: AppBase.Util.getNowDateFormat(), starttime: h + ":" + m, enddate: AppBase.Util.getNextDateFormat(), endtime: h + ":" + m, 
       noname: "N", remarkinfo: "N", onlygroup: "N", 
       remarkinfoname: "Y",
       remarkinfomobile: "Y",
@@ -126,7 +126,7 @@ class Content extends AppBase {
   }
   bindStartTimeChange(e) {
 
-    this.Base.setMyData({ starttime: e.detail.value.replace(":", " ：") });
+    this.Base.setMyData({ starttime: e.detail.value });
     this.refixDateTime();
   }
   refixDateTime(){
@@ -137,8 +137,8 @@ class Content extends AppBase {
     m = m > 9 ? m.toString() : "0" + m.toString();
 
 
-    var sd = this.Base.getMyData().startdate + " " + this.Base.getMyData().starttime.replace(" ：", ":");
-    var ed = this.Base.getMyData().enddate + " " + this.Base.getMyData().endtime.replace(" ：", ":");
+    var sd = this.Base.getMyData().startdate + " " + this.Base.getMyData().starttime;
+    var ed = this.Base.getMyData().enddate + " " + this.Base.getMyData().endtime;
     
     sd = AppBase.Util.StrToDate(sd+":00");
     ed = AppBase.Util.StrToDate(ed + ":00");
@@ -146,7 +146,7 @@ class Content extends AppBase {
     console.log(sd.getTime());
     console.log(now.getTime());
     if(sd.getTime()<now.getTime()){
-      this.Base.setMyData({ startdate: AppBase.Util.getNowDateFormat(), starttime: h + " ：" + m});
+      this.Base.setMyData({ startdate: AppBase.Util.getNowDateFormat(), starttime: h + ":" + m});
     }
     if (ed.getTime() < sd.getTime()) {
       this.Base.setMyData({ enddate: this.Base.getMyData().startdate, endtime: this.Base.getMyData().starttime });
@@ -158,13 +158,13 @@ class Content extends AppBase {
     this.refixDateTime();
   }
   bindEndTimeChange(e) {
-    this.Base.setMyData({ endtime: e.detail.value.replace(":", " ：") });
+    this.Base.setMyData({ endtime: e.detail.value });
     this.refixDateTime();
   }
   sendVote(e){
 
-    var startdate = this.Base.getMyData().startdate + " " + this.Base.getMyData().starttime.replace(" ：", ":");
-    var enddate = this.Base.getMyData().enddate + " " + this.Base.getMyData().endtime.replace(" ：", ":");
+    var startdate = this.Base.getMyData().startdate + " " + this.Base.getMyData().starttime;
+    var enddate = this.Base.getMyData().enddate + " " + this.Base.getMyData().endtim;
     if (AppBase.Util.StrToDate(startdate).getTime() >= AppBase.Util.StrToDate(enddate).getTime()) {
 
       this.Base.info("开始时间不能大于结束时间");

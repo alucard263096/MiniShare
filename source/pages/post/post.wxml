@@ -35,7 +35,7 @@
         <block wx:for="{{item.voteoptions}}" wx:for-item="opt" wx:key="kt">
           <view style='margin-top:30rpx;' bindtap='selectOpt' id="{{item.id}}_{{opt.id}}">
             <view class='flex-row'>
-              <view class='{{opt.selected==true?"selected":"unselected"}}'></view>
+              <view class='{{opt.selected==true?"selected":"unselected"}}_{{item.votetype}}'></view>
               <view style='margin-left:12rpx'>{{opt.str}}</view>
             </view>
             <view wx:if="{{opt.photo!=''}}">

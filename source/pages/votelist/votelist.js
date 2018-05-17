@@ -83,10 +83,27 @@ class Content extends AppBase {
       fail: function(res) {},
       complete: function(res) {},
     })
-  }
+  } 
   inputVotetitle(e) {
     var name = e.detail.value;
     this.Base.setMyData({ votetitle: name });
+  }
+  startvote(e) {
+    console.log(e);
+    var id = e.currentTarget.id;
+    var vote_start_count = Number(e.currentTarget.dataset.vote_start_count);
+    if(vote_start_count<0){
+      wx.showModal({
+        title: '提示',
+        content: '投票活动尚未开始',
+        showCancel:false,
+        icon:"none"
+      });
+      return;
+    }
+    wx.navigateTo({
+      url: '/pages/post/post?id='+id,
+    })
   }
 }
 var page = new Content();
@@ -97,6 +114,7 @@ body.sendNotice = page.sendNotice;
 body.deletePost = page.deletePost; 
 body.gotoNotify = page.gotoNotify;
 body.cancelCreate = page.cancelCreate;
-body.confirmCreate = page.confirmCreate;
+body.confirmCreate = page.confirmCreate; 
 body.inputVotetitle = page.inputVotetitle;
+body.startvote = page.startvote;
 Page(body)
