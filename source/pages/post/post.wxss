@@ -170,13 +170,14 @@
 .likestr{
   font-size: 24rpx;
   padding-left: 12rpx;
-  padding-top: 4rpx;
+  padding-top: 2rpx;
   color:#999999;
+  width: 48rpx;
 }
 .commenticon{
   width: 28rpx;
-  height: 26rpx;
-  margin-left: 28rpx;
+  height: 28rpx;
+  margin-left: 57rpx;
   margin-bottom: 10rpx;
 }
 .pphoto{
@@ -252,8 +253,8 @@
 
 .fakeinput{
   border:#ddd 2rpx solid;
-  width: 412rpx;
-  height:60rpx;
+  width: 408rpx;
+  height:56rpx;
   margin-left: 38rpx;
   margin-top: 14rpx;
   border-radius: 4rpx;

@@ -11,7 +11,7 @@ class Content extends AppBase {
     super();
   }
   onLoad(options) {
-    //options.id = 86;
+    //options.id = 87;
     this.Base.Page = this;
     super.onLoad(options);
     var postapi = new PostApi();
