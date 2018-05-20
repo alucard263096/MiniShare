@@ -29,10 +29,26 @@
 
 <view wx:if="{{list.length>0}}" class='bg-white flex-row text-center' style='padding-top:37rpx;padding-bottom:41rpx;'>
   <view class='flex-1' style='color:#666;font-size:28rpx;border-right:2rpx solid #808080;'>
-    时间轴
+    <view class='flex-row'>
+      <view style='margin-left:110rpx;'>
+        <image src='https://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/time.png' 
+        style='width:25rpx;height:25rpx;'></image>
+      </view>
+      <view  style='margin-left:21rpx;'>
+        时间轴
+      </view>
+    </view>
   </view>
   <view class='flex-1' style='color:#666;font-size:28rpx;' bindtap='gotoPhotos'>
-    照片墙
+    <view class='flex-row'>
+      <view style='margin-left:110rpx;'>
+        <image src='https://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/photowall.png' 
+        style='width:25rpx;height:25rpx;'></image>
+      </view>
+      <view  style='margin-left:21rpx;'>
+        照片墙
+      </view>
+    </view>
   </view>
 </view>
 
