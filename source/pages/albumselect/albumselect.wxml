@@ -1,0 +1,32 @@
+<!--pages/albumselect/albumselect.wxml-->
+
+
+<view class='flex-row' style='padding-top:35rpx;padding-left:30rpx;'>
+  <view class='addicon'>
+    <image src='https://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/add2.png'></image>
+  </view>
+</view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<view class='superheader'>
+  <view class='title'>群相册</view>
+</view>
+<text class='fa fa-chevron-left btnback' bindtap='back'></text>

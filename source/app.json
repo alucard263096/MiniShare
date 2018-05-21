@@ -1,8 +1,9 @@
 {
   "pages": [
+    "pages/albumselect/albumselect",
+    "pages/index/index",
     "pages/albumdetail/albumdetail",
     "pages/post/post",
-    "pages/index/index",
     "pages/votelist/votelist",
     "pages/album/album",
     "pages/albumcreate/albumcreate",

@@ -4,8 +4,9 @@
   <view class='text-right' style='margin-top:31rpx;margin-right:30rpx;margin-bottom:29rpx;font-size:28rpx;color:#29A5EE' wx:if="{{inmgr==false}}" bindtap='changeToMgr'>
     管理
   </view>
-  <view class='text-right' style='margin-top:31rpx;margin-right:30rpx;margin-bottom:29rpx;font-size:28rpx;color:#29A5EE' wx:if="{{inmgr==true}}" bindtap='cancelMgr'>
-    完成
+  <view class='text-right' style='margin-top:31rpx;margin-right:30rpx;margin-bottom:29rpx;font-size:28rpx;color:#29A5EE' wx:if="{{inmgr==true}}" >
+    <text bindtap='cancelMgr'>取消</text>
+    <text style='margin-left:28rpx;' bindtap='doneMOve'>完成</text>
   </view>
   <view style='padding-left:30rpx;padding-right:0rpx;'>
     <view wx:for="{{list.photos}}" wx:key="k">
@@ -34,7 +35,7 @@
 <view class='flex-row'  wx:if="{{inmgr==true}}" style='position:fixed;padding:25rpx;font-size:32rpx;bottom:0rpx;width:700rpx;color:white;background:{{selectids.length==0?"#DDDDDD":"#29A5EE"}}'>
 <view >已选中{{selectids.length}}张照片</view>
 <view class='flex-1 flex-row'>
-<view class='flex-1 text-right'><text bindtap='download'>下载</text></view>
+<view class='flex-1 text-right'><text bindtap='download'>移动</text></view>
 <view style='margin-left:69rpx;'><text bindtap='deletePhoto'>删除</text></view>
 </view>
 </view>

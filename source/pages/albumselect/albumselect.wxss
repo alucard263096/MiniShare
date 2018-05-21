@@ -1,0 +1,15 @@
+/* pages/albumselect/albumselect.wxss */
+page{
+  background-color: white;
+}
+.addicon{
+  width: 156rpx;
+  height: 156rpx;
+  border:2rpx solid #ddd;
+}
+.addicon image{
+  width: 56rpx;
+  height: 56rpx;
+  margin-top:50rpx;
+  margin-left: 50rpx;
+}

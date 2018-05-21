@@ -1,21 +1,21 @@
 /* pages/albumphoto/albumphoto.wxss */
-.unselected{
-  width: 30rpx;
-  height: 30rpx;
-  border-radius: 50%;
-  border:2rpx solid white;
-  background-color: rgba(0, 0, 0, 0.4);
-  position: absolute;
-  margin-top: 9rpx;
-  margin-left: 175rpx;
+
+.flexbox{
+margin-left: 22rpx;
+margin-right: 20rpx;
+width: 708rpx;
+margin-bottom: 20rpx;
 }
-.selected{
-  width: 34rpx;
-  height: 34rpx;
-  border-radius: 50%;
-  background-image: url(https://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/check.png);
-  background-size: 100% 100%;
-  position: absolute;
-  margin-top: 9rpx;
-  margin-left: 175rpx;
+.flexbox image{
+
+width: 708rpx;
+height: 330rpx;
+}
+
+.btnImportment{
+  position: fixed;
+  bottom: 22rpx;
+  left: 226rpx;
+  width: 289rpx;
+  margin-bottom: 0rpx;
 }
