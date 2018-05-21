@@ -11,7 +11,7 @@ class Content extends AppBase {
 
   onLoad(options) {
     this.Base.Page = this;
-    //options.id=2;
+    //options.id=487;
     super.onLoad(options);
     this.Base.setMyData({list:[],latestnotice:{id:"0"}});
     var that=this;
@@ -124,6 +124,7 @@ class Content extends AppBase {
         if (data.length > 0) {
           that.Base.setMyData({ list: data,  newgettime: data[0].updated_date, lastgettime: data[data.length - 1].updated_date });
         }
+        wx.stopPullDownRefresh();
       });
   }
   onReachBottom() {

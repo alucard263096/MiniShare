@@ -7,9 +7,16 @@ page{
   height: 156rpx;
   border:2rpx solid #ddd;
 }
+.addiconnoborder{
+  width: 160rpx;
+  height: 160rpx;
+}
 .addicon image{
   width: 56rpx;
   height: 56rpx;
   margin-top:50rpx;
   margin-left: 50rpx;
+}
+.addname{
+  margin-left:40rpx;margin-top:56rpx;font-size:34rpx;
 }

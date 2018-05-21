@@ -1,8 +1,9 @@
 <!--pages/group/group.wxml-->
-<text class='fa fa-chevron-left btnback' bindtap='gohome'></text>
+<text class='fa fa-chevron-left btnback' bindtap='gohome'  style='position: absolute;'></text>
 <view class='top-bg'>
   <view class='header'>
-    <open-data type="groupName" open-gid="{{info.opengid}}"></open-data>
+    <open-data type="groupName" open-gid="{{info.opengid}}" wx:if="{{info.group_name==''}}"></open-data>
+    {{info.group_name}}
   </view>
   <view class='edit flex-row'>
     <view class='editblock  flex-row' bindtap='gotoMgr'>
@@ -121,14 +122,14 @@
         <view class='operationstr'>{{item.operationstr}}</view>
         <navigator url='/pages/post/post?id={{item.id}}' class='postcontent' wx:if="{{item.operation=='N'}}">
         <view wx:if="{{item.noticecover!=null}}">
-          <image src='{{uploadpath}}banner/{{item.noticecover}}' style='width:100%;' mode="aspectFit"></image>
+          <image src='{{uploadpath}}banner/{{item.noticecover}}' style='width:100%;' mode='widthFix'></image>
         </view>
         <view  style='color:#333333;margin-top:16rpx;'>{{item.title}}</view>
         <view style='margin-top:14rpx;' style='color:#666666'>{{item.description}}</view>
         </navigator>
         <navigator url='/pages/post/post?id={{item.id}}' class='postphotos flex-row' wx:if="{{item.operation=='P'}}">
           <block wx:for-items="{{item.photos}}" wx:key="{{index}}" wx:for-item="photo">
-            <view class='photoview  flex-1'>
+            <view class='photoview'  >
               <image src="{{uploadpath}}album/{{photo.photo}}" mode="widthFix" />
             </view>
           </block>

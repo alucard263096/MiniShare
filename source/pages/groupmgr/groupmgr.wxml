@@ -8,20 +8,20 @@
 
 <view class=' bg-white'>
   <view class='flex-row'>
-    <view class='firsttab'>备注名</view>
+    <view class='firsttab'>群组名称</view>
     <view class='secondtab'>
       <open-data class='groupname' type="groupName" open-gid="{{info.opengid}}" wx:if="{{info.group_name==''}}" ></open-data>
       <input  bindinput='groupnameChange' value='{{info.group_name}}' maxlength='25'></input>
     </view>
   </view>
   <view class='flex-row'>
-    <view class='firsttab'>群昵称</view>
+    <view class='firsttab'>我的昵称</view>
     <view class='secondtab'>
       <input bindinput='membernameChange' value='{{info.member_name}}' placeholder='{{UserInfo.nickName}}' maxlength='25' ></input>
     </view>
   </view>
   <view class='flex-row'>
-    <view class='firsttab'>群成员</view>
+    <view class='firsttab'>群组成员</view>
     <view class='secondtab flex-1'>
       <image  wx:for="{{info.members}}" wx:key="k" src="{{item.avatarUrl}}"></image>
     </view>

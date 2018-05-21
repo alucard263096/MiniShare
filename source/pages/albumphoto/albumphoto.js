@@ -11,8 +11,8 @@ class Content extends AppBase {
   }
   onLoad(options) {
     //options.id=5;
-    //options.album_id = 70;
-    //options.group_id = 70;
+    //options.album_id = 14;
+    //options.group_id = 484;
     this.Base.Page = this;
     super.onLoad(options);
     this.Base.setMyData({ inmgr: false, selectids:[] });
@@ -75,6 +75,25 @@ class Content extends AppBase {
       }
     })
   }
+  move(){
+    var ids=[];
+    var list = this.Base.getMyData().list;
+    var data = this.Base.getMyData();
+    for (var i = 0; i < list.photos.length; i++) {
+      for (var j = 0; j < list.photos[i].photos.length; j++) {
+        if (list.photos[i].photos[j].selected == true) {
+          ids.push(list.photos[i].photos[j].id);
+        }
+      }
+    }
+    wx.navigateTo({
+      url: '/pages/albumselect/albumselect?group_id='+this.Base.options.group_id+"&photoids="+ids.join(","),
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    });
+    this.Base.setMyData({ inmgr: false });
+  }
   download(){
     var list = this.Base.getMyData().list;
     var data = this.Base.getMyData();
@@ -110,11 +129,6 @@ class Content extends AppBase {
             }
           })
           
-
-
-
-
-
         }
       }
     }
@@ -130,8 +144,9 @@ body.uploadToAlbum = page.uploadToAlbum;
 body.uploadPhotos = page.uploadPhotos; 
 body.changeToMgr = page.changeToMgr; 
 body.cancelMgr = page.cancelMgr; 
-body.selectImage = page.selectImage;
+body.selectImage = page.selectImage; 
 body.deletePhoto = page.deletePhoto;
 body.download = page.download;
+body.move = page.move;
 
 Page(body)

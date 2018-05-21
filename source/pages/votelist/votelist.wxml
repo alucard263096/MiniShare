@@ -13,9 +13,9 @@
 
 
 <view wx:if="{{list.length>0}}">
-  <view url='/pages/post/post?id={{item.id}}' id="{{item.id}}" class='noticeitem debug' wx:for="{{list}}" wx:key="k" bindtap='startvote' data-vote_start_count="{{item.vote_start_count}}">
+  <view url='/pages/post/post?id={{item.id}}'  class='noticeitem debug' wx:for="{{list}}" wx:key="k" >
     <view class='flex-row'>
-    <view class='title'>{{item.title}}</view>
+    <view class='title' id="{{item.id}}" bindtap='startvote' data-vote_start_count="{{item.vote_start_count}}">{{item.title}}</view>
     <view class='flex-1' style='text-align:right;position:absolute;right:28rpx;' wx:if="{{item.vote_expired_count<0}}">
       <view class='votedone' wx:if="{{item.vote_expired_count<0}}">投票结束</view>
     </view>

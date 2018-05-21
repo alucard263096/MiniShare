@@ -1,7 +1,7 @@
 <!--pages/album/album.wxml-->
 <!--pages/meeting/meeting.wxml-->
 <view class='superheader'><view class='title'>群相册</view></view>
-<text class='fa fa-angle-left btnback' bindtap='back'></text>
+<text class='fa fa-chevron-left btnback' bindtap='back'></text>
 
 <view class='bg-white'>
 

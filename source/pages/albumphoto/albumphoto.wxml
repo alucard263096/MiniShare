@@ -35,7 +35,7 @@
 <view class='flex-row'  wx:if="{{inmgr==true}}" style='position:fixed;padding:25rpx;font-size:32rpx;bottom:0rpx;width:700rpx;color:white;background:{{selectids.length==0?"#DDDDDD":"#29A5EE"}}'>
 <view >已选中{{selectids.length}}张照片</view>
 <view class='flex-1 flex-row'>
-<view class='flex-1 text-right'><text bindtap='download'>移动</text></view>
+<view class='flex-1 text-right'><text bindtap='move'>移动</text></view>
 <view style='margin-left:69rpx;'><text bindtap='deletePhoto'>删除</text></view>
 </view>
 </view>

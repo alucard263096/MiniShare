@@ -69,7 +69,10 @@ class Content extends AppBase {
       if (data.code == "0") {
 
         var noticeApi = new NoticeApi();
-        noticeApi.uploadphoto({ group_id: group_id, post_id: data.return, formid: formId });
+        noticeApi.uploadphoto({ group_id: group_id, post_id: data.return, formid: formId }, () => {
+          wx.navigateBack({
+
+          })});
 
         // wx.navigateTo({
         //   url: '/pages/back/post?id=' + data.return,
@@ -77,9 +80,6 @@ class Content extends AppBase {
         //   fail: function (res) { },
         //   complete: function (res) { },
         // });
-        wx.navigateBack({
-          
-        })
       } else {
         that.Base.error("系统繁忙，请稍后重试");
       }

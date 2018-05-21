@@ -1,9 +1,20 @@
 <!--pages/albumselect/albumselect.wxml-->
 
 
-<view class='flex-row' style='padding-top:35rpx;padding-left:30rpx;'>
+<navigator url='/pages/albumcreate/albumcreate?group_id={{group_id}}' class='flex-row' style='padding-top:35rpx;padding-left:30rpx;'>
   <view class='addicon'>
     <image src='https://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/add2.png'></image>
+  </view>
+  <view class='addname' style='color:#29A5EE'>
+    创建相册
+  </view>
+</navigator>
+<view wx:for="{{myalbum}}" wx:key="k" class='flex-row' style='padding-top:35rpx;padding-left:30rpx;' bindtap='selectMove' id="{{item.id}}">
+  <view >
+    <image class='addiconnoborder' src='{{uploadpath}}album/{{item.cover}}'></image>
+  </view>
+  <view class='addname' >
+    {{item.name}}
   </view>
 </view>
 

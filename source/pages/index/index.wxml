@@ -145,7 +145,8 @@
 
           <view class='content'>
             <view class="gtitle">
-            <open-data type="groupName"  open-gid="{{item.opengid}}"></open-data>
+            <open-data type="groupName"  open-gid="{{item.opengid}}"  wx:if="{{item.group_name==''}}"></open-data>
+            {{item.group_name}}
             </view>
             <view class='gdesc'>{{item.latestoperation}}</view>
           </view>

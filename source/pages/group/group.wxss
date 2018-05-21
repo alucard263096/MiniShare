@@ -267,9 +267,11 @@
 
   padding-top: 50rpx;
   padding-bottom: 50rpx;
+  flex-wrap: wrap;
 }
 .postphotos .photoview{
   padding-right:20rpx;
+  width:28%;
   
 }
 .postphotos .photoview image{

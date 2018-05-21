@@ -9,10 +9,10 @@ class Content extends AppBase {
   }
   onLoad(options) {
     //options.group_id = 2;
-    //options.title = "咫尺之星投票";
     if(options.title!=undefined){
       options.title = JSON.parse(options.title);
     }
+    //options.title = "咫尺之星投票";
     this.Base.Page = this;
     super.onLoad(options);
 
@@ -164,7 +164,7 @@ class Content extends AppBase {
   sendVote(e){
 
     var startdate = this.Base.getMyData().startdate + " " + this.Base.getMyData().starttime;
-    var enddate = this.Base.getMyData().enddate + " " + this.Base.getMyData().endtim;
+    var enddate = this.Base.getMyData().enddate + " " + this.Base.getMyData().endtime;
     if (AppBase.Util.StrToDate(startdate).getTime() >= AppBase.Util.StrToDate(enddate).getTime()) {
 
       this.Base.info("开始时间不能大于结束时间");

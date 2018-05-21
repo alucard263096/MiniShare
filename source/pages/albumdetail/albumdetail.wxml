@@ -60,10 +60,10 @@
       </view>
       <view style='color:#999;font-size:24rpx;padding:10rpx;margin-left:11rpx;'>{{item.member_id_name}}</view>
     </view>
-    <view style='color:#666;font-size:40rpx;'>
+    <navigator url='/pages/post/post?id={{item.id}}' style='color:#666;font-size:28rpx;'>
       {{item.title}}
+    </navigator>
       <view class='delete' wx:if="{{item.member_id_openid==UserInfo.openid}}" bindtap='deletePost' id="{{item.id}}">删除</view>
-    </view>
     <navigator url='/pages/post/post?id={{item.id}}' class='{{item.photos.length==1?"photo_1":""}} {{item.photos.length==2?"photo_2":""}} {{item.photos.length>2?"photo_3":""}}'>
       <block wx:for="{{item.photos}}" wx:key="k">
         <image src='{{uploadpath}}album/{{item.photo}}'></image>
@@ -109,7 +109,7 @@
     </form>
   </view>
 </view>
-
+  
 
 <view class='superheader'>
   <view class='title'>群相册</view>

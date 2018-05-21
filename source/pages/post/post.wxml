@@ -1,7 +1,7 @@
 <!--pages/group/group.wxml-->
 <view class='superheader'>
   <view class='title'  wx:if="{{info.operation=='V'}}">群投票</view>
-  <view class='title'  wx:if="{{info.operation=='N'}}">群通知</view>
+  <view class='title'  wx:if="{{info.operation=='N'}}">群公告</view>
   <view class='title'  wx:if="{{info.operation=='P'}}">群相册</view></view>
 <text class='fa fa-chevron-left btnback' bindtap='myback'></text>
 
@@ -14,7 +14,7 @@
       <text style='font-size:26rpx;'>{{info.vote_enddate}}</text>
     </view>
     <view class='member flex-row'>
-      <view style='font-size:28rpx;color:#333;margin-left:29rpx;'>
+      <view style='font-size:28rpx;color:#333;margin-left:29rpx;'  wx:if="{{group_id>0}}" >
         投票发起人：
       </view>
       <view>
@@ -38,7 +38,7 @@
               <view class='{{opt.selected==true?"selected":"unselected"}}_{{item.votetype}}'></view>
               <view style='margin-left:12rpx'>{{opt.str}}</view>
             </view>
-            <view wx:if="{{opt.photo!=''}}">
+            <view wx:if="{{opt.photo!=''}}" style='margin-top:16rpx;'>
               <image src="{{uploadpath}}vote/{{opt.photo}}" style='width:200rpx;' mode="widthFix"></image>
             </view>
           </view>
