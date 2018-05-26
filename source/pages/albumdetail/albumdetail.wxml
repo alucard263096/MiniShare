@@ -1,6 +1,8 @@
 <!--pages/albumdetail/albumdetail.wxml-->
-<view class='cover' style='background-image:url({{uploadpath}}album/{{info.cover}})' bindtap='changeAlbumName'>
-  <view class='creator flex-row'>
+
+
+<view class='cover' style='background-image:url({{uploadpath}}album/{{info.cover}})'>
+  <navigator url='/pages/mypost/mypost?operation=P' class='creator flex-row'>
     <view>
       <image class='createoroimg' src="{{info.member_avatarUrl}}"></image>
     </view>
@@ -8,8 +10,8 @@
 
       <image class='iconccc' src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/right-a.png"></image>
     </view>
-  </view>
-  <view class='albumname flex-row'>
+  </navigator>
+  <view class='albumname flex-row'  bindtap='changeAlbumName'>
     <view>{{info.name}}</view>
     <view>
       <image style="width:24rpx;height:24rpx;margin-left:19rpx;" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/edit.png"></image>
@@ -100,6 +102,8 @@
 <view wx:if="{{list.length==0}}" class='text-center' style='color:#999;margin-top:36rpx;font-size:28rpx;'>
   一张照片都没有~
 </view>
+
+
 
 
 <view>

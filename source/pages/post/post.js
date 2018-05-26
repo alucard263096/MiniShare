@@ -11,7 +11,7 @@ class Content extends AppBase {
     super();
   }
   onLoad(options) {
-    //options.id = 87;
+    options.id = 117;
     this.Base.Page = this;
     super.onLoad(options);
     var postapi = new PostApi();
@@ -248,6 +248,19 @@ class Content extends AppBase {
   hideCommentbox() {
     this.Base.setMyData({ showcomment: false });
   }
+  movephoto(){
+    var info=this.Base.getMyData().info;
+    var ids=[];
+    for(var i=0;i<info.photos.length;i++){
+      ids.push(info.photos[i].id);
+    }
+    wx.navigateTo({
+      url: '/pages/albumselect/albumselect?' + this.Base.options.group_id + "&photoids=" + ids.join(","),
+      success: function (res) { },
+      fail: function (res) { },
+      complete: function (res) { },
+    });
+  }
 }
 var page = new Content();
 var body = page.generateBodyJson();
@@ -263,8 +276,9 @@ body.myback = page.myback;
 body.deletePost = page.deletePost;
 body.selectOpt = page.selectOpt;
 body.sendVote = page.sendVote;
-body.showCommentbox = page.showCommentbox;
+body.showCommentbox = page.showCommentbox; 
 body.hideCommentbox = page.hideCommentbox;
+body.movephoto = page.movephoto;
 
 
 Page(body)

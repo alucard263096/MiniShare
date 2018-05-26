@@ -79,7 +79,7 @@
 }
 
 .creator{
-  position: fixed;
+  position: absolute;
   right: 0rpx;
   margin-top: 39rpx;
   background: white;

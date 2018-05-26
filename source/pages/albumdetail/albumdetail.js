@@ -28,7 +28,7 @@ class Content extends AppBase {
     }
 
     super.onLoad(options);
-    this.Base.setMyData({ list: [] });
+    this.Base.setMyData({ list: [], showtitlenow:false });
   }
   onShow() {
     var that = this;
@@ -149,7 +149,8 @@ body.viewPhotos = page.viewPhotos;
 body.changeAlbumName = page.changeAlbumName;
 body.uploadPhotos = page.uploadPhotos;
 body.gotoPhotos = page.gotoPhotos;
-body.deletePost = page.deletePost;
+body.deletePost = page.deletePost; 
 body.likePost = page.likePost;
+body.scrollevent = page.scrollevent;
 
 Page(body)

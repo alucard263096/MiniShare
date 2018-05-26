@@ -100,6 +100,15 @@ class Content extends AppBase {
   startvote(e) {
     console.log(e);
     var id = e.currentTarget.id;
+
+
+    wx.navigateTo({
+      url: '/pages/post/post?id=' + id,
+    });
+
+    return;
+
+
     var vote_start_count = Number(e.currentTarget.dataset.vote_start_count);
     if(vote_start_count<0){
       wx.showModal({
@@ -110,9 +119,6 @@ class Content extends AppBase {
       });
       return;
     }
-    wx.navigateTo({
-      url: '/pages/post/post?id='+id,
-    })
   }
 }
 var page = new Content();

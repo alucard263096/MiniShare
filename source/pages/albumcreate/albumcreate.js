@@ -1,6 +1,6 @@
 // pages/forcopy/forcopy.js
 import { AppBase } from "../../app/AppBase";
-import {AlbumApi} from "../../apis/album.api";
+import { AlbumApi } from "../../apis/album.api.js";
 class Content extends AppBase {
   constructor() {
     super();

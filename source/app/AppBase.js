@@ -12,7 +12,8 @@ export class AppBase {
   data = {
     uploadpath: ApiConfig.GetUploadPath(),
     copyright: { name: "超级群空间助手", website: "supershare.com" },
-    thisyear:(new Date).getFullYear()
+    thisyear:(new Date).getFullYear(),
+    nowtimespan:(new Date().getTime()/1000)
   };
   Page = null;
   static Util = ApiUtil;

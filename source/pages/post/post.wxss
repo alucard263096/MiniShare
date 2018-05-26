@@ -125,8 +125,7 @@
   margin-top: 2rpx;
 }
 .commenttext{
-  margin-top: 40rpx;
-  margin-bottom: 30rpx;
+  margin-top: 10rpx;
   font-size: 28rpx;
   color:#666666;
 }
@@ -197,6 +196,10 @@
   position: absolute;
   right:36rpx;
   margin-top: -50rpx;
+  color:#2D72B6;
+  font-size: 24rpx;
+}
+.ppdelete{
   color:#2D72B6;
   font-size: 24rpx;
 }

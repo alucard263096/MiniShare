@@ -14,7 +14,7 @@
       <text style='font-size:26rpx;'>{{info.vote_enddate}}</text>
     </view>
     <view class='member flex-row'>
-      <view style='font-size:28rpx;color:#333;margin-left:29rpx;'  wx:if="{{group_id>0}}" >
+      <view style='font-size:28rpx;color:#333;margin-left:29rpx;'   >
         投票发起人：
       </view>
       <view>
@@ -26,7 +26,7 @@
       </view>-->
     </view>
   </view>
-  <view style='margin-top:10rpx;color:#666;font-size:28rpx;' wx:if="{{info.vote_expired_count>0&&info.questionsvoted==false}}">
+  <view style='margin-top:10rpx;color:#666;font-size:28rpx;' wx:if="{{info.questionsvoted==false&&(info.vote_startdate_timespan<nowtimespan&&info.vote_enddate_timespan>nowtimespan)}}">
     <view class='bg-white' style='padding:30rpx;'>
       <view wx:for="{{info.questions}}" wx:key="k">
         <view>
@@ -47,7 +47,7 @@
     </view>
   </view>
 
-  <view style='margin-top:10rpx;color:#666;font-size:28rpx;' wx:if="{{info.vote_expired_count<0||info.questionsvoted==true}}">
+  <view style='margin-top:10rpx;color:#666;font-size:28rpx;' wx:else>
     <view class='bg-white' style='padding:30rpx;'>
       <view wx:for="{{info.questions}}" wx:key="k">
         <view>
@@ -70,7 +70,7 @@
       </view>
     </view>
   </view>
-  <view class="sendshare" wx:if="{{info.questionsvoted==false}}">
+  <view class="sendshare" wx:if="{{info.questionsvoted==false&&(info.vote_startdate_timespan<nowtimespan&&info.vote_enddate_timespan>nowtimespan)}}">
     <button class="btnShare" type="primary" bindtap='sendVote'>提交</button>
   </view>
 </view>
@@ -89,9 +89,9 @@
         {{info.member_id_name}}
       </view>
     </view>
-    <view class='title' wx:if="{{info.title!=null}}" style='font-size:28rpx;color:#666;text-align:left;'>
-      {{info.title}}
-      <view class='pdelete' wx:if="{{info.member_id_openid==UserInfo.openid}}" bindtap='deletePost' id="{{info.id}}">删除</view>
+    <view class='title flex-row' wx:if="{{info.title!=null}}" style='font-size:28rpx;color:#666;text-align:left;padding:unset;margin-bottom:25rpx'>
+      <view class='flex-1'>{{info.title}}</view>
+      <view class='ppdelete' wx:if="{{info.member_id_openid==UserInfo.openid}}" bindtap='deletePost' id="{{info.id}}">删除</view>
     </view>
 
     <view url='/pages/post/post?id={{info.id}}' class='{{info.photos.length==1?"photo_1":""}} {{info.photos.length==2?"photo_2":""}} {{info.photos.length>2?"photo_3":""}}'>
@@ -100,8 +100,22 @@
       </block>
     </view>
 
-    <view class='flex-row'>
+    <view class='flex-row' style='margin-bottom:28rpx'>
       <view class='flex-1' style='font-size:24rpx;color:#999;'>{{info.updated_date_span}}</view>
+    </view>
+    <view class='flex-row' style='border-top:2rpx solid #DDDDDD;font-size:28rpx;color:#666;padding-top:32rpx;padding-bottom:30rpx;'>
+      <view class='flex-1 flex-row' bindtap='movephoto' >
+        <view style='margin-left:120rpx;'>
+          <image src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/move.png' style='width:26rpx;height:26rpx;margin-right:21rpx;'></image>
+        </view>
+        <view>移动</view>
+      </view>
+      <view style='background:#ddd;width:4rpx;height:25rpx;margin-top:4rpx;'></view>
+      <view class='flex-1 flex-row'>
+        <view  style='margin-left:120rpx;'>
+          <image src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/down.png' style='width:26rpx;height:26rpx;margin-right:21rpx;'></image></view>
+        <view>下载</view>
+      </view>
     </view>
 
 
@@ -152,16 +166,16 @@
   全部评论
 </view>
 <block wx:if="{{commentlist.length==0}}">
-<view class='comment' wx:if="{{info.operation=='N'}}">
+<view class='comment' wx:if="{{info.operation=='N'||info.operation=='P'}}">
   <view class='commenttextno'>暂无评论</view>
 </view>
 </block>
-<view class='comment' wx:for="{{commentlist}}" wx:key="k" wx:if="{{info.operation=='N'}}">
+<view class='comment' wx:for="{{commentlist}}" wx:key="k" wx:if="{{info.operation=='N'||info.operation=='P'}}">
   <view class='member flex-row'>
     <view>
       <image class="memberphoto" src="{{item.member_id_avatarUrl}}" />
     </view>
-    <view class='membername'>
+    <view class='membername' style='max-width:500rpx'>
       {{item.member_id_name}}
     </view>
     <view class='posttime flex-1'>
@@ -172,10 +186,10 @@
     {{item.comment}}
   </view>
 </view>
-<view style='height:88rpx;' wx:if="{{info.operation=='N'}}">
+<view style='height:88rpx;' wx:if="{{info.operation=='N'||info.operation=='P'}}">
 
 </view>
-<view class='commentbox' wx:if="{{info.operation=='N'}}">
+<view class='commentbox' wx:if="{{info.operation=='N'||info.operation=='P'}}">
   <input wx:if="{{false}}" placeholder='我来发表评论' class='inputcomment' maxlength='144' bindinput='commentChange' bindconfirm="sendComment" value='{{comment}}' confirm-type="发表"></input>
 
   <view class='fakeinput' bindtap='showCommentbox'>
@@ -183,7 +197,7 @@
 </view>
 
 
-<view class='likecomment flex-row' style='right:42rpx;'  wx:if="{{info.operation=='N'}}">
+<view class='likecomment flex-row' style='right:42rpx;'  wx:if="{{info.operation=='N'||info.operation=='P'}}">
 
   <view class='incon'>
     <image class='commenticon'  src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/comment.png"></image>
@@ -208,9 +222,9 @@
 <view class='flex-1' bindtap='hideCommentbox'>取消</view>
 <view class='flex-1 text-right {{comment.length>0?"publishcommentact":"publishcomment"}}' bindtap='sendComment' >发表</view>
 </view>
-<input bindinput='commentChange' value='{{comment}}' auto-focus='showcomment==true'  maxlength='144' placeholder='@我来说两句'  >
+<textarea bindinput='commentChange' value='{{comment}}' auto-focus='showcomment==true'  maxlength='144' style='width:100%' placeholder='@我来说两句'  >
 
-</input>
+</textarea>
 </view>
 
 
