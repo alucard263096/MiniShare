@@ -202,6 +202,7 @@
   color:#2D72B6;
   font-size:24rpx;
   text-align: right;
+  width:60rpx;
 }
 .sctop{
   width: 2rpx;

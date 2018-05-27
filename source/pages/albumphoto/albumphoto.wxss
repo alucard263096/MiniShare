@@ -39,4 +39,5 @@ height: 330rpx;
   position: absolute;
   margin-top: 9rpx;
   margin-left: 175rpx;
+  
 }

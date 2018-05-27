@@ -139,6 +139,9 @@ class Content extends AppBase {
       }
     });
   }
+
+
+
 }
 var page = new Content();
 var body = page.generateBodyJson();

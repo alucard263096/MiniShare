@@ -168,6 +168,7 @@ class Content extends AppBase {
       url: '/pages/albumdetail/albumdetail?group_id=' + this.Base.options.group_id
     });
   }
+
 }
 var page = new Content();
 var body = page.generateBodyJson();

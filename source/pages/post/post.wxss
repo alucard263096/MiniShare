@@ -126,6 +126,7 @@
 }
 .commenttext{
   margin-top: 10rpx;
+  margin-bottom: 10rpx;
   font-size: 28rpx;
   color:#666666;
 }
@@ -213,7 +214,7 @@
   margin-right: 10rpx;
 }
 .photo_3 image{
-  width: 216rpx;
+  width: 208rpx;
   height: 212rpx;
   margin-right: 15rpx;
 }

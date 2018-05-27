@@ -56,7 +56,7 @@
     <view class='notice-horn'>
       <image src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/latestnotice.png'></image>
     </view>
-    <navigator url='/pages/post/post?id={{latestnotice.id}}' class='notice-txt'>
+    <navigator url='/pages/post/post?group_id={{id}}&id={{latestnotice.id}}' class='notice-txt'>
       {{latestnotice.description}}
     </navigator>
   </view>
@@ -103,8 +103,8 @@
       <view>
         <image class='photo' src="{{item.member_id_photo}}"></image>
       </view>
-      <view class='name'>{{item.member_id_name}}</view>
-      <view class='flex-1 delete' wx:if="{{item.member_id_openid==UserInfo.openid||info.adminmember_id_name==UserInfo.openid}}">
+      <view class='flex-1 name'>{{item.mygroupinfo.member_name==""?item.member_id_name:item.mygroupinfo.member_name}}</view>
+      <view class='delete' wx:if="{{item.member_id_openid==UserInfo.openid||info.adminmember_id_name==UserInfo.openid}}">
         <text bindtap='deletePost' id="{{item.id}}">删除</text>
       </view>
     </view>
@@ -179,7 +179,7 @@
           </view>
         </view>
         <view class='postcomment' wx:for="{{item.membercomment}}"   wx:key="k" wx:for-item="comment">
-          {{comment.nickName}}：{{comment.comment}}
+          {{comment.member_name==""?comment.nickName:comment.member_name}}：{{comment.comment}}
         </view>
       </view>
     </view>

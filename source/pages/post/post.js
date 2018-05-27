@@ -11,7 +11,8 @@ class Content extends AppBase {
     super();
   }
   onLoad(options) {
-    options.id = 117;
+    options.id = 88;
+    options.group_id = 487;
     this.Base.Page = this;
     super.onLoad(options);
     var postapi = new PostApi();
@@ -35,7 +36,7 @@ class Content extends AppBase {
     } else {
       id = this.Base.options.id;
     }
-    postapi.detail({ id: id }, data => {
+    postapi.detail({ group_id: this.Base.options.group_id, id: id }, data => {
       data["updated_date_span"] = AppBase.Util.Datetime_str(Number(data["updated_date_span"]));
       if (that.setMyData != undefined) {
         that.setMyData({ info: data });
@@ -48,7 +49,7 @@ class Content extends AppBase {
   loadComment() {
     var that = this;
     var postApi = new PostApi();
-    postApi.commentlist({ post_id: this.options.id }, data => {
+    postApi.commentlist({ group_id:this.options.group_id,post_id: this.options.id }, data => {
       for (var i = 0; i < data.length; i++) {
         data[i].update_span = ApiUtil.Datetime_str(ApiUtil.StrToDate(data[i].updated_date).getTime() / 1000);
       }
@@ -248,18 +249,71 @@ class Content extends AppBase {
   hideCommentbox() {
     this.Base.setMyData({ showcomment: false });
   }
-  movephoto(){
-    var info=this.Base.getMyData().info;
-    var ids=[];
-    for(var i=0;i<info.photos.length;i++){
+  movephoto() {
+    var info = this.Base.getMyData().info;
+    var ids = [];
+    for (var i = 0; i < info.photos.length; i++) {
       ids.push(info.photos[i].id);
     }
     wx.navigateTo({
-      url: '/pages/albumselect/albumselect?' + this.Base.options.group_id + "&photoids=" + ids.join(","),
+      url: '/pages/albumselect/albumselect?group_id=' + this.Base.options.group_id + "&photoids=" + ids.join(","),
       success: function (res) { },
       fail: function (res) { },
       complete: function (res) { },
     });
+  }
+
+  download() {
+    var info = this.Base.getMyData().info;
+    var photos = info.photos;
+    var data = this.Base.getMyData();
+    for (var j = 0; j < photos.length; j++) {
+
+      var url = data.uploadpath + "album/" + photos[j].photo;
+
+      wx.downloadFile({
+        url: url, //仅为示例，并非真实的资源
+        success: function (res) {
+          // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
+          if (res.statusCode === 200) {
+            wx.saveImageToPhotosAlbum({
+              filePath: res.tempFilePath,
+              success() {
+                wx.showToast({
+                  title: '已保存到本地',
+                  icon: 'none'
+                })
+              },
+              fail(resd) {
+                wx.showToast({
+                  title: '保存失败，可能是微信版本导致，请升级后测试',
+                  icon: 'none'
+                })
+              }
+            });
+          }
+        },
+        fail(res) {
+          console.log(res);
+        }
+      })
+
+    }
+  }
+  viewPhoto(e) {
+    var info = this.Base.getMyData().info;
+    var uploadpath = this.Base.getMyData().uploadpath;
+    var urls = []; 
+    var photos = info.photos;
+    for(var i=0;i<photos.length;i++){
+      urls.push(uploadpath+"album/"+photos[i].photo);
+    }
+    var img = e.currentTarget.id;
+    console.log(img);
+    wx.previewImage({
+      current:img,
+      urls: urls,
+    })
   }
 }
 var page = new Content();
@@ -276,9 +330,11 @@ body.myback = page.myback;
 body.deletePost = page.deletePost;
 body.selectOpt = page.selectOpt;
 body.sendVote = page.sendVote;
-body.showCommentbox = page.showCommentbox; 
-body.hideCommentbox = page.hideCommentbox;
-body.movephoto = page.movephoto;
+body.showCommentbox = page.showCommentbox;
+body.hideCommentbox = page.hideCommentbox; 
+body.movephoto = page.movephoto; 
+body.download = page.download;
+body.viewPhoto = page.viewPhoto;
 
 
 Page(body)

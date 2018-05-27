@@ -22,7 +22,7 @@
         </view>
         <view class='txt'>群投票</view>
       </navigator>
-      <navigator url="/pages/mypost/mypost?operation=P"  class='icon next'>
+      <navigator url="/pages/mypost/mypost?operation=P" class='icon next'>
         <view class='img'>
           <image src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/icon-2.png'></image>
         </view>
@@ -34,7 +34,7 @@
         </view>
         <view class='txt'>群位置</view>
       </view>
-      <navigator url="/pages/notifylist/notifylist"  class='icon next'>
+      <navigator url="/pages/notifylist/notifylist" class='icon next'>
         <view class='img'>
           <image src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/icon-4.png'></image>
         </view>
@@ -77,18 +77,21 @@
     <view class='title'>我的群空间</view>
   </view>
   <view class='group-items'>
-    <block  wx:for="{{list}}" wx:key="k">
+    <block wx:for="{{list}}" wx:key="k">
       <navigator url="/pages/group/group?id={{item.id}}" class="item " hover-class="active">
         <view class='flex-row'>
-        <view class='pics'>
+          <view class='pics'>
             <block wx:if="{{item.members.length==1}}">
               <image src="{{item.members[0].avatarUrl}}" style='width:50%;height:50%;margin:25%;'></image>
             </block>
             <block wx:if="{{item.members.length==2}}">
-              <image src="{{item.members[0].avatarUrl}}" style='width:38%;height:38%;padding:1%;margin-top:30%;'></image><image src="{{item.members[1].avatarUrl}}" style='width:38%;height:38%;padding:1%;margin-top:30%;'></image>
+              <image src="{{item.members[0].avatarUrl}}" style='width:38%;height:38%;padding:1%;margin-top:30%;'></image>
+              <image src="{{item.members[1].avatarUrl}}" style='width:38%;height:38%;padding:1%;margin-top:30%;'></image>
             </block>
             <block wx:if="{{item.members.length==3}}">
-              <image src="{{item.members[0].avatarUrl}}" style='width:38%;height:38%;padding:1%;margin-left:30%;margin-right:30%;margin-top:10%;'></image><image src="{{item.members[1].avatarUrl}}" style='margin-left:10%;width:38%;height:38%;padding:1%;'></image><image src="{{item.members[2].avatarUrl}}" style='width:38%;height:38%;padding:1%;'></image>
+              <image src="{{item.members[0].avatarUrl}}" style='width:38%;height:38%;padding:1%;margin-left:30%;margin-right:30%;margin-top:10%;'></image>
+              <image src="{{item.members[1].avatarUrl}}" style='margin-left:10%;width:38%;height:38%;padding:1%;'></image>
+              <image src="{{item.members[2].avatarUrl}}" style='width:38%;height:38%;padding:1%;'></image>
             </block>
             <block wx:if="{{item.members.length==4}}">
               <image src="{{item.members[0].avatarUrl}}" style='width:38%;height:38%;padding:1%;margin-top:10%;'></image>
@@ -143,22 +146,28 @@
             </block>
           </view>
 
-          <view class='content'>
-            <view class="gtitle">
-            <open-data type="groupName"  open-gid="{{item.opengid}}"  wx:if="{{item.group_name==''}}"></open-data>
-            {{item.group_name}}
+          <view class='flex-1'>
+            <view class='flex-row'>
+
+              <view class='content'>
+                <view class="gtitle">
+                  <open-data type="groupName" open-gid="{{item.opengid}}" wx:if="{{item.group_name==''}}"></open-data>
+                  {{item.group_name}}
+                </view>
+              </view>
+
+              <view class='flex-1 timespan'>{{item.operationtime}}</view>
             </view>
+
             <view class='gdesc'>{{item.latestoperation}}</view>
           </view>
-      
-          <view class='flex-1 timespan'>{{item.operationtime}}</view>
+
 
         </view>
       </navigator>
     </block>
   </view>
   <view class='open-share'>
-  <button class="weui-btn" type="primary" open-type="share">创建群空间</button>
+    <button class="weui-btn" type="primary" open-type="share">创建群空间</button>
   </view>
 </view>
-
