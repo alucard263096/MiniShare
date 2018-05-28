@@ -11,7 +11,7 @@ class Content extends AppBase {
 
   onLoad(options) {
     this.Base.Page = this;
-    //options.id=487;
+    //options.id=480;
     super.onLoad(options);
     this.Base.setMyData({list:[],latestnotice:{id:"0"}});
     var that=this;

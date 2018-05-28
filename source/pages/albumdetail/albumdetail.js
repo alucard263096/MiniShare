@@ -54,13 +54,7 @@ class Content extends AppBase {
 
         data[i]["updated_date_span"] = AppBase.Util.Datetime_str(Number(data[i]["updated_date_span"]));
       }
-      var list = that.Base.getMyData().list;
-      for (var i = 0; i < list.length; i++) {
-        data.push(list[i]);
-      }
-      if (data.length > 0) {
-        that.Base.setMyData({ list: data, newgettime: data[0].updated_date, lastgettime: data[data.length - 1].updated_date });
-      }
+      that.Base.setMyData({ list: data, newgettime: data[0].updated_date, lastgettime: data[data.length - 1].updated_date });
     });
   }
   uploadPhoto() {

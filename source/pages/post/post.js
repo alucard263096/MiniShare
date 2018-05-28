@@ -11,8 +11,8 @@ class Content extends AppBase {
     super();
   }
   onLoad(options) {
-    options.id = 88;
-    options.group_id = 487;
+    //options.id = 122;
+    //options.group_id = 480;
     this.Base.Page = this;
     super.onLoad(options);
     var postapi = new PostApi();
@@ -218,14 +218,26 @@ class Content extends AppBase {
         if (questions[i].voteoptions[j].selected == true) {
           vids.push(questions[i].voteoptions[j].id);
           questions[i].voteoptions[j].checked = 1;
+          break;
         } else {
           questions[i].voteoptions[j].checked = 0;
         }
       }
     }
     if (questions.length != vids.length) {
-      this.Base.info("你还有题未选择");
+      this.Base.info("你还有题目未选择选项");
       return;
+    }
+    vids = [];
+    for (var i = 0; i < questions.length; i++) {
+      for (var j = 0; j < questions[i].voteoptions.length; j++) {
+        if (questions[i].voteoptions[j].selected == true) {
+          vids.push(questions[i].voteoptions[j].id);
+          questions[i].voteoptions[j].checked = 1;
+        } else {
+          questions[i].voteoptions[j].checked = 0;
+        }
+      }
     }
     info.questions = questions;
     var voteapi = new VoteApi();
@@ -285,8 +297,10 @@ class Content extends AppBase {
                 })
               },
               fail(resd) {
+                console.log("下载失败的log");
+                console.log(resd);
                 wx.showToast({
-                  title: '保存失败，可能是微信版本导致，请升级后测试',
+                  title: '下载失败，请授权后重新下载',
                   icon: 'none'
                 })
               }

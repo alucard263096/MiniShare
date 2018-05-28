@@ -1,7 +1,7 @@
 <!--pages/groupmgr/groupmgr.wxml-->
 <view class='superheader'>
   <view class='title'>
-      <open-data type="groupName" open-gid="{{info.opengid}}" ></open-data>
+      <open-data type="groupName" open-gid="{{info.opengid}}"  wx:if="{{info.group_name==''}}" ></open-data>{{info.group_name}}
   </view>
 </view>
 <text class='fa fa-chevron-left btnback' bindtap='back'></text>

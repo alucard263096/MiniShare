@@ -203,7 +203,7 @@
     <image class='commenticon'  src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/comment.png"></image>
   </view>
   <view class='likestr'>
-    {{info.comment}}
+    {{info.membercomment.length}}
   </view>
   <view class='incon'>
     <image class='likeicon' bindtap='likePost' id="{{info.id}}" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/like.png"></image>

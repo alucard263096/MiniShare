@@ -1,7 +1,7 @@
 <!--pages/vote/vote.wxml-->
-
-<view style='padding:30rpx;padding-bottom:0rpx;font-size:34rpx;color:#333;'>
-  {{title}}
+<view>
+<view style='padding:30rpx;padding-bottom:0rpx;font-size:34rpx;'>
+  <text style='color:#333;'>{{title}}</text>
 </view>
 
 <view wx:for="{{questions}}" wx:key="l" class='bg-white' wx:for-index="i" style='padding:30rpx;margin-top:30rpx;'>
@@ -154,7 +154,7 @@
     </view>
   </view>
 </view>
-
+</view>
 
 
 <modal hidden="false" title="请设置标题" confirm-text="提交" cancel-text="放弃" bindcancel="cancelCreate" bindconfirm="confirmCreate">

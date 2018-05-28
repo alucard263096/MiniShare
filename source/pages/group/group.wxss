@@ -109,9 +109,13 @@
   width: 528rpx;
   margin-left: 16rpx;
   margin-top: 4rpx;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  height: 50rpx;
+  height: 46rpx;
+
+  overflow:hidden; 
+text-overflow:ellipsis;
+display:-webkit-box; 
+-webkit-box-orient:vertical;
+-webkit-line-clamp:2; 
 }
 .quweicenter .block-1{
   margin-top: 44rpx;

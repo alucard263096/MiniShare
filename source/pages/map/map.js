@@ -6,7 +6,7 @@ class Content extends AppBase {
     super();
   }
   onLoad(options) {
-    options.group_id=2;
+    //options.group_id=2;
     this.Base.Page = this;
     super.onLoad(options);
     var that=this;

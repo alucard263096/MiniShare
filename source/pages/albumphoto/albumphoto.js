@@ -117,7 +117,7 @@ class Content extends AppBase {
                     },
                     fail(resd) {
                       wx.showToast({
-                        title: '保存失败，可能是微信版本导致，请升级后测试',
+                        title: '下载失败，请授权后重新下载',
 						icon: 'none'
                       })
                     }

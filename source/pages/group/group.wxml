@@ -141,7 +141,7 @@
               <view><image style='width:30rpx;height:30rpx' src='https://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/tp.png'></image></view>
               <view style='color:#999;font-size:24rpx;margin-left:10rpx;margin-top:4rpx;'>投票</view>
             </view>
-            <view style='font-size:28rpx;color:#333;margin-top:15rpx;'>{{item.title}}</view>
+            <view style='font-size:28rpx;color:#333;margin-top:20rpx;'>{{item.title}}</view>
           </view>
           <!--
           <block wx:for="{{item.voteoptions}}" wx:key="k">
@@ -174,7 +174,7 @@
               <image class='commenticon' bindtap='navtoPage' data-page="post" data-param="id={{item.id}}" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/comment.png"></image>
             </view>
             <view class='likestr' bindtap='navtoPage' data-page="post" data-param="id={{item.id}}">
-              {{item.comment}}
+              {{item.membercomment.length}}
             </view>
           </view>
         </view>

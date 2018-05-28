@@ -2,4 +2,4 @@
 <view class='superheader'>
   <view class='title'>群位置</view></view>
 <text class='fa fa-chevron-left btnback' bindtap='back'></text>
-<map id="map" longitude="{{lng}}" latitude="{{lat}}" scale="4" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" show-location style="width: 100vw; height: 100vh;"></map>
+<map id="map" longitude="{{lng}}" latitude="{{lat}}" scale="15" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" show-location style="width: 100vw; height: 100vh;"></map>
