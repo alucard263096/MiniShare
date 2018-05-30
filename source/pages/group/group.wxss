@@ -258,7 +258,6 @@ display:-webkit-box;
 }
 .operationstr{
   font-size: 24rpx;
-  line-height: 24rpx;
   color:#999999;
   margin-top: 6rpx;
 }

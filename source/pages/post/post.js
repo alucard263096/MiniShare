@@ -11,8 +11,8 @@ class Content extends AppBase {
     super();
   }
   onLoad(options) {
-    //options.id = 146;
-    //doptions.group_id = 480;
+    //options.id = 181;
+    //options.group_id = 480;
     this.Base.Page = this;
     super.onLoad(options);
     var postapi = new PostApi();
@@ -55,7 +55,7 @@ class Content extends AppBase {
       if (that.setMyData != undefined) {
         that.setMyData({ info: data });
       } else {
-        that.Base.setMyData({ info: data });
+        that.Base.setMyData({ info: data,nowtimespan:data.nowtimespan });
       }
     });
     this.Base.loadComment();
@@ -187,12 +187,21 @@ class Content extends AppBase {
   deletePost(e) {
     var that = this;
     var postApi = new PostApi();
-    postApi.adelete({ idlist: this.Base.options.id },
-      data => {
-        wx.navigateBack({
+    wx.showModal({
+      title: '提示',
+      content: '是否确认删除？',
+      success(e){
+        if(e.confirm){
 
-        })
-      });
+          postApi.adelete({ idlist: that.Base.options.id },
+            data => {
+              wx.navigateBack({
+
+              })
+            });
+        }
+      }
+    })
   }
   selectOpt(e) {
     var id = e.currentTarget.id;
@@ -267,6 +276,8 @@ class Content extends AppBase {
         //});
       }
     });
+    info.questionsvoted=true;
+    this.Base.setMyData({ info: info});
 
   }
   showCommentbox() {

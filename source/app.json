@@ -1,15 +1,15 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/albumphoto/albumphoto",
     "pages/post/post",
     "pages/album/album",
+    "pages/vote/vote",
     "pages/albumdetail/albumdetail",
     "pages/groupmgr/groupmgr",
     "pages/posttest/posttest",
     "pages/group/group",
-    "pages/vote/vote",  
     "pages/votelist/votelist",
-    "pages/albumphoto/albumphoto",
     "pages/albumselect/albumselect",
     "pages/albumcreate/albumcreate",
     "pages/albumupload/albumupload",

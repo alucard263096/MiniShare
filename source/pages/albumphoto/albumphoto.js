@@ -11,8 +11,8 @@ class Content extends AppBase {
   }
   onLoad(options) {
     //options.id=5;
-    //options.album_id = 14;
-    //options.group_id = 484;
+    //options.album_id = 32;
+    //options.group_id = 480;
     this.Base.Page = this;
     super.onLoad(options);
     this.Base.setMyData({ inmgr: false, selectids:[] });

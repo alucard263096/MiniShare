@@ -122,7 +122,7 @@
         <view class='operationstr'>{{item.operationstr}}</view>
         <navigator url='/pages/post/post?group_id={{id}}&id={{item.id}}' class='postcontent' wx:if="{{item.operation=='N'}}">
         <view wx:if="{{item.noticecover!=null}}">
-          <image src='{{uploadpath}}banner/{{item.noticecover}}' style='width:100%;' mode='widthFix'></image>
+          <image src='{{uploadpath}}banner/{{item.noticecover}}' style='width:588rpx;height:242rpx;' mode='aspectFill'></image>
         </view>
         <view  style='color:#333333;margin-top:16rpx;'>{{item.title}}</view>
         <view style='margin-top:14rpx;' style='color:#666666'>{{item.description}}</view>

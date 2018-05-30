@@ -1,4 +1,5 @@
 /* pages/albumdetail/albumdetail.wxss */
+
 .cover{
   height: 312rpx;
   width: 750rpx;
@@ -13,7 +14,7 @@
 }
 .albumuser{
   position: absolute;
-  margin-top: 249rpx;
+  margin-top: 260rpx;
   right: 0rpx;
   font-size: 22rpx;
   color:white;

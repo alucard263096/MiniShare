@@ -56,6 +56,15 @@ App({
           })
         }
       })
+    } else if (options.scene == 1039){
+
+    }else{
+      wx.navigateTo({
+        url: '/pages/index/index',
+        success: function(res) {},
+        fail: function(res) {},
+        complete: function(res) {},
+      })
     }
   },
   globalData: {

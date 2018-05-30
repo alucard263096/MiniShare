@@ -14,14 +14,14 @@
   <view class='albumname flex-row'  bindtap='changeAlbumName'>
     <view>{{info.name}}</view>
     <view>
-      <image style="width:24rpx;height:24rpx;margin-left:19rpx;" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/edit.png"></image>
+      <image style="width:24rpx;height:24rpx;margin-left:19rpx;margin-top:6rpx;" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/edit.png"></image>
     </view>
   </view>
   <view class='albumuser flex-row'>
     <view>
-      <image src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/users.png"></image>
+      <image  style='width:34rpx;' src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/users.png" mode='widthFix'></image>
     </view>
-    <view style='margin-right:47rpx;color:#cdcdcd;'>{{info.viewcount}}</view>
+    <view style='margin-right:47rpx;color:white'>{{info.viewcount}}</view>
     <view>
       <image  src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/comment.png"></image>
     </view>
@@ -45,7 +45,7 @@
     <view class='flex-row'>
       <view style='margin-left:110rpx;'>
         <image src='https://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/photowall.png' 
-        style='width:25rpx;height:25rpx;'></image>
+        style='width:32rpx;' mode='widthFix'></image>
       </view>
       <view  style='margin-left:21rpx;'>
         照片墙

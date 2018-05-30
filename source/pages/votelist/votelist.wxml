@@ -24,7 +24,7 @@
     <view class='flex-row'>
       <view class='membername'>{{item.questionstotalvote}}人参与</view>
       <view class='delete' wx:if="{{item.member_id_openid==UserInfo.openid||info.adminmember_id_name==UserInfo.openid}}" bindtap='deletePost' id="{{item.id}}">删除</view>
-      <view class='flex-1 updatetime text-right'>{{item.vote_startdate}}</view>
+      <view class='flex-1 updatetime text-right'>{{item.vote_startdate_formatting}}</view>
     </view>
   </view>
 </view>

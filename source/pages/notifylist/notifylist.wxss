@@ -1,4 +1,5 @@
 /* pages/notify/notify.wxss */
+
 .noticeitem{
   background: white;
   padding-top: 29rpx;

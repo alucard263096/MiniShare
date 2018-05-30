@@ -1,5 +1,8 @@
 /* pages/album/album.wxss */
 
+page{
+  background: white;
+}
 .flexbox{
 margin-left: 22rpx;
 margin-right: 20rpx;
@@ -22,7 +25,7 @@ height: 330rpx;
 
 .albumuser{
   position: absolute;
-  margin-top: -70rpx;
+  margin-top: -74rpx;
   right: 0rpx;
   font-size: 22rpx;
   color:white;
@@ -31,4 +34,18 @@ height: 330rpx;
   width:28rpx;
   height:28rpx;
   margin-right: 19rpx;
+  margin-top: 2rpx;
+}
+.albumheart{
+  position: absolute;
+  margin-top: -320rpx;
+  right: 0rpx;
+  font-size: 22rpx;
+  color:white;
+}
+.albumheart image{
+  width:28rpx;
+  height:28rpx;
+  margin-right: 19rpx;
+  margin-top: 2rpx;
 }

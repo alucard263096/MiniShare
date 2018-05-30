@@ -44,17 +44,26 @@ class Content extends AppBase {
     var that = this;
     var id = e.currentTarget.id;
     var postApi = new PostApi();
-    postApi.adelete({ idlist: id },
-      data => {
-        var data = [];
-        var list = that.Base.getMyData().list;
-        for (var i = 0; i < list.length; i++) {
-          if (list[i].id != id) {
-            data.push(list[i]);
-          }
+    wx.showModal({
+      title: '提示',
+      content: '是否确认删除？',
+      success(e){
+        if(e.confirm){
+
+          postApi.adelete({ idlist: id },
+            data => {
+              var data = [];
+              var list = that.Base.getMyData().list;
+              for (var i = 0; i < list.length; i++) {
+                if (list[i].id != id) {
+                  data.push(list[i]);
+                }
+              }
+              that.Base.setMyData({ list: data });
+            });
         }
-        that.Base.setMyData({ list: data });
-      });
+      }
+    })
   }
   onPullDownRefresh() {
     var that = this;

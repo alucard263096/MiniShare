@@ -1,4 +1,8 @@
 /* pages/albumselect/albumselect.wxss */
+
+page{
+  background: white;
+}
 page{
   background-color: white;
 }
