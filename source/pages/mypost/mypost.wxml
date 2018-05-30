@@ -56,7 +56,7 @@
                 <text class="desc">{{item.updated_date_span}}</text>
                 <text class="desc primary" bindtap='deletePost' id="{{item.id}}" style='margin-left:10rpx;' wx:if="{{item.member_id_openid==UserInfo.openid}}">删除</text>
                 <text class="desc" style='margin-left:10vw;' bindtap='likePost' id="{{item.id}}">赞（{{item.like}}）</text>
-                <text class="desc" style='margin-left:7vw;;' bindtap='navtoPage' data-page="post" data-param="id={{item.id}}">评论（{{item.comment}}）</text>
+                <text class="desc" style='margin-left:7vw;;' bindtap='navtoPage' data-page="post" data-param="id={{item.id}}">评论（{{item.membercommentcount}}）</text>
               </view>
             </view>
           </view>

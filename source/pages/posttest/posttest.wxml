@@ -97,12 +97,17 @@
       <view class='ppdelete' wx:if="{{info.member_id_openid==UserInfo.openid}}" bindtap='deletePost' id="{{info.id}}">删除</view>
     </view>
 
-    <view  url='/pages/post/post?id={{info.id}}' class='photo_2'>
+    <view url='/pages/post/post?id={{info.id}}' class='{{info.photos.length==1?"photo_1":""}} {{info.photos.length==2?"photo_2":""}} {{info.photos.length>2?"photo_3":""}}'>
       <block wx:for="{{info.photos}}" wx:key="k">
-        <image mode='aspectFill' src='{{uploadpath}}album/{{item.photo}}' bindtap='viewPhoto' id="{{uploadpath}}album/{{item.photo}}"></image>
+        <image mode='{{img_type}}' src='{{uploadpath}}album/{{item.photo}}' bindtap='viewPhoto' id="{{uploadpath}}album/{{item.photo}}"></image>
       </block>
     </view>
   <view>
+  <radio-group  bindchange="radioChange">
+      <label class="radio" wx:for="{{imagemodetypes}}">
+        <radio value="{{item}}" />{{item}}
+      </label>
+    </radio-group>
   </view>
     <view class='flex-row' style='margin-bottom:28rpx'>
       <view class='flex-1' style='font-size:24rpx;color:#999;'>{{info.updated_date_span}}</view>
@@ -113,10 +118,10 @@
     <image class='likeicon_p' bindtap='likePost' id="{{info.id}}" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/like.png"></image>
   </view>
   <view class='likestr_p' bindtap='likePost' id="{{info.id}}">{{info.like}}</view>
-  <view class='incon_p' bindtap='showCommentbox'>
+  <view class='incon_p'>
     <image class='commenticon_p'  src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/comment.png"></image>
   </view>
-  <view class='likestr_p' bindtap='showCommentbox'>{{commentlist.length}} </view>
+  <view class='likestr_p' >{{commentlist.length}} </view>
 </view>
     </view>
     <view class='flex-row' style='border-top:2rpx solid #DDDDDD;font-size:28rpx;color:#666;padding-top:32rpx;padding-bottom:30rpx;'>
@@ -183,14 +188,11 @@
   全部评论
 </view>
 <block wx:if="{{commentlist.length==0}}">
-<view class='comment' wx:if="{{info.operation=='N'}}">
+<view class='comment' wx:if="{{info.operation=='N'||info.operation=='P'}}">
   <view class='commenttextno'>暂无评论</view>
 </view>
 </block>
-<view  wx:if="{{info.operation=='P'&&commentlist.length==0}}" style='height:2rpx;'>
-  
-</view>
-<view class='comment' wx:for="{{commentlist}}" wx:key="k" wx:if="{{info.operation=='N'}}">
+<view class='comment' wx:for="{{commentlist}}" wx:key="k" wx:if="{{info.operation=='N'||info.operation=='P'}}">
   <view class='member flex-row'>
     <view>
       <image class="memberphoto" src="{{item.member_id_avatarUrl}}" />
@@ -206,15 +208,10 @@
     {{item.comment}}
   </view>
 </view>
-<view class='comment'  wx:if="{{info.operation=='P'}}">
-  <view class='commenttext_p' style='font-size:28rpx;color:#666;' wx:for="{{commentlist}}" wx:key="k">
-    {{item.member_id_nickName}}：{{item.comment}}
-  </view>
-</view>
-<view style='height:88rpx;background:white;' wx:if="{{info.operation=='N'||info.operation=='P'}}">
+<view style='height:88rpx;' wx:if="{{info.operation=='N'||info.operation=='P'}}">
 
 </view>
-<view class='commentbox' wx:if="{{info.operation=='N'}}">
+<view class='commentbox' wx:if="{{info.operation=='N'||info.operation=='P'}}">
   <input wx:if="{{false}}" placeholder='我来发表评论' class='inputcomment' maxlength='144' bindinput='commentChange' bindconfirm="sendComment" value='{{comment}}' confirm-type="发表"></input>
 
   <view class='fakeinput' bindtap='showCommentbox'>

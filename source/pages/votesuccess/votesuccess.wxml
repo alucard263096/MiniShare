@@ -2,6 +2,7 @@
 <view class='superheader'>
   <view class='title'>群投票</view>
 </view>
+<text class='fa fa-chevron-left btnback' bindtap='back'></text>
 
 <view class='bg-white text-center'>
 <image src='https://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/check3.png' style='width:200rpx;height:200rpx;margin-top:125rpx;margin-bottom:74rpx;'></image>

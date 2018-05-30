@@ -5,7 +5,7 @@
 <text class='fa fa-chevron-left btnback' bindtap='back'></text>
 
 <view class='bg-white' style='height:378rpx;padding:28rpx;padding-top:55rpx;'>
-<input value='{{description}}' bindinput='changeDescription' placeholder='请添加照片描述'></input>
+<textarea style='width:100%' value='{{description}}' bindinput='changeDescription' placeholder='请添加照片描述'></textarea>
 </view>
 <view class='flex-row bg-white' style='padding-top:10rpx;margin-top:10rpx;color:#333;font-size:28rpx;'>
   <view style='padding-top:10rpx;padding-left:28rpx;'>上传照片至</view>

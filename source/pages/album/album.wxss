@@ -19,3 +19,16 @@ height: 330rpx;
   width: 289rpx;
   margin-bottom: 0rpx;
 }
+
+.albumuser{
+  position: absolute;
+  margin-top: -70rpx;
+  right: 0rpx;
+  font-size: 22rpx;
+  color:white;
+}
+.albumuser image{
+  width:28rpx;
+  height:28rpx;
+  margin-right: 19rpx;
+}

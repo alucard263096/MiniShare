@@ -205,11 +205,12 @@
   font-size: 24rpx;
 }
 .photo_1 image{
+  width: 684rpx;
+  height: 471rpx;
 }
 .photo_2 image{
-  width: 208rpx;
-  height: 208rpx;
-  margin-right: 15rpx;
+  width: 322rpx;
+  margin-right: 10rpx;
 }
 .photo_3 image{
   width: 208rpx;
@@ -278,10 +279,10 @@
   padding-left: 12rpx;
   padding-top: 2rpx;
   color:#999999;
+  width: 48rpx;
 }
 .likecomment_p .commenticon_p{
   width: 28rpx;
   height: 28rpx;
   margin-bottom: 10rpx;
-  margin-left:28rpx;
 }

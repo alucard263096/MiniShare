@@ -10,11 +10,11 @@
       <view style='font-size:28rpx;color:#666;'>
         {{i+1}}、
       </view>
-      <view>
+      <view class='flex-1'>
         <input value="{{item.question}}" bindinput='changeQuestion' id="{{i}}" placeholder='选择题标题' style='font-size:28rpx;' placeholder-style="color:#ddd"></input>
       </view>
 
-      <view class='flex-1 text-right' style='font-size:28rpx;color:#29A5EE'>
+      <view class=' text-right' style='font-size:28rpx;color:#29A5EE'>
         <picker bindchange="votetypeChange" id="{{i}}"  value="{{item.votetype}}" range="{{votetypearray}}">{{item.votetype=="0"?"单选":"多选"}} ></picker>
       </view>
 
@@ -140,11 +140,11 @@
 
 
 
-<view hidden="{{hiddenmodalput}}" bindtap='cancelCreate' class='modalformback'>
+<view wx:if="{{hiddenmodalput==false}}" bindtap='cancelCreate' class='modalformback'>
 </view>
 <view  class='modalform'>
 
-  <view  hidden="{{hiddenmodalput}}" class='modal' >
+  <view  wx:if="{{hiddenmodalput==false}}" class='modal' >
     <view class='modaltitle'>请设置标题</view>
     <view>
       <input class='modalinput' type='text' maxlength='20' value="{{votetitle}}" bindinput='inputVotetitle' ></input>

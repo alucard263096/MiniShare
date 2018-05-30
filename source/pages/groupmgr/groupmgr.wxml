@@ -28,6 +28,7 @@
   </view>
 </view>
 
-<image src='https://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/invite.png' style='width:750rpx;height:133rpx;margin-top:10rpx;'></image>
+
+<button  style='width:750rpx;height:133rpx;margin-top:10rpx;background-size:100% 100%;border-radius:0rpx;background-image:url(https://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/invite.png)' open-type="share"></button>
 
 <button class='btnImportment fixbottom' bindtap='exitGroup' >退出群空间</button>

@@ -120,28 +120,28 @@
       </view>
       <view class='postbody flex-1'>
         <view class='operationstr'>{{item.operationstr}}</view>
-        <navigator url='/pages/post/post?id={{item.id}}' class='postcontent' wx:if="{{item.operation=='N'}}">
+        <navigator url='/pages/post/post?group_id={{id}}&id={{item.id}}' class='postcontent' wx:if="{{item.operation=='N'}}">
         <view wx:if="{{item.noticecover!=null}}">
           <image src='{{uploadpath}}banner/{{item.noticecover}}' style='width:100%;' mode='widthFix'></image>
         </view>
         <view  style='color:#333333;margin-top:16rpx;'>{{item.title}}</view>
         <view style='margin-top:14rpx;' style='color:#666666'>{{item.description}}</view>
         </navigator>
-        <navigator url='/pages/post/post?id={{item.id}}' class='postphotos flex-row' wx:if="{{item.operation=='P'}}">
+        <navigator url='/pages/post/post?group_id={{id}}&id={{item.id}}' class='postphotos flex-row' wx:if="{{item.operation=='P'}}">
           <block wx:for-items="{{item.photos}}" wx:key="{{index}}" wx:for-item="photo">
-            <view class='photoview'  >
-              <image src="{{uploadpath}}album/{{photo.photo}}" mode="widthFix" />
+            <view class='photoview_2'   >
+              <image src="{{uploadpath}}album/{{photo.photo}}" mode="aspectFill" />
             </view>
           </block>
 
         </navigator>
-        <navigator url='/pages/post/post?id={{item.id}}' class='postcontent' wx:if="{{item.operation=='V'}}"> 
+        <navigator url='/pages/post/post?group_id={{id}}&id={{item.id}}' class='postcontent' wx:if="{{item.operation=='V'}}"> 
           <view style='padding:26rpx;border:1rpx solid #f1f1f1;border-radius:8rpx;'>
             <view class='flex-row'>
               <view><image style='width:30rpx;height:30rpx' src='https://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/tp.png'></image></view>
               <view style='color:#999;font-size:24rpx;margin-left:10rpx;margin-top:4rpx;'>投票</view>
             </view>
-            <view style='font-size:28rpx;color:#333;margin-top:20rpx;'>{{item.title}}</view>
+            <view style='font-size:28rpx;color:#333;margin-top:10rpx;'>{{item.title}}</view>
           </view>
           <!--
           <block wx:for="{{item.voteoptions}}" wx:key="k">
@@ -174,7 +174,7 @@
               <image class='commenticon' bindtap='navtoPage' data-page="post" data-param="id={{item.id}}" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/comment.png"></image>
             </view>
             <view class='likestr' bindtap='navtoPage' data-page="post" data-param="id={{item.id}}">
-              {{item.membercomment.length}}
+              {{item.membercommentcount}}
             </view>
           </view>
         </view>

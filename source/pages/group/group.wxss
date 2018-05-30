@@ -264,7 +264,6 @@ display:-webkit-box;
 }
 .postcontent{
   font-size: 28rpx;
-  line-height: 28rpx;
   padding-top: 50rpx;
   padding-bottom: 50rpx;
 }
@@ -274,13 +273,14 @@ display:-webkit-box;
   padding-bottom: 50rpx;
   flex-wrap: wrap;
 }
-.postphotos .photoview{
-  padding-right:20rpx;
-  width:28%;
-  
+.postphotos .photoview_2{
+  padding-right:12rpx;
 }
-.postphotos .photoview image{
-  width: 100%;
+.postphotos .photoview_1 image{
+}
+.postphotos .photoview_2 image{
+  width:180rpx;
+  height:180rpx;
 }
 .post .viewpeople{
   font-size: 24rpx;

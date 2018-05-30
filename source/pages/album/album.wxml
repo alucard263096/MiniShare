@@ -14,15 +14,16 @@
     <view class='flex-1' style='font-size:34rpx;color:white;'>{{item.name}}</view>
     <view class='flex-1 text-right'></view>
   </view>
-</view>
-</view>
-
-  <view>
-    <view class="page__bd page__bd_spacing" >
-        <button class="btnImportment" type="primary"  bindtap='createAlbum'>创建我的相册</button>
-      
+  <view class='albumuser flex-row'>
+    <view>
+      <image src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/users.png"></image>
     </view>
+    <view style='margin-right:47rpx;color:#cdcdcd;'>{{item.viewcount}}</view>
   </view>
+</view>
+</view>
+<view style='height:200rpx;'></view>
+<button class="btnImportment" type="primary"  bindtap='createAlbum'>创建我的相册</button>
 
 <!--
 <view class="page">

@@ -10,8 +10,8 @@ class Content extends AppBase {
     super();
   }
   onLoad(options) {
-    //options.id = 23;
-    //options.group_id = 487;
+    //options.id = 21;
+    //options.group_id = 480;
     this.Base.Page = this;
 
     if (options.id != undefined) {
@@ -28,7 +28,7 @@ class Content extends AppBase {
     }
 
     super.onLoad(options);
-    this.Base.setMyData({ list: [], showtitlenow:false });
+    this.Base.setMyData({ list: [], showtitlenow: false, inchangename:false });
   }
   onShow() {
     var that = this;
@@ -46,15 +46,22 @@ class Content extends AppBase {
     var data = this.Base.getMyData();
     var json = {
       album_id: this.Base.options.id,
+      group_id:this.Base.options.group_id,
       operation: "P"
     };
     postApi.list(json, (data) => {
+      var ret = [];
       for (var i = 0; i < data.length; i++) {
         data[i]["updated_date_split"] = AppBase.Util.Datetime2(Number(data[i]["updated_date_span"]));
 
         data[i]["updated_date_span"] = AppBase.Util.Datetime_str(Number(data[i]["updated_date_span"]));
+        if(data[i].photos.length>0){
+          ret.push(data[i]);
+        }
       }
-      that.Base.setMyData({ list: data, newgettime: data[0].updated_date, lastgettime: data[data.length - 1].updated_date });
+      
+
+      that.Base.setMyData({ list: ret });
     });
   }
   uploadPhoto() {
@@ -74,9 +81,11 @@ class Content extends AppBase {
     this.Base.viewGallary("album", nphotos, current);
   }
   changeAlbumName() {
-    wx.navigateTo({
-      url: '/pages/albumcreate/albumcreate?id=' + this.Base.options.id + "&group_id=" + this.Base.options.group_id,
-    })
+    //wx.navigateTo({
+    //  url: '/pages/albumcreate/albumcreate?id=' + this.Base.options.id + "&group_id=" + this.Base.options.group_id,
+    //})
+    var info=this.Base.getMyData().info;
+    this.Base.setMyData({ inchangename: true, albumtitle: info.name});
   }
   uploadPhotos() {
     wx.navigateTo({
@@ -133,9 +142,27 @@ class Content extends AppBase {
       }
     });
   }
-
-
-
+  cancelChange(){
+    this.Base.setMyData({ inchangename: false});
+  }
+  confirmChange() {
+    var albumtitle = this.Base.getMyData().albumtitle;
+    var info = this.Base.getMyData().info;
+    if(albumtitle.trim()==""){
+      wx.showToast({
+        title: '相册名称不能为空',
+        icon:"none"
+      });
+      return;
+    }
+    var albumapi=new AlbumApi();
+    albumapi.rename({album_id:info.id,name:albumtitle},()=>{},false);
+    info.name=albumtitle;
+    this.Base.setMyData({ inchangename: false,info:info });
+  }
+  inputAlbumTitle(e){
+    this.Base.setMyData({ albumtitle:e.detail.value });
+  }
 }
 var page = new Content();
 var body = page.generateBodyJson();
@@ -147,7 +174,11 @@ body.changeAlbumName = page.changeAlbumName;
 body.uploadPhotos = page.uploadPhotos;
 body.gotoPhotos = page.gotoPhotos;
 body.deletePost = page.deletePost; 
-body.likePost = page.likePost;
-body.scrollevent = page.scrollevent;
+body.likePost = page.likePost; 
+body.scrollevent = page.scrollevent; 
+body.inputAlbumTitle = page.inputAlbumTitle;
+body.cancelChange = page.cancelChange; 
+body.confirmChange = page.confirmChange;
+body.inputAlbumTitle = page.inputAlbumTitle;
 
 Page(body)

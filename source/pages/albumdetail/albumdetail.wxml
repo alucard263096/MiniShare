@@ -60,16 +60,16 @@
       <view>
         <image class='memberphoto' src="{{item.member_id_photo}}"></image>
       </view>
-      <view style='color:#999;font-size:24rpx;padding:10rpx;margin-left:11rpx;'>{{item.member_id_name}}</view>
+      <view style='color:#999;font-size:24rpx;padding:10rpx;margin-left:11rpx;'>{{item.mygroupinfo.member_name==""?item.member_id_name:item.mygroupinfo.member_name}}</view>
     </view>
-    <navigator url='/pages/post/post?id={{item.id}}' style='color:#666;font-size:28rpx;'>
+    <navigator url='/pages/post/post?group_id={{group_id}}&id={{item.id}}' style='color:#666;font-size:28rpx;'>
       {{item.title}}
     </navigator>
       <view class='delete' wx:if="{{item.member_id_openid==UserInfo.openid}}" bindtap='deletePost' id="{{item.id}}">删除</view>
-    <navigator url='/pages/post/post?id={{item.id}}' class='{{item.photos.length==1?"photo_1":""}} {{item.photos.length==2?"photo_2":""}} {{item.photos.length>2?"photo_3":""}}'>
-      <block wx:for="{{item.photos}}" wx:key="k">
-        <image src='{{uploadpath}}album/{{item.photo}}'></image>
-      </block>
+    <navigator url='/pages/post/post?group_id={{group_id}}&id={{item.id}}' class=''>
+        <block wx:for="{{item.photos}}" wx:key="k" >
+          <image src='{{uploadpath}}album/{{item.photo}}' mode='aspectFill' class='photo2' ></image>
+        </block>
     </navigator>
     <view class='flex-row'>
       <view class='flex-1' style='font-size:24rpx;color:#999;'>{{item.updated_date_span}}</view>
@@ -103,7 +103,7 @@
   一张照片都没有~
 </view>
 
-
+<view style='height:200rpx;'></view>
 
 
 <view>
@@ -119,6 +119,12 @@
   <view class='title'>群相册</view>
 </view>
 <text class='fa fa-chevron-left btnback' bindtap='back'></text>
+
+
+
+<modal wx:if="{{inchangename==true}}" title="更改相册名称" confirm-text="确定" cancel-text="取消"  bindcancel="cancelChange" bindconfirm="confirmChange">  
+    <input type='text' placeholder="请输入相册名称" value="{{albumtitle}}" bindinput='inputAlbumTitle' maxlength='10' /> 
+</modal>
 
 <!--
 <view class="page">

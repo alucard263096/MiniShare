@@ -29,6 +29,7 @@
   </view>
 </view>
 
+<view style='height:200rpx;'></view>
   <view>
     <view class="page__bd page__bd_spacing" wx:if="{{group_id>0}}" >
       <form name='uploadform' report-submit bindsubmit='gotoNotify'>
@@ -37,11 +38,11 @@
     </view>
   </view>
 
-<view hidden="{{hiddenmodalput}}" bindtap='cancelCreate' class='modalformback'>
+<view wx:if="{{hiddenmodalput==false}}" bindtap='cancelCreate' class='modalformback'>
 </view>
 <view  class='modalform'>
 
-  <view  hidden="{{hiddenmodalput}}" class='modal' >
+  <view  wx:if="{{hiddenmodalput==false}}" class='modal' >
     <view class='modaltitle'>请设置标题</view>
     <view>
       <input class='modalinput' type='text' maxlength='20' value="{{votetitle}}" bindinput='inputVotetitle' ></input>
@@ -51,6 +52,7 @@
     </view>
   </view>
 </view>
+
 
 <modal hidden="false" title="请设置标题" confirm-text="好的" cancel-text="放弃"  bindcancel="cancelCreate" bindconfirm="confirmCreate">  
     <input type='text' placeholder="标题" value="{{votetitle}}" bindinput='inputVotetitle' maxlength='20' /> 

@@ -6,7 +6,7 @@
   </view>
   <view class='text-right' style='margin-top:31rpx;margin-right:30rpx;margin-bottom:29rpx;font-size:28rpx;color:#29A5EE' wx:if="{{inmgr==true}}" >
     <text bindtap='cancelMgr'>取消</text>
-    <text style='margin-left:28rpx;' bindtap='doneMOve'>完成</text>
+    <text style='margin-left:28rpx;' bindtap='cancelMgr'>完成</text>
   </view>
   <view style='padding-left:30rpx;padding-right:0rpx;'>
     <view wx:for="{{list.photos}}" wx:key="k">
@@ -25,7 +25,7 @@
 
 
 <view wx:if="{{inmgr==false}}">
-  <view class="page__bd page__bd_spacing">
+  <view class="page__bd page__bd_spacing" wx:if="{{album_id>0}}">
     <form name='uploadform' report-submit bindsubmit='uploadPhotos'>
       <button class="btnImportment fixbottom" type="primary" form-type="submit">上传</button>
     </form>

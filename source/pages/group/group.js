@@ -13,7 +13,7 @@ class Content extends AppBase {
     this.Base.Page = this;
     //options.id=480;
     super.onLoad(options);
-    this.Base.setMyData({list:[],latestnotice:{id:"0"}});
+    this.Base.setMyData({ list: [], latestnotice: { id: "0" }, id: options.id});
     var that=this;
     
   }
@@ -40,35 +40,55 @@ class Content extends AppBase {
 
     var postApi = new PostApi();
     var data=this.Base.getMyData();
-    var json={
-      group_id: this.Base.options.id,
-      update_lasttime:data.newgettime,
-      gettype:"new"
-    };
-    if (data.newgettime==undefined){
-      console.log("no newgettime");
-      json.update_lasttime = "";
-      json.gettype = "";
-    }
-    
-    postApi.list(json,
-      data => {
-        for (var i = 0; i < data.length; i++) {
-          data[i]["updated_date_split"] = AppBase.Util.Datetime2(Number(data[i]["updated_date_span"]));
 
-          data[i]["updated_date_span"] = AppBase.Util.Datetime_str(Number(data[i]["updated_date_span"]));
-        }
-        var list = that.Base.getMyData().list;
-        for(var i=0;i<list.length;i++){
-          data.push(list[i]);
-        }
-        if(data.length>0){
-          that.Base.setMyData({ list: data,  newgettime: data[0].updated_date,lastgettime:data[data.length-1].updated_date });
-        }
-      });
+    var list=data.list;
+    if(list.length==0){
+
+      var json = {
+        group_id: this.Base.options.id,
+        update_lasttime: data.newgettime,
+        gettype: "new"
+      };
+      if (data.newgettime == undefined) {
+        console.log("no newgettime");
+        json.update_lasttime = "";
+        json.gettype = "";
+      }
+
+      postApi.list(json,
+        data => {
+          for (var i = 0; i < data.length; i++) {
+            data[i]["updated_date_split"] = AppBase.Util.Datetime2(Number(data[i]["updated_date_span"]));
+
+            data[i]["updated_date_span"] = AppBase.Util.Datetime_str(Number(data[i]["updated_date_span"]));
+          }
+          if (data.length > 0) {
+            that.Base.setMyData({ list: data, newgettime: data[0].updated_date, lastgettime: data[data.length - 1].updated_date });
+          }
+        });
+    }else{
+      var json = {
+        group_id: this.Base.options.id,
+        todatetime: list[0].updated_date,
+        fromdatetime: list[list.length - 1].updated_date,
+      };
+      postApi.list(json,
+        data => {
+          for (var i = 0; i < data.length; i++) {
+            data[i]["updated_date_split"] = AppBase.Util.Datetime2(Number(data[i]["updated_date_span"]));
+
+            data[i]["updated_date_span"] = AppBase.Util.Datetime_str(Number(data[i]["updated_date_span"]));
+          }
+          if (data.length > 0) {
+            that.Base.setMyData({ list: data, newgettime: data[0].updated_date, lastgettime: data[data.length - 1].updated_date });
+          }
+        });
+    }
+
   }
 
   gotoAlbum(){
+    console.log(this.Base.options);
     wx.navigateTo({
       url: '/pages/album/album?group_id='+this.Base.options.id,
     })

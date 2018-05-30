@@ -8,7 +8,7 @@ class Content extends AppBase {
     super();
   }
   onLoad(options) {
-    //options.group_id=1;
+    //options.group_id=480;
     this.Base.Page = this;
     super.onLoad(options);
     this.Base.setMyData({
@@ -27,12 +27,11 @@ class Content extends AppBase {
     super.onShow();
     var albumapi = new AlbumApi();
     albumapi.list({ group_id: this.Base.options.group_id }, data => {
-      that.Base.setMyData({allalbum:data});
+      that.Base.setMyData({ myalbum:data});
     });
-    albumapi.list({ group_id: this.Base.options.group_id, createdmember_id: "Y" }, data => {
-
-      that.Base.setMyData({ myalbum: data });
-    });
+    //albumapi.list({ group_id: this.Base.options.group_id, createdmember_id: "Y" }, data => {
+    //  that.Base.setMyData({ myalbum: data });
+    //});
 
     var groupapi = new GroupApi();
     groupapi.detail({ id: this.Base.options.group_id },data=>{
@@ -132,6 +131,7 @@ class Content extends AppBase {
       wx.navigateTo({
         url: '/pages/albumdetail/albumdetail?id=' + id + "&group_id=" + this.Base.options.group_id,
       })
+      return;
     }
     var allalbum = data.allalbum;
     for (var i = 0; i < allalbum.length; i++) {

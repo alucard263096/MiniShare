@@ -26,8 +26,10 @@
       <view class='flex-1 updatetime text-right'>{{item.updated_date_str}}</view>
     </view>
   </view>
+
+<view style='height:200rpx;'></view>
   <view>
-    <view class="page__bd page__bd_spacing" >
+    <view class="page__bd page__bd_spacing" wx:if="{{group_id>0}}">
       <form name='uploadform' report-submit >
         <button class="btnNotice" type="primary" bindtap='gotoNotify' >发布公告</button>
       </form>

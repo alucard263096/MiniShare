@@ -51,6 +51,11 @@
   margin-right: 15rpx;
 }
 
+.photo2 {
+  width: 216rpx;
+  height: 212rpx;
+  margin-right: 10rpx;
+}
 .likecomment{
   text-align: right;
   margin-top: 10rpx;
