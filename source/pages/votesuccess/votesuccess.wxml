@@ -11,7 +11,7 @@
 
 <view>
     <view class="page__bd page__bd_spacing" >
-      <form name='uploadform' report-submit bindsubmit='gotoPost' >
+      <form name='uploadform' report-submit bindsubmit='back' >
         <button class="btnImportment" type="primary" form-type="submit">查看结果</button>
       </form>
     </view>

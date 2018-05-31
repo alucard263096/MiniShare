@@ -283,3 +283,19 @@
   margin-bottom: 10rpx;
   margin-left:28rpx;
 }
+
+.optionstr{
+  max-width: 500rpx;
+  padding-left:18rpx;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  margin-top:10rpx;
+  z-index: 30;
+}
+.progress{
+  height: 70rpx;
+  min-width:10rpx;
+  background: #f1f1f1;
+  position: absolute;
+}

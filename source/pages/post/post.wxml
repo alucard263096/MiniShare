@@ -31,7 +31,7 @@
   </view>
   <view style='margin-top:10rpx;color:#666;font-size:28rpx;' wx:if="{{info.questionsvoted==false&&(info.vote_startdate_timespan<nowtimespan&&info.vote_enddate_timespan>nowtimespan)}}">
     <view class='bg-white' style='padding:30rpx;'>
-      <view wx:for="{{info.questions}}" wx:key="k">
+      <view wx:for="{{info.questions}}" wx:key="k"  style='padding-bottom:60rpx;'>
         <view>
           {{item.seq}}. {{item.question}}
         </view>
@@ -55,20 +55,20 @@
 
   <view style='margin-top:10rpx;color:#666;font-size:28rpx;' wx:else>
     <view class='bg-white' style='padding:30rpx;'>
-      <view wx:for="{{info.questions}}" wx:key="k">
+      <view wx:for="{{info.questions}}" wx:key="k"  style='padding-bottom:60rpx;'>
         <view>
           {{item.seq}}. {{item.question}}
         </view>
         <block wx:for="{{item.voteoptions}}" wx:for-item="opt" wx:key="kt">
           <view style='margin-top:30rpx;' bindtap='selectOpt' id="{{item.id}}_{{opt.id}}">
-            <view class='flex-row' style='overflow:visible;'>
-              <view wx:if="{{opt.photo!=''}}">
+            <view class='flex-row' >
+              <view style='width:70rpx;' wx:if="{{opt.photo!=''}}">
                 <image src="{{uploadpath}}vote/{{opt.photo}}" style='width:70rpx;height:70rpx;'></image>
               </view>
-              <view class='flex-1 flex-row' style='overflow:visible;'>
-                <view style='background-color:#F1F1F1;padding-top:10rpx;padding-right:15rpx;height:60rpx;white-space:nowrap;overflow:visible; width:{{(opt.votemembers.length>100?100:opt.votemembers.length)*100.0/100}}%;'> {{opt.str}}
-                  <text>({{opt.votemembers.length}}票)</text>
-                </view>
+              <view class='flex-row'>
+                  <view class='progress' style='width:{{(opt.votemembers.length>100?100:opt.votemembers.length)/100*600}}rpx;'></view>
+                 <view class='optionstr flex-1'>{{opt.str}}</view>
+                  <view style='margin-top:10rpx;z-index:30;'>({{opt.votemembers.length}}票)</view>
               </view>
             </view>
           </view>

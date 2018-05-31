@@ -1,6 +1,14 @@
 <!--pages/albumphoto/albumphoto.wxml-->
 
-<view class='bg-white'>
+<view wx:if="{{list.photos.length==0}}" class='text-center'>
+  <image class='egg' src='https://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/egg.png'></image>
+</view>
+<view wx:if="{{list.photos.length==0}}" class='text-center' style='color:#999;margin-top:36rpx;font-size:28rpx;'>
+  一张照片都没有~
+</view>
+
+
+<view class='bg-white' wx:if="{{list.photos.length>0}}" >
   <view class='text-right' style='margin-top:31rpx;margin-right:30rpx;margin-bottom:29rpx;font-size:28rpx;color:#29A5EE' wx:if="{{inmgr==false}}" bindtap='changeToMgr'>
     管理
   </view>

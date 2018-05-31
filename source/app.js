@@ -56,15 +56,15 @@ App({
           })
         }
       })
-    } else if (options.scene == 1039){
+    } else if (options.scene == 1007){
 
-    }else{
       wx.navigateTo({
         url: '/pages/index/index',
-        success: function(res) {},
-        fail: function(res) {},
-        complete: function(res) {},
+        success: function (res) { },
+        fail: function (res) { },
+        complete: function (res) { },
       })
+    }else{
     }
   },
   globalData: {

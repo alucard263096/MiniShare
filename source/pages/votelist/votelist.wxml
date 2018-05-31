@@ -7,18 +7,18 @@
 <view wx:if="{{list.length==0}}" class='text-center'>
   <image class='egg' src='https://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/egg.png'></image>
 </view>
-<view wx:if="{{list.length==0}}"  class='text-center' style='color:#999;margin-top:36rpx;font-size:28rpx;'>
-还没有创建投票~
+<view wx:if="{{list.length==0}}" class='text-center' style='color:#999;margin-top:36rpx;font-size:28rpx;'>
+  还没有创建投票~
 </view>
 
 
 <view wx:if="{{list.length>0}}">
-  <view url='/pages/post/post?id={{item.id}}'  class='noticeitem debug' wx:for="{{list}}" wx:key="k" >
+  <view url='/pages/post/post?id={{item.id}}' class='noticeitem debug' wx:for="{{list}}" wx:key="k">
     <view class='flex-row'>
-    <view class='title' id="{{item.id}}" bindtap='startvote' data-vote_start_count="{{item.vote_start_count}}">{{item.title}}</view>
-    <view class='flex-1' style='text-align:right;position:absolute;right:28rpx;' wx:if="{{item.vote_expired_count<0}}">
-      <view class='votedone' wx:if="{{item.vote_expired_count<0}}">投票结束</view>
-    </view>
+      <view class='title' id="{{item.id}}" bindtap='startvote' data-vote_start_count="{{item.vote_start_count}}">{{item.title}}</view>
+      <view class='flex-1' style='text-align:right;position:absolute;right:28rpx;' wx:if="{{item.vote_expired_count<0}}">
+        <view class='votedone' wx:if="{{item.vote_expired_count<0}}">投票结束</view>
+      </view>
     </view>
     <view class='description'>{{item.description}}</view>
     <view class='flex-row'>
@@ -30,22 +30,22 @@
 </view>
 
 <view style='height:200rpx;'></view>
-  <view>
-    <view class="page__bd page__bd_spacing" wx:if="{{group_id>0}}" >
-      <form name='uploadform' report-submit bindsubmit='gotoNotify'>
-        <button class="btnNotice" type="primary" form-type="submit">发起投票</button>
-      </form>
-    </view>
+<view>
+  <view class="page__bd page__bd_spacing" wx:if="{{group_id>0}}">
+    <form name='uploadform' report-submit bindsubmit='gotoNotify'>
+      <button class="btnNotice" type="primary" form-type="submit">发起投票</button>
+    </form>
   </view>
+</view>
 
 <view wx:if="{{hiddenmodalput==false}}" bindtap='cancelCreate' class='modalformback'>
 </view>
-<view  class='modalform'>
+<view class='modalform'>
 
-  <view  wx:if="{{hiddenmodalput==false}}" class='modal' >
+  <view wx:if="{{hiddenmodalput==false}}" class='modal'>
     <view class='modaltitle'>请设置标题</view>
     <view>
-      <input class='modalinput' type='text' maxlength='20' value="{{votetitle}}" bindinput='inputVotetitle' ></input>
+      <input class='modalinput' type='text' maxlength='20' value="{{votetitle}}" bindinput='inputVotetitle'></input>
     </view>
     <view class='modalbtn' bindtap='confirmCreate'>
       好的
@@ -54,6 +54,6 @@
 </view>
 
 
-<modal hidden="false" title="请设置标题" confirm-text="好的" cancel-text="放弃"  bindcancel="cancelCreate" bindconfirm="confirmCreate">  
-    <input type='text' placeholder="标题" value="{{votetitle}}" bindinput='inputVotetitle' maxlength='20' /> 
+<modal hidden="false" title="请设置标题" confirm-text="好的" cancel-text="放弃" bindcancel="cancelCreate" bindconfirm="confirmCreate">
+  <input type='text' placeholder="标题" value="{{votetitle}}" bindinput='inputVotetitle' maxlength='20' />
 </modal>

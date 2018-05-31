@@ -15,7 +15,7 @@ class Content extends AppBase {
     //options.group_id = 480;
     this.Base.Page = this;
     super.onLoad(options);
-    this.Base.setMyData({ inmgr: false, selectids:[] });
+    this.Base.setMyData({ list:{name:"",photos:[]}, inmgr: false, selectids:[] });
   }
   onShow() {
     var that = this;

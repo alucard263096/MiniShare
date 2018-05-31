@@ -1,35 +1,44 @@
 <!--pages/album/album.wxml-->
 <!--pages/meeting/meeting.wxml-->
-<view class='superheader'><view class='title'>群相册</view></view>
+<view class='superheader'>
+  <view class='title'>群相册</view>
+</view>
 <text class='fa fa-chevron-left btnback' bindtap='back'></text>
 
-<view class='bg-white'>
-
-<navigator url='/pages/albumphoto/albumphoto?group_id={{group_id}}' class='text-right' style='margin-top:31rpx;margin-right:30rpx;margin-bottom:29rpx;font-size:28rpx;color:#29A5EE'>
-查看所有相片
-</navigator>
-<view class='flexbox' wx:for="{{myalbum}}" wx:key="k" bindtap='selectAlbum' id="{{item.id}}">
-  <image src="{{uploadpath}}album/{{item.cover}}"  mode="aspectFill" ></image>
-  <view class='flex-row' style='width:708rpx;position:absolute;margin-top:-90rpx;margin-left:42rpx;'>
-    <view class='flex-1' style='font-size:34rpx;color:white;'>{{item.name}}</view>
-    <view class='flex-1 text-right'></view>
-  </view>
-  <view class='albumuser flex-row'>
-    <view>
-      <image style='width:34rpx;height:24rpx;' src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/users.png"></image>
-    </view>
-    <view style='margin-right:47rpx;color:white;'>{{item.viewcount}}</view>
-  </view>
-  <view class='albumheart flex-row'>
-    <view>
-      <image style='width:34rpx;' src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/heart.png" mode='widthFix'></image>
-    </view>
-    <view style='margin-right:47rpx;color:white;'>{{item.likecount}}</view>
-  </view>
+<view wx:if="{{myalbum.length==0}}" class='text-center'>
+  <image class='egg' src='https://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/egg.png'></image>
 </view>
+<view wx:if="{{myalbum.length==0}}" class='text-center' style='color:#999;margin-top:36rpx;font-size:28rpx;'>
+  一个相册都没有~
+</view>
+
+<view class='bg-white' wx:if="{{myalbum.length>0}}">
+
+  <navigator url='/pages/albumphoto/albumphoto?group_id={{group_id}}' class='text-right' style='margin-top:31rpx;margin-right:30rpx;margin-bottom:29rpx;font-size:28rpx;color:#29A5EE'>
+    查看所有相片
+  </navigator>
+  <view class='flexbox' wx:for="{{myalbum}}" wx:key="k" bindtap='selectAlbum' id="{{item.id}}">
+    <image src="{{uploadpath}}album/{{item.cover}}" mode="aspectFill"></image>
+    <view class='flex-row' style='width:708rpx;position:absolute;margin-top:-90rpx;margin-left:42rpx;'>
+      <view class='flex-1' style='font-size:34rpx;color:white;'>{{item.name}}</view>
+      <view class='flex-1 text-right'></view>
+    </view>
+    <view class='albumuser flex-row'>
+      <view>
+        <image style='width:34rpx;height:24rpx;' src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/users.png"></image>
+      </view>
+      <view style='margin-right:47rpx;color:white;'>{{item.viewcount}}</view>
+    </view>
+    <view class='albumheart flex-row'>
+      <view>
+        <image style='width:34rpx;' src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/heart.png" mode='widthFix'></image>
+      </view>
+      <view style='margin-right:47rpx;color:white;'>{{item.likecount}}</view>
+    </view>
+  </view>
 </view>
 <view style='height:200rpx;'></view>
-<button class="btnImportment" type="primary"  bindtap='createAlbum'>创建我的相册</button>
+<button class="btnImportment" type="primary" bindtap='createAlbum'>创建我的相册</button>
 
 <!--
 <view class="page">

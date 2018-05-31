@@ -26,6 +26,7 @@ height: 330rpx;
   width: 32rpx;
   height: 32rpx;
   background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
   background-image: url(https://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/uncheck0.png);
   background-size: 100% 100%;
   position: absolute;
@@ -35,6 +36,7 @@ height: 330rpx;
 .selected{
   width: 32rpx;
   height: 32rpx;
+  border-radius: 50%;
   background-image: url(https://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/check0.png);
   background-size: 100% 100%;
   position: absolute;

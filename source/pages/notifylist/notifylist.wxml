@@ -8,13 +8,13 @@
 <view wx:if="{{list.length==0}}" class='text-center'>
   <image class='egg' src='https://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/egg.png'></image>
 </view>
-<view wx:if="{{list.length==0}}"  class='text-center' style='color:#999;margin-top:36rpx;font-size:28rpx;'>
-还没有创建通知~
+<view wx:if="{{list.length==0}}" class='text-center' style='color:#999;margin-top:36rpx;font-size:28rpx;'>
+  还没有创建通知~
 </view>
 
 
 <view wx:if="{{list.length>0}}">
-  <view  class='noticeitem debug' wx:for="{{list}}" wx:key="k">
+  <view class='noticeitem debug' wx:for="{{list}}" wx:key="k">
     <navigator url='/pages/post/post?id={{item.id}}' id="{{item.id}}" class='title'>{{item.title}}</navigator>
     <navigator url='/pages/post/post?id={{item.id}}' id="{{item.id}}" class='description'>{{item.description}}</navigator>
     <view class='flex-row'>
@@ -27,12 +27,13 @@
     </view>
   </view>
 
-<view style='height:200rpx;'></view>
-  <view>
+  <view style='height:200rpx;'></view>
+  
+</view>
+<view>
     <view class="page__bd page__bd_spacing" wx:if="{{group_id>0}}">
-      <form name='uploadform' report-submit >
-        <button class="btnNotice" type="primary" bindtap='gotoNotify' >发布公告</button>
+      <form name='uploadform' report-submit>
+        <button class="btnNotice" type="primary" bindtap='gotoNotify'>发布公告</button>
       </form>
     </view>
   </view>
-</view>

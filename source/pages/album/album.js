@@ -20,7 +20,7 @@ class Content extends AppBase {
       t2: 0,
       hiddenmodalput:true
     });
-    this.Base.setMyData({group_id:options.group_id});
+    this.Base.setMyData({myalbum:[],group_id:options.group_id});
   }
   onShow() {
     var that = this;
