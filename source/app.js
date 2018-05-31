@@ -58,7 +58,7 @@ App({
       })
     } else if (options.scene == 1007){
 
-      wx.navigateTo({
+      wx.redirectTo({
         url: '/pages/index/index',
         success: function (res) { },
         fail: function (res) { },

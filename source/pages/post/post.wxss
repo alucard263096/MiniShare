@@ -165,20 +165,20 @@
   width: 28rpx;
   height: 28rpx;
   padding-left: 28rpx;
-  padding-bottom: 10rpx;
+  padding-bottom: 4rpx;
 }
 .likestr{
   font-size: 24rpx;
   padding-left: 12rpx;
-  padding-top: 2rpx;
   color:#999999;
   width: 48rpx;
+  margin-bottom: 20rpx;
 }
 .commenticon{
   width: 28rpx;
   height: 28rpx;
   margin-left: 57rpx;
-  margin-bottom: 10rpx;
+  margin-bottom: 4rpx;
 }
 .pphoto{
   width:31%;
@@ -270,6 +270,7 @@
   height: 28rpx;
   padding-left: 28rpx;
   padding-bottom: 10rpx;
+  margin-top: 6rpx;
 }
 .likecomment_p .likestr_p{
   font-size: 24rpx;
@@ -282,6 +283,7 @@
   height: 28rpx;
   margin-bottom: 10rpx;
   margin-left:28rpx;
+  margin-top: 8rpx;
 }
 
 .optionstr{

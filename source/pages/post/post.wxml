@@ -3,7 +3,7 @@
   <view class='title'  wx:if="{{info.operation=='V'}}">群投票</view>
   <view class='title'  wx:if="{{info.operation=='N'}}">群公告</view>
   <view class='title'  wx:if="{{info.operation=='P'}}">群相册</view></view>
-<text class='fa fa-chevron-left btnback' bindtap='myback'></text>
+<text class='fa fa-chevron-left btnback' bindtap='back'></text>
 
 
 <view class='noticepost' wx:if="{{info.operation=='V'}}">
@@ -108,7 +108,7 @@
   <view>
   </view>
     <view class='flex-row' style='margin-bottom:28rpx'>
-      <view class='flex-1' style='font-size:24rpx;color:#999;'>{{info.updated_date_span}}</view>
+      <view class='flex-1' style='font-size:24rpx;color:#999;margin-top:6rpx;'>{{info.updated_date_span}}</view>
       
 <view class='likecomment_p flex-row'  wx:if="{{info.operation=='P'}}">
 

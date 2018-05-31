@@ -45,7 +45,7 @@
     <view class='flex-row'>
       <view style='margin-left:110rpx;'>
         <image src='https://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/photowall.png' 
-        style='width:32rpx;' mode='widthFix'></image>
+        style='width:32rpx;height:25rpx;' ></image>
       </view>
       <view  style='margin-left:21rpx;'>
         照片墙
@@ -60,7 +60,7 @@
       <view>
         <image class='memberphoto' src="{{item.member_id_photo}}"></image>
       </view>
-      <view style='color:#999;font-size:24rpx;padding:10rpx;margin-left:11rpx;'>{{item.mygroupinfo.member_name==""?item.member_id_name:item.mygroupinfo.member_name}}</view>
+      <view style='color:#999;font-size:24rpx;padding:10rpx;padding-top:0rpx;margin-left:11rpx;'>{{item.mygroupinfo.member_name==""?item.member_id_name:item.mygroupinfo.member_name}}</view>
     </view>
     <navigator url='/pages/post/post?group_id={{group_id}}&id={{item.id}}' style='color:#666;font-size:28rpx;'>
       {{item.title}}
@@ -92,7 +92,7 @@
     </view>
 
     <view class='postcomment' wx:for="{{item.membercomment}}" wx:key="k" wx:for-item="comment">
-      {{comment.nickName}}：{{comment.comment}}
+      {{comment.member_name==""?comment.nickName:comment.member_name}}：{{comment.comment}}
     </view>
   </view>
 </block>

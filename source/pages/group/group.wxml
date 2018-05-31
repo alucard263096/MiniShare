@@ -1,5 +1,5 @@
 <!--pages/group/group.wxml-->
-<text class='fa fa-chevron-left btnback' bindtap='gohome'  style='position: absolute;'></text>
+<text class='fa fa-chevron-left btnback' bindtap='back'  style='position: absolute;'></text>
 <view class='top-bg'>
   <view class='header'>
     <open-data type="groupName" open-gid="{{info.opengid}}" wx:if="{{info.group_name==''}}"></open-data>
