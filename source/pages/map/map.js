@@ -6,7 +6,7 @@ class Content extends AppBase {
     super();
   }
   onLoad(options) {
-    //options.group_id=2;
+    //options.group_id=480;
     this.Base.Page = this;
     super.onLoad(options);
     var that=this;
@@ -22,7 +22,7 @@ class Content extends AppBase {
         if (members[i].lat != null && members[i].lng != null) {
           console.log(members[i].lat);
           markers.push({
-            iconPath: members[i].avatarUrl,
+            iconPath: "/images/mymark.png",
             id: members[i].id,
             label: {content:members[i].nickName},
             callout: members[i].nickName,

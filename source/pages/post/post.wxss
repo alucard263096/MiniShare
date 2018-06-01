@@ -52,6 +52,16 @@
   max-width: 250rpx;
 }
 
+.membername2 {
+  margin-left: 10rpx;
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 3rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 250rpx;
+}
 .posttime {
   font-size: 24rpx;
   color: #999;

@@ -7,7 +7,6 @@
       <image class='createoroimg' src="{{info.member_avatarUrl}}"></image>
     </view>
     <view class='txt'>
-
       <image class='iconccc' src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/right-a.png"></image>
     </view>
   </navigator>
@@ -23,14 +22,14 @@
     </view>
     <view style='margin-right:47rpx;color:white'>{{info.viewcount}}</view>
     <view>
-      <image  src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/comment.png"></image>
+      <image  src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/comment1.png"></image>
     </view>
     <view style='margin-right:47rpx;'>{{info.commentcount}}</view>
   </view>
 </view>
 
 <view wx:if="{{list.length>0}}" class='bg-white flex-row text-center' style='padding-top:37rpx;padding-bottom:41rpx;'>
-  <view class='flex-1' style='color:#666;font-size:28rpx;border-right:2rpx solid #808080;'>
+  <view class='flex-1' style='color:#666;font-size:28rpx;'>
     <view class='flex-row'>
       <view style='margin-left:110rpx;'>
         <image src='https://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/time.png' 
@@ -41,6 +40,7 @@
       </view>
     </view>
   </view>
+  <view style='width:2rpx;background:rgba(128,128,128,0.5);margin-top:10rpx;margin-bottom:10rpx;'></view>
   <view class='flex-1' style='color:#666;font-size:28rpx;' bindtap='gotoPhotos'>
     <view class='flex-row'>
       <view style='margin-left:110rpx;'>
@@ -83,7 +83,7 @@
         </view>
 
         <view>
-          <image class='commenticon' bindtap='navtoPage' data-page="post" data-param="id={{item.id}}" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/comment.png"></image>
+          <image class='commenticon' bindtap='navtoPage' data-page="post" data-param="id={{item.id}}" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/comment1.png"></image>
         </view>
         <view class='likestr' bindtap='navtoPage' data-page="post" data-param="id={{item.id}}">
           {{item.membercomment.length}}

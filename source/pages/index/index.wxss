@@ -66,8 +66,8 @@
   margin-left: 104rpx;
 }
 .user-center .icons .icon .img image{
-  height: 44rpx;
-  width: 44rpx;
+  height: 52rpx;
+  width: 52rpx;
 }
 .user-center .icons .icon .txt{
   font-size: 26rpx;

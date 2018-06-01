@@ -71,6 +71,7 @@
   font-size: 24rpx;
   margin-left: 12rpx;
   color:#999999;
+  margin-top:2rpx;
 }
 .commenticon{
   width: 28rpx;

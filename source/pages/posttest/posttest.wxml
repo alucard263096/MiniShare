@@ -119,7 +119,7 @@
   </view>
   <view class='likestr_p' bindtap='likePost' id="{{info.id}}">{{info.like}}</view>
   <view class='incon_p'>
-    <image class='commenticon_p'  src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/comment.png"></image>
+    <image class='commenticon_p'  src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/comment1.png"></image>
   </view>
   <view class='likestr_p' >{{commentlist.length}} </view>
 </view>
@@ -222,7 +222,7 @@
 <view class='likecomment flex-row' style='right:42rpx;'  wx:if="{{info.operation=='N'}}">
 
   <view class='incon' bindtap='showCommentbox'>
-    <image class='commenticon'  src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/comment.png"></image>
+    <image class='commenticon'  src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/comment1.png"></image>
   </view>
   <view class='likestr' bindtap='showCommentbox'>
     {{commentlist.length}}

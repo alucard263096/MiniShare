@@ -117,7 +117,7 @@
   </view>
   <view class='likestr_p' bindtap='likePost' id="{{info.id}}">{{info.like}}</view>
   <view class='incon_p' bindtap='showCommentbox'>
-    <image class='commenticon_p'  src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/comment.png"></image>
+    <image class='commenticon_p'  src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/comment1.png"></image>
   </view>
   <view class='likestr_p' bindtap='showCommentbox'>{{commentlist.length}} </view>
 </view>
@@ -155,7 +155,7 @@
       <view>
         <image class="memberphoto" src="{{info.member_id_photo}}" />
       </view>
-      <view class='membername'>
+      <view class='membername2'>
         {{info.mygroupinfo.member_name==""?info.member_id_name:info.mygroupinfo.member_name}}
       </view>
       <view class='delete' wx:if="{{info.member_id_openid==UserInfo.openid}}" bindtap='deletePost' id="{{info.id}}">删除</view>
@@ -228,7 +228,7 @@
 <view class='likecomment flex-row' style='right:42rpx;'  wx:if="{{info.operation=='N'}}">
 
   <view class='incon' bindtap='showCommentbox'>
-    <image class='commenticon'  src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/comment.png"></image>
+    <image class='commenticon'  src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/comment1.png"></image>
   </view>
   <view class='likestr' bindtap='showCommentbox'>
     {{commentlist.length}}

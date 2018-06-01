@@ -15,10 +15,11 @@
 }
 
 .edit .editblock {
-  background: #e2e5e7;
+  background: rgba(226,229,231,0.8);
   padding: 12rpx;
   margin-left: 54rpx;
   margin-top: 26rpx;
+  border-radius: 3rpx;
 }
 
 .edit image {

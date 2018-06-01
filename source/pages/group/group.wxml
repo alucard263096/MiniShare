@@ -171,7 +171,7 @@
             </view>
 
             <view>
-              <image class='commenticon' bindtap='navtoPage' data-page="post" data-param="id={{item.id}}" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/comment.png"></image>
+              <image class='commenticon' bindtap='navtoPage' data-page="post" data-param="id={{item.id}}" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/comment1.png"></image>
             </view>
             <view class='likestr' bindtap='navtoPage' data-page="post" data-param="id={{item.id}}">
               {{item.membercommentcount}}

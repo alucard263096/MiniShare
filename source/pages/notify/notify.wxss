@@ -5,17 +5,21 @@
 }
 .covers{
   background: white;
-  padding: 10rpx;
 }
-.cover{
-  flex: right;
+.covdiv{
+  display: inline-block;
+  line-height: 0rpx;
 }
 .coveritem{
   width: 234rpx;
   height: 116rpx;
-  margin-right: 4px;
-  border:2rpx solid #ddd;
-  margin-top: 4rpx;
+  border :2rpx #ddd solid;
+  margin-left: 10rpx;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+}
+.coveritem.selected{
+  border-color:#29A5EE;
 }
 .inputBody{
   background: white;

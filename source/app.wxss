@@ -81,7 +81,7 @@ button[type="primary"]{
   position: fixed;
   top:0rpx;
   left:0rpx;
-  padding-top:70rpx;
+  padding-top:74rpx;
   padding-left:40rpx;
   padding-bottom:40rpx;
   padding-right:40rpx;
@@ -190,7 +190,7 @@ page{
   color:#333;
 }
 .modalform .modalinput{
-  border:2rpx #DDDDDD solid;
+  border:2rpx solid rgba(221,221,221, 50);
   margin-left: 72rpx;
   margin-top: 56rpx;
   width: 417rpx;
@@ -200,7 +200,7 @@ page{
 }
 .modalform .modalbtn{
   margin-top: 56rpx;
-  border-top: 2rpx #D2D3D5 solid;
+  border-top: 2rpx rgba(221,221,221, 50) solid;
   text-align: center;
   color:#29A5EE;
   font-size: 34rpx;
