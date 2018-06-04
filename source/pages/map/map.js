@@ -2,9 +2,11 @@
 import { AppBase } from "../../app/AppBase";
 import { GroupApi } from "../../apis/group.api.js";
 class Content extends AppBase {
+  
   constructor() {
     super();
   }
+
   onLoad(options) {
     //options.group_id=480;
     this.Base.Page = this;

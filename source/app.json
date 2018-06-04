@@ -1,11 +1,11 @@
 {
   "pages": [
+    "pages/index/index",
+    "pages/votesuccess/votesuccess",
     "pages/notify/notify",
     "pages/post/post",
     "pages/map/map",
     "pages/albumdetail/albumdetail",
-    "pages/index/index",
-    "pages/votesuccess/votesuccess",
     "pages/vote/vote",
     "pages/albumphoto/albumphoto",
     "pages/album/album",
@@ -29,6 +29,7 @@
     "navigationBarBackgroundColor": "#4D9CFB",
     "navigationBarTitleText": "超级群空间助手",
     "navigationBarTextStyle": "white",
-    "navigationStyle":"custom"
+    "navigationStyle":"custom",
+    "backgroundColor": "#dddddd"
   }
 }
