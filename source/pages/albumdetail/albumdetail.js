@@ -10,7 +10,7 @@ class Content extends AppBase {
     super();
   }
   onLoad(options) {
-    //options.id = 34;
+    //options.id = 32;
     //options.group_id = 480;
     this.Base.Page = this;
 

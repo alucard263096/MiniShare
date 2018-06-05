@@ -32,7 +32,7 @@
   padding:30rpx;
   padding-left: 0rpx;
   margin-left: 30rpx;
-  border-bottom:2rpx #ddd solid
+  border-bottom:2rpx rgba(221,221,221,0.5) solid
 }
 .remarkinfo{
   width: 85rpx;

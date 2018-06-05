@@ -119,7 +119,7 @@ button[type="primary"]{
   color:white;
   font-size: 40rpx;
   text-align: center;
-  margin-top: 60rpx;
+  margin-top: 54rpx;
 }
 .text-center{
     text-align: center;
@@ -216,7 +216,7 @@ page{
   padding:24rpx;
   font-size: 28rpx;
   background: white;
-  z-index: 102;
+  z-index: 300;
 }
 .commentboxarea .publishcomment{
   color: #ddd;

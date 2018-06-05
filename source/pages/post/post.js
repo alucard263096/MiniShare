@@ -11,16 +11,11 @@ class Content extends AppBase {
     super();
   }
   onLoad(options) {
-   // options.id = 199;
-    //options.group_id = 480;
+   //options.id = 220;
+    //options.group_id = 494;
     this.Base.Page = this;
     super.onLoad(options);
     var postapi = new PostApi();
-    postapi.read({ post_id: this.Base.options.id });
-    postapi.view({ post_id: this.Base.options.id }, (ret) => {
-      console.log("list");
-      console.log(ret);
-    });
 
     this.Base.setMyData({ comment: "", id: options.id });
     var imagemodetypes = ["scaleToFill",
@@ -40,6 +35,11 @@ class Content extends AppBase {
   }
   onShow() {
     var that = this;
+    var app=getApp();
+    if (app.globalData.goout==true){
+      return;
+    }
+    console.log("aaaaaaaaaaaaaaaaaaaaaaaaaa");
     super.onShow();
     var postapi = new PostApi();
     var id = 0;
@@ -57,6 +57,13 @@ class Content extends AppBase {
       } else {
         that.Base.setMyData({ info: data,nowtimespan:data.nowtimespan });
       }
+
+      postapi.read({ post_id: that.Base.options.id });
+      postapi.view({ post_id: that.Base.options.id }, (ret) => {
+        console.log("list");
+        console.log(ret);
+      });
+
     });
     this.Base.loadComment();
   }

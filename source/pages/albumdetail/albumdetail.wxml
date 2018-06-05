@@ -22,7 +22,7 @@
     </view>
     <view style='margin-right:47rpx;color:white'>{{info.viewcount}}</view>
     <view>
-      <image  src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/comment1.png"></image>
+      <image  src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/comment6.png"></image>
     </view>
     <view style='margin-right:47rpx;'>{{info.commentcount}}</view>
   </view>
@@ -83,10 +83,10 @@
         </view>
 
         <view>
-          <image class='commenticon' bindtap='navtoPage' data-page="post" data-param="id={{item.id}}" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/comment1.png"></image>
+          <image style='margin-top:4rpx;' class='commenticon' bindtap='navtoPage' data-page="post" data-param="id={{item.id}}" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/comment1.png"></image>
         </view>
         <view class='likestr' bindtap='navtoPage' data-page="post" data-param="id={{item.id}}">
-          {{item.membercomment.length}}
+          {{item.membercommentcount}}
         </view>
       </view>
     </view>

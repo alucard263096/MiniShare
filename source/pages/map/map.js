@@ -31,8 +31,8 @@ class Content extends AppBase {
             title: members[i].nickName,
             latitude: members[i].lat,
             longitude: members[i].lng,
-            width: 50,
-            height: 50
+            width: 35,
+            height: 35
           });
           count++;
         }

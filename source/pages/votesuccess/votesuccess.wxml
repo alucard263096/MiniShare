@@ -5,7 +5,7 @@
 <text class='fa fa-chevron-left btnback' bindtap='back'></text>
 
 <view class='bg-white text-center'>
-<image src='https://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/check3.png' style='width:200rpx;height:200rpx;margin-top:125rpx;margin-bottom:74rpx;'></image>
+<image src='https://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/check5.png' style='width:200rpx;height:200rpx;margin-top:125rpx;margin-bottom:74rpx;'></image>
 <view style='color:#333;font-size:34rpx;margin-bottom:54rpx;'>投票成功</view>
 </view>
 

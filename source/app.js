@@ -16,7 +16,7 @@ App({
     // Do something when show.
     console.log("on app show");
     console.log(options);
-
+    this.globalData.goout=false;
     if (options.scene == 1044) {
       console.log("openin1033");
       wx.getShareInfo({
@@ -57,17 +57,18 @@ App({
         }
       })
     } else if (options.scene == 1007){
-
+      this.globalData.goout=true;
       wx.redirectTo({
         url: '/pages/index/index',
         success: function (res) { },
         fail: function (res) { },
         complete: function (res) { },
-      })
+      });
     }else{
     }
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    goout:false
   }
 })

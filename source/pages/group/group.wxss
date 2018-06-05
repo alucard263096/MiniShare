@@ -77,8 +77,8 @@
 }
 
 .icons .icon .img image {
-  height: 44rpx;
-  width: 44rpx;
+  height: 52rpx;
+  width: 52rpx;
 }
 
 .icons .icon .txt {
