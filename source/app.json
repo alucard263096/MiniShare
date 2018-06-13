@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/auth/auth",
     "pages/post/post",
     "pages/vote/vote",
     "pages/albumdetail/albumdetail",

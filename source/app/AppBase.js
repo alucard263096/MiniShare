@@ -170,7 +170,10 @@ export class AppBase {
               });
             },
             fail: res => {
-              that.Base.gotoOpenUserInfoSetting();
+              //that.Base.gotoOpenUserInfoSetting();
+              wx.redirectTo({
+                url: '/pages/auth/auth',
+              })
             }
           });
 

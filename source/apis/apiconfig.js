@@ -1,12 +1,12 @@
 export class ApiConfig{
   static GetApiUrl() {
-    return "https://cmsdev.app-link.org/alucard263096/minishare/api/";
+    return "https://minishare.zhichikeji.com/api/";
   }
   static GetUploadPath() {
-    return "https://alioss.app-link.org/alucard263096/minishare/";
+    return "http://pa650lopd.bkt.clouddn.com/";
   } 
   static GetFileUploadAPI() {
-    return "https://cmsdev.app-link.org/alucard263096/minishare/fileupload";
+    return "https://minishare.zhichikeji.com/fileupload";
 }
   static GetHeader(){
     var headers = {
