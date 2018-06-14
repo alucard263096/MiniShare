@@ -18,7 +18,7 @@ class Content extends AppBase {
     var that = this;
     super.onShow();
     var albumapi = new AlbumApi();
-    albumapi.list({ group_id: this.Base.options.group_id }, data => {
+    albumapi.list({ group_id: this.Base.options.group_id, photoids: this.Base.options.photoids }, data => {
       that.Base.setMyData({ myalbum: data });
     });
 

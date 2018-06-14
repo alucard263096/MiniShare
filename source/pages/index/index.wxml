@@ -18,25 +18,25 @@
     <view class='flex-row'>
       <navigator url="/pages/votelist/votelist" class='icon'>
         <view class='img'>
-          <image src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/icon-1.png'></image>
+          <image src='https://img.zhichikeji.com/images/icon-1.png'></image>
         </view>
         <view class='txt'>群投票</view>
       </navigator>
       <navigator url="/pages/mypost/mypost?operation=P" class='icon next'>
         <view class='img'>
-          <image src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/icon-2.png'></image>
+          <image src='https://img.zhichikeji.com/images/icon-2.png'></image>
         </view>
         <view class='txt'>群相册</view>
       </navigator>
       <view class='icon next'>
         <view class='img'>
-          <image src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/icon-3.png'></image>
+          <image src='https://img.zhichikeji.com/images/icon-3.png'></image>
         </view>
         <view class='txt'>群位置</view>
       </view>
       <navigator url="/pages/notifylist/notifylist" class='icon next'>
         <view class='img'>
-          <image src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/icon-4.png'></image>
+          <image src='https://img.zhichikeji.com/images/icon-4.png'></image>
         </view>
         <view class='txt'>群公告</view>
       </navigator>
@@ -46,25 +46,25 @@
     <view class='flex-row' style='margin-top:40rpx;'>
       <view class='icon'>
         <view class='img'>
-          <image src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/icon-5.png'></image>
+          <image src='https://img.zhichikeji.com/images/icon-5.png'></image>
         </view>
         <view class='txt'>群名片</view>
       </view>
       <view class='icon next'>
         <view class='img'>
-          <image src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/icon-6.png'></image>
+          <image src='https://img.zhichikeji.com/images/icon-6.png'></image>
         </view>
         <view class='txt'>群相恋</view>
       </view>
       <view class='icon next'>
         <view class='img'>
-          <image src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/icon-7.png'></image>
+          <image src='https://img.zhichikeji.com/images/icon-7.png'></image>
         </view>
         <view class='txt'>群游戏</view>
       </view>
       <view class='icon next'>
         <view class='img'>
-          <image src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/icon-8.png'></image>
+          <image src='https://img.zhichikeji.com/images/icon-8.png'></image>
         </view>
         <view class='txt'>群红包</view>
       </view>

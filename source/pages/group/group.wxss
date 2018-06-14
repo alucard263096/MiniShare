@@ -1,7 +1,7 @@
 /* pages/group/group.wxss */
 
 .top-bg {
-  background: #fff url(http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/groupbg2.png);
+  background: #fff url(https://img.zhichikeji.com/images/groupbg2.png);
   background-size: 100% 100%;
   height: 410rpx;
 }
@@ -126,7 +126,7 @@ display:-webkit-box;
   border-radius: 6rpx;
   color:white;
   background-color:#FF715D;
-  background: url(http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/group-block-1.png);
+  background: url(https://img.zhichikeji.com/images/group-block-1.png);
   background-size: 100% 100%;
 }
 .quweicenter .block-content{
@@ -148,7 +148,7 @@ display:-webkit-box;
   height: 106rpx;
   border-radius: 6rpx;
   color:#F15D5B;
-  background: url(http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/group-block-2.png);
+  background: url(https://img.zhichikeji.com/images/group-block-2.png);
   background-size: 100% 100%;
 }
 .quweicenter .block-3{
@@ -158,7 +158,7 @@ display:-webkit-box;
   height: 106rpx;
   border-radius: 6rpx;
   color:#D69054;
-  background: url(http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/group-block-3.png);
+  background: url(https://img.zhichikeji.com/images/group-block-3.png);
   background-size: 100% 100%;
 }
 .quweicenter .block-4{
@@ -168,7 +168,7 @@ display:-webkit-box;
   height: 106rpx;
   border-radius: 6rpx;
   color:#6E56D2;
-  background: url(http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/group-block-4.png);
+  background: url(https://img.zhichikeji.com/images/group-block-4.png);
   background-size: 100% 100%;
   margin-bottom: 24rpx;
 }
