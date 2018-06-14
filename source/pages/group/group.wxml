@@ -7,7 +7,7 @@
   </view>
   <view class='edit flex-row'>
     <view class='editblock  flex-row' bindtap='gotoMgr'>
-      <image src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/writting.png"></image>
+      <image src="https://img.zhichikeji.com/images/writting.png"></image>
       <text>编辑</text>
     </view>
   </view>
@@ -27,25 +27,25 @@
   <view class='icons flex-row'>
     <view class='icon first' bindtap='gotoVoteList' data-page="vote" data-param="group_id={{info.id}}">
       <view class='img'>
-        <image src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/icon-1.png'></image>
+        <image src='https://img.zhichikeji.com/images/icon-1.png'></image>
       </view>
       <view class='txt'>群投票</view>
     </view>
     <view class='icon next' bindtap='gotoAlbum' data-page="album" data-param="group_id={{info.id}}">
       <view class='img'>
-        <image src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/icon-2.png'></image>
+        <image src='https://img.zhichikeji.com/images/icon-2.png'></image>
       </view>
       <view class='txt'>群相册</view>
     </view>
     <view class='icon next' bindtap='gotoMap' data-page="map" data-param="group_id={{info.id}}">
       <view class='img'>
-        <image src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/icon-3.png'></image>
+        <image src='https://img.zhichikeji.com/images/icon-3.png'></image>
       </view>
       <view class='txt'>群位置</view>
     </view>
     <view class='icon next' bindtap='gotoNotifyList' data-page="notify" data-param="group_id={{info.id}}">
       <view class='img'>
-        <image src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/icon-4.png'></image>
+        <image src='https://img.zhichikeji.com/images/icon-4.png'></image>
       </view>
       <view class='txt'>群公告</view>
     </view>
@@ -54,7 +54,7 @@
 <view class='bg-white ' wx:if="{{latestnotice.id!='0'}}">
   <view class='flex-row latestnotice'>
     <view class='notice-horn'>
-      <image src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/latestnotice.png'></image>
+      <image src='https://img.zhichikeji.com/images/latestnotice.png'></image>
     </view>
     <navigator url='/pages/post/post?group_id={{id}}&id={{latestnotice.id}}' class='notice-txt'>
       {{latestnotice.description}}
@@ -110,13 +110,13 @@
     </view>
     <view class='flex-row'>
       <view class='sctop' wx:if="{{item.operation=='N'}}">
-        <image class='ball' src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/n.png'></image>
+        <image class='ball' src='https://img.zhichikeji.com/images/n.png'></image>
       </view>
       <view class='sctop-o' wx:if="{{item.operation=='P'}}">
-        <image class='ball-o' src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/p.png'></image>
+        <image class='ball-o' src='https://img.zhichikeji.com/images/p.png'></image>
       </view>
       <view class='sctop-r' wx:if="{{item.operation=='V'}}">
-        <image class='ball-r' src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/v.png'></image>
+        <image class='ball-r' src='https://img.zhichikeji.com/images/v.png'></image>
       </view>
       <view class='postbody flex-1'>
         <view class='operationstr'>{{item.operationstr}}</view>
@@ -164,14 +164,14 @@
           <view class='viewpeople'>{{item.memberviewcount}}人浏览过</view>
           <view class='likecomment flex-row' style='position:absolute;right:42rpx;'  wx:if="{{item.operation=='N'||item.operation=='P'}}">
             <view>
-              <image class='likeicon' bindtap='likePost' id="{{item.id}}" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/like.png"></image>
+              <image class='likeicon' bindtap='likePost' id="{{item.id}}" src="https://img.zhichikeji.com/images/like.png"></image>
             </view>
             <view  class='likestr' bindtap='likePost' id="{{item.id}}" >
               {{item.like}}
             </view>
 
             <view>
-              <image class='commenticon' bindtap='navtoPage' data-page="post" data-param="id={{item.id}}" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/comment1.png"></image>
+              <image class='commenticon' bindtap='navtoPage' data-page="post" data-param="id={{item.id}}" src="https://img.zhichikeji.com/images/comment1.png"></image>
             </view>
             <view class='likestr' bindtap='navtoPage' data-page="post" data-param="id={{item.id}}">
               {{item.membercommentcount}}
@@ -187,10 +187,10 @@
 </view>
 
 <view class='btnhome' bindtap='gohome'>
-  <image src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/btnhome.png"></image>
+  <image src="https://img.zhichikeji.com/images/btnhome.png"></image>
 </view>
 <view class='btnadd'>
-  <image bindtap='openbgselect' src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/btnadd.png"></image>
+  <image bindtap='openbgselect' src="https://img.zhichikeji.com/images/btnadd.png"></image>
 </view>
 
 <view class='selectbg' wx:if="{{bgselect==true}}">
@@ -198,31 +198,31 @@
     <view class='iconsb flex-row'>
       <view class='icon first' bindtap='gotoVote' data-page="vote" data-param="group_id={{info.id}}">
         <view class='img'>
-          <image src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/icon-1-1.png'></image>
+          <image src='https://img.zhichikeji.com/images/icon-1-1.png'></image>
         </view>
         <view class='txt'>投票</view>
       </view>
       <view class='icon next' bindtap='gotoAlbum' data-page="album" data-param="group_id={{info.id}}">
         <view class='img'>
-          <image src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/icon-2-1.png'></image>
+          <image src='https://img.zhichikeji.com/images/icon-2-1.png'></image>
         </view>
         <view class='txt'>相册</view>
       </view>
       <view class='icon next' bindtap='gotoMap' data-page="map" data-param="group_id={{info.id}}">
         <view class='img'>
-          <image src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/icon-3-1.png'></image>
+          <image src='https://img.zhichikeji.com/images/icon-3-1.png'></image>
         </view>
         <view class='txt'>位置</view>
       </view>
       <view class='icon next' bindtap='gotoNotify' data-page="notify" data-param="group_id={{info.id}}">
         <view class='img'>
-          <image src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/icon-4-1.png'></image>
+          <image src='https://img.zhichikeji.com/images/icon-4-1.png'></image>
         </view>
         <view class='txt'>公告</view>
       </view>
     </view>
   </view>
   <view class='close' bindtap='closebgselect'>
-    <image src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/close.png'></image>
+    <image src='https://img.zhichikeji.com/images/close.png'></image>
   </view>
 </view>

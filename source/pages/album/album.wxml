@@ -25,13 +25,13 @@
     </view>
     <view class='albumuser flex-row'>
       <view>
-        <image style='width:34rpx;height:24rpx;' src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/users.png"></image>
+        <image style='width:34rpx;height:24rpx;' src="https://img.zhichikeji.com/icon/users.png"></image>
       </view>
       <view style='margin-right:47rpx;color:white;'>{{item.viewcount}}</view>
     </view>
     <view class='albumheart flex-row'>
       <view>
-        <image style='width:34rpx;' src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/heart.png" mode='widthFix'></image>
+        <image style='width:34rpx;' src="https://img.zhichikeji.com/icon/heart.png" mode='widthFix'></image>
       </view>
       <view style='margin-right:47rpx;color:white;'>{{item.likecount}}</view>
     </view>

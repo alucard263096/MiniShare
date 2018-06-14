@@ -1,6 +1,6 @@
 /**index.wxss**/
 .top-bg{
-  background: url(http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/indexbg.png);
+  background: url(https://img.zhichikeji.com/images/indexbg.png);
   background-size:  100% 100%;
   height: 288rpx;
 }

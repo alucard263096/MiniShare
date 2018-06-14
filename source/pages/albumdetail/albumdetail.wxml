@@ -7,22 +7,22 @@
       <image class='createoroimg' src="{{info.member_avatarUrl}}"></image>
     </view>
     <view class='txt'>
-      <image class='iconccc' src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/right-a.png"></image>
+      <image class='iconccc' src="https://img.zhichikeji.com/icon/right-a.png"></image>
     </view>
   </navigator>
   <view class='albumname flex-row'  bindtap='changeAlbumName'>
     <view>{{info.name}}</view>
     <view>
-      <image style="width:24rpx;height:24rpx;margin-left:19rpx;margin-top:6rpx;" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/edit.png"></image>
+      <image style="width:24rpx;height:24rpx;margin-left:19rpx;margin-top:6rpx;" src="https://img.zhichikeji.com/icon/edit.png"></image>
     </view>
   </view>
   <view class='albumuser flex-row'>
     <view>
-      <image  style='width:34rpx;' src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/users.png" mode='widthFix'></image>
+      <image  style='width:34rpx;' src="https://img.zhichikeji.com/icon/users.png" mode='widthFix'></image>
     </view>
     <view style='margin-right:47rpx;color:white'>{{info.viewcount}}</view>
     <view>
-      <image  src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/comment6.png"></image>
+      <image  src="https://img.zhichikeji.com/icon/comment6.png"></image>
     </view>
     <view style='margin-right:47rpx;'>{{info.commentcount}}</view>
   </view>
@@ -76,14 +76,14 @@
 
       <view class='likecomment flex-row' style='position:absolute;right:42rpx;'>
         <view>
-          <image class='likeicon' bindtap='likePost' id="{{item.id}}" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/like.png"></image>
+          <image class='likeicon' bindtap='likePost' id="{{item.id}}" src="https://img.zhichikeji.com/images/like.png"></image>
         </view>
         <view class='likestr' bindtap='likePost' id="{{item.id}}">
           {{item.like}}
         </view>
 
         <view>
-          <image style='margin-top:4rpx;' class='commenticon' bindtap='navtoPage' data-page="post" data-param="id={{item.id}}" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/comment1.png"></image>
+          <image style='margin-top:4rpx;' class='commenticon' bindtap='navtoPage' data-page="post" data-param="id={{item.id}}" src="https://img.zhichikeji.com/images/comment1.png"></image>
         </view>
         <view class='likestr' bindtap='navtoPage' data-page="post" data-param="id={{item.id}}">
           {{item.membercommentcount}}

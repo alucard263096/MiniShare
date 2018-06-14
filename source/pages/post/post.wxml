@@ -113,11 +113,11 @@
 <view class='likecomment_p flex-row'  wx:if="{{info.operation=='P'}}">
 
   <view class='incon_p'>
-    <image class='likeicon_p' bindtap='likePost' id="{{info.id}}" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/like.png"></image>
+    <image class='likeicon_p' bindtap='likePost' id="{{info.id}}" src="https://img.zhichikeji.com/images/like.png"></image>
   </view>
   <view class='likestr_p' bindtap='likePost' id="{{info.id}}">{{info.like}}</view>
   <view class='incon_p' bindtap='showCommentbox'>
-    <image class='commenticon_p'  src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/comment1.png"></image>
+    <image class='commenticon_p'  src="https://img.zhichikeji.com/images/comment1.png"></image>
   </view>
   <view class='likestr_p' bindtap='showCommentbox'>{{commentlist.length}} </view>
 </view>
@@ -125,14 +125,14 @@
     <view class='flex-row' style='border-top:2rpx solid #DDDDDD;font-size:28rpx;color:#666;padding-top:32rpx;padding-bottom:30rpx;'>
       <view class='flex-1 flex-row' bindtap='movephoto' >
         <view style='margin-left:120rpx;'>
-          <image src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/move.png' style='width:26rpx;height:26rpx;margin-right:21rpx;'></image>
+          <image src='https://img.zhichikeji.com/icon/move.png' style='width:26rpx;height:26rpx;margin-right:21rpx;'></image>
         </view>
         <view>移动</view>
       </view>
       <view style='background:#ddd;width:4rpx;height:25rpx;margin-top:4rpx;'></view>
       <view class='flex-1 flex-row' bindtap='download' >
         <view  style='margin-left:120rpx;'>
-          <image src='http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/down.png' style='width:26rpx;height:26rpx;margin-right:21rpx;'></image></view>
+          <image src='https://img.zhichikeji.com/icon/down.png' style='width:26rpx;height:26rpx;margin-right:21rpx;'></image></view>
         <view>下载</view>
       </view>
     </view>
@@ -228,13 +228,13 @@
 <view class='likecomment flex-row' style='right:42rpx;'  wx:if="{{info.operation=='N'}}">
 
   <view class='incon' bindtap='showCommentbox'>
-    <image class='commenticon'  src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/comment1.png"></image>
+    <image class='commenticon'  src="https://img.zhichikeji.com/images/comment1.png"></image>
   </view>
   <view class='likestr' bindtap='showCommentbox'>
     {{commentlist.length}}
   </view>
   <view class='incon'>
-    <image class='likeicon' bindtap='likePost' id="{{info.id}}" src="http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/images/like.png"></image>
+    <image class='likeicon' bindtap='likePost' id="{{info.id}}" src="https://img.zhichikeji.com/images/like.png"></image>
   </view>
   <view class='likestr' bindtap='likePost' id="{{info.id}}">
     {{info.like}}
