@@ -3,7 +3,7 @@ export class ApiConfig{
     return "https://minishare.zhichikeji.com/api/";
   }
   static GetUploadPath() {
-    return "http://pa650lopd.bkt.clouddn.com/";
+    return "https://img.zhichikeji.com/";
   } 
   static GetFileUploadAPI() {
     return "https://minishare.zhichikeji.com/fileupload";
