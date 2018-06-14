@@ -5,11 +5,10 @@ import { GroupApi } from "apis/group.api";
 import { ApiConfig } from "apis/apiconfig.js";
 import { AppBase } from "app/AppBase.js";
 App({
-  onLaunch: function () {
+  onLaunch: function (options) {
     // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+    console.log("on app launch");
+    console.log(options);
     
   },
   onShow: function (options) {
@@ -17,7 +16,7 @@ App({
     console.log("on app show");
     console.log(options);
     this.globalData.goout=false;
-    if (options.scene == 1044) {
+    if (options.scene == 1044&&options.isSticky==false) {
       console.log("openin1033");
       wx.getShareInfo({
         shareTicket: options.shareTicket,
