@@ -41,34 +41,6 @@
         <view class='txt'>群公告</view>
       </navigator>
     </view>
-
-
-    <view class='flex-row' style='margin-top:40rpx;'>
-      <view class='icon'>
-        <view class='img'>
-          <image src='https://img.zhichikeji.com/images/icon-5.png'></image>
-        </view>
-        <view class='txt'>群名片</view>
-      </view>
-      <view class='icon next'>
-        <view class='img'>
-          <image src='https://img.zhichikeji.com/images/icon-6.png'></image>
-        </view>
-        <view class='txt'>群相恋</view>
-      </view>
-      <view class='icon next'>
-        <view class='img'>
-          <image src='https://img.zhichikeji.com/images/icon-7.png'></image>
-        </view>
-        <view class='txt'>群游戏</view>
-      </view>
-      <view class='icon next'>
-        <view class='img'>
-          <image src='https://img.zhichikeji.com/images/icon-8.png'></image>
-        </view>
-        <view class='txt'>群红包</view>
-      </view>
-    </view>
   </view>
 </view>
 <view class='user-share'>

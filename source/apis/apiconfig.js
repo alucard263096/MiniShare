@@ -1,13 +1,15 @@
 export class ApiConfig{
   static GetApiUrl() {
+    return "https://cmsdev.app-link.org/alucard263096/minishare/api/";
     return "https://minishare.zhichikeji.com/api/";
+    
   }
   static GetUploadPath() {
     return "https://img.zhichikeji.com/";
   } 
   static GetFileUploadAPI() {
     return "https://minishare.zhichikeji.com/fileupload";
-}
+  }
   static GetHeader(){
     var headers = {
       'Content-Type': 'application/x-www-form-urlencoded',
